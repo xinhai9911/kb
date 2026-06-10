@@ -13,9 +13,11 @@ HBase 的 RPC 协议与 REST 接口分析。
 
 ## 已完成工作
 
-- 静态分析报告：`Q:\AI\hbase_static_analysis_report.md`
-- 表清理操作：`Q:\AI\hbase_step_01_table_drop_cleanup_report.md`
-- 测试执行计划：`Q:\AI\hbase_test_execution_plan.md`
+- 静态分析报告：[[hbase-static-analysis]]
+- dropTable 报文解析：[[hbase-drop-table-packet]]
+- 测试计划：[[hbase-test-plan]]
+- 测试执行计划：[[hbase-test-execution]]
+- 测试报告模板：[[hbase-test-report-template]]（在 30-snippets）
 
 ## 关键字段
 
