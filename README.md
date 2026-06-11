@@ -28,3 +28,4 @@
 <!-- 手动维护：每次重要新增/更新追加一行，格式: - YYYY-MM-DD: [标题](path) -->
 - 2026-06-10: 知识库初始化
 - 2026-06-10: 迁入 5 个 HBase 笔记到 [[20-protocols/]]（静态分析、dropTable 报文、测试计划/执行、报告模板）
+- 2026-06-11: 新增 [[50-reference/dlopen-internal-memory]]（dlopen 内部内存动作详解：mmap、重定位、GOT/PLT、RELRO、TLS 全链路拆解）
