@@ -29,3 +29,5 @@
 - 2026-06-10: 知识库初始化
 - 2026-06-10: 迁入 5 个 HBase 笔记到 [[20-protocols/]]（静态分析、dropTable 报文、测试计划/执行、报告模板）
 - 2026-06-11: 新增 [[50-reference/dlopen-internal-memory]]（dlopen 内部内存动作详解：mmap、重定位、GOT/PLT、RELRO、TLS 全链路拆解）
+- 2026-06-15: 新增 [[50-reference/npp-timer-mechanism]]（NPP flowtable 定时触发机制：PROCESS + INTERRUPT 两级架构、空闲判定、慢/快清理策略）
+- 2026-07-13: 新增导演系列参考笔记到 [[50-reference/]]：[[50-reference/director-intro]]（入门+ffmpeg秒点）、[[50-reference/montage-techniques]]（平行/积累/对比蒙太奇）、[[50-reference/shot-sizing-axes-storyboard]]（景别/轴线图+分镜模板）
