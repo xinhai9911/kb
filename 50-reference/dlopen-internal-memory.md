@@ -306,11 +306,11 @@ RTLD_LAZY 模式：
 
 #### 类型五：其他常见类型
 
-| 类型 | 内存动作 | 说明 |
-|------|----------|------|
-| `R_X86_64_64` | `*addr = sym_value + addend` | 64 位绝对符号引用 |
-| `R_X86_64_32` | `*(uint32_t*)addr = sym_value + addend` | 32 位符号引用（截断） |
-| `R_X86_64_32S` | `*(int32_t*)addr = sym_value + addend` | 32 位符号引用（有符号截断） |
+| 类型              | 内存动作                                          | 说明                |
+| --------------- | --------------------------------------------- | ----------------- |
+| `R_X86_64_64`   | `*addr = sym_value + addend`                  | 64 位绝对符号引用        |
+| `R_X86_64_32`   | `*(uint32_t*)addr = sym_value + addend`       | 32 位符号引用（截断）      |
+| `R_X86_64_32S`  | `*(int32_t*)addr = sym_value + addend`        | 32 位符号引用（有符号截断）   |
 | `R_X86_64_PC32` | `*(int32_t*)addr = sym_value + addend - addr` | PC 相对引用（通常不需 GOT） |
 
 ### 3.5 符号查找的搜索顺序
@@ -396,60 +396,431 @@ mmap 初始       PROT_READ|PROT_WRITE  PROT_READ|PROT_WRITE
 
 ## 第五章：TLS（线程局部存储）内存
 
-### 5.1 什么时候涉及 TLS
+### 5.0 为什么要先理解 TLS
 
-如果 .so 中有 `PT_TLS` Program Header，说明该库定义了线程局部变量：
+TLS 是 dlopen 中**最容易让人困惑的部分**，因为它涉及"每个线程都要分配独立内存"这个特殊性。理解 TLS 的关键是搞清三个问题：
+
+1. **为什么每个线程需要独立副本？** → 因为 `__thread` 变量的语义就是"每个线程各一份"
+2. **为什么 dlopen 加载新库时很贵？** → 因为已有线程的 TLS block 要扩展
+3. **扩展到底在内存中做了什么？** → realloc + memcpy，每个线程都要做一遍
+
+下面从最基础的概念开始，逐步展开。
+
+---
+
+### 5.1 什么是 `__thread` 变量
 
 ```c
 // libfoo.c
-__thread int thread_counter = 0;   // 每个线程有独立副本
+__thread int thread_counter = 0;    // 每个线程有自己的 thread_counter
+__thread char thread_name[32] = "unknown";
 ```
 
-编译后生成 `PT_TLS` segment，包含：
-- `p_memsz`：TLS 变量总大小（含对齐）
-- `p_filesz`：有初始值的 TLS 变量大小（init image）
-- `p_vaddr`：init image 在文件中的位置（相对于 load_base）
+含义：
 
-### 5.2 dlopen 时的 TLS 处理
+- 线程 A 看到 `thread_counter = 0`，线程 B 也看到 `thread_counter = 0`
+- 但它们是**不同的内存位置**，互不影响
+- 线程 A 修改 `thread_counter = 5`，线程 B 的 `thread_counter` 仍然是 0
+- 线程退出时，它的副本被销毁
 
-这是 dlopen 中**最昂贵的内存操作之一**：
+**对比普通全局变量**：
 
-```
-1. 计算新库的 TLS 需求：
-   tls_block_size = PT_TLS.p_memsz
-   tls_alignment  = PT_TLS.p_align
-
-2. 更新全局 TLS 布局信息：
-   新库的 TLS 数据必须追加到所有已有线程的 TLS block 末尾
-   （因为 TLS 的布局是编译时决定的偏移，不能改变已有变量的位置）
-
-3. 遍历所有已存在的线程：
-   for each existing thread:
-     扩展该线程的 TLS block（分配新内存）
-     将新库的 init image 拷贝到扩展区域
-     更新该线程的 dtv（Dynamic Thread Vector）指针数组
-
-4. 对于之后创建的新线程：
-   在线程创建时（clone）自动分配完整 TLS block
-   将所有库的 init image 拷贝到对应位置
+```c
+int global_counter = 0;      // 所有线程共享同一个内存位置
+__thread int thread_counter = 0;  // 每个线程各有一份
 ```
 
-### 5.3 TLS 内存布局
+---
+
+### 5.2 编译时：PT_TLS 的生成
+
+编译器遇到 `__thread` 变量时，做了两件事：
+
+**第一：把 `__thread` 变量打包成 PT_TLS segment**
 
 ```
-每个线程的栈附近（x86_64 使用 fs 寄存器指向 TLS block）：
+libfoo.so 的 ELF 文件中新增：
 
-  fs → ┌──────────────────────┐ ← TLS block 起始
-       │ tcblock (libc)        │ ← 偏移 0（编译时确定）
-       │ thread_counter (foo)  │ ← 偏移 N（dlopen 后追加）
-       │ ...                   │
-       ├──────────────────────┤
-       │ dtv 数组              │ ← 指向各库的 TLS 区域
-       │ dtv[0] = generation   │
-       │ dtv[1] = libc tls_ptr│
-       │ dtv[2] = foo tls_ptr │ ← dlopen 后新增
-       └──────────────────────┘
+PT_TLS Program Header:
+  p_offset = 0x3000    ← init image 在文件中的偏移
+  p_vaddr  = 0x3000    ← init image 在虚拟地址中的偏移
+  p_filesz = 36        ← init image 的字节数（thread_counter=4 + thread_name=32）
+  p_memsz  = 40        ← TLS 总大小（含对齐填充）
+  p_align  = 4         ← 对齐要求
+
+init image 的内容（文件中 36 字节）：
+  offset 0:  00 00 00 00                ← thread_counter 的初始值 = 0
+  offset 4:  "unknown" + 24字节零填充    ← thread_name 的初始值
+
+为什么 p_memsz > p_filesz？
+  p_filesz = 有初始值的部分（36字节）
+  p_memsz  = 总大小含对齐（40字节，多了4字节对齐填充）
+  多出来的4字节运行时零填充（类似 BSS）
 ```
+
+**第二：代码中对 `__thread` 变量的访问改为 TLS 间接引用**
+
+```
+编译前（想象中的"直接访问"）：
+  thread_counter = 5;
+  → mov [0x3000], 5          ← 这是错的！0x3000 是 init image，不是线程的私有副本
+
+编译后（实际生成的代码）：
+  thread_counter = 5;
+  → mov fs:[offset_of_thread_counter], 5
+
+  其中：
+  fs 寄存器 → 指向当前线程的 TLS block 起始地址
+  offset_of_thread_counter → thread_counter 在 TLS block 中的偏移（编译时确定）
+
+  即：真正写入的是"当前线程 TLS block 中偏移 offset 处的位置"
+  每个线程的 TLS block 不同，所以写入的物理内存位置也不同
+```
+
+**关键理解**：
+
+- `__thread` 变量在 ELF 文件中只存储一份**初始值**（init image）
+- 运行时，每个线程各自从 init image 拷贝一份，放在自己的 TLS block 中
+- 代码通过 `fs寄存器 + 偏移` 来访问当前线程的私有副本
+- fs 寄存器是内核在创建线程时设置的，每个线程的 fs 值不同
+
+---
+
+### 5.3 运行时：TLS 的两种模型
+
+glibc 支持两种 TLS 实现模型，理解它们对理解 dlopen 很重要：
+
+#### 模型一：TLS Variant I（x86_64 使用的模型）
+
+```
+TLS block 位于线程栈的下方（高地址方向）：
+
+  线程栈布局（x86_64）：
+
+  高地址 ┌─────────────────────────────────┐
+         │ TLS block                       │ ← fs 寄存器指向这里
+         │ ┌─────────────────────────────┐ │
+         │ │ 库1的 TLS 区域 (libc)       │ │ ← 偏移 0（离 fs 最近）
+         │ │ 库2的 TLS 区域 (libbar)     │ │ ← 偏移 = 库1区域大小
+         │ │ 库3的 TLS 区域 (libfoo)     │ │ ← 偏移 = 库1+库2区域大小
+         │ │ ...                          │ │
+         │ └─────────────────────────────┘ │
+         ├─────────────────────────────────┤
+         │ dtv 数组                        │ ← 动态线程向量
+         │ dtv[0] = generation 计数器       │
+         │ dtv[1] → libc TLS 区域指针       │
+         │ dtv[2] → libbar TLS 区域指针     │
+         │ dtv[3] → libfoo TLS 区域指针     │ ← dlopen 后新增
+         ├─────────────────────────────────┤
+         │ 线程栈（向下增长）               │ ← 正常的栈空间
+         │ ...                             │
+  低地址 └─────────────────────────────────┘
+
+  访问 thread_counter 的汇编：
+    mov fs:[thread_counter_offset], 5
+
+  其中 thread_counter_offset 是负数（从 fs 向低地址偏移）
+  或者编译器使用正偏移（从 TLS block 起始处算）
+  具体取决于 ABI 规范
+```
+
+#### 模型二：TLS Variant II（少用，某些架构使用）
+
+```
+TLS block 位于线程栈的上方（低地址方向）：
+  与 Variant I 类似，但布局方向相反
+  glibc 在 x86_64 上只用 Variant I，所以这里不详述
+```
+
+---
+
+### 5.4 dtv（Dynamic Thread Vector）详解
+
+dtv 是每个线程持有的一个**指针数组**，用来定位各库的 TLS 区域。
+
+```
+dtv 的结构：
+
+  dtv[0] = generation 计数器    ← 每次 dlopen 有 PT_TLS 的库时 generation++
+                                    用于检测 dtv 是否需要更新
+
+  dtv[1] → libc.so 的 TLS 区域指针
+  dtv[2] → libbar.so 的 TLS 区域指针
+  dtv[3] → libfoo.so 的 TLS 区域指针    ← dlopen libfoo.so 后新增
+
+  每个指针指向的是"该线程中该库的 __thread 变量的私有副本区域"
+
+  dtv 本身是一块动态分配的内存（malloc 或类似机制）
+  位于 TLS block 旁边（具体位置取决于实现）
+```
+
+**为什么需要 dtv**：
+
+- TLS block 中的各库 TLS 区域是**连续排列**的（紧凑布局，节省内存）
+- 但 dlopen 新库时，新库的 TLS 区域要追加到末尾 → TLS block 要扩展
+- dtv 提供一个间接层：代码通过 `dtv[module_id] → TLS区域 → 变量偏移` 来定位
+- 这样即使 TLS block 被扩展/重分配，只要更新 dtv 指针，代码不需要改
+
+---
+
+### 5.5 程序启动时的 TLS 初始化（作为对照）
+
+理解"正常启动时"的 TLS 处理，才能理解 dlopen 时为什么不同。
+
+```
+程序启动（exec + ld.so 加载所有依赖库）：
+
+  1. ld.so 读取所有库的 PT_TLS
+  2. 计算总 TLS 大小：
+     total_tls_size = sum(各库 PT_TLS.p_memsz) + 对齐填充
+
+  3. 主线程创建时（或首次线程创建前）：
+     分配一块连续内存作为 TLS block
+     大小 = total_tls_size
+
+     按顺序将各库的 init image 拷贝到 TLS block 的对应位置：
+     for each library (按加载顺序):
+       memcpy(tls_block + offset, init_image, p_filesz)
+       memset(tls_block + offset + p_filesz, 0, p_memsz - p_filesz)  ← BSS部分零填充
+
+  4. 设置 dtv：
+     dtv[0] = generation = 2  （假设加载了2个有 TLS 的库）
+     dtv[1] → libc TLS 区域地址
+     dtv[2] → libbar TLS 区域地址
+
+  5. 设置 fs 寄存器 → 指向 TLS block 起始
+
+  关键点：启动时所有库的 TLS 是**一次性分配**的
+  TLS block 大小已经包含所有库的需求，之后不需要扩展
+```
+
+```
+新线程创建时（pthread_create → clone）：
+
+  1. 分配新的 TLS block（大小 = total_tls_size）
+  2. 拷贝所有库的 init image 到对应位置
+  3. 分配新的 dtv，设置各指针
+  4. 设置新线程的 fs 寄存器 → 指向新 TLS block
+
+  → 每个线程的 TLS block 是独立的，互不干扰
+  → init image 中的初始值被拷贝到每个线程
+```
+
+---
+
+### 5.6 dlopen 时的 TLS 处理（核心难点）
+
+现在，假设程序已经启动，有 3 个线程在运行，此时 dlopen("libfoo.so")。
+
+libfoo.so 有 PT_TLS（包含 `__thread int thread_counter = 0`）。
+
+#### 问题：新库的 TLS 区域怎么放进已有线程的 TLS block？
+
+```
+已有线程的 TLS block（dlopen 前）：
+
+  ┌────────────────────────────────┐
+  │ libc TLS 区域  (大小 A)        │ ← 偏移 0，位置固定，不能移动
+  │ libbar TLS 区域 (大小 B)       │ ← 偏移 A，位置固定，不能移动
+  │                                │ ← TLS block 到此为止，大小 = A + B
+  └────────────────────────────────┘
+
+  问题：libfoo 的 TLS 区域要放在哪？
+
+  答案：追加到末尾
+
+  ┌────────────────────────────────┐
+  │ libc TLS 区域  (大小 A)        │ ← 偏移 0，不变
+  │ libbar TLS 区域 (大小 B)       │ ← 偏移 A，不变
+  │ libfoo TLS 区域 (大小 C)       │ ← 偏移 A+B，新增 ← dlopen 追加
+  │                                │ ← TLS block 总大小变为 A + B + C
+  └────────────────────────────────┘
+```
+
+#### 为什么不能插到中间或重新排列？
+
+```
+因为代码中访问 __thread 变量使用的是"编译时确定的偏移"：
+
+  libc 中的代码访问 errno：
+    mov fs:[libc_errno_offset], eax
+
+  libc_errno_offset 是编译时写入代码中的常量
+  如果 libc 的 TLS 区域被移动了（偏移变了），这条指令就访问到错误的位置
+
+  所以：
+  → 已有库的 TLS 区域位置绝对不能改变
+  → 新库只能追加到末尾
+  → 这就是 dlopen TLS 处理的根本约束
+```
+
+#### dlopen TLS 处理的完整步骤
+
+```
+步骤1：记录新库的 TLS 信息到全局 slotinfo 数组
+
+  全局维护一个 slotinfo[] 数组（所有库的 TLS 元数据）：
+  slotinfo[0] = libc   { tls_offset, tls_block_size, init_image_ptr }
+  slotinfo[1] = libbar { tls_offset, tls_block_size, init_image_ptr }
+  slotinfo[2] = libfoo { tls_offset = A+B, tls_block_size = C, init_image_ptr }
+                  ↑ 新增，offset 追加到已有总大小之后
+
+  全局 generation 计数器 ++（从 2 变为 3）
+  这个 generation 值会写入每个线程的 dtv[0]
+
+步骤2：扩展所有已有线程的 TLS block
+
+  遍历所有已存在的线程（线程1、线程2、线程3）：
+  对每个线程执行：
+
+  2a. 扩展 TLS block 的内存：
+      旧 TLS block 大小 = A + B
+      新 TLS block 大小 = A + B + C
+
+      方式1（glibc 默认）：在 TLS block 后面直接 mmap 新区域
+        → 如果后面的虚拟地址空间有空位，直接追加
+        → 不需要拷贝旧数据，新区域与旧区域逻辑上连续
+
+      方式2（fallback）：malloc 新 TLS block + memcpy 旧数据
+        → 如果后面没有空位，分配一块全新的内存
+        → 把旧的 libc + libbar TLS 区域拷贝过去
+        → fs 寄存器更新为新 TLS block 地址
+        → 旧 TLS block 释放
+
+      ⚠️ 无论哪种方式，libc 和 libbar 的 TLS 区域内容保持不变
+         它们的偏移也不变，只是 TLS block 变大了
+
+  2b. 拷贝新库的 init image 到扩展区域：
+      memcpy(tls_block + A + B, libfoo_init_image, p_filesz)
+      → 将 thread_counter 的初始值(0)和 thread_name 的初始值("unknown")写入
+      memset(tls_block + A + B + p_filesz, 0, p_memsz - p_filesz)
+      → 对齐填充部分零初始化
+
+  2c. 更新该线程的 dtv：
+      旧 dtv 大小 = 3（generation + 2个库指针）
+      新 dtv 大小 = 4（generation + 3个库指针）
+
+      realloc(dtv, new_size)
+      dtv[0] = 3                   ← 新的 generation
+      dtv[1] → libc TLS 区域       ← 不变
+      dtv[2] → libbar TLS 区域     ← 不变
+      dtv[3] → libfoo TLS 区域     ← 新增，指向 tls_block + A + B
+
+步骤3：对之后创建的新线程
+
+  pthread_create 时，自动分配完整的 TLS block（大小 = A + B + C）
+  拷贝所有库的 init image 到对应位置
+  设置 dtv（generation = 3，包含所有 3 个库的指针）
+  设置 fs 寄存器
+  → 新线程天生就有 libfoo 的 TLS 变量，不需要额外处理
+```
+
+---
+
+### 5.7 为什么 dlopen TLS 很贵
+
+```
+假设场景：程序有 100 个线程在运行，此时 dlopen 一个有 PT_TLS 的库
+
+  → 需要遍历 100 个线程
+  → 每个线程都要：扩展 TLS block + memcpy init image + realloc dtv
+  → 100 次 realloc，100 次 memcpy
+  → 如果 TLS block 后面没有空位（地址空间碎片化），还要 100 次 malloc + 100 次 memcpy旧数据
+
+  对比程序启动时：
+  → 只需要分配一次 TLS block（包含所有库的需求）
+  → 新线程创建时也只分配一次
+  → 不需要扩展操作
+
+  这就是为什么 glibc 文档建议：
+  "如果库有 __thread 变量，尽量在程序启动时加载（LD_PRELOAD），不要 dlopen"
+```
+
+---
+
+### 5.8 dlopen TLS 的一个陷阱：generation 不一致
+
+```
+场景：线程1 正在执行，此时线程2 dlopen 了 libfoo.so
+
+  dlopen 修改了全局 slotinfo 数组和 generation
+  线程2 的 dtv 已更新（generation = 3）
+
+  但线程1 的 dtv 还是旧的（generation = 2）
+  线程1 的 TLS block 也还没扩展
+
+  如果线程1 此时访问 libfoo 的 __thread 变量：
+    → 代码通过 dtv[3] 查找 → dtv 只有2个条目，dtv[3] 不存在！
+    → 或者 dtv[3] 指向过期的地址
+
+  glibc 的处理方式：
+    在每次访问 __thread 变量时，先检查 dtv[0]（generation）
+    如果 dtv[0] < 全局 generation → 说明 dtv 过期了
+    → 调用 __tls_get_addr() 进行"延迟更新"（lazy TLS update）
+    → __tls_get_addr() 扩展该线程的 TLS block + 更新 dtv
+
+  这意味着：
+    dlopen 不一定立即扩展所有线程的 TLS block
+    有些线程可能延迟到首次访问新库的 __thread 变量时才扩展
+    这叫做 "lazy TLS allocation"（glibc 默认行为）
+
+    但即使如此，全局 slotinfo 数组必须立即更新（因为要记录偏移）
+    否则新线程创建时无法分配正确的 TLS block
+```
+
+---
+
+### 5.9 dlclose 时 TLS 的处理
+
+```
+dlclose libfoo.so 时：
+
+  1. 全局 slotinfo[2] 标记为"已释放"
+     但不删除条目，也不调整其他库的偏移（偏移不能变！）
+
+  2. generation 不变（不回退）
+     → 因为偏移已经分配过了，即使库卸载了，偏移位置仍然"占着"
+
+  3. 各线程的 dtv[3] → 标记为 NULL 或指向一个"已卸载"标记
+     → 之后再访问这个模块的 __thread 变量会返回 NULL 或触发错误
+
+  4. 各线程的 TLS block 不缩小
+     → libfoo 的 TLS 区域仍然占着空间，只是不再被使用
+     → 这是 dlopen/dlclose 反复调用时的**已知内存泄漏源**
+
+  关键理解：
+    TLS 偏移一旦分配就不会回收
+    即使 dlclose 了库，TLS block 中该库的区域仍然存在（只是不用了）
+    这和 munmap 释放代码/数据段不同——代码段可以完全回收，TLS 不行
+```
+
+---
+
+### 5.10 TLS 内存动作总结表
+
+| 动作 | 操作方式 | 触发时机 | 对象 | 可否撤销 |
+|------|----------|----------|------|----------|
+| init image 存储在文件中 | ELF PT_TLS segment | 编译时 | .so 文件 | N/A |
+| init image 映射到内存 | mmap（随 PT_LOAD） | dlopen 阶段1 | 进程地址空间 | dlclose munmap |
+| 全局 slotinfo 注册 | 数组追加 | dlopen 阶段5 | ld.so 全局数据 | 标记释放但不删除 |
+| generation ++ | 计数器增加 | dlopen 阶段5 | 全局计数器 | 不回退 |
+| TLS block 扩展 | mmap追加 或 malloc+memcpy | dlopen 阶段5 或 lazy TLS | 各线程栈附近 | 不缩小 |
+| init image 拷贝到各线程 | memcpy | dlopen 阶段5 或 lazy TLS | 各线程 TLS block | 不可撤销 |
+| dtv 扩展 | realloc | dlopen 阶段5 或 lazy TLS | 各线程 dtv 数组 | 标记NULL但不缩小 |
+| fs 寄存器更新 | 内核 arch_prctl | TLS block 重分配时 | 当前线程 | 仅重分配时更新 |
+
+---
+
+### 5.11 源码定位
+
+| 功能 | glibc 源文件 | 关键函数 |
+|------|-------------|---------|
+| 全局 slotinfo 管理 | `elf/dl-tls.c` | `_dl_add_to_slotinfo()` |
+| TLS 布局计算 | `elf/dl-tls.c` | `_dl_determine_tlsoffset()` |
+| 已有线程 TLS 扩展 | `elf/dl-tls.c` | `_dl_update_slotinfo()` |
+| 延迟 TLS 分配 | `elf/dl-tls.c` | `__tls_get_addr()` |
+| 新线程 TLS 初始化 | `nptl/ptl_create.c` → `__pthread_create_2_1()` | 调用 `_dl_allocate_tls_storage()` |
+| dtv 管理 | `elf/dl-tls.c` | `_dl_allocate_dtv()` / `_dl_resize_dtv()` |
 
 ---
 
