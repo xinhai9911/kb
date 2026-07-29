@@ -49,6 +49,7 @@ lifecycle: reviewed
 | H3C TAP 流量可视化 | [[50-reference/sources/chips/h3c-tap]] | `Q:\芯片资料\H3C SecPath TAP8000*` |
 | OpenCloudOS 生态大会 | [[50-reference/sources/chips/opencloudos-summit-2025]] | `Q:\芯片资料\2025OpenCloudOS…` |
 | 硬件设计（NSF / 框式机架） | [[50-reference/sources/chips/hardware-design-nsf]] | `Q:\芯片资料\NSF* / WB4U11U*` |
+| 学术论文与培训零散资料 | [[50-reference/sources/chips/chips-papers-misc]] | `Q:\芯片资料\atc12* / sec22summer* / 沐创自研网卡培训* / SDKTypicalConfiguration*.chm` |
 
 ## 蒸馏原则
 

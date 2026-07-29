@@ -23,9 +23,8 @@ lifecycle: reviewed
 | 82599-datasheet-v3-4.pdf | ~76 MB | Intel 82599 10GbE 控制器 datasheet |
 | 沐创网卡用户指南V1.6.pdf | ~3.6 MB | 沐创（MuChuang）网卡用户指南 |
 | DPDK_16_11 / 17_02_Intel_NIC_performance_report | PDF | Intel NIC 性能报告 |
-| TR-symRSS (1).pdf | ~0.2 MB | 对称 RSS 技术报告（KAIST） |
-| atc12-final39.pdf | ~0.2 MB | USENIX ATC 2012 论文 |
-| sec22summer_xing.pdf | ~0.7 MB | 安全/Summer 相关论文 |
+| TR-symRSS (1).pdf | ~0.2 MB | 对称 RSS 技术报告（KAIST，见 §5） |
+| atc12-final39.pdf / sec22summer_xing.pdf | — | 学术论文，已并入 [[chips-papers-misc]] |
 
 ---
 
