@@ -13,6 +13,7 @@
 | 想法 | [40-ideas/](40-ideas/) | 闪念、TODO、未成形 |
 | 参考 | [50-reference/](50-reference/) | 速查、API、架构决策记录 (ADR) |
 | 归档 | [90-archive/](90-archive/) | 已完成/不再活跃 |
+| 来源蒸馏 | [50-reference/sources/](50-reference/sources/) | `Q:\常规书籍` / `Q:\芯片资料` 资料索引 |
 
 ## 双链示例
 
@@ -31,3 +32,4 @@
 - 2026-06-11: 新增 [[50-reference/dlopen-internal-memory]]（dlopen 内部内存动作详解：mmap、重定位、GOT/PLT、RELRO、TLS 全链路拆解）
 - 2026-06-15: 新增 [[50-reference/npp-timer-mechanism]]（NPP flowtable 定时触发机制：PROCESS + INTERRUPT 两级架构、空闲判定、慢/快清理策略）
 - 2026-07-13: 新增导演系列参考笔记到 [[50-reference/]]：[[50-reference/director-intro]]（入门+ffmpeg秒点）、[[50-reference/montage-techniques]]（平行/积累/对比蒙太奇）、[[50-reference/shot-sizing-axes-storyboard]]（景别/轴线图+分镜模板）
+- 2026-07-29: 蒸馏 `Q:\常规书籍` 与 `Q:\芯片资料` 到 [[50-reference/sources/]]（常规书籍 5 篇 + 芯片资料 9 篇，索引式笔记，保留原文路径便于回查）
