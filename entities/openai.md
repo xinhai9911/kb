@@ -1,0 +1,41 @@
+---
+title: OpenAI
+category: entities
+tags: [ai, company, openai, gpt]
+created: 2026-07-29
+updated: 2026-07-29
+summary: OpenAI 公司及其 GPT 模型系列
+relationships:
+  - target: "[[concepts/transformer-architecture]]"
+    type: derived_from
+base_confidence: 0.75
+lifecycle: draft
+lifecycle_changed: 2026-07-29
+sources: []
+---
+
+# OpenAI
+
+## 概述
+
+OpenAI 是 AI 领域的先驱企业，以 GPT 系列模型和 ChatGPT 产品闻名。
+
+## 核心产品
+
+- **GPT 系列**：GPT-4、GPT-4o、o1（推理模型）、o3
+- **ChatGPT**：面向消费者的 AI 助手
+- **OpenAI Agents SDK**：轻量级 Agent 开发工具包
+- **Assistants API**：托管式 Agent API
+
+## 关键技术贡献
+
+- [[concepts/transformer-architecture|Transformer 架构]]（与 Google 共同提出）
+- GPT 系列推动了大模型发展
+- RLHF 训练方法
+- Function Calling 标准化
+- Whisper（语音识别）、DALL-E（图像生成）
+
+## 参考来源
+
+- [[sources/agent-frameworks-comparison|AI Agent 框架对比]]
+- [[concepts/ai-agent-overview|AI Agent 概述]]

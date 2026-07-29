@@ -1,4 +1,22 @@
+---
+title: Claude 提示词工程最佳实践指南
+category: reference
+summary: >-
+    Claude 对细节敏感的模型，提示词越清晰，输出越准确。
+relationships:
+  - target: "[[entities/anthropic]]"
+    type: related_to
+created: 2026-07-29
+updated: 2026-07-29
+sources: []
+tags: [kb]
+base_confidence: 0.7
+lifecycle: reviewed
+---
+
 # Claude 提示词工程最佳实践指南
+
+> Claude 是由 [[entities/anthropic|Anthropic]] 开发的 AI 助手系列模型。
 
 > 基于 Anthropic 官方文档整理，适用于 Claude 所有模型（Sonnet / Opus / Haiku / Fable）
 

@@ -4,7 +4,13 @@ tags: [npp, vpp, reference, active]
 status: active
 created: 2026-06-15
 updated: 2026-06-15
+summary: >-
+    NPP（Network Processing Platform）基于 VPP/VLIB 框架实现了一套**协作式定时触发机制**，用于驱动流表（flowtable）会话的老化清理。该机制并非传统的 cron 或硬定时器，而是采用 **VLIB Process Node + Interrupt-...
+category: reference
 source: "Q:/AI/code/hyperdrive/source/plugins/flowtable"
+sources: []
+base_confidence: 0.7
+lifecycle: draft
 ---
 
 # NPP 内部定时触发机制说明书

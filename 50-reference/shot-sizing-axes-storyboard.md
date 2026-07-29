@@ -1,7 +1,15 @@
 ---
 title: 轴线 / 景别示意图 与 分镜表模板
 tags: [directing, shot-sizing, axis, storyboard, template]
+summary: >-
+    两人 A、B 面对面，连一条假想线 = 轴线。摄影机必须待在线的**同一侧**拍。
+category: reference
 status: active
+updated: 2026-07-29
+sources: []
+created: 2026-07-29
+base_confidence: 0.7
+lifecycle: reviewed
 ---
 
 # 轴线 / 景别示意图 与 分镜表模板

@@ -11,7 +11,7 @@ provenance:
   inferred: 0.2
   ambiguous: 0.1
 base_confidence: 0.62
-lifecycle: draft
+lifecycle: reviewed
 lifecycle_changed: 2026-07-29
 created: 2026-07-29
 updated: 2026-07-29

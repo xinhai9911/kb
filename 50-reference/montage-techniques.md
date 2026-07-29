@@ -1,7 +1,15 @@
 ---
 title: 蒙太奇手法用法详解
 tags: [directing, montage, video-editing, note]
+summary: >-
+    同一张**面无表情**的脸，后面接不同的画面，观众读出完全不同的情绪：
+category: reference
 status: active
+updated: 2026-07-29
+sources: []
+created: 2026-07-29
+base_confidence: 0.7
+lifecycle: reviewed
 ---
 
 # 蒙太奇手法用法详解

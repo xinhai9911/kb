@@ -86,6 +86,14 @@ const fileFullPaths = [];
 const WIKILINK_RE = /\[\[([^\]]+)\]\]/g;
 const EXT_RE = /\]\((https?:\/\/[^)\s]+)\)/g;
 
+// 过滤掉形似 bash 条件测试 [[ -z "$x" ]] / [[ "$a" =~ $b ]] 的误匹配
+function looksLikeShellTest(inner) {
+  const t = inner.trim();
+  if (/^[-a-z]/.test(t)) return true;        // [[ -z "$dev" ]]
+  if (t.includes('$') || t.includes('=~') || t.includes('"')) return true; // 含 shell 变量/正则
+  return false;
+}
+
 let broken = 0;
 const brokenList = [];
 
@@ -95,6 +103,7 @@ for (const fp of fileFullPaths) {
   let m;
   while ((m = WIKILINK_RE.exec(text))) {
     const inner = m[1];
+    if (looksLikeShellTest(inner)) continue; // 跳过 bash 测试误匹配
     const target = inner.split('|')[0].trim(); // 去 alias
     if (!target) continue;
     if (resolveWikilink(target) === null) {

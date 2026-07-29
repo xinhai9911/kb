@@ -3,7 +3,13 @@ title: 盛科 SDK / 开发资料蒸馏
 tags: [reference, sources, centec, sdk, development, active]
 created: 2026-07-29
 updated: 2026-07-29
+summary: >-
+    | 文件名 | 体量 | 内容 |
+category: reference
 source_dir: Q:\芯片资料
+sources: []
+base_confidence: 0.6
+lifecycle: reviewed
 ---
 
 # 盛科 SDK / 开发资料蒸馏
@@ -293,12 +299,12 @@ Chip serdes SERDESID loopback internal enable  # 内外环回
 ## 5. 开发闭环建议
 
 1. **定位特性 → 查指南 → 查 API**：先用 `SDK_AN_*` 分册确认 SDK 模型（Group/Entry/Key/Action、Nexthop 表项链）与调用步骤，再到 API 手册按模块查结构体与函数原型，最后用 `SDK_AN_Debug_SDK` + 《SDK常用DEBUG命令》验证。
-2. **指南与芯片 PG 对应**：两本芯片 PG（见 [[sources/chips/centec-ctc7132]]、[[sources/chips/centec-ctc8180]]）每章末尾的 "SDK Support" 小节即对应本 SDK 指南分册；寄存器/表项级问题回 PG 的"寄存器简介/列表"子节。
+2. **指南与芯片 PG 对应**：两本芯片 PG（见 [[50-reference/sources/chips/centec-ctc7132]]、[[50-reference/sources/chips/centec-ctc8180]]）每章末尾的 "SDK Support" 小节即对应本 SDK 指南分册；寄存器/表项级问题回 PG 的"寄存器简介/列表"子节。
 
 ---
 
 ## 双链
 
-- 芯片资料（落地对象）：[[sources/chips/centec-ctc7132]]、[[sources/chips/centec-ctc8180]]
+- 芯片资料（落地对象）：[[50-reference/sources/chips/centec-ctc7132]]、[[50-reference/sources/chips/centec-ctc8180]]
 - 培训 / 项目：[[10-projects/training]]
-- 逆向工具参考：[[sources/books/reverse-ida-pro]]
+- 逆向工具参考：[[50-reference/sources/books/reverse-ida-pro]]

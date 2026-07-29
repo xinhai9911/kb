@@ -2,7 +2,13 @@
 title: HBase 协议分析
 tags: [protocol, hbase, database, active]
 created: 2026-06-10
+summary: >-
+    HBase 的 RPC 协议与 REST 接口分析。
+category: reference
 updated: 2026-06-10
+sources: []
+base_confidence: 0.85
+lifecycle: reviewed
 ---
 
 # HBase 协议分析
@@ -17,7 +23,7 @@ HBase 的 RPC 协议与 REST 接口分析。
 - dropTable 报文解析：[[hbase-drop-table-packet]]
 - 测试计划：[[hbase-test-plan]]
 - 测试执行计划：[[hbase-test-execution]]
-- 测试报告模板：[[hbase-test-report-template]]（在 30-snippets）
+- 测试报告模板：[[30-snippets/hbase-test-report-template]]（在 30-snippets）
 
 ## 关键字段
 

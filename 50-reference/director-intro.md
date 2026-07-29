@@ -1,7 +1,15 @@
 ---
 title: 导演入门与视频剪辑笔记
 tags: [directing, ffmpeg, video-editing, note]
+summary: >-
+    核心思路：脑子里的"第几秒到第几秒要做什么" → 直接填进 ffmpeg 的时间参数或滤镜条件。
+category: reference
 status: active
+updated: 2026-07-29
+sources: []
+created: 2026-07-29
+base_confidence: 0.7
+lifecycle: reviewed
 ---
 
 # 导演入门与视频剪辑笔记

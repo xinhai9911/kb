@@ -1,0 +1,82 @@
+---
+title: 代理工作流（Proxy Workflow）
+category: concepts
+tags: [proxy, workflow, offline-editing, performance, post-production]
+created: 2026-07-29
+updated: 2026-07-29
+summary: 代理文件工作流——通过低分辨率副本替代原始素材进行剪辑，再在最终输出时切换回全分辨率
+relationships:
+  - target: "[[concepts/offline-online-workflow]]"
+    type: part_of
+  - target: "[[concepts/mezzanine-codec]]"
+    type: uses
+base_confidence: 0.75
+lifecycle: draft
+lifecycle_changed: 2026-07-29
+sources:
+  - "[[sources/workflow-pipeline-shot-ai]]"
+  - "[[sources/codec-guide-mpegflow]]"
+---
+
+# 代理工作流（Proxy Workflow）
+
+## 概述
+
+代理工作流（Proxy Workflow 或 Offline Editing）是后期制作的核心提速策略。将高分辨率 Camera Raw（4K / 6K / 8K）转码为**低分辨率代理文件**（通常 1080p 或 720p），在代理上完成所有剪辑决策，最终输出时一键切换回原始素材。
+
+## 何时需要代理
+
+- 原始素材分辨率超过 4K
+- 剪辑设备性能不足（老款笔记本、无独立 GPU）
+- 远程协作需要低带宽传输
+- 使用高压缩比格式（H.264/H.265 拍摄）导致时间线卡顿
+- 同时处理多路摄像机素材（多机位编辑）
+
+## 代理格式选择
+
+| 场景 | 代理格式 | 分辨率 | 码率 |
+|------|---------|--------|------|
+| Mac / FCP | ProRes Proxy | 1/4~1/2 原始 | ~45 Mbps (1080p) |
+| Avid 合作 | DNxHR LB | 1080p | ~36 Mbps |
+| 通用跨平台 | ProRes 422 / DNxHR SQ | 1080p | ~150 Mbps |
+| 极致性能 | H.264 Proxy | 720p | ~5 Mbps |
+| 云协作 | H.264 低码率 | 540p~720p | ~2 Mbps |
+
+## 主流 NLE 的代理实现
+
+### DaVinci Resolve
+- **一键生成优化媒体**：选中素材 → 右键 → Generate Optimized Media
+- 格式：ProRes / DNxHR / 自定义
+- 分辨率：自动减半或自定义缩放
+- 切换：时间线封面上切换 Full Resolution / Optimized Media
+- **缓存文件**存储在指定位置（Project Settings → Master Settings → Optimized Media）
+
+### Adobe Premiere Pro
+- **创建代理**：导入时或后续创建（Ingest → 创建代理 / Proxy → Attach Proxies）
+- 格式：ProRes / DNxHR / H.264
+- 切换：Toggle Proxies（时间线按钮或快捷键）
+- **双媒体关联**根据文件名匹配，需要确保代理与原始文件名对应
+
+### Apple Final Cut Pro
+- **自动转码**：导入时自动后台创建 ProRes Proxy
+- **切换**：View → Proxy / Optimized / Original
+- 使用 **M 芯片**硬件加速编解码
+- 原始 + 优化 + 代理三种媒体状态
+
+### Avid Media Composer
+- **DNxHD/DNxHR 原生即为对应码率**：选择低码率 DNxHR LB 即可
+- **AMA (Avid Media Access)** + 转码到本地 MXF
+
+## 代理工作流的最佳实践
+
+1. **命名一致**：代理文件名必须与原始文件名匹配（Resolve 和 Premiere 均依赖文件名自动关联）
+2. **时间码保留**：代理文件必须继承原始素材的 SMPTE 时码
+3. **卷号元数据**：Reel Name / Tape Name 在代理中保留 → 回套不失败
+4. **交接**：在代理上完成精剪后，导出 EDL/AAF/XML，在 Online 工作站回套原始素材
+5. **调色前置**：可以在代理上先做一版"预览调色"（传递 CDL / LUT 元数据）
+
+## 无代理趋势
+
+- Resolve / FCP 可直接编辑部分 Camera Raw 格式（BRAW / R3D / ProRes RAW），无需代理
+- 但是 8K RED / ARRI RAW 在高分辨率时间线仍需代理
+- **智能代理**：AI 识别画面内容后只在低质量区域保留细节

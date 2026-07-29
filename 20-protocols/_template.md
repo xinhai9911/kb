@@ -2,8 +2,14 @@
 title: <协议名>
 tags: [protocol, wip]
 status: draft
-created: YYYY-MM-DD
-updated: YYYY-MM-DD
+created: 2026-07-29
+summary: >-
+    使用 tshark / tcpdump / wireshark。
+category: reference
+updated: 2026-07-29
+sources: []
+base_confidence: 0.3
+lifecycle: draft
 ---
 
 # <协议名>

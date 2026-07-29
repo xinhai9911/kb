@@ -3,7 +3,13 @@ title: 逆向工程书籍蒸馏（IDA Pro）
 tags: [reference, sources, reverse, ida-pro, binary, active]
 created: 2026-07-29
 updated: 2026-07-29
+summary: >-
+    | 文件名 | 体量 | 侧重点 |
+category: reference
 source_dir: Q:\常规书籍
+sources: []
+base_confidence: 0.6
+lifecycle: reviewed
 ---
 
 # 逆向工程书籍蒸馏（IDA Pro）

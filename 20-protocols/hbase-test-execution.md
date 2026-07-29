@@ -4,7 +4,13 @@ tags: [protocol, hbase, test-plan, active]
 created: 2026-06-10
 updated: 2026-06-10
 status: active
+summary: >-
+    ```bash
+category: reference
 source: Q:\AI\hbase_test_execution_plan.md
+sources: []
+base_confidence: 0.7
+lifecycle: reviewed
 ---
 
 

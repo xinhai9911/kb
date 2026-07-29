@@ -1,3 +1,16 @@
+---
+title: dlopen 内部内存动作详解
+category: reference
+summary: >-
+    一个 .so 文件（ET_DYN 类型）内部由多个 Section 组成，加载时真正关心的是这些：
+created: 2026-07-29
+updated: 2026-07-29
+sources: []
+tags: [kb]
+base_confidence: 0.4
+lifecycle: reviewed
+---
+
 # dlopen 内部内存动作详解
 
 > 本文从内存视角，逐层剖析 dlopen 加载一个 .so 文件时在进程地址空间中发生的所有动作。

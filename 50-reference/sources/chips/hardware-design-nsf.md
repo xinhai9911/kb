@@ -3,7 +3,13 @@ title: 硬件设计资料蒸馏（NSF / 框式机架）
 tags: [reference, sources, hardware, nsf, chassis, design, active]
 created: 2026-07-29
 updated: 2026-07-29
+summary: >-
+    | 文件名 | 体量 | 内容 | 提取状态 |
+category: reference
 source_dir: Q:\芯片资料
+sources: []
+base_confidence: 0.6
+lifecycle: reviewed
 ---
 
 # 硬件设计资料蒸馏（NSF / 框式机架）
@@ -64,9 +70,9 @@ source_dir: Q:\芯片资料
 
 ## 适用场景
 - 硬件方案评审、板卡接口对接时回查规格。
-- 与交换芯片 [[sources/chips/centec-ctc7132]] / [[sources/chips/centec-ctc8180]] 配套理解整机设计。
+- 与交换芯片 [[50-reference/sources/chips/centec-ctc7132]] / [[50-reference/sources/chips/centec-ctc8180]] 配套理解整机设计。
 
 ## 关联
-- 交换芯片：[[sources/chips/centec-ctc7132]]、[[sources/chips/centec-ctc8180]]
-- SDK/开发：[[sources/chips/centec-sdk]]
-- 同 N10 平台的软件/驱动与 DPDK 适配：[[sources/chips/nic-dpdk]]
+- 交换芯片：[[50-reference/sources/chips/centec-ctc7132]]、[[50-reference/sources/chips/centec-ctc8180]]
+- SDK/开发：[[50-reference/sources/chips/centec-sdk]]
+- 同 N10 平台的软件/驱动与 DPDK 适配：[[50-reference/sources/chips/nic-dpdk]]

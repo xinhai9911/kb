@@ -3,7 +3,13 @@ title: 盛科 CTC8180 交换芯片资料蒸馏
 tags: [reference, sources, centec, switch, ctc8180, asic, active]
 created: 2026-07-29
 updated: 2026-07-29
+summary: >-
+    | 文件名 | 内容 |
+category: reference
 source_dir: Q:\芯片资料
+sources: []
+base_confidence: 0.6
+lifecycle: reviewed
 ---
 
 # 盛科 CTC8180 交换芯片资料蒸馏
@@ -146,10 +152,10 @@ CTC8180 的 Ingress ACL 是相对 7132（8 次并行）最大的增强点：
 ## 适用场景
 
 - 实现 SRv6 / MPLS / QoS / FlexE 功能时回查培训胶片（CTC8180 特性明显多于 CTC7132）。
-- 与 [[sources/chips/centec-ctc7132]]、[[sources/chips/centec-sdk]] 配套。
+- 与 [[50-reference/sources/chips/centec-ctc7132]]、[[50-reference/sources/chips/centec-sdk]] 配套。
 
 ## 关联
 
-- 前代 CTC7132：[[sources/chips/centec-ctc7132]]
-- SDK/开发：[[sources/chips/centec-sdk]]
-- 网络基础：[[sources/books/network-hcna-hcnp]]
+- 前代 CTC7132：[[50-reference/sources/chips/centec-ctc7132]]
+- SDK/开发：[[50-reference/sources/chips/centec-sdk]]
+- 网络基础：[[50-reference/sources/books/network-hcna-hcnp]]

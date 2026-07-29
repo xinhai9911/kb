@@ -10,6 +10,43 @@
         "projects/db-decoder-ironhive/decoder-track.md",
         "projects/db-decoder-ironhive/hive-decoder-implementation.md"
       ]
+    },
+    "video-editing": {
+      "source_cwd": null,
+      "last_synced": "2026-07-29",
+      "last_commit_synced": null,
+      "pages_in_vault": [
+        "sources/nle-comparison-larry-jordan.md",
+        "sources/workflow-pipeline-shot-ai.md",
+        "sources/codec-guide-mpegflow.md",
+        "sources/audio-post-forte-ai.md",
+        "sources/color-management-cinapex.md",
+        "sources/film-cognition-plos-one.md",
+        "concepts/offline-online-workflow.md",
+        "concepts/proxy-workflow.md",
+        "concepts/split-edits-j-cut-l-cut.md",
+        "concepts/color-grading-workflow.md",
+        "concepts/audio-post-production-pipeline.md",
+        "concepts/mezzanine-codec.md",
+        "concepts/delivery-codec.md",
+        "concepts/narrative-psychology-editing.md",
+        "entities/davinci-resolve.md",
+        "entities/adobe-premiere-pro.md",
+        "entities/apple-final-cut-pro.md",
+        "entities/avid-media-composer.md",
+        "entities/capcut.md",
+        "entities/avid-pro-tools.md",
+        "entities/walter-murch.md",
+        "entities/thelma-schoonmaker.md",
+        "concepts/editing-transitions.md",
+        "concepts/multicam-editing.md",
+        "concepts/chroma-key-compositing.md",
+        "concepts/editing-efficiency-workflow.md",
+        "concepts/case-studies-famous-edits.md",
+        "concepts/history-editing-technology.md",
+        "concepts/editor-industry-role.md",
+        "synthesis/video-editing-pipeline.md"
+      ]
     }
   }
 }

@@ -2,7 +2,13 @@
 title: Database Decoder 工作流
 tags: [project, decoder, database, active]
 created: 2026-06-10
+summary: >-
+    端到端流程：抓包 → 协议分析 → 代码生成 → 编译验证 → 测试验证 → 提交。
+category: projects
 updated: 2026-06-10
+sources: []
+base_confidence: 0.8
+lifecycle: reviewed
 ---
 
 # Database Decoder 工作流

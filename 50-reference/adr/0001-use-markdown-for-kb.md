@@ -2,7 +2,14 @@
 title: 知识库使用 Markdown + Git
 tags: [adr, kb, kb-stack]
 status: accepted
+summary: >-
+    accepted
+category: reference
+updated: 2026-07-29
 created: 2026-06-10
+sources: []
+base_confidence: 0.8
+lifecycle: reviewed
 ---
 
 # ADR 0001: 知识库使用 Markdown + Git

@@ -3,7 +3,13 @@ title: OpenCloudOS 2025 生态大会资料蒸馏
 tags: [reference, sources, opencloudos, linux, summit, observability, active]
 created: 2026-07-29
 updated: 2026-07-29
+summary: >-
+    - 压缩包：`Q:\芯片资料\2025OpenCloudOS操作系统生态大会等1个文件.zip`
+category: reference
 source_dir: Q:\芯片资料\2025OpenCloudOS操作系统生态大会等1个文件
+sources: []
+base_confidence: 0.6
+lifecycle: reviewed
 ---
 
 # OpenCloudOS 2025 生态大会资料蒸馏
@@ -81,4 +87,4 @@ source_dir: Q:\芯片资料\2025OpenCloudOS操作系统生态大会等1个文件
 
 - 内核观测/定时器机制：[[50-reference/npp-timer-mechanism]]
 - 动态库/运行时机制：[[50-reference/dlopen-internal-memory]]
-- 异构算力/网卡国产替代上下文：[[sources/chips/nic-dpdk]]
+- 异构算力/网卡国产替代上下文：[[50-reference/sources/chips/nic-dpdk]]

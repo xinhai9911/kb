@@ -2,7 +2,13 @@
 title: InfluxDB 协议分析
 tags: [protocol, influxdb, time-series, active]
 created: 2026-06-10
+summary: >-
+    InfluxDB 时序数据库的 HTTP/TCP 协议解码笔记。
+category: reference
 updated: 2026-06-10
+sources: []
+base_confidence: 0.85
+lifecycle: reviewed
 ---
 
 # InfluxDB 协议分析

@@ -3,7 +3,13 @@ title: H3C TAP 流量可视化设备资料蒸馏
 tags: [reference, sources, h3c, tap, visibility, network, active]
 created: 2026-07-29
 updated: 2026-07-29
+summary: >-
+    | 文件名 | 体量 | 内容 |
+category: reference
 source_dir: Q:\芯片资料
+sources: []
+base_confidence: 0.6
+lifecycle: reviewed
 ---
 
 # H3C TAP 流量可视化设备资料蒸馏
@@ -23,12 +29,12 @@ source_dir: Q:\芯片资料
 
 ## 适用场景
 
-- 搭建网络流量可观测性链路时参考（与 ELK 日志可视化 [[sources/books/elasticsearch-elk]] 形成"流量+日志"双视角）。
+- 搭建网络流量可观测性链路时参考（与 ELK 日志可视化 [[50-reference/sources/books/elasticsearch-elk]] 形成"流量+日志"双视角）。
 - 协议抓包前置设备选型。
 
 ## 关联
 
-- 日志可视化：[[sources/books/elasticsearch-elk]]
+- 日志可视化：[[50-reference/sources/books/elasticsearch-elk]]
 - 协议分析：[[20-protocols/elasticsearch]]
 
 ---
@@ -111,10 +117,10 @@ source_dir: Q:\芯片资料
 
 ### 与可观测体系的衔接
 
-- TAP8000 处于"流量"侧：旁路采集 + 高级分流/去重/NetFlow，是日志/指标之外的**全量原始流量**来源；与 [[sources/books/elasticsearch-elk]] 的"日志+指标"可视化互补。后端分析器可接 ELK/抓包/NetFlow 采集。
+- TAP8000 处于"流量"侧：旁路采集 + 高级分流/去重/NetFlow，是日志/指标之外的**全量原始流量**来源；与 [[50-reference/sources/books/elasticsearch-elk]] 的"日志+指标"可视化互补。后端分析器可接 ELK/抓包/NetFlow 采集。
 - 型号选型：**只需基础镜像分发→C32/CE54L**；需智能去重/应用识别/NetFlow/抓包→选 **CE54/CE54H**。
 
 ### 双链
 
-- 日志可视化后端：[[sources/books/elasticsearch-elk]]
+- 日志可视化后端：[[50-reference/sources/books/elasticsearch-elk]]
 - 可观测/定时器机制（同类主题）：[[50-reference/npp-timer-mechanism]]

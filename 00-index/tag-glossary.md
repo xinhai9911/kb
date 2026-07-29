@@ -1,3 +1,16 @@
+---
+title: 标签字典（Tag Glossary）
+category: index
+summary: >-
+    约定的标签含义。同一概念只用一种拼写。
+created: 2026-07-29
+updated: 2026-07-29
+sources: []
+tags: [kb]
+base_confidence: 0.7
+lifecycle: reviewed
+---
+
 # 标签字典（Tag Glossary）
 
 约定的标签含义。同一概念只用一种拼写。
@@ -6,6 +19,11 @@
 
 - `protocol` —— 网络/数据库协议分析
 - `vhd` / `vhdl` —— VHDL/FPGA
+- `fpga` / `verilog` / `systemverilog` —— FPGA / RTL 设计
+- `rtl` —— 寄存器传输级（可综合 HDL 写法）
+- `verification` / `testbench` / `sva` —— RTL 验证 / 测试平台 / 断言
+- `fsm` / `pipeline` / `fifo` / `cdc` / `axi` / `arbiter` —— 具体 RTL 模式
+- `asic` —— 专用集成电路（与 FPGA 对照）
 - `database` —— 数据库相关
 - `influxdb` / `hbase` / `elasticsearch` / `milvus` —— 具体产品
 - `npp` —— Network Processing Platform (VPP/VLIB)

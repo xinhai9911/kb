@@ -4,7 +4,13 @@ tags: [template,hbase,test-report]
 created: 2026-06-10
 updated: 2026-06-10
 status: active
+summary: >-
+    - **Test Date**: [YYYY-MM-DD]
+category: reference
 source: Q:\AI\hbase_test_report_template.md
+sources: []
+base_confidence: 0.3
+lifecycle: draft
 ---
 
 

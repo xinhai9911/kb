@@ -4,7 +4,13 @@ tags: [protocol, hbase, test-plan, active]
 created: 2026-06-10
 updated: 2026-06-10
 status: active
+summary: >-
+    - **Target Path**: `/home/lujun2/test_falcon_run_osms/falcon-database-protocol/output/edisk/root/usr/local/lib/`
+category: reference
 source: Q:\AI\hbase_test_plan.md
+sources: []
+base_confidence: 0.75
+lifecycle: reviewed
 ---
 
 
@@ -88,4 +94,4 @@ scp libhbase.so user@host:/home/lujun2/test_falcon_run_osms/falcon-database-prot
 - 静态分析报告：[[hbase-static-analysis]]
 - 报文解析示例（dropTable）：[[hbase-drop-table-packet]]
 - 测试执行计划：[[hbase-test-execution]]
-- 报告模板：[[hbase-test-report-template]]
+- 报告模板：[[30-snippets/hbase-test-report-template]]

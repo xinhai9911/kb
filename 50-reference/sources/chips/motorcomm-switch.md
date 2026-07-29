@@ -3,7 +3,13 @@ title: Motorcomm 交换芯片资料蒸馏
 tags: [reference, sources, motorcomm, switch, unmanaged, active]
 created: 2026-07-29
 updated: 2026-07-29
+summary: >-
+    | 文件名 | 体量 | 内容 |
+category: reference
 source_dir: Q:\芯片资料
+sources: []
+base_confidence: 0.6
+lifecycle: reviewed
 ---
 
 # Motorcomm 交换芯片资料蒸馏
@@ -26,11 +32,11 @@ source_dir: Q:\芯片资料
 ## 适用场景
 
 - 低端交换机 / 嵌入式交换方案开发时回查。
-- 与盛科管理型交换芯片 [[sources/chips/centec-ctc7132]] 对比定位。
+- 与盛科管理型交换芯片 [[50-reference/sources/chips/centec-ctc7132]] 对比定位。
 
 ## 关联
 
-- 盛科交换芯片：[[sources/chips/centec-ctc7132]]、[[sources/chips/centec-ctc8180]]
+- 盛科交换芯片：[[50-reference/sources/chips/centec-ctc7132]]、[[50-reference/sources/chips/centec-ctc8180]]
 
 ---
 
@@ -149,8 +155,8 @@ echo write 0x80124 0x1fa    > /proc/smi
 
 ### 8) 与盛科 SDK 对比
 
-- 裕太微 SDK 聚焦**非管理/二层即插即用**，API 以 `yt_*` 单芯片直配、FAL→HAL→SMI 直写寄存器为主，**无 HAL 多芯片抽象、无 Diag/FTM/ACL TCAM 编程模型**；盛科 SDK（[[sources/chips/centec-sdk]]）为管理型、含 USW 多芯片合一、wikibase 配置体系与 TM 流量管理，定位更高端。
+- 裕太微 SDK 聚焦**非管理/二层即插即用**，API 以 `yt_*` 单芯片直配、FAL→HAL→SMI 直写寄存器为主，**无 HAL 多芯片抽象、无 Diag/FTM/ACL TCAM 编程模型**；盛科 SDK（[[50-reference/sources/chips/centec-sdk]]）为管理型、含 USW 多芯片合一、wikibase 配置体系与 TM 流量管理，定位更高端。
 
 ### 双链
 
-- 管理型交换对照：[[sources/chips/centec-ctc7132]]、[[sources/chips/centec-ctc8180]]、[[sources/chips/centec-sdk]]
+- 管理型交换对照：[[50-reference/sources/chips/centec-ctc7132]]、[[50-reference/sources/chips/centec-ctc8180]]、[[50-reference/sources/chips/centec-sdk]]

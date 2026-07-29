@@ -1,0 +1,75 @@
+---
+title: 离线/在线编辑工作流
+category: concepts
+tags: [workflow, offline-editing, online-editing, conform, post-production]
+created: 2026-07-29
+updated: 2026-07-29
+summary: 专业视频后期制作中的分阶段工作流模型——离线剪辑（低分辨率代理）→ 在线精编（全分辨率）
+relationships:
+  - target: "[[concepts/proxy-workflow]]"
+    type: related_to
+  - target: "[[concepts/mezzanine-codec]]"
+    type: related_to
+  - target: "[[concepts/color-grading-workflow]]"
+    type: part_of
+  - target: "[[concepts/audio-post-production-pipeline]]"
+    type: related_to
+base_confidence: 0.7
+lifecycle: draft
+lifecycle_changed: 2026-07-29
+sources:
+  - "[[sources/workflow-pipeline-shot-ai]]"
+  - "[[sources/nle-comparison-larry-jordan]]"
+---
+
+# 离线/在线编辑工作流
+
+## 概述
+
+传统专业后期流程分为 **Offline（离线剪辑）** 和 **Online（在线精编）** 两个阶段，以平衡剪辑效率和画质保真。Offline 以低分辨率代理快速完成叙事决策；Online 恢复全分辨率完成最终视觉呈现。
+
+## 离线剪辑（Offline Editing）
+
+### 目标
+在低计算压力下专注**叙事结构**——素材挑选、节奏把控、故事线搭建。
+
+### 流程
+1. **媒体管理（Ingest + Transcoding）**：Camera Raw → 转码为代理格式（ProRes Proxy / DNxHR LB）
+2. **初剪（Assembly Cut）**：按剧本顺序粗排素材
+3. **精剪（Fine Cut）**：调整节奏、修剪帧级、添加转场
+4. **输出剪辑决策（EDL/XML/AAF）**：包含时间码、卷号、变速信息，交付 Online 阶段
+
+### 输出
+EDL（CMX3600）、AAF（Avid）、FCPXML（Final Cut）、DRP（Resolve）——包含所有剪辑决策的元数据文件。
+
+## 在线精编（Online Editing）
+
+### 目标
+将离线决策恢复为全分辨率、全色彩深度的母版。
+
+### 流程
+1. **回套（Conform / Reconform）**：导入离线 EDL/XML → 自动重新连接高分辨率原始素材
+2. **颜色分级（Color Grading）**：一级调色 + 二级调色 + HDR 色彩空间变换
+3. **视觉特效（VFX / Compositing）**：绿幕键控、合成、跟踪、消除
+4. **音频后期**：对白编辑、Foley、混音（常与画面并行）
+5. **最终母版**：输出 ProRes 4444 / DNxHR 444 母版
+
+## Conform 回套的典型挑战
+
+- **Reconnect 失败**：素材改名或路径移动 → 手动 Relink
+- **速度变化**：离线中的 Time-Remap 需要在 Online 端精确重建
+- **嵌套复合**：Nest / Compound Clip / Adjustment Layer 需展平
+- **跨平台 EDL 兼容**：Avid → Resolve 与 Premiere → Resolve 的 EDL 格式差异
+
+## 现代趋势
+
+- **无代理工作流**：Resolve / FCP 可直接原生剪辑，无需代理
+- **一体化流程**：独立制作者常用一人包办 Offline + Online
+- **云端编辑**：SaaS 平台（Blackbird / Mimir）打破硬件绑定
+
+## 相关概念
+
+- [[concepts/proxy-workflow]]：代理文件策略
+- [[concepts/mezzanine-codec]]：中间编解码器
+- [[concepts/color-grading-workflow]]：色彩管理管线
+- [[concepts/audio-post-production-pipeline]]：音频后期管线

@@ -3,7 +3,13 @@ title: CPU 性能 / Intel 架构手册蒸馏
 tags: [reference, sources, intel, x86, performance, active]
 created: 2026-07-29
 updated: 2026-07-29
+summary: >-
+    | 文件名 | 体量 | 侧重点 |
+category: reference
 source_dir: Q:\常规书籍\性能
+sources: []
+base_confidence: 0.6
+lifecycle: reviewed
 ---
 
 # CPU 性能 / Intel 架构手册蒸馏
@@ -26,12 +32,12 @@ source_dir: Q:\常规书籍\性能
 
 ## 适用场景
 
-- 网卡/交换芯片数据面性能调优（结合 [[sources/chips/nic-dpdk]] DPDK 资料）。
+- 网卡/交换芯片数据面性能调优（结合 [[50-reference/sources/chips/nic-dpdk]] DPDK 资料）。
 - 编写高性能 C/C++ 时回查优化手册。
 
 ## 关联
 
-- DPDK / 网卡：[[sources/chips/nic-dpdk]]
+- DPDK / 网卡：[[50-reference/sources/chips/nic-dpdk]]
 - 底层机制笔记：[[50-reference/npp-timer-mechanism]]、[[50-reference/dlopen-internal-memory]]
 
 ---
@@ -105,5 +111,5 @@ source_dir: Q:\常规书籍\性能
 
 ### 与知识库的关联
 
-- 数据面性能调优（DPDK / 网卡）应回查 A 卷缓存/预取/SIMD、B 卷指令语义 → [[sources/chips/nic-dpdk]]。
+- 数据面性能调优（DPDK / 网卡）应回查 A 卷缓存/预取/SIMD、B 卷指令语义 → [[50-reference/sources/chips/nic-dpdk]]。
 - 底层机制（定时器、动态链接）与 B 卷执行环境、控制寄存器呼应 → [[50-reference/npp-timer-mechanism]]、[[50-reference/dlopen-internal-memory]]。

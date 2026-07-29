@@ -3,7 +3,13 @@ title: 盛科 CTC7132 交换芯片资料蒸馏
 tags: [reference, sources, centec, switch, ctc7132, asic, active]
 created: 2026-07-29
 updated: 2026-07-29
+summary: >-
+    | 文件名 | 类型 | 内容 |
+category: reference
 source_dir: Q:\芯片资料
+sources: []
+base_confidence: 0.6
+lifecycle: reviewed
 ---
 
 # 盛科 CTC7132 交换芯片资料蒸馏
@@ -236,10 +242,10 @@ CTC7132 的转发是一条 **IPE → TM → EPE** 的硬流水线，另挂 OAM E
 ## 适用场景
 
 - 开发交换芯片 SDK 功能、排查转发问题时回查 training。
-- 与 [[sources/chips/centec-sdk]]、[[sources/chips/centec-ctc8180]] 配套使用；CTC8180 为增强款，特性更全（ACL 16 次查找 / FlexE / MPLS / SRv6 / QoS 12K 队列）。
+- 与 [[50-reference/sources/chips/centec-sdk]]、[[50-reference/sources/chips/centec-ctc8180]] 配套使用；CTC8180 为增强款，特性更全（ACL 16 次查找 / FlexE / MPLS / SRv6 / QoS 12K 队列）。
 
 ## 关联
 
-- SDK/开发：[[sources/chips/centec-sdk]]
-- 同系升级款：[[sources/chips/centec-ctc8180]]
-- 网络原理基础：[[sources/books/network-hcna-hcnp]]
+- SDK/开发：[[50-reference/sources/chips/centec-sdk]]
+- 同系升级款：[[50-reference/sources/chips/centec-ctc8180]]
+- 网络原理基础：[[50-reference/sources/books/network-hcna-hcnp]]

@@ -3,7 +3,13 @@ title: AMD EPYC 处理器资料蒸馏
 tags: [reference, sources, amd, epyc, cpu, numa, hpc, active]
 created: 2026-07-29
 updated: 2026-07-29
+summary: >-
+    | 文件名 | 体量 | 内容 |
+category: reference
 source_dir: Q:\芯片资料\AMD
+sources: []
+base_confidence: 0.6
+lifecycle: reviewed
 ---
 
 # AMD EPYC 处理器资料蒸馏
@@ -24,13 +30,13 @@ source_dir: Q:\芯片资料\AMD
 
 ## 适用场景
 
-- 在 AMD 服务器上部署 DPDK / 交换控制面时做 NUMA 亲和性规划（结合 [[sources/chips/nic-dpdk]]）。
+- 在 AMD 服务器上部署 DPDK / 交换控制面时做 NUMA 亲和性规划（结合 [[50-reference/sources/chips/nic-dpdk]]）。
 - 性能基线建立时回查 HPC 调优指南。
 
 ## 关联
 
-- 网卡 / DPDK：[[sources/chips/nic-dpdk]]
-- 微架构优化：[[sources/books/intel-architecture-perf]]
+- 网卡 / DPDK：[[50-reference/sources/chips/nic-dpdk]]
+- 微架构优化：[[50-reference/sources/books/intel-architecture-perf]]
 
 ---
 
@@ -162,6 +168,6 @@ Rome 用 NUMA 内存交错，BIOS 设 **NPS（Nodes Per Socket）= 0/1/2/4**，�
 
 ### 双链
 
-- 网卡 / DPDK 部署规划：[[sources/chips/nic-dpdk]]
-- 微架构 / 性能计数器优化：[[sources/books/intel-architecture-perf]]
+- 网卡 / DPDK 部署规划：[[50-reference/sources/chips/nic-dpdk]]
+- 微架构 / 性能计数器优化：[[50-reference/sources/books/intel-architecture-perf]]
 - 可观测 / 定时器机制（同属系统性能主题）：[[50-reference/npp-timer-mechanism]]

@@ -3,7 +3,13 @@ title: 网卡与 DPDK 资料蒸馏
 tags: [reference, sources, nic, dpdk, intel, networking, active]
 created: 2026-07-29
 updated: 2026-07-29
+summary: >-
+    | 文件名 | 体量 | 内容 |
+category: reference
 source_dir: Q:\芯片资料
+sources: []
+base_confidence: 0.6
+lifecycle: reviewed
 ---
 
 # 网卡与 DPDK 资料蒸馏
@@ -145,6 +151,6 @@ Testpmd>start
 
 ### 双链
 
-- NUMA/CPU 亲和：[[sources/chips/amd-epyc]]
-- 微架构/性能计数器优化：[[sources/books/intel-architecture-perf]]
-- 同一 N10 平台产品化：[[sources/chips/hardware-design-nsf]]
+- NUMA/CPU 亲和：[[50-reference/sources/chips/amd-epyc]]
+- 微架构/性能计数器优化：[[50-reference/sources/books/intel-architecture-perf]]
+- 同一 N10 平台产品化：[[50-reference/sources/chips/hardware-design-nsf]]

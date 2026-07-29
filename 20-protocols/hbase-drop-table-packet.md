@@ -4,7 +4,13 @@ tags: [protocol, hbase, pcap, active]
 created: 2026-06-10
 updated: 2026-06-10
 status: active
+summary: >-
+    源抓包文件：
+category: reference
 source: Q:\AI\hbase_step_01_table_drop_cleanup_report.md
+sources: []
+base_confidence: 0.7
+lifecycle: reviewed
 ---
 
 

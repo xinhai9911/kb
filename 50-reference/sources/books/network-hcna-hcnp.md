@@ -3,12 +3,18 @@ title: 网络基础书籍蒸馏（HCNA / HCNP）
 tags: [reference, sources, network, routing, switching, huawei, active]
 created: 2026-07-29
 updated: 2026-07-29
+summary: >-
+    | 文件名 | 体量 | 侧重点 |
+category: reference
 source_dir: Q:\常规书籍
+sources: []
+base_confidence: 0.6
+lifecycle: reviewed
 ---
 
 # 网络基础书籍蒸馏（HCNA / HCNP）
 
-> 华为认证路由交换学习指南两册，是后续交换芯片/协议资料（[[sources/chips/centec-ctc7132]]、[[sources/chips/centec-ctc8180]]）的理论基础。
+> 华为认证路由交换学习指南两册，是后续交换芯片/协议资料（[[50-reference/sources/chips/centec-ctc7132]]、[[50-reference/sources/chips/centec-ctc8180]]）的理论基础。
 
 > ✅ **HCNP 已 OCR 蒸馏**：`665665 HCNP路由交换学习指南.pdf`（728页）经 easyocr 抽样 OCR（目录+各章首页），正文已提炼。HCNA 仍为少量文本层（目录可见）。
 > 原始路径：`Q:\常规书籍\665665 HCNP路由交换学习指南.pdf`、`Q:\常规书籍\HCNA网络技术学习指南_.pdf`
@@ -26,7 +32,7 @@ source_dir: Q:\常规书籍
 
 - **二层**：以太网、VLAN、STP/RSTP、链路聚合。
 - **三层**：静态路由、OSPF、BGP、路由策略。
-- **MPLS / VPN**：与交换芯片 [[sources/chips/centec-ctc8180]] 的 MPLS 培训直接对应。
+- **MPLS / VPN**：与交换芯片 [[50-reference/sources/chips/centec-ctc8180]] 的 MPLS 培训直接对应。
 - **QoS**：拥塞管理、流量监管，对应 CTC8180 QoS 培训。
 
 ## 适用场景
@@ -36,7 +42,7 @@ source_dir: Q:\常规书籍
 
 ## 关联
 
-- 交换芯片 L2/L3 培训：[[sources/chips/centec-ctc7132]]、[[sources/chips/centec-ctc8180]]
+- 交换芯片 L2/L3 培训：[[50-reference/sources/chips/centec-ctc7132]]、[[50-reference/sources/chips/centec-ctc8180]]
 - NPP 定时器机制（已有笔记）：[[50-reference/npp-timer-mechanism]]
 
 ---
@@ -79,7 +85,7 @@ source_dir: Q:\常规书籍
 8–10. 以太网技术（VLAN/VLANIF、链路聚合/LACP、STP/RSTP/MSTP、Smart Link 等）
 11. VRRP（网络高可靠性）
 12. 组播（Multicast）
-13. MPLS 与 MPLS VPN（与 [[sources/chips/centec-ctc8180]] MPLS 培训直接对应）
+13. MPLS 与 MPLS VPN（与 [[50-reference/sources/chips/centec-ctc8180]] MPLS 培训直接对应）
 14. 附录（全书习题答案）
 
 **核心概念提炼**：

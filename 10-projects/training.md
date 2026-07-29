@@ -2,7 +2,13 @@
 title: 培训项目
 tags: [project, training, wip]
 created: 2026-06-10
+summary: >-
+    - UML 完全指南（参见 `Q:\AI\UML完全指南.md`）
+category: projects
 updated: 2026-06-10
+sources: []
+base_confidence: 0.75
+lifecycle: reviewed
 ---
 
 # 培训项目
