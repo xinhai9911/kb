@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "db-decoder-ironhive": {
+      "source_cwd": "Q:/AI/db-decoder-ironhive",
+      "last_synced": "2026-07-29",
+      "last_commit_synced": "first-sync",
+      "pages_in_vault": [
+        "projects/db-decoder-ironhive/db-decoder-ironhive.md",
+        "projects/db-decoder-ironhive/hive-protocol-analysis.md",
+        "projects/db-decoder-ironhive/decoder-track.md",
+        "projects/db-decoder-ironhive/hive-decoder-implementation.md"
+      ]
+    }
+  }
+}
