@@ -2,7 +2,13 @@
 title: 来源资料蒸馏索引（常规书籍 + 芯片资料）
 tags: [reference, sources, index, active]
 created: 2026-07-29
+summary: >-
+    来源资料蒸馏索引。原始文件不入库，此处只保留主题、路径、要点与双链。
+category: reference
 updated: 2026-07-29
+sources: []
+base_confidence: 0.8
+lifecycle: reviewed
 ---
 
 # 来源资料蒸馏索引
@@ -12,29 +18,37 @@ updated: 2026-07-29
 
 ## 地图
 
-### 常规书籍（[[sources/books]]）
+### 常规书籍
 
 | 主题域 | 笔记 | 原文位置 |
 |---|---|---|
-| Elasticsearch / ELK 全家桶 | [[sources/books/elasticsearch-elk]] | `Q:\常规书籍\《…Elasticsearch…》` 等 8 本 |
-| 网络基础（路由交换） | [[sources/books/network-hcna-hcnp]] | `Q:\常规书籍\HCNA/HCNP…` |
-| 逆向工程（IDA Pro） | [[sources/books/reverse-ida-pro]] | `Q:\常规书籍\IDA Pro权威指南` |
-| 软件架构 | [[sources/books/architecture-zero-to-hero]] | `Q:\常规书籍\从零开始学架构` |
-| CPU 性能 / Intel 架构 | [[sources/books/intel-architecture-perf]] | `Q:\常规书籍\性能\` |
+| Elasticsearch / ELK 全家桶（索引） | [[50-reference/sources/books/elasticsearch-elk]] | `Q:\常规书籍\《…Elasticsearch…》` 等 8 本 |
+| ↳ 实战 in action | [[50-reference/sources/books/es-book-01-inaction]] | 文本层 361p |
+| ↳ 服务器开发（第2版） | [[50-reference/sources/books/es-book-02-server-dev]] | OCR 457p |
+| ↳ 搜索引擎开发实战 | [[50-reference/sources/books/es-book-03-search-dev]] | 文本层 256p |
+| ↳ Kibana 中文指南 | [[50-reference/sources/books/es-book-04-kibana]] | OCR 653p |
+| ↳ PaaS 实现与运维 | [[50-reference/sources/books/es-book-05-paas]] | 文本层 447p |
+| ↳ 大数据 ELK Stack | [[50-reference/sources/books/es-book-06-bigdata-elk]] | 文本层 291p |
+| ↳ 深入理解 Elasticsearch | [[50-reference/sources/books/es-book-07-mastering]] | OCR 270p |
+| ↳ 技术解析与实战 | [[50-reference/sources/books/es-book-08-tech-analysis]] | OCR 436p |
+| 网络基础（路由交换） | [[50-reference/sources/books/network-hcna-hcnp]] | `Q:\常规书籍\HCNA/HCNP…` |
+| 逆向工程（IDA Pro） | [[50-reference/sources/books/reverse-ida-pro]] | `Q:\常规书籍\IDA Pro权威指南` |
+| 软件架构 | [[50-reference/sources/books/architecture-zero-to-hero]] | `Q:\常规书籍\从零开始学架构` |
+| CPU 性能 / Intel 架构 | [[50-reference/sources/books/intel-architecture-perf]] | `Q:\常规书籍\性能\` |
 
-### 芯片资料（[[sources/chips]]）
+### 芯片资料
 
 | 主题域 | 笔记 | 原文位置 |
 |---|---|---|
-| 盛科交换芯片 CTC7132 | [[sources/chips/centec-ctc7132]] | `Q:\芯片资料\CTC7132_*` |
-| 盛科交换芯片 CTC8180 | [[sources/chips/centec-ctc8180]] | `Q:\芯片资料\CTC8180_*` |
-| 盛科 SDK / 开发 | [[sources/chips/centec-sdk]] | `Q:\芯片资料\SDK_*` |
-| 网卡（Intel 82599 / 沐创 / DPDK） | [[sources/chips/nic-dpdk]] | `Q:\芯片资料\*82599* / 沐创* / DPDK*` |
-| AMD EPYC 处理器 | [[sources/chips/amd-epyc]] | `Q:\芯片资料\AMD\` |
-| Motorcomm 交换芯片 | [[sources/chips/motorcomm-switch]] | `Q:\芯片资料\Motorcomm_*` |
-| H3C TAP 流量可视化 | [[sources/chips/h3c-tap]] | `Q:\芯片资料\H3C SecPath TAP8000*` |
-| OpenCloudOS 生态大会 | [[sources/chips/opencloudos-summit-2025]] | `Q:\芯片资料\2025OpenCloudOS…` |
-| 硬件设计（NSF / 框式机架） | [[sources/chips/hardware-design-nsf]] | `Q:\芯片资料\NSF* / WB4U11U*` |
+| 盛科交换芯片 CTC7132 | [[50-reference/sources/chips/centec-ctc7132]] | `Q:\芯片资料\CTC7132_*` |
+| 盛科交换芯片 CTC8180 | [[50-reference/sources/chips/centec-ctc8180]] | `Q:\芯片资料\CTC8180_*` |
+| 盛科 SDK / 开发 | [[50-reference/sources/chips/centec-sdk]] | `Q:\芯片资料\SDK_*` |
+| 网卡（Intel 82599 / 沐创 / DPDK） | [[50-reference/sources/chips/nic-dpdk]] | `Q:\芯片资料\*82599* / 沐创* / DPDK*` |
+| AMD EPYC 处理器 | [[50-reference/sources/chips/amd-epyc]] | `Q:\芯片资料\AMD\` |
+| Motorcomm 交换芯片 | [[50-reference/sources/chips/motorcomm-switch]] | `Q:\芯片资料\Motorcomm_*` |
+| H3C TAP 流量可视化 | [[50-reference/sources/chips/h3c-tap]] | `Q:\芯片资料\H3C SecPath TAP8000*` |
+| OpenCloudOS 生态大会 | [[50-reference/sources/chips/opencloudos-summit-2025]] | `Q:\芯片资料\2025OpenCloudOS…` |
+| 硬件设计（NSF / 框式机架） | [[50-reference/sources/chips/hardware-design-nsf]] | `Q:\芯片资料\NSF* / WB4U11U*` |
 
 ## 蒸馏原则
 

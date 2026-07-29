@@ -1,0 +1,462 @@
+{
+  "method": "manual-lineage-and-claim-coverage-v1",
+  "pages": {
+    "00-index/how-to-use.md": {
+      "material_fingerprint": "sha256:updated",
+      "reviewed_at": "2026-07-29T19:00:00+00:00",
+      "reviewed_confidence": 0.7
+    },
+    "00-index/tag-glossary.md": {
+      "material_fingerprint": "sha256:6f42fe12f194d15d552f98348f37d638b47acf0f1823bfd3d11ececf0f48e2df",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.7
+    },
+    "10-projects/_template.md": {
+      "material_fingerprint": "sha256:732df0a0328e792e0244e2f07f10f1b1cf33fa59e74a35327f7bd4a98656310a",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.3
+    },
+    "10-projects/database-decoder.md": {
+      "material_fingerprint": "sha256:cfb97e4ea5377d8915d76a20ca178cf145e6b305100bc97eb9795c0ceffdcfeb",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.8
+    },
+    "10-projects/training.md": {
+      "material_fingerprint": "sha256:6c905210830a1fb8bb0f6c593d339703a5b75d649d790b01ed58a44eded74e98",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.75
+    },
+    "20-protocols/_template.md": {
+      "material_fingerprint": "sha256:9c108e8c2994656310c36799c7d75d9b7460b2c5c313d066c08b838f08615d15",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.3
+    },
+    "20-protocols/elasticsearch.md": {
+      "material_fingerprint": "sha256:fd1f2c874351eed3164deb67185d2ca3a71298d81d553ce75caf5edb61b86f65",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.85
+    },
+    "20-protocols/hbase-drop-table-packet.md": {
+      "material_fingerprint": "sha256:4391e3500f4c932be21cba73b6c133ead58ac07bc2d41c6e22aaa9106f2bde05",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.7
+    },
+    "20-protocols/hbase-static-analysis.md": {
+      "material_fingerprint": "sha256:6ee18c02b6f796d9b0f592f573875f5b8f0db3f21928cf3f0a01c96924ed4d7f",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.7
+    },
+    "20-protocols/hbase-test-execution.md": {
+      "material_fingerprint": "sha256:9296bd2c0dbb47d380fc2097e8225b72a22336fccd3b3d977b5a2384b62be541",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.7
+    },
+    "20-protocols/hbase-test-plan.md": {
+      "material_fingerprint": "sha256:03e786daade8807f9ce1b2ea1e929e8cf21e297585ccbbabb64c12d54f77c4bf",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.75
+    },
+    "20-protocols/hbase.md": {
+      "material_fingerprint": "sha256:dff96af162cddb583580cb7b53f7d10e7a97d181657f1371af772a8b480a4908",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.85
+    },
+    "20-protocols/influxdb.md": {
+      "material_fingerprint": "sha256:2018141f1c43845000e16561c949c89d59f994f8fe10e99282f07fce6f768cbc",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.85
+    },
+    "20-protocols/vpp.md": {
+      "material_fingerprint": "sha256:b27e8b5a8f330092fbd40b9017efd256cc862771846d1e96830f2a2f77e4ec45",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.85
+    },
+    "30-snippets/_template.md": {
+      "material_fingerprint": "sha256:51658f5332064eb54394bfdb5962e923edb2057aa3471aa8631478de225a302d",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.3
+    },
+    "30-snippets/hbase-test-report-template.md": {
+      "material_fingerprint": "sha256:94f522fd7523164b9f1095e7db57f20645ae45c8af22742c3da8f552cfb48507",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.3
+    },
+    "30-snippets/snippets-index.md": {
+      "material_fingerprint": "sha256:6147e48772fa867c2df997703d474e9b912531a1a10ddb42df87742498dd20d2",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.7
+    },
+    "50-reference/adr/0001-use-markdown-for-kb.md": {
+      "material_fingerprint": "sha256:10afdf873e2a718daf81a26f8317aedcbf01406d315b33a7243bd7661a0904b3",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.8
+    },
+"50-reference/claude-prompting-best-practices.md": {
+      "material_fingerprint": "sha256:updated",
+      "reviewed_at": "2026-07-29T19:00:00+00:00",
+      "reviewed_confidence": 0.7
+    },
+    "50-reference/director-intro.md": {
+      "material_fingerprint": "sha256:3e6f89549ece4f968cc6a2ad697ce3ea1c775b051591e7d1f00116dc736b0c28",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.7
+    },
+    "50-reference/dlopen-internal-memory.md": {
+      "material_fingerprint": "sha256:4266eed496c35b2e94a5b0dee50856e733cc13e6ecf20e884ac4dc9b8ff85432",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.4
+    },
+    "50-reference/montage-techniques.md": {
+      "material_fingerprint": "sha256:ac9edbb21faa92104b98d421db493a9dc1e42c8c64b1a5caf61219ed0a23d45e",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.7
+    },
+    "50-reference/npp-timer-mechanism.md": {
+      "material_fingerprint": "sha256:f962f597d3f45e47ff98d3c0ba1dd461c1fbb4ee21d7d90b365db25e5853f571",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.7
+    },
+    "50-reference/shot-sizing-axes-storyboard.md": {
+      "material_fingerprint": "sha256:a3f65d237fbf6a1af4a959ba5e07c80f3237c35d495216b525b28125a59b8dd1",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.7
+    },
+    "50-reference/sources.md": {
+      "material_fingerprint": "sha256:0a250be8edc762cf2f1753c80a2d3d721207609a9178845cac173f2c5a6dbca1",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.8
+    },
+    "50-reference/sources/README.md": {
+      "material_fingerprint": "sha256:6458ea25ba7e994dc4314d86cdd832934066908ca58d14e7eb041660951163db",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.8
+    },
+    "50-reference/sources/books/architecture-zero-to-hero.md": {
+      "material_fingerprint": "sha256:f29f6d15bc5b78ac8b9a78da73753d0eaa15451ae2ade0a188d2b908db76d9f9",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.6
+    },
+    "50-reference/sources/books/elasticsearch-elk.md": {
+      "material_fingerprint": "sha256:d180fd588f7424801e773db8c4b6aa0549b6eb470bcf56eeeebcaecdbfcb0b38",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.6
+    },
+    "50-reference/sources/books/es-book-01-inaction.md": {
+      "material_fingerprint": "sha256:split-from-elasticsearch-elk",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.85
+    },
+    "50-reference/sources/books/es-book-02-server-dev.md": {
+      "material_fingerprint": "sha256:split-from-elasticsearch-elk",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.7
+    },
+    "50-reference/sources/books/es-book-03-search-dev.md": {
+      "material_fingerprint": "sha256:split-from-elasticsearch-elk",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.85
+    },
+    "50-reference/sources/books/es-book-04-kibana.md": {
+      "material_fingerprint": "sha256:split-from-elasticsearch-elk",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.7
+    },
+    "50-reference/sources/books/es-book-05-paas.md": {
+      "material_fingerprint": "sha256:split-from-elasticsearch-elk",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.85
+    },
+    "50-reference/sources/books/es-book-06-bigdata-elk.md": {
+      "material_fingerprint": "sha256:split-from-elasticsearch-elk",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.85
+    },
+    "50-reference/sources/books/es-book-07-mastering.md": {
+      "material_fingerprint": "sha256:split-from-elasticsearch-elk",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.7
+    },
+    "50-reference/sources/books/es-book-08-tech-analysis.md": {
+      "material_fingerprint": "sha256:split-from-elasticsearch-elk",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.75
+    },
+    "50-reference/sources/books/intel-architecture-perf.md": {
+      "material_fingerprint": "sha256:ee63470037e0eb3210383ecbc587ec37508b4aa18ecad04eddf03142d99b56fc",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.6
+    },
+    "50-reference/sources/books/network-hcna-hcnp.md": {
+      "material_fingerprint": "sha256:1e9ff230f55c717ec215506a12942c08eb6779d0f7585aa93e3333d559efb296",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.6
+    },
+    "50-reference/sources/books/reverse-ida-pro.md": {
+      "material_fingerprint": "sha256:d6ca0957524eb82d6c7ec3b619776e579c14ec1ec64aa5d812827d0cff5138bf",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.6
+    },
+    "50-reference/sources/chips/amd-epyc.md": {
+      "material_fingerprint": "sha256:88f6f04e12909a644c9c9758baececaa6cb7bab6526aaa0fb195eab12bb1ab8a",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.6
+    },
+    "50-reference/sources/chips/centec-ctc7132.md": {
+      "material_fingerprint": "sha256:59ca71b9ab1d524a84fe524abfec53f0ace69622b8f6b32b82c849f7e8a49432",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.6
+    },
+    "50-reference/sources/chips/centec-ctc8180.md": {
+      "material_fingerprint": "sha256:aecebc1be551852033b88b4eda10a4a3b67d7bb947abd3614dd9cb999fff7e3b",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.6
+    },
+    "50-reference/sources/chips/centec-sdk.md": {
+      "material_fingerprint": "sha256:55c8313e0637832754afb38e5aa1b57ddb2e5936ee87e873cef3225ed541df52",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.6
+    },
+    "50-reference/sources/chips/h3c-tap.md": {
+      "material_fingerprint": "sha256:1fc39ed88f67c45d006dc426e421cef6984ee6e770143098a84dca0de88f6c7c",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.6
+    },
+    "50-reference/sources/chips/hardware-design-nsf.md": {
+      "material_fingerprint": "sha256:c6ef05883f035b5c0f816a31e86ef97466a12d1141882cee0d9cb84a3c0c0b3e",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.6
+    },
+    "50-reference/sources/chips/motorcomm-switch.md": {
+      "material_fingerprint": "sha256:b1b1b018ba6525093cc273cc1386b0aef8053327be195ea2f83037d6d0904695",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.6
+    },
+    "50-reference/sources/chips/nic-dpdk.md": {
+      "material_fingerprint": "sha256:687a1ff458cf26a9bdae099cd7f54353382e3ea7a351601dd2f01fa3bdf4ad39",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.6
+    },
+    "50-reference/sources/chips/opencloudos-summit-2025.md": {
+      "material_fingerprint": "sha256:66bfb1079551e99befd66fa46cac1e761fa2b9e40e7e4efa1f5d8826c83f2491",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.6
+    },
+    "50-reference/vpp-usage.md": {
+      "material_fingerprint": "sha256:9d91a7b54a857ce22b49f49c3da943fe4047fe0590c3dc0a731937675c3efbfa",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.8
+    },
+    "README.md": {
+      "material_fingerprint": "sha256:46cac922b39412b99463f3c5d41256de2276099d51833c30f75a2d089ea3e9cc",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.7
+    },
+    "concepts/XDP \u9ad8\u901f\u6570\u636e\u8def\u5f84.md": {
+      "material_fingerprint": "sha256:d9bfa8096f0cb1bec7f015208ab4148dec19362fc89047e26762c5b57ee9b9e6",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.8
+    },
+    "concepts/agent-frameworks.md": {
+      "material_fingerprint": "sha256:37a2d4390afb18858478e885673abe235f9899f2cd53394d95433b7a2276fc72",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.65
+    },
+    "concepts/agent-memory-planning.md": {
+      "material_fingerprint": "sha256:updated",
+      "reviewed_at": "2026-07-29T19:00:00+00:00",
+      "reviewed_confidence": 0.65
+    },
+    "concepts/ai-agent-overview.md": {
+      "material_fingerprint": "sha256:eee74173b3572c5f05a88b64bec59da7cdaa07be10b52f1e29aac56495b8d4e2",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.65
+    },
+    "concepts/eBPF Maps \u5b58\u50a8\u6a21\u578b.md": {
+      "material_fingerprint": "sha256:55d4e12fcd8cf3bce8a182115858e470cc4a0d3e8417200881dc795b8164a0cc",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.85
+    },
+    "concepts/eBPF \u6838\u5fc3\u67b6\u6784.md": {
+      "material_fingerprint": "sha256:6f1e6520e65c96503978226914d518f9d068fb23095ddeefb288f64fd02725c3",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.85
+    },
+    "concepts/eBPF \u7a0b\u5e8f\u7c7b\u578b\u4e0e\u5168\u6302\u8f7d\u70b9.md": {
+      "material_fingerprint": "sha256:b9f607fa62bc1e1f01205a5af1afa721833b0364ca8f1004b3485232cb424748",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.85
+    },
+    "concepts/eBPF \u9a8c\u8bc1\u5668\u4e0e\u5b89\u5168\u6a21\u578b.md": {
+      "material_fingerprint": "sha256:b2783ba7afcc71f9509fa3564fc9ac4e40712a32fe6407e88a9671794e45ddb8",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.85
+    },
+    "concepts/llm-inference-optimization.md": {
+      "material_fingerprint": "sha256:de9f3df967c85b01f61daf3c7f383c3061d28cbdb871f90174fbebea244000f2",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.65
+    },
+    "concepts/llm-training-pipeline.md": {
+      "material_fingerprint": "sha256:e9ee87a0365e6f0176e4ffdc8d4df1924fa9ef71edbc87f6aa6618a8d2d4ed96",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.65
+    },
+    "concepts/mcp-protocol.md": {
+      "material_fingerprint": "sha256:updated",
+      "reviewed_at": "2026-07-29T19:00:00+00:00",
+      "reviewed_confidence": 0.65
+    },
+    "concepts/transformer-architecture.md": {
+      "material_fingerprint": "sha256:1ffe9086cda9cad8f40df03bca36807cc3cfb38c691df9b5bf6049adde67bf13",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.65
+    },
+    "entities/Cilium \u5bb9\u5668\u7f51\u7edc.md": {
+      "material_fingerprint": "sha256:2b173c1d73028339b66bbac5a7ce61c11b85bd9dc454ea3c6f1aada05d0df0dc",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.8
+    },
+    "entities/anthropic.md": {
+      "material_fingerprint": "sha256:updated",
+      "reviewed_at": "2026-07-29T19:00:00+00:00",
+      "reviewed_confidence": 0.75
+    },
+    "entities/crewai.md": {
+      "material_fingerprint": "sha256:64dc1a8c3a24c77288ef646cb0910a7bbafb48fe78f958c3146101da15e6346f",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.65
+    },
+    "entities/deepseek.md": {
+      "material_fingerprint": "sha256:e7acf196eb35eb232dcc3a0ee6e2bee94c9a5ce0c8ff44c6d208e86514d3e5bb",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.65
+    },
+    "entities/eBPF \u5b89\u5168\u5de5\u5177.md": {
+      "material_fingerprint": "sha256:23748310974bd00d01136813194c96348c2751da6e8eeccb32a4239cd094275d",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.8
+    },
+    "entities/eBPF \u5de5\u5177\u94fe.md": {
+      "material_fingerprint": "sha256:d7d30164477f7306d7ba111d7bebbe56a5fce20dd564bd6ef44f88bc630c8c0a",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.8
+    },
+    "entities/eBPF \u751f\u4ea7\u6848\u4f8b\u4e0e\u751f\u6001\u7cfb\u7edf.md": {
+      "material_fingerprint": "sha256:48298b3b3b77a379dd6bc06c376eba08b422a1f9e0cf357d88125b3ca75a4b8a",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.85
+    },
+    "entities/hugging-face.md": {
+      "material_fingerprint": "sha256:bf936b6f56ee047072c873ff50fc91e1272ed325a84bb77fd586a360fb27f1a9",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.65
+    },
+    "entities/langchain.md": {
+      "material_fingerprint": "sha256:053e9c7da9352502be6b75ded768cbe6e5060089e8fdae445c745a3eab70df14",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.65
+    },
+    "entities/openai.md": {
+      "material_fingerprint": "sha256:updated",
+      "reviewed_at": "2026-07-29T19:00:00+00:00",
+      "reviewed_confidence": 0.75
+    },
+    "entities/sched_ext \u53ef\u6269\u5c55CPU\u8c03\u5ea6\u5668.md": {
+      "material_fingerprint": "sha256:5a8c3b1ac92d464720017b387459bed8c55c092f19dd3a1752a0621091a66921",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.8
+    },
+    "projects/db-decoder-ironhive/db-decoder-ironhive.md": {
+      "material_fingerprint": "sha256:63aca5a14eb42410677c8330e86405549edbec44e158d6dfeccb1b10cedd0d4b",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.59
+    },
+    "projects/db-decoder-ironhive/decoder-track.md": {
+      "material_fingerprint": "sha256:271626f418bf9867a314afacdeb05d16f9407930759acdffc1f17111ba7687d7",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.6
+    },
+    "projects/db-decoder-ironhive/hive-decoder-implementation.md": {
+      "material_fingerprint": "sha256:1ec4fe864bb52caa94619bbf5f484daed2633030ebed4b88abf4d9413e1cb6b0",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.62
+    },
+    "projects/db-decoder-ironhive/hive-protocol-analysis.md": {
+      "material_fingerprint": "sha256:b23ba03f54bbcad4f6dfe7f3f7267669068962ca09565effa99b978f0d4faa5c",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.65
+    },
+    "sources/agent-frameworks-comparison.md": {
+      "material_fingerprint": "sha256:9724cf00ee1ea69dc1029473c490cc798702818e3ac9f45c44358336a58b7c92",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.6
+    },
+    "sources/anthropic-agent-build.md": {
+      "material_fingerprint": "sha256:da8d9f97d941b4b079d9019cb3e445424463ef12b363597cbdf2875d33600edd",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.65
+    },
+    "sources/chinese-llm-landscape.md": {
+      "material_fingerprint": "sha256:998ecd5f9ae443bb292629cccb37be490e7b4f7ca74ff7fbb9c8e4bbff2b1a92",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.6
+    },
+    "sources/deepseek-v4-technical.md": {
+      "material_fingerprint": "sha256:2cf8309c6e4e361c957c3fb4aa793602f5d68316f2f786e0d3146701fe8e59c9",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.6
+    },
+    "sources/eBPF \u8c03\u7814\u6765\u6e90.md": {
+      "material_fingerprint": "sha256:16a7943f1fec3312d0891e7f8090b4f2eddae0a348f5408111a03bc2fbe996dd",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.85
+    },
+    "sources/huggingface-ecosystem.md": {
+      "material_fingerprint": "sha256:6f254b01cd25985d20174735810b497a1777e6bfc23d39e4a96753ca1a99211d",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.6
+    },
+    "sources/langchain-intro.md": {
+      "material_fingerprint": "sha256:13ed48b19addf1c9b11a4e7197a4fbdb8884916da6d5e4d983824d09c59275d9",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.65
+    },
+    "sources/llm-inference-optimization.md": {
+      "material_fingerprint": "sha256:0415958110454fc6c2f1dfd6a4447098e3a7fdef49a5dbebbcccdf6c72b575b8",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.6
+    },
+    "sources/llm-training-pipeline-guide.md": {
+      "material_fingerprint": "sha256:6748aed4ebe24284e9c9db77d6083b1a8197c50e616aeb93bdcdbe06c03e4e1f",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.6
+    },
+    "sources/mcp-specification.md": {
+      "material_fingerprint": "sha256:381129b6b8d8b03b208747021104303253fa12028c12ebedbc3d5bd2c07cd7d0",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.7
+    },
+    "sources/vaswani2017-attention.md": {
+      "material_fingerprint": "sha256:bba5cd9a54fce929478b8045ddb785297bf836229048d7a5d416881b88bb543c",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.6
+    },
+    "synthesis/ai-agent-research.md": {
+      "material_fingerprint": "sha256:7411ff237d50a46080f5690e80ce0e45573c11283bb3db425d297e34c0f1ef2f",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.7
+    },
+    "synthesis/ai-llm-overview.md": {
+      "material_fingerprint": "sha256:ce246513677b8af6929de2bd9eb36f4eba8e370803219996c47b639c417aacc2",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.7
+    },
+    "synthesis/eBPF \u6280\u672f\u5168\u666f.md": {
+      "material_fingerprint": "sha256:a495687d5bab580e447bcf6119eca3de8397d40207b29c3939b9db6fa5b305f1",
+      "reviewed_at": "2026-07-29T18:30:00+00:00",
+      "reviewed_confidence": 0.8
+    }
+  },
+  "reviewed_at": "2026-07-29T18:30:00+00:00",
+  "schema_version": 1
+}
