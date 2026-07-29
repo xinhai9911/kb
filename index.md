@@ -52,6 +52,15 @@ updated: 2026-07-29
 - [[50-reference/npp-flowtable-cleanup-example|NPP 流表清理代码实例]]
 - [[50-reference/npp-flowtable-perf-test|NPP 流表性能测试实例]]
 
+## Nginx 反向代理
+
+### 概念
+- [[concepts/Nginx 架构与事件模型|Nginx 架构与事件模型]]
+
+### 实体
+- [[entities/Nginx 反向代理实战|Nginx 反向代理实战（配置大全）]]
+- [[entities/Nginx 性能调优与排障|Nginx 性能调优与排障]]
+
 ## Linux 内核与性能
 
 ### 概念
