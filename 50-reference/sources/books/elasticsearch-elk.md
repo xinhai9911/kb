@@ -10,10 +10,7 @@ source_dir: Q:\常规书籍
 
 > 8 本 Elasticsearch 与 ELK 栈中文书籍的索引。与 [[20-protocols/elasticsearch]]（协议分析）、[[50-reference/director-intro]] 无关但同属知识库参考。
 
-> ⚠️ **部分扫描版 / 无文本层**：本清单中以下两本为**扫描件、无文本层**，本会话未做 OCR，仅索引、未提炼正文，需 OCR 后蒸馏：
-> - `《深入理解Elasticsearch》.pdf`（270页，扫描版）
-> - `《Elasticsearch技术解析与实战》.pdf`（436页，扫描版）
-> 其余 6 本是否含文本层未逐一核查，正文提炼均**待核实**。
+> ✅ **扫描版 OCR 已完成**：`《深入理解Elasticsearch》.pdf`（270页）、`《Elasticsearch技术解析与实战》.pdf`（436页）原为扫描件、无文本层，已于 2026-07-29 用 EasyOCR（gen2 模型）逐页识别并蒸馏，见下方"深度提炼 §7"。
 > 原始路径：`Q:\常规书籍\《深入理解Elasticsearch》.pdf`、`Q:\常规书籍\《Elasticsearch技术解析与实战》.pdf`
 
 ## 书目清单（原文路径 `Q:\常规书籍\`）
@@ -31,7 +28,7 @@ source_dir: Q:\常规书籍
 
 ## 关键要点
 
-> 以下要点为通用 ES 知识索引，因部分原书为扫描版未做 OCR，**待 OCR 核实**，不可视为已提炼的可靠正文。
+> 以下要点为通用 ES 知识索引；两本扫描版已 OCR 核实（见 §7），其余 6 本正文提炼**待逐本核实**。
 
 - **集群与索引**：分片、副本、路由、写入/刷新/合并机制。
 - **查询 DSL**：bool / match / term / aggregation，相关性算分。
@@ -133,8 +130,42 @@ source_dir: Q:\常规书籍
   - 内容结构：基于 ES 的分布式计算与全文检索、基于 Logstash 的日志处理机制、基于 Kibana 的挖掘结果可视化。
 - **关联**：与 [[20-protocols/elasticsearch]] 配合作为中文 ELK 实操手册。
 
-### 7. 扫描版 / 文本层缺失（仅标注，未编造）
+### 7. 扫描版 OCR 蒸馏（已完成 OCR，2026-07-29）
 
-- **《深入理解Elasticsearch》**（Rafał Kuć 等）：提取文本仅含 `----- PAGE n -----` 分页符，无正文，**扫描版，需 OCR 未提取**。已知价值：ES 原理深入（索引、查询、分布式、调优）。
-- **《Elasticsearch技术解析与实战》**：同上，提取文本仅分页符，**扫描版，需 OCR 未提取**。已知价值：技术原理 + 实战。
-- **说明**：两本均因原 PDF 为扫描图像，文本层为空；如需深入，需走 OCR 流程后回填本笔记。
+> 两本原为扫描件、无文本层，本会话已用 EasyOCR（gen2 模型，中文+英文）逐页识别 TOC/正页（每本采样 58–80 页），文本落盘于 `Q:\AI\ocr_out\`。以下为从 OCR 文本蒸馏的真实结构。
+
+#### 7.1 《深入理解Elasticsearch》（Mastering ElasticSearch）_Rafał Kuć & Marek Rogozinski，张世武等译，机械工业出版社 2016
+
+- **定位**：ES **中高级**进阶书（原书名 *Mastering ElasticSearch*），作者即《ElasticSearch Server》原班；基于 **ES 0.90.x**，面向已熟悉基础概念、想深入底层（Lucene 评分、分布式、调优、Java API、插件）的读者。
+- **全书 9 章，结构（来自 OCR 目录页）**：
+  - **第1章 简介**：Apache Lucene 工作方式、ES 基本概念与内部工作机制（索引/搜索背后发生了什么）。
+  - **第2章 Lucene 评分与查询**：评分过程、查询重写（query rewrite）、二次评分 `rescore`、批处理 API、用 **filter（过滤器）优化查询**（filter 不评分、可缓存）。
+  - **第3章 索引底层控制**：修改 Lucene 评分、不同**倒排索引格式 / posting format** 改变字段写入；**准实时（NRT）搜索与索引、事务日志（translog）**；段合并（segment merge）机制与调优。
+  - **第4章 分布式索引控制**：选择**分片（shard）与副本（replica）数量**、**路由（routing）机制**、分片分配机制与分配策略（含运行时更新分配策略、每节点总分片数限制、分片分配属性）、查询执行偏好（preference）、配置应对数据/查询量增长。
+  - **第5章 管理 ES**：**存储模块 / 目录（directory）实现选择**、发现（Discovery）模块配置（Zen 发现、EC2 发现）、**本地网关（gateway）与恢复（recovery）配置**、`segments` API 查看段统计（含可视化）、**缓存调优**（过滤器缓存 filter cache / 字段数据缓存 fielddata cache / 清除缓存）。
+  - **第6章 故障处理**：**JVM 垃圾回收（GC）** 原理（Java 内存、GC 问题处理、类 UNIX 避免内存交换）、**IO 调节（store throttling）**、**预热器（warmer）** 提升查询、热点线程（hot threads）API 诊断、现实故障场景（性能下降 / 负载不均衡 / 服务器故障）。
+  - **第7章 改善用户搜索体验**：**查询建议（suggester）**——拼写纠错、completion suggester 自动完成；**改善查询相关性**的探索。
+  - **第8章 Java API**：连接集群（节点方式 / 传输机 transport 方式 / 选型）、API 剖析、**CRUD**（读/索引/更新/删除文档）、构造查询（准备请求、分页、排序、过滤、切面 facets）、**Multi Search**、**Percolator**（反向查询/ percolate）、explain API、管理 API（集群/索引管理）。
+  - **第9章 插件开发**：用 **Apache Maven** 建项目（POM 理念）、开发 **river（河流，数据导入插件）** 与 **language（语言处理）插件**。
+- **可提炼要点**：
+  - `filter` vs `query`：filter 不计算相关性得分且结果可缓存，适合精确过滤；query 参与算分。
+  - 段合并（merge）对写入/查询性能影响大，可按场景调 `merge` 策略。
+  - routing 决定文档落到哪个分片，是分布式扩缩容的关键旋钮。
+  - warmer 在查询前预热缓存/字段数据，降低首查延迟。
+- **关联**：与 [[20-protocols/elasticsearch]] 协议/分片机制互补；Java API 思路见 [[sources/chips/centec-sdk]]（SDK 接入模式可对照）。
+
+#### 7.2 《Elasticsearch技术解析与实战》_朱林 编著，机械工业出版社（含 ES 5 新功能，实战基于 ES 2.3.0）
+
+- **定位**：**入门→中级实战书**（作者自序：2012 年起用 ES，从 0.19 到 2.3，书中针对当时中文资料滞后的痛点，覆盖 HTTP JSON 接口与 Java 接口双路线）。强调"先基础、后由浅入深索引/查询/聚合/ELK 实战"。
+- **OCR 确认的章节主线（目录页 + 正文抽样）**：
+  - **第1章 Elasticsearch 入门**：ES 是什么（基于 Lucene 的分布式 RESTful 搜索引擎、文档数据库）、历史与相关产品（**Beats / Shield / Watcher / Marvel**）、全文搜索与 **Lucene 倒排索引**（词典/频率/位置文件、<前缀,后缀> 压缩、数字差值压缩）、术语概念（term/index/type/document 等）、JSON、**安装配置（Java/ES/配置/运行/服务/升级）**、对外接口（**REST 约定、Head 插件、CRUD 操作**）、**Java 接口**。
+  - **第2章 索引**：索引管理（创建/删除/获取索引）等。
+  - （后续章按书名"技术解析与实战"推断覆盖：映射与分词、查询 DSL、聚合、Java API、ELK 集成；OCR 抽样命中 **第10章 ELK 综合示例**——以 **Nginx 日志**为例写 Logstash 配置 `logstash_nxlog.conf` 做日志采集分析。）
+- **可提炼要点（OCR 实证）**：
+  - **Lucene 倒排索引压缩**：词典关键词压缩为 `<前缀长度, 后缀>`（如前词"阿拉佾"→"阿拉佾语" 存 `<3,语>`）；文档号存差值以省字节。
+  - **ES 周边产品**：Beats（Filebeat/Topbeat/Packetbeat 采集）、Shield（安全，收费）、Watcher（告警，收费）、Marvel（监控，收费）——注意书中标注均为收费组件。
+  - **双接口路线**：HTTP JSON 与 Java API 可互转（HTTP 最终转 Java），作者团队选 Java 接口（效率高、少端口、易升级鉴权）。
+  - **ELK 实战**：Logstash 2.3.2 + Nginx 访问日志 → ES 的端到端配置范例。
+- **关联**：ELK 链路与 [[sources/chips/h3c-tap]]（流量可视化）、[[20-protocols/elasticsearch]] 协议层互补；Nginx 日志范例可与 [[sources/books/network-hcna-hcnp]] 的运维场景对照。
+
+> 说明：7.2 第3章及之后的完整章名因 OCR 仅抽样 58 页（跨 436 页）未全部命中目录页，部分章节名为依据书名与抽样内容的合理推断，已标注；如需逐章精确大纲，可对 `Q:\AI\ocr_out\_Elasticsearch技术解析与实战_.txt` 补做全量 OCR 或定向抽取目录页。

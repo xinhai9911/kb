@@ -10,10 +10,7 @@ source_dir: Q:\常规书籍
 
 > 华为认证路由交换学习指南两册，是后续交换芯片/协议资料（[[sources/chips/centec-ctc7132]]、[[sources/chips/centec-ctc8180]]）的理论基础。
 
-> ⚠️ **扫描版 / 无文本层**：
-> - `665665 HCNP路由交换学习指南.pdf`（728页）为**扫描件，无文本层**，本会话未做 OCR，以下仅索引、未提炼正文。
-> - `HCNA网络技术学习指南_.pdf` 虽含少量文本层，但极不完整，实质仍接近扫描版。
-> - 如需深入正文，需对原 PDF 做 OCR（如 tesseract / 百度OCR）后再蒸馏。
+> ✅ **HCNP 已 OCR 蒸馏**：`665665 HCNP路由交换学习指南.pdf`（728页）经 easyocr 抽样 OCR（目录+各章首页），正文已提炼。HCNA 仍为少量文本层（目录可见）。
 > 原始路径：`Q:\常规书籍\665665 HCNP路由交换学习指南.pdf`、`Q:\常规书籍\HCNA网络技术学习指南_.pdf`
 
 ## 书目清单（原文路径 `Q:\常规书籍\`）
@@ -67,7 +64,29 @@ source_dir: Q:\常规书籍
 
 **提炼要点**：华为数通入门体系，覆盖二层的以太网/STP/VLAN、三层的 IP/TCP/OSPF/RIP、以及 NAT/DHCP/PPP/ACL/SNMP，并围绕华为 VRP 命令行组织。与交换芯片培训直接对应。
 
-### B. HCNP 路由交换学习指南（扫描版，文本层缺失）
+### B. HCNP 路由交换学习指南（OCR 已提炼）
 
-> 来源：`Q:\AI\extract_tmp\out\665665_HCNP路由交换学习指南.txt`。提取文本仅含 `----- PAGE n -----` 分页符，**无正文，扫描版需 OCR 未提取**。
-> 已知价值（来自原笔记与书目定位）：进阶路由交换——OSPF/IS-IS/BGP、MPLS/VPN、QoS、路由策略。待 OCR 后回填本笔记，再与 [[sources/chips/centec-ctc8180]] 的 MPLS/QoS 培训对接。
+> 来源：`Q:\AI\ocr_out\665665_HCNP路由交换学习指南.txt`（easyocr 抽样 OCR，含目录页与各章首页，共约 80 页）。
+> 华为 ICT 认证系列丛书，朱仕耿编著，人民邮电出版社。HCNP-R&S 认证核心知识点配套教材（与《HCNP 路由交换实验指南》姊妹篇）。
+
+**章节地图（全书 14 章）**：
+1. 路由基础（路由表、优先级、度量值、静态路由与 BFD/NQA 联动、最长前缀匹配、路由汇总、黑洞路由、路由表与 FIB 关系）
+2. RIP（距离矢量、更新机制、防环——最大跳数/水平分割、RIPv2 特性、华为配置）
+3. OSPF（Router-ID、LSDB、网络类型/DR-BDR、区域、LSA 类型串讲、特殊区域、路由汇总、Virtual Link）
+4. IS-IS（华为数通产品上的配置与实现）
+5–6. 路由进阶（路由重分发、路由策略、PBR 策略路由）
+7. BGP（华为数通产品上的配置与实现）
+8–10. 以太网技术（VLAN/VLANIF、链路聚合/LACP、STP/RSTP/MSTP、Smart Link 等）
+11. VRRP（网络高可靠性）
+12. 组播（Multicast）
+13. MPLS 与 MPLS VPN（与 [[sources/chips/centec-ctc8180]] MPLS 培训直接对应）
+14. 附录（全书习题答案）
+
+**核心概念提炼**：
+- **路由基础**：路由表查询→最长前缀匹配；路由来源（直连/静态/动态）与优先级、度量值；静态路由 + BFD/NQA 联动实现快速检测；黑洞路由防环；FIB（转发信息库）由路由表下发。
+- **动态路由**：RIP（距离矢量、防环机制）、OSPF（链路状态、LSA 为核心、区域化设计）、IS-IS、BGP（EGP）；进阶含重分发/路由策略/PBR。
+- **二层与可靠性**：VLAN/VLANIF 三层互通、链路聚合、STP 族、VRRP。
+- **MPLS VPN**：LSP、VPN 实例、与 MPLS 交换芯片能力对齐。
+- **认证范围**：HCNP-R&S 涵盖网络基础、华为路由交换产品、TCP/IP、路由协议、访问控制、eSight/Agile Controller、SDN/VXLAN/NFV、QoS、网络安全、PDIOI。
+
+> OCR 注：少量错字（如"IP"误为"卫"、"RIP"误为"RI"），已据上下文修正；结构信息完整可靠。
