@@ -51,17 +51,28 @@ source_dir: Q:\常规书籍
 
 > 以下为各书从提取文本（OCR/文本层）中蒸馏的真实内容。提取文本已落盘于 `Q:\AI\extract_tmp\out\`，文件名是 PDF 名安全化后的 `.txt`。
 
-### 1. 《Elasticsearch实战（in action 中文版）》_黄申译_2018
+### 1. 《Elasticsearch实战（in action 中文版）》_Radu Gheorghe & Matthew Lee Hinman & Roy Russo，黄申译，2018（Manning）
 
-- **定位**：Radu Gheorghe 等原著中文版，实战导向，按"浅入深"组织。
-- **章节主线（文本可辨）**：
-  - 第 1 章 入门；第 2 章 索引、更新和删除；第 3 章 搜索数据；第 4 章 全文索引（查询类型与过滤器）；第 5 章 分析（analyzer 如何把文档/查询文本分词）；第 6 章 相关性（影响得分因素、TF-IDF）；第 7 章 聚合（实时分析、聚集与查询连接）；第 8 章 关系型数据（如乐队与专辑的嵌套/父子）；第 9 章 向外扩展（多节点）；第 10 章 提升性能；第 11 章 管理集群。
-- **可提炼要点**：
-  - `match` 查询 vs `term` 查询：match 经过分析器，term 精确匹配不分词。
-  - 相关性默认算分算法为 **TF-IDF**（term frequency–inverse document frequency）。
-  - 词条聚集 `terms aggregation` 示例：`"aggregations": { "terms": { "field": "organizer" } }` —— 按字段值分组计数。
-  - 文档得分与相关性在第 4、6 章重点展开；`bool`、`filter` 是复合查询/结果过滤核心。
-- **关联**：写入/刷新/段合并机制见 [[20-protocols/elasticsearch]] 协议层；可视化见 [[sources/chips/h3c-tap]]（流量可视化思路可借鉴）。
+> 内容来自 **文本层提取（361 页，2026-07-29）** 正文提炼，附真实 cURL/概念示例（已校正 OCR 错字）。
+
+- **定位**：Manning "in Action" 系列，作者之一 Lee Hinman 任职 Elastic 公司。两部分：第一部分核心特性（索引/搜索/分析/相关性/聚合/关系），第二部分深入原理与性能/扩展（水平扩展、性能提升、集群运维）。附录含地理搜索、插件、高亮、自动补全、拼写检查、Percolator。
+- **逻辑 vs 物理设计（第2章）**：
+  - **逻辑设计（应用视角）**：文档(document) → 类型(type，类似表) → 索引(index，类似库)；"索引+类型+ID"唯一确定一篇文档；ID 是字符串非整数。以"get-together"聚会网站为例（event 活动 / group 分组两种类型）。
+  - **物理设计（管理者视角）**：索引被分为**分片(shard)**，分片可在集群节点间迁移；物理配置决定性能/可扩展性/可用性。应用通常无感知。
+- **数据类型（第3章）**：核心（string/数值/布尔）、数组与多值字段、预定义元字段（`_ttl` 过期自动删、`_timestamp` 自动加时间戳）。**同索引内不同类型同名同名字段须同类型**（都进同一 Lucene 索引），否则冲突。
+- **更新与并发控制（第3章，重点）**：
+  - 更新=取旧文档→改→重索引→删旧文档。
+  - **乐观锁版本控制**：`?version=N` 或更新 API 内部版本；冲突时抛异常；可用 `retry_on_conflict=3` 让 ES 自动重试。
+  - **外部版本**：`?version_type=external&version=101`，ES 接受比当前高的版本且不自增（适合从外部库同步）。
+  - 代码示例：`curl -XPOST localhost:9200/online-shop/shirts/1/_update -d '{"script":"ctx._source.price=2"}'`；并发更新用 `Thread.sleep` 演示版本冲突。
+- **分析器流水线（第5章）**：文本 → ①**字符过滤器**(如 `&`→`and`、去 HTML) → ②**分词器**(按空格/符号切 token) → ③**分词过滤器**(小写、去停用词、同义词) → 倒排索引。例："share your experience with NoSql & big data technologies" → tokens: share/your/experience/with/nosql/and/big/data/technologies。
+  - **索引期 vs 查询期分析**：`match`/`match_phrase` 查询会先分析；`term`/`terms` **不分析**——调试"搜不到"时关键。
+  - 分析器可在索引 settings 或全局配置文件定义；章节含定制分析器（字符过滤器+分词器+token filter 组合）示例。
+- **可提炼要点（实证）**：
+  - `match`(经分析器) vs `term`(精确不分词) 的命中差异是调试核心。
+  - 乐观锁版本号实现并发安全，异步索引无需严格排序源库。
+  - 类型(type)是 ES 抽象层、非 Lucene 物理隔离；同名跨类型字段须同映射。
+- **关联**：分片/版本机制见 [[20-protocols/elasticsearch]] 协议层；可视化思路见 [[sources/chips/h3c-tap]]。
 
 ### 2. 《Elasticsearch服务器开发（第2版）》_Clinton Gormely 等
 
@@ -81,22 +92,22 @@ source_dir: Q:\常规书籍
   - URI 请求查询映射到 `query_string` 查询。
 - **关联**：与 [[20-protocols/elasticsearch]] 协议/分片机制互补。
 
-### 3. 《Elasticsearch搜索引擎开发实战》_罗刚、张子宪
+### 3. 《Elasticsearch搜索引擎开发实战》_罗刚、张子宪（附教学 PPT）
 
-- **定位**：从"自己动手写搜索引擎"团队视角，偏**搜索引擎工程 + Java 代码实现 + 中文分词**。
-- **章节主线（文本可辨）**：
-  - 第 1 章 Elasticsearch 开发搜索引擎应用基础。
-  - 第 2 章 开发中文搜索引擎（中文分词原理、**中文分词插件开发**）。
-  - 第 3 章 索引（索引实现）。
-  - 第 4 章 深入源码分析（**Lucene 源码分析**、ES 源代码）。
-  - 第 5 章 提高搜索相关性（**向量空间检索模型、BM25 检索模型、学习评分 learning to rank**）。
-  - 第 6 章 开发案例分析。
-- **可提炼要点（Java API，文本含真实代码片段）**：
-  - 客户端：`static TransportClient client;` / `client = new PreBuiltTransportClient(settings);`，也可用 `Settings.EMPTY`。
-  - 写入：`client.prepareIndex(index, type, id).setSource(...).execute()`，或用 `IndexRequestBuilder`。
-  - 搜索：`SearchRequestBuilder srb = client.prepareSearch(index);` 支持 `setFrom/setSize`（分页）、`highlighter(...)`（高亮）。
-  - 中文分词：除字词混合索引，可用 **IKAnalyzer**（`IKAnalyzer` 类）做中文分词。
-- **关联**：BM25 / 相关性模型与 [[20-protocols/elasticsearch]] 评分互补；分词插件思路可用于日志分析。
+> 内容来自 **文本层提取（256 页，2026-07-29）** 正文提炼，含真实 Java API 代码片段。
+
+- **定位**："自己动手写搜索引擎"团队视角，偏**搜索引擎工程 + Java 代码实现 + 中文分词 + 源码分析**。共 8 章：①ES 开发基础(Java API/环境) ②中文搜索引擎(分词原理/分词插件) ③Mapping 详解 ④深入源码(Lucene/Guice/Transport/Netty/Zen 发现/分布式) ⑤提高相关性(向量空间/BM25/learning to rank) ⑥搜索界面(Searchkit/Spring Boot/Vue.js/Word2vec) ⑦… ⑧案例。
+- **Java 客户端 API（第1章，真实代码）**：
+  - 建索引库：`IndicesAdminClient ac = client.admin().indices();` → `prepareCreate(indexName)`，`Settings.builder().put("number_of_shards",1)` 设分片；索引名不能含大写。
+  - 定义 Mapping：用 `XContentBuilder` 链式构建（`.startObject("body").field("type","string").field("store","yes").field("analyzer","standard").endObject()`），再 `IndicesAdminClient.putMapping()`。
+  - 删索引：`client.admin().indices().prepareDelete(indexName).execute().actionGet()`。
+  - 导入数据：`IndexRequestBuilder b = client.prepareIndex("ems","article", id);` → `b.setSource(map)` → `b.execute()`，其中 `source` 为 `Map<String,String>`。
+- **中文分词与插件（第2章）**：除字词混合索引外，可用 **IKAnalyzer**（IK 分词器）做中文分词；含中文分词插件开发。
+- **相关性模型（第5章）**：向量空间检索模型、**BM25 检索模型**、学习评分(learning to rank)、查询意图识别、图像特征提升检索。
+- **源码分析（第4章）**：Lucene 源码、ES 启动/搜索服务、**Guice** 框架、Transport 模块、线程池、**Netty** 通信、**Zen 发现机制**(discovery)、联合搜索、NM 字节码。
+- **搜索界面（第6章）**：Searchkit 实现搜索 UI；Spring Boot + **spring-data-elasticsearch** 访问 ES；Vue.js + Vue.js Paginator 翻页；Suggester 搜索词提示；**Word2vec** 挖掘相关搜索词；Rust 开发界面。
+- **可提炼要点（实证）**：TransportClient/IndicesAdminClient 是 ES 1.x/2.x 原生 Java 接口；Mapping 用 XContentBuilder 以 JSON 结构声明字段类型与 analyzer；中文场景首选 IK 分词。
+- **关联**：BM25 / 学习排序与 [[20-protocols/elasticsearch]] 评分互补；分词/插件思路用于日志分析字段设计。
 
 ### 4. 《Kibana 中文指南》
 
@@ -110,25 +121,25 @@ source_dir: Q:\常规书籍
   - packetbeat 曾 fork Kibana3 分支以保留网络拓扑展现（topology）；需要拓扑的用户仍用 Kibana3 / Qbana。
 - **关联**：可视化与 [[sources/chips/h3c-tap]] 流量可视化设备的前端思路可对照。
 
-### 5. 《PaaS实现与运维管理：基于Mesos+Docker+ELK的实战指南》_余何
+### 5. 《PaaS实现与运维管理：基于Mesos+Docker+ELK的实战指南》_余何（电子工业出版社，2016）
 
-- **定位**：把 PaaS 落地拆成"概念模型 / 基础资源 / 平台实现 / 运维管理"四部分，共 **15 章**，且把 ELK 作为日志集中管理组件纳入 PaaS。
-- **章节主线（TOC 清晰）**：
-  - 第 1 章 分布式 PaaS 平台介绍；第 2 章（平台总览）；第 3 章 计算资源；第 4 章 网络资源；第 5 章 存储资源；第 6 章 平台功能与架构；第 7 章 计算单元 **Docker**；第 8 章 分布式协调 **ZooKeeper**；第 9 章 资源管理 **Mesos**；第 10 章 服务调度框架 **Marathon**；第 11 章 大数据调度框架 **Spark**；第 12 章 日志集中管理 **ELK**；第 13 章 配置管理；第 14 章 监控管理；第 15 章 运维管理。
-- **可提炼要点**：
-  - 核心技术栈：容器 **Docker** + 资源调度 **Mesos** + 协调 **ZooKeeper** + 服务编排 **Marathon** + 大数据 **Spark** + 日志 **ELK**（Logstash 采集、ES 存储、Kibana 展现）。
-  - 强调"PaaS 绝不是改个容器那么简单"，是对开发/运维工作流的重新编排。
-- **关联**：ELK 链路与 [[20-protocols/elasticsearch]]、[[sources/chips/h3c-tap]] 的可观测性主题呼应。
+> 内容来自 **文本层提取（447 页，2026-07-29）** 正文提炼。
 
-### 6. 《大数据搜索与日志挖掘及可视化方案 ELK Stack（第2版）》_高凯等
+- **定位**：以平安科技实践经验为背景，阐述 PaaS 平台的**理论 + 技术实现 + 运维管理**。四大部分：①概念模型（运维与开发的矛盾、PaaS 如何缓解）②基础资源（计算/网络/存储三大主干）③平台实现（用开源产品构建完整 PaaS）④运维管理实践。强调"PaaS 绝不是改个容器或虚拟机那么简单"，是对平台建设理论、技术实现、配套系统、流程管理的全覆盖（蓝鲸/腾讯、优维等业界推荐）。
+- **核心技术栈（第7-12章）**：计算单元 **Docker** + 分布式协调 **ZooKeeper** + 资源管理 **Mesos** + 服务调度 **Marathon** + 大数据 **Spark** + 日志集中管理 **ELK**（Logstash 采集 → ES 存储 → Kibana 展现）。
+- **ELK 在 PaaS 中的角色（第12章）**：将 ELK 作为日志集中管理组件纳入 PaaS，解决分布式环境下多节点日志的采集、检索与可视化。
+- **可提炼要点（实证）**：PaaS 落地 = 容器编排(Mesos/Marathon) + 协调(ZK) + 日志可观测(ELK) 的组合；对运维工作流是重新编排而非简单封装。
+- **关联**：ELK 链路与 [[20-protocols/elasticsearch]]、[[sources/chips/h3c-tap]] 的可观测性主题呼应；Mesos/Marathon 资源调度思路可与 [[sources/chips/centec-sdk]] 的集群管理对照。
 
-- **定位**：工程实践导向的 ELK 教程，覆盖 ES 分布式索引检索 + Logstash 日志处理 + Kibana 可视化。
-- **章节主线（文本可辨）**：
-  - 第 1 章 概述；第 2 章 文档索引及管理；第 3 章 信息检索与结果过滤；第 4 章 信息统计分析与搜索提示；第 5–6 章（OCR 截断，疑为高级查询/聚合分析）；第 7 章 基于…；第 8 章 基于…；第 9 章 网络信息检索与分析实践。
-- **可提炼要点**：
-  - 定位：ES 已超过 Solr 成为排名第一的搜索引擎类应用（书中引 DB-Engines 排名）；Logstash 处理多源日志；Kibana 出可视化。
-  - 内容结构：基于 ES 的分布式计算与全文检索、基于 Logstash 的日志处理机制、基于 Kibana 的挖掘结果可视化。
-- **关联**：与 [[20-protocols/elasticsearch]] 配合作为中文 ELK 实操手册。
+### 6. 《大数据搜索与日志挖掘及可视化方案 ELK Stack（第2版）》_高凯等（清华大学出版社，2016）
+
+> 内容来自 **文本层提取（291 页，2026-07-29）** 正文提炼。
+
+- **定位**：国内较早**综合介绍 ELK 架构**的工程实践教程。以非结构化文本 + 半结构化日志为对象，分三角度：①用 ES（基于 Lucene）做分布式索引与全文检索、数据聚合 ②用 Logstash 智能分析处理日志 ③用 Kibana 做搜索/可视化。书中引 **DB-Engines 2016-01 统计：ES 已超 Solr 成排名第一的搜索引擎类应用**。
+- **ELK Stack 组成（含周边）**：Elasticsearch（分布式存储+检索）、Logstash（多源日志处理）、Kibana（可视化）；周边 **Shield**（安全/权限/加密/审计）、**Watcher**（性能监控/告警）、**Beats**（Filebeat/Topbeat/Packetbeat 采集）。
+- **章节结构**：ELK 简介 → 文档索引与处理 → 信息检索与过滤 → 信息统计与分析 → 基于 Java 客户端的 ES 功能实现 → ES 配置与管理 → 基于 Logstash 的网络日志处理 → 基于 Kibana 的可视化 → 应用实例。
+- **可提炼要点（实证）**：ES 提供分布式计算与全文检索 + 聚合分析；Logstash 处理多源日志；Kibana 出挖掘结果可视化；Shield/Watcher/Beats 是生产增强组件。
+- **关联**：与 [[20-protocols/elasticsearch]] 配合作为中文 ELK 实操手册；日志处理链路见 [[sources/chips/h3c-tap]] 流量可视化。
 
 ### 7. 扫描版 OCR 蒸馏（已完成 OCR，2026-07-29）
 
