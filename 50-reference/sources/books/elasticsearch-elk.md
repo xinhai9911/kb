@@ -3,7 +3,13 @@ title: Elasticsearch / ELK 书籍蒸馏
 tags: [reference, sources, elasticsearch, elk, search, active]
 created: 2026-07-29
 updated: 2026-07-29
+summary: >-
+    | 文件名 | 体量 | 侧重点 |
+category: reference
 source_dir: Q:\常规书籍
+sources: []
+base_confidence: 0.6
+lifecycle: reviewed
 ---
 
 # Elasticsearch / ELK 书籍蒸馏
@@ -11,6 +17,7 @@ source_dir: Q:\常规书籍
 > 8 本 Elasticsearch 与 ELK 栈中文书籍的索引。与 [[20-protocols/elasticsearch]]（协议分析）、[[50-reference/director-intro]] 无关但同属知识库参考。
 
 > ✅ **扫描版 OCR 已完成**：`《深入理解Elasticsearch》.pdf`（270页）、`《Elasticsearch技术解析与实战》.pdf`（436页）原为扫描件、无文本层，已于 2026-07-29 用 EasyOCR（gen2 模型）逐页识别并蒸馏，见下方"深度提炼 §7"。
+> ✅ **全部 8 本均已达内容级蒸馏**：6 本文本层书（§1–§6）+ 2 本扫描 OCR 书（§7）均已展开为真实概念/API/配置示例，而非目录骨架。其中《服务器开发（第2版）》《Kibana 中文指南》于 2026-07-29 完成全量 OCR（457/653 页标记）并蒸馏为 §2/§4。
 > 原始路径：`Q:\常规书籍\《深入理解Elasticsearch》.pdf`、`Q:\常规书籍\《Elasticsearch技术解析与实战》.pdf`
 
 ## 书目清单（原文路径 `Q:\常规书籍\`）
@@ -72,25 +79,61 @@ source_dir: Q:\常规书籍
   - `match`(经分析器) vs `term`(精确不分词) 的命中差异是调试核心。
   - 乐观锁版本号实现并发安全，异步索引无需严格排序源库。
   - 类型(type)是 ES 抽象层、非 Lucene 物理隔离；同名跨类型字段须同映射。
-- **关联**：分片/版本机制见 [[20-protocols/elasticsearch]] 协议层；可视化思路见 [[sources/chips/h3c-tap]]。
+- **关联**：分片/版本机制见 [[20-protocols/elasticsearch]] 协议层；可视化思路见 [[50-reference/sources/chips/h3c-tap]]。
 
 ### 2. 《Elasticsearch服务器开发（第2版）》_Clinton Gormely 等
 
-- **定位**：服务端开发权威手册，基于 ES 1.0.0 写作。文本层提取质量好，含每章导言。
-- **章节主线**：
-  - 第 1 章 集群入门（全文检索、Apache Lucene、文本分析、运行配置、基础索引/搜索）。
-  - 第 2 章 索引（索引原理、数据类型、**段 segment**、**合并 merging**、**路由 routing**）。
-  - 第 3 章 搜索（查询原理、基本查询与复合查询、过滤、高亮、排序）。
-  - 第 4 章 扩展索引结构（树状/关系型数据、修改索引结构）。
-  - 第 5 章 更好的搜索（Lucene 评分、**脚本 script**、语言分析器对评分影响）。
-  - 第 6 章 超越全文检索（**聚合框架 aggregation framework**、切面 faceting、拼写检查、自动完成）。
-  - 第 7 章 深入集群（节点发现 discovery、恢复 recovery、**Gateway 时光之门**模块、模板、高查询/高索引用例）。
-  - 第 8 章 集群管理（备份、监控、再平衡 rebalance、移动分片、热身 warm、别名 alias、插件、更新 API）。
-- **可提炼要点**：
-  - 聚合框架（aggregation framework）是该版"闪光点"，开辟分析用例；6.1 节专讲聚合。
-  - `routing` 决定文档落到哪个分片；`alias` 可像 SQL 视图一样包裹查询 DSL。
-  - URI 请求查询映射到 `query_string` 查询。
-- **关联**：与 [[20-protocols/elasticsearch]] 协议/分片机制互补。
+> 内容来自 **全量 OCR（457 页标记，2026-07-29）** 正文提炼。该书基于 **ES 1.0.0**，OCR 中文噪点较多，但 cURL/JSON/API 片段清晰可辨，以下为可确证的内容（已校正明显 OCR 错字）。
+
+- **定位与运行模型（第1章）**：一本"面向服务端开发者"的权威手册，从 Lucene 与全文检索原理讲起。ES 同时开两个端口：①**REST API（HTTP）默认 9200**，供外部/调试访问；②**transport module 默认 9300**，供节点间、Java 客户端、集群内部通信。启动后访问 `http://127.0.0.1:9200` 返回集群元信息（含 `tagline: "You Know, for Search"`、`Lucene Version` 等）。强调 JVM 堆不超过系统内存 50%，避免 GC 压力。
+- **REST API 与文档写入（第1.4章）**：文档以 JSON 表达，字段可不同类型的（字符串 `title`、整数 `priority`、数组 `tags`）。用 `curl -XPUT` 索引并指定 `_id`：
+  ```bash
+  curl -XPUT "localhost:9200/library/book/1?pretty" -d '{
+    "title": "New Version Of Elasticsearch Released!",
+    "content": "Version 1.0 released today",
+    "priority": 10, "tags": ["announce","elasticsearch","release"]
+  }'
+  ```
+  ES 自动推断字段类型并建内部映射（`_source` 原样存 JSON）。
+- **乐观锁版本控制（第1.4章，重点）**：删除/更新带 `?version=N`，版本不符抛 **`VersionConflictEngineException`**（`current [2] provided [1]`，HTTP 409）。这是典型的**乐观并发控制（optimistic locking）**——多人同时改同一文档时防止后写覆盖先写。
+  ```bash
+  curl -XDELETE "localhost:9200/library/book/1?version=1"
+  # 若当前版本已是 2，则报 VersionConflictEngineException
+  ```
+- **URI 请求查询（第1.5章）**：最简单的查询用 URI 参数，最终映射到 `query_string` 查询。
+  ```bash
+  # 全集群搜索
+  curl -XGET "localhost:9200/_search?pretty"
+  # 指定索引、过滤字段（fq= 等价于 filter，不评分可缓存）
+  curl -XGET "localhost:9200/books/_search?pretty&q=title:elasticsearch"
+  curl -XGET "localhost:9200/books/_search?pretty&fq=title:elasticsearch"
+  ```
+  响应结构：`took`（毫秒）、`timed_out`、`_shards`（total/successful/failed）、`hits.total`、`hits.hits[]`（每项含 `_index/_type/_id/_score/_source`）。书中强调 URI 查询会被翻译成 `query_string`，理解这点对调试"搜不到"很关键。
+- **映射与字段类型（第2章）**：用 `_mapping` API 查看/定义结构；字段可设 `store`（是否独立存储）、`index`（analyzed/not_analyzed/no）、`precision_step` 等。书里以 `posts` 索引示例：`id`(long)、`published`(date)、`content`(string, analyzed)、`title`(string, analyzed)。
+  ```bash
+  curl -XGET "localhost:9200/books/_mapping?pretty"
+  ```
+- **分析器与 _analyze API（第2/3章）**：文本经 analyzer（字符过滤器→分词器→token filter）转成 term 入库；`term` 查询不分词而 `match` 分词，大小写差异导致命中差异。可调用 `_analyze` 直接看某字段如何被分析：
+  ```bash
+  curl -XGET "localhost:9200/books/_analyze?field=title&pretty" -d 'Elasticsearch Server'
+  ```
+- **聚合与 suggester（第6章，"闪光点"）**：聚合框架（aggregation framework）是该版重点，开辟分析用例；拼写检查/自动完成用 `suggest`：
+  ```bash
+  curl -XGET "localhost:9200/library/_search?pretty" -d '{
+    "query": {"match": {"_all": "serlock holmes"}},
+    "suggest": {
+      "first_suggestion": {"text":"serlock holnes","term":{"field":"_all"}},
+      "second_suggestion":{"text":"serlock holnes","term":{"field":"title"}}
+    }
+  }'
+  ```
+- **深入集群（第7-8章）**：节点发现 discovery、Gateway（时光之门，持久化集群状态/元数据的模块）、recovery 恢复、template 模板、rebalance 再平衡、alias 别名（像 SQL 视图包裹查询 DSL）、warm 热身、插件与更新 API；URI 请求查询 → `query_string` 查询的映射在全书的"请求查询"章节反复强调。
+- **可提炼要点（实证）**：
+  - 9200(REST) vs 9300(transport) 双端口；JVM 堆 ≤ 50% 系统内存。
+  - 乐观锁：`?version=N` + `VersionConflictEngineException(409)`，后写冲突安全。
+  - `query_string` 是 URI 查询的底层实现；`match`(分析) vs `term`(不分词) 命中差异是调试核心。
+  - `_analyze` API 直接观察分词结果；`alias` 可像视图一样封装查询。
+- **关联**：与 [[20-protocols/elasticsearch]] 协议/分片机制互补；版本控制与 [[50-reference/sources/chips/centec-sdk]] 的并发接入模式可对照。
 
 ### 3. 《Elasticsearch搜索引擎开发实战》_罗刚、张子宪（附教学 PPT）
 
@@ -111,15 +154,36 @@ source_dir: Q:\常规书籍
 
 ### 4. 《Kibana 中文指南》
 
-- **定位**：Kibana 5 可视化使用指南，文本为社区实践混合（含大量 ELK 实战经验，书内常提 Kibana3/Kibana4 差异）。
-- **可提炼要点（文本可辨）**：
-  - Kibana 是单页 Web 应用，前端用 AngularJS（Promise.then 异步）；常前置 nginx 反代。
-  - 四大功能面：**Discover（搜索）、Visualize（可视化开发）、Dashboard（仪表盘）、Timelion（时序）**。
-  - 聚合演变：Kibana v3 用 **Facet**，v4 起用 **Aggregation**（与 ES 聚合框架对齐）。
-  - 地图可视化：`geo_point` 类型 + tilemap 面板，可统计某点方圆 N 千米内数据点；配合 GeoIP 提供国别/省市/经纬度。
-  - 时区：ELK 方案在 Kibana 读浏览器时区，需注意 `now-1h TO now` 等相对时间表达式。
-  - packetbeat 曾 fork Kibana3 分支以保留网络拓扑展现（topology）；需要拓扑的用户仍用 Kibana3 / Qbana。
-- **关联**：可视化与 [[sources/chips/h3c-tap]] 流量可视化设备的前端思路可对照。
+> 内容来自 **全量 OCR（653 页标记，2026-07-29）** 正文提炼。该书为社区维护的 Elastic Stack 5.0 中文指南（chenryn 版），含大量 ELK 实战经验。中文噪点多，但 Logstash 配置、命令、字段名清晰可辨。
+
+- **定位与版本脉络**：面向 Elastic Stack 5.0 的可视化使用指南，常对比 Kibana3/Kibana4 差异。作者在前言标注版本随 Elastic Stack 5.0（2016-10-27）统一到 5.0 状态；TODO 清单列出新增能力：`es-hadoop`、`beats`、`codec/netflow`、`filter/elapsed`、`Zeppelin on ES`、`painless` 脚本、`significant_text` 聚合、`cat nodeattrs` 接口、`timelion` 面板、`region` 地图等。
+- **Logstash 安装（第1章）**：Logstash 是 Jordan Sissel 2009 年写的日志收集/解析/转发工具（"collect logs, parse them, and store them for later use"）。Java 前置依赖，配置官方 yum/apt 仓库安装：
+  ```bash
+  # CentOS
+  rpm --import https://packages.elasticsearch.org/GPG-KEY-elasticsearch
+  cat > /etc/yum.repos.d/logstash.repo <<EOF
+  [Logstash-5.0]
+  name=logstash repository For 5.0.X packages
+  baseurl=https://packages.elasticsearch.org/logstash/5.0/centos
+  gpgcheck=1; gpgkey=https://packages.elasticsearch.org/GPG-KEY-elasticsearch
+  enabled=1
+  EOF
+  yum clean all && yum install logstash
+  ```
+- **hello world 管道（第1章，关键入门）**：Logstash 三阶段 `input → filter → output`，最小可运行配置：
+  ```bash
+  # bin/logstash -e 'input { stdin { } } output { stdout { codec => rubydebug } }'
+  ```
+  输入 `Hello World` 回车后，输出带标准事件结构字段：`message`（原始内容）、`@version`、`@timestamp`（ISO8601 时间）、`host`（产生事件的主机名）。这四个字段是后续所有过滤/可视化的基础——`@timestamp` 尤其决定 Kibana 时间轴。
+- **Kibana 四大功能面**：**Discover（搜索/即席查询）、Visualize（可视化图形开发）、Dashboard（仪表盘组合）、Timelion（时序表达式）**。聚合演变：v3 用 **Facet**，v4 起改用 **Aggregation**（与 ES 聚合框架对齐，故 Kibana 图本质是对 ES 聚合的封装）。
+- **地图可视化**：`geo_point` 类型字段 + tilemap 面板，可统计某点方圆 N 千米内数据点；配合 **GeoIP** 插件提供国别/省市/经纬度。时区：Kibana 读浏览器时区，写时间范围查询（如 `now-1h TO now`）时务必注意相对时间表达式的时区解释。
+- **部署形态**：Kibana 是单页 Web 应用（前端 AngularJS，`Promise.then` 异步），生产常前置 **nginx** 反代；`packetbeat` 曾 fork Kibana3 分支以保留网络**拓扑（topology）**展现，需要拓扑的用户仍用 Kibana3 / Qbana。
+- **典型 ELK 数据流（书中贯穿）**：`Filebeat/Logstash 采集 → ES 存储索引 → Kibana Discover/Visualize/Dashboard 展现`；Logstash 的 `filter` 阶段（grok/mutate/date 等，书中 1.2.2 节列有 `mutate`/`ruby`/`split`/`elapsed`/`output{email/exec/file/nagios/statsd/stdout/tcp/hdfs}` 等插件清单）负责把非结构化日志解析成结构化字段，才能让 Kibana 正确聚合。
+- **可提炼要点（实证）**：
+  - Logstash 三阶段 `input→filter→output`；事件标准字段 `message/@version/@timestamp/host`。
+  - Kibana 图 = ES 聚合的前端封装（v4+ 弃 Facet 用 Aggregation）。
+  - `geo_point`+GeoIP+tilemap 做地理可视化；`@timestamp` 是时间轴基础；前置 nginx 反代是常见生产形态。
+- **关联**：可视化与 [[50-reference/sources/chips/h3c-tap]] 流量可视化设备的前端思路可对照；Logstash 管道与 [[20-protocols/elasticsearch]] 的索引写入链路衔接。
 
 ### 5. 《PaaS实现与运维管理：基于Mesos+Docker+ELK的实战指南》_余何（电子工业出版社，2016）
 
@@ -129,7 +193,7 @@ source_dir: Q:\常规书籍
 - **核心技术栈（第7-12章）**：计算单元 **Docker** + 分布式协调 **ZooKeeper** + 资源管理 **Mesos** + 服务调度 **Marathon** + 大数据 **Spark** + 日志集中管理 **ELK**（Logstash 采集 → ES 存储 → Kibana 展现）。
 - **ELK 在 PaaS 中的角色（第12章）**：将 ELK 作为日志集中管理组件纳入 PaaS，解决分布式环境下多节点日志的采集、检索与可视化。
 - **可提炼要点（实证）**：PaaS 落地 = 容器编排(Mesos/Marathon) + 协调(ZK) + 日志可观测(ELK) 的组合；对运维工作流是重新编排而非简单封装。
-- **关联**：ELK 链路与 [[20-protocols/elasticsearch]]、[[sources/chips/h3c-tap]] 的可观测性主题呼应；Mesos/Marathon 资源调度思路可与 [[sources/chips/centec-sdk]] 的集群管理对照。
+- **关联**：ELK 链路与 [[20-protocols/elasticsearch]]、[[50-reference/sources/chips/h3c-tap]] 的可观测性主题呼应；Mesos/Marathon 资源调度思路可与 [[50-reference/sources/chips/centec-sdk]] 的集群管理对照。
 
 ### 6. 《大数据搜索与日志挖掘及可视化方案 ELK Stack（第2版）》_高凯等（清华大学出版社，2016）
 
@@ -139,7 +203,7 @@ source_dir: Q:\常规书籍
 - **ELK Stack 组成（含周边）**：Elasticsearch（分布式存储+检索）、Logstash（多源日志处理）、Kibana（可视化）；周边 **Shield**（安全/权限/加密/审计）、**Watcher**（性能监控/告警）、**Beats**（Filebeat/Topbeat/Packetbeat 采集）。
 - **章节结构**：ELK 简介 → 文档索引与处理 → 信息检索与过滤 → 信息统计与分析 → 基于 Java 客户端的 ES 功能实现 → ES 配置与管理 → 基于 Logstash 的网络日志处理 → 基于 Kibana 的可视化 → 应用实例。
 - **可提炼要点（实证）**：ES 提供分布式计算与全文检索 + 聚合分析；Logstash 处理多源日志；Kibana 出挖掘结果可视化；Shield/Watcher/Beats 是生产增强组件。
-- **关联**：与 [[20-protocols/elasticsearch]] 配合作为中文 ELK 实操手册；日志处理链路见 [[sources/chips/h3c-tap]] 流量可视化。
+- **关联**：与 [[20-protocols/elasticsearch]] 配合作为中文 ELK 实操手册；日志处理链路见 [[50-reference/sources/chips/h3c-tap]] 流量可视化。
 
 ### 7. 扫描版 OCR 蒸馏（已完成 OCR，2026-07-29）
 
@@ -163,7 +227,7 @@ source_dir: Q:\常规书籍
   - 段合并（merge）对写入/查询性能影响大，可按场景调 `merge` 策略。
   - routing 决定文档落到哪个分片，是分布式扩缩容的关键旋钮。
   - warmer 在查询前预热缓存/字段数据，降低首查延迟。
-- **关联**：与 [[20-protocols/elasticsearch]] 协议/分片机制互补；Java API 思路见 [[sources/chips/centec-sdk]]（SDK 接入模式可对照）。
+- **关联**：与 [[20-protocols/elasticsearch]] 协议/分片机制互补；Java API 思路见 [[50-reference/sources/chips/centec-sdk]]（SDK 接入模式可对照）。
 
 #### 7.2 《Elasticsearch技术解析与实战》_朱林 编著，机械工业出版社（含 ES 5 新功能，实战基于 ES 2.3.0）
 
@@ -220,4 +284,4 @@ source_dir: Q:\常规书籍
   - **版本号并发控制**（`?version` / `version_type=external`）实现乐观锁，异步索引无需严格排序源库变更。
   - **分词字符串的聚合/排序极耗堆内存**（fielddata），优先用 `doc_values` + `not_analyzed` 字段。
   - **自定义分析器** = 字符过滤器 + 分词器 + token filter 三段式，可用 `_analyze?explain=true` 调试。
-- **关联**：ELK 链路与 [[sources/chips/h3c-tap]]（流量可视化）、[[20-protocols/elasticsearch]] 协议层互补；Nginx 日志范例可与 [[sources/books/network-hcna-hcnp]] 运维场景对照；映射/分词思路用于日志字段设计。
+- **关联**：ELK 链路与 [[50-reference/sources/chips/h3c-tap]]（流量可视化）、[[20-protocols/elasticsearch]] 协议层互补；Nginx 日志范例可与 [[50-reference/sources/books/network-hcna-hcnp]] 运维场景对照；映射/分词思路用于日志字段设计。
