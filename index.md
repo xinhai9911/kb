@@ -24,6 +24,9 @@ updated: 2026-07-30
 - [[10-projects/database-decoder|database-decoder]]
 - [[10-projects/training|training]]
 
+### 工程示例（可编译/可运行）
+- [[projects/README|工程示例总览导航（nginx / 加密 / 限流熔断 / 可观测 / CI-CD / db-decoder）]]
+
 ## 协议分析
 
 - [[20-protocols/hbase|HBase 协议分析]]
@@ -81,6 +84,68 @@ updated: 2026-07-30
 - [[entities/Nginx TLS 配置与证书管理实战|Nginx TLS 配置与证书管理（1.3/PFS/OCSP/HSTS）]]
 - [[entities/国密 SM2_SM3_SM4 实战|国密 SM2/SM3/SM4 + TLCP 实战]]
 - [[entities/证书与 X.509 公钥基础设施实战|X.509 证书与 PKI（链/CSR/mTLS/吊销）]]
+
+## 软件工程与架构
+
+- [[synthesis/软件工程与架构技术全景综述|软件工程与架构技术全景综述（权衡 + 学习路径）]]
+
+### 概念（原理）
+- [[concepts/软件设计原则与代码质量|软件设计原则与代码质量（SOLID/DRY/Clean Code/坏味道）]]
+- [[concepts/设计模式精讲|设计模式精讲（创建/结构/行为 + 反模式）]]
+- [[concepts/架构风格演进|架构风格演进（单体→微服务→事件驱动→CQRS→Serverless）]]
+- [[concepts/分布式系统基础|分布式系统基础（CAP/共识/幂等/时钟）]]
+- [[concepts/可观测性工程|可观测性工程（日志/指标/追踪/SLO）]]
+- [[concepts/韧性设计|韧性设计（超时/重试/熔断/限流/舱壁/降级）]]
+- [[concepts/CI_CD与测试策略|CI/CD 与测试策略（金字塔/契约/金丝雀）]]
+- [[concepts/API 设计|API 设计（REST/gRPC/版本化/幂等/错误模型）]]
+- [[concepts/领域驱动设计 DDD|领域驱动设计 DDD（限界上下文/聚合/领域事件）]]
+- [[concepts/系统设计思维|系统设计思维（trade-off/容量/技术债）]]
+
+### 实体（实战）
+- [[entities/重构实战：识别并消除代码坏味道|重构实战（坏味道前后对比）]]
+- [[entities/微服务拆分实战|微服务拆分实战（边界/数据/通信/一致性）]]
+- [[entities/可观测性接入实战|可观测性接入实战（OTel+Prometheus+Grafana）]]
+- [[entities/CI_CD 流水线实战|CI/CD 流水线实战（GitHub Actions/金丝雀）]]
+- [[entities/限流熔断实战|限流熔断实战（令牌桶/滑动窗口/熔断/退避）]]
+
+### 示例工程
+- [[projects/README|工程示例总览导航（一眼看全部示例工程）]]
+- [[projects/resilience-examples/README|resilience-examples（限流/熔断/重试 可编译 C 示例）]]
+- [[projects/observability-examples/README|observability-examples（OTel+Prometheus+Loki+Tempo+Grafana 栈）]]
+- [[projects/cicd-pipeline-examples/README|cicd-pipeline-examples（GitHub Actions + Helm 金丝雀 + 回滚）]]
+
+## 软件项目管理
+
+- [[synthesis/软件项目管理全景综述|软件项目管理全景综述（PMBOK / 敏捷 / 学习路径）]]
+
+### 概念（基础）
+
+- [[concepts/pm-pmbok|PMBOK 知识体系（5 大过程组 × 10 大知识领域）]]
+- [[concepts/pm-agile-methodologies|敏捷方法论概述（Scrum / Kanban / Lean / XP 对比）]]
+- [[concepts/pm-scrum|Scrum 框架（Sprint / 三角色 / 五事件）]]
+- [[concepts/pm-kanban|看板方法（WIP / Cycle Time / 流动）]]
+- [[concepts/pm-requirements-management|需求与范围管理（WBS / User Story / 变更控制）]]
+- [[concepts/pm-schedule-cost-management|进度与成本管理（CPM / EVM / 估算）]]
+- [[concepts/pm-quality-management|质量管理（QA/QC / CMMI / 成本）]]
+- [[concepts/pm-risk-management|风险管理（识别 / 概率-影响 / 应对）]]
+- [[concepts/pm-team-stakeholder-management|团队与干系人管理（Tuckman / RACI）]]
+- [[concepts/pm-estimation-deep|软件估算技术深入（Wideband Delphi / COCOMO / FPA）]]
+- [[concepts/pm-metrics-kpi|项目度量与 KPI（Velocity / Cycle Time / CPI）]]
+- [[concepts/pm-lean-xp|Lean 与 XP 深入（精益原则 / TDD / 结对编程）]]
+- [[concepts/pm-scaling-agile|规模化敏捷（SAFe / LeSS / Nexus）]]
+- [[concepts/pm-change-configuration|变更与配置管理（CCB / 配置项 / 审计）]]
+- [[concepts/pm-documentation|软件项目文档体系（全生命周期文档清单）]]
+
+### 实体（工具）
+
+- [[entities/pm-jira|Jira 项目跟踪工具]]
+- [[entities/pm-zentao|禅道（全生命周期管理）]]
+- [[entities/pm-turnitin-kanban|板栗看板（轻量级看板）]]
+- [[entities/pm-common-tools|项目管理工具对比]]
+
+### 来源
+
+- [[sources/pm-classic-references|项目管理经典参考来源（规范 / 书籍 / 文章）]]
 
 ## Linux 内核与性能
 
@@ -352,7 +417,7 @@ updated: 2026-07-30
 ## nginx-module-examples（模块开发示例工程）
 
 - [[projects/nginx-module-examples/README|示例工程总览 + 编译/运行配置]]
-- [[projects/nginx-module-examples/nginx.conf|最小 nginx.conf（一键 -c 启动）]]
+- [最小 nginx.conf（一键 -c 启动）](projects/nginx-module-examples/nginx.conf)
 - [[entities/Nginx 模块开发实战|Nginx 模块开发实战（文档）]]
 - [[concepts/Nginx 框架内部实现|Nginx 框架内部实现（原理）]]
 

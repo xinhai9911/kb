@@ -1,0 +1,64 @@
+---
+summary: PMBOK（Project Management Body of Knowledge）是 PMI 发布的项目管理知识体系标准，定义 5 大过程组、10 大知识领域（第 6 版）及 12 原则 + 8 绩效域（第 7 版）。
+category: concept
+title: PMBOK 知识体系
+tags: [pm, concept, pmbok]
+lifecycle: draft
+created: 2026-07-30
+updated: 2026-07-30
+base_confidence: 0.85
+---
+
+# PMBOK 知识体系
+
+## 概述
+
+PMBOK（Project Management Body of Knowledge）由美国项目管理协会（PMI）发布，是全球认可度最高的项目管理知识体系标准，也是 PMP 认证的考试基础。
+
+## 第 6 版：5 大过程组 × 10 大知识领域
+
+### 5 大过程组
+
+| 过程组 | 核心活动 |
+|--------|----------|
+| 启动 | 制定项目章程、识别干系人 |
+| 计划 | 范围/进度/成本/质量/风险/沟通等规划 |
+| 执行 | 指导管理、建设团队、质量保证、沟通 |
+| 监控 | 整体变更控制、范围/进度/成本/风险监控 |
+| 收尾 | 结束项目或阶段、合同收尾 |
+
+### 10 大知识领域
+
+1. **项目集成管理** — 统一协调各领域，变更控制
+2. **项目范围管理** — 需求收集、WBS 分解、范围确认
+3. **项目进度管理** — 活动定义、排期、关键路径
+4. **项目成本管理** — 估算、预算、挣值管理（EVM）
+5. **项目质量管理** — 质量标准、质量保证、质量控制
+6. **项目资源管理** — 团队建设、资源分配、冲突管理
+7. **项目沟通管理** — 沟通规划、信息分发、绩效报告
+8. **项目风险管理** — 识别、分析、应对、监控
+9. **项目采购管理** — 供应商选择、合同管理
+10. **项目干系人管理** — 识别、参与、期望管理
+
+## 第 7 版（2021）的范式转变
+
+第 7 版从"过程驱动"转向**原则驱动 + 绩效域驱动**：
+
+### 12 项原则
+
+ stewardship, team, stakeholders, value, systems thinking, leadership, tailoring, quality, complexity, risk, adaptability, change
+
+### 8 个绩效域
+
+- 干系人、团队、开发方法和生命周期、规划、项目工作、交付、测量、不确定性
+
+## 与敏捷的关系
+
+PMBOK 第 6 版已附录敏捷实践，第 7 版更明确地将预测型、敏捷、混合三种生命周期并列，不再区分主从。
+
+## 相关页面
+
+- [[synthesis/软件项目管理全景综述]]
+- [[concepts/pm-agile-methodologies]]
+- [[concepts/pm-requirements-management]]
+- [[concepts/pm-risk-management]]
