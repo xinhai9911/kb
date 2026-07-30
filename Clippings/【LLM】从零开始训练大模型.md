@@ -1,13 +1,15 @@
 ---
-title: "【LLM】从零开始训练大模型"
-source: "https://zhuanlan.zhihu.com/p/636270877"
+title: 【LLM】从零开始训练大模型
+source: https://zhuanlan.zhihu.com/p/636270877
 author:
   - "[[何枝]]"
 published:
 created: 2026-07-30
-description: "在这篇文章中，我们将尽可能详细地梳理一个完整的 LLM 训练流程。包括模型预训练（Pretrain）、Tokenizer 训练、指令微调（Instruction Tuning）、奖励模型（Reward Model）和强化学习（RLHF）等环节。由于内容比…"
+description: 在这篇文章中，我们将尽可能详细地梳理一个完整的 LLM 训练流程。包括模型预训练（Pretrain）、Tokenizer 训练、指令微调（Instruction Tuning）、奖励模型（Reward Model）和强化学习（RLHF）等环节。由于内容比…
 tags:
-  - "clippings"
+  - clippings
+  - ai
+  - llm
 ---
 编辑推荐
 
