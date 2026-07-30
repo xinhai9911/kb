@@ -74,7 +74,7 @@ Charlie Chaplin 是电影史上第一位全球性超级巨星，也是早期电�
 - **政治争议**：被指控同情共产主义——1952 年被美国禁止入境，被迫移居瑞士
 - **个人生活的争议**：多次年轻妻子的婚姻——影响公众评价
 - **遗产**：
-  - 被[[entities/kurosawa-akira|黑泽明]]、[[entities/fellini-federico|费里尼]]、[[entities/godard-jean-luc|戈达尔]]、[[entities/scorsese-martin]] 一致尊为导师
+  - 被[[entities/kurosawa-akira|黑泽明]]、[[entities/fellini-federico|费里尼]]、[[entities/godard-jean-luc|戈达尔]]、[[entities/martin-scorsese]] 一致尊为导师
   - 英国电影学院(BFI)将他排名为影史第十大导演
   - "卓别林风格"(Chaplinesque)已成为英语词汇
 

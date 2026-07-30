@@ -19,7 +19,7 @@ related:
   - concepts/director-approaches
   - entities/auteur-theory
   - entities/fellini-federico
-  - entities/truffaut-francois
+  - entities/francois-truffaut
   - concepts/camera-lens-decisions
   - concepts/masterclass-film-analysis
 ---
@@ -113,7 +113,7 @@ related:
 ## 戈达尔与其他导演的关系
 
 - [[entities/auteur-theory]]：戈达尔是作者论理论家（特吕弗）的同代人——他是作者论付诸实践的活证据
-- [[entities/truffaut-francois|特吕弗]]：曾经是好友，后来决裂——代表了新浪潮"艺术"和"政治"两条路线的分裂
+- [[entities/francois-truffaut|特吕弗]]：曾经是好友，后来决裂——代表了新浪潮"艺术"和"政治"两条路线的分裂
 - [[concepts/film-theory-essentials]]：戈达尔的创作是所有这些理论的形式实践
 
 ---

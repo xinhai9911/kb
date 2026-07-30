@@ -15,7 +15,7 @@ lifecycle: draft
 
 # Linux 内核网络栈
 
-> 前置 [[concepts/CPU 核心架构]]（中断/DDIO），[[concepts/CPU 中断与MSI-X]]（NAPI）。
+> 前置 [[concepts/CPU 核心架构]]（中断/DDIO），[[entities/CPU 中断与MSI-X]]（NAPI）。
 > 本文是从 NIC 收包到 socket 接收的完整主线路径。
 
 ## 1. 收包主线路径

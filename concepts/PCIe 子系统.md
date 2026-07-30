@@ -16,7 +16,7 @@ lifecycle: draft
 
 # PCIe 子系统
 
-> 前置 [[concepts/CPU 核心架构]]（DDIO），[[concepts/CPU 中断与MSI-X]]（MSI-X 中断模型）。
+> 前置 [[concepts/CPU 核心架构]]（DDIO），[[entities/CPU 中断与MSI-X]]（MSI-X 中断模型）。
 > 本文专注 PCIe 物理层到软件层的完整链路。
 
 ## 1. PCIe 拓扑

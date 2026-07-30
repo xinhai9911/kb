@@ -346,7 +346,7 @@ perf stat -e \
 
 - [[concepts/CPU 核心架构]]
 - [[entities/CPU 性能分析实战]]
-- [[entites/CPU 隔离与实时调优]]
+- [[entities/CPU 隔离与实时调优]]
 - Intel Resource Director Technology (RDT) Specification (Doc 62827)
 - Intel Optimization Reference Manual (Ch.7: Cache and Prefetch)
 - DPDK Programmer's Guide: Mempool / Ring 优化

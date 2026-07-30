@@ -21,7 +21,7 @@ related:
   - concepts/film-lighting-techniques
   - concepts/sound-design-deep-dive
   - entities/coppola-francis
-  - entities/kubrick-stanley
+  - entities/stanley-kubrick
   - entities/bong-joon-ho
   - entities/david-lynch
   - entities/wong-kar-wai
@@ -111,7 +111,7 @@ related:
 
 ## 2. 《2001 太空漫游》(1968) — 骨头 → 飞船匹配剪
 
-导演：[[entities/kubrick-stanley|Stanley Kubrick]]
+导演：[[entities/stanley-kubrick|Stanley Kubrick]]
 
 ### 场景目标
 
