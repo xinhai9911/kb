@@ -362,3 +362,11 @@ updated: 2026-07-30
 - [[entities/OpenSSL_BoringSSL 开发集成实战|OpenSSL/BoringSSL 开发集成实战（文档）]]
 - [[entities/国密 SM2_SM3_SM4 实战|国密 SM2/SM3/SM4 实战（含 GmSSL 示例）]]
 - [[concepts/加密算法总览与分类|加密算法总览与分类（原理）]]
+
+## 本地 PDF 资料
+
+- [[sources/pdf-index|PDF 资料索引总表]]
+- [[sources/pdf-intel|Intel/AMD CPU 架构与优化]]
+- [[sources/pdf-chips|交换芯片与网络硬件]]
+- [[sources/pdf-hoststack|Hoststack/DPDK/VPP 网络]]
+- [[sources/pdf-books|技术书籍 PDF 索引]]
