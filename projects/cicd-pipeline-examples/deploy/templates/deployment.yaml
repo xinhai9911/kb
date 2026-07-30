@@ -1,0 +1,57 @@
+# 主部署（稳定版本）。金丝雀用独立 deployment + service 权重分流（见 service.yaml）。
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app: {{ .Release.Name }}
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+      track: stable
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+        track: stable
+    spec:
+      containers:
+        - name: app
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: {{ .Values.service.port }}
+          readinessProbe:
+            httpGet: { path: /healthz, port: {{ .Values.service.port } }
+            initialDelaySeconds: 3
+          livenessProbe:
+            httpGet: { path: /healthz, port: {{ .Values.service.port } }
+{{- if .Values.canary.enabled }}
+
+---
+# 金丝雀部署：独立 replicaSet，少量实例承接部分流量
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-canary
+  labels:
+    app: {{ .Release.Name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+      track: canary
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+        track: canary
+    spec:
+      containers:
+        - name: app
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: {{ .Values.service.port }}
+{{- end }}

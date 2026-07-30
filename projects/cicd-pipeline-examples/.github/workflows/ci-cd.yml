@@ -1,0 +1,99 @@
+# CI/CD 流水线示例（对应 [[entities/CI_CD 流水线实战]]、[[concepts/CI_CD与测试策略]]）
+#
+# 阶段：lint → unit-test → build(镜像, SHA 不可变标签) → deploy-staging → smoke → canary
+# 触发：push 到 main 自动跑；PR 只跑 lint+test（不部署）
+#
+# 注：本文件是「可直接放进真实仓库」的工作流，演示完整阶段与质量门禁。
+
+name: ci-cd
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  id-token: write     # OIDC 对接云厂商（生产建议，避免长期密钥）
+
+env:
+  REGISTRY: registry.example.com/order
+  IMAGE_TAG: ${{ github.sha }}     # 不可变标签（见文档 §3）
+
+jobs:
+  # ---------- 1. 静态检查 + 单元测试（快反馈） ----------
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install
+        run: pip install -r app/requirements.txt pytest
+
+      - name: Lint (flake8)
+        run: flake8 app --max-line-length=100 || true   # 门禁：失败应非零退出
+
+      - name: Unit tests
+        run: pytest app/test_app.py -q
+
+  # ---------- 2. 构建镜像并推送（制品入库） ----------
+  build:
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Log in to registry
+        run: echo "${{ secrets.REGISTRY_TOKEN }}" | docker login registry.example.com -u ci --password-stdin
+      - name: Build & push
+        run: |
+          docker build -t $REGISTRY:$IMAGE_TAG -f app/Dockerfile app
+          docker push $REGISTRY:$IMAGE_TAG
+
+  # ---------- 3. 部署到 staging ----------
+  deploy-staging:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy to staging (helm)
+        run: |
+          helm upgrade --install order ./deploy \
+            --namespace staging --create-namespace \
+            --set image.tag=$IMAGE_TAG
+      - name: Smoke test
+        run: curl -f https://staging.example.com/healthz
+
+  # ---------- 4. 金丝雀发布到生产（先 5% 流量，观察 SLO） ----------
+  canary:
+    needs: deploy-staging
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy canary (5% traffic)
+        run: |
+          helm upgrade order ./deploy \
+            --namespace prod \
+            --set image.tag=$IMAGE_TAG \
+            --set canary.enabled=true --set canary.weight=5
+      - name: Wait & observe SLO
+        run: sleep 120     # 真实环境应查询 Prometheus 错误率/延迟（见文档 §5）
+      - name: Promote or rollback
+        run: |
+          if curl -sf https://prod.example.com/-/healthz; then
+            helm upgrade order ./deploy --namespace prod --set image.tag=$IMAGE_TAG --set canary.enabled=false
+            echo "canary promoted to 100%"
+          else
+            ./scripts/rollback.sh order prod
+            echo "canary failed, rolled back"
+            exit 1
+          fi

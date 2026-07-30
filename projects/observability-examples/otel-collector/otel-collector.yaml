@@ -1,0 +1,39 @@
+# OpenTelemetry Collector 配置（最小可用）
+# 对应 [[entities/可观测性接入实战]] §2、[[concepts/可观测性工程]] §2
+#
+# 接收 app 的 OTLP(gRPC/HTTP) → 导出：
+#   traces  → Tempo(或 Jaeger) 兼容端点 / 本例用 logging 便于初见
+#   metrics → Prometheus 拉取端点 :8889
+
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+processors:
+  batch: {}
+  # 生产可加 resource/attributes 处理；最小示例仅 batch
+
+exporters:
+  prometheus:
+    endpoint: 0.0.0.0:8889
+  logging:
+    verbosity: basic
+  otlp:
+    endpoint: tempo:4317
+    tls:
+      insecure: true
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [logging, otlp]
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [prometheus]

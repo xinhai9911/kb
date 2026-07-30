@@ -1,0 +1,105 @@
+# 可观测性最小栈（OTel + Prometheus + Loki + Tempo + Grafana）
+# 对应 [[entities/可观测性接入实战]]、[[concepts/可观测性工程]]。
+#
+# 启动： docker compose up -d
+# 生成流量： while true; do curl -s -XPOST localhost:8080/order -H 'content-type: application/json' -d '{"user_id":"u1"}'; sleep 0.2; done
+# 看板： http://localhost:3000  (Grafana, 已自动配数据源与 RED 看板)
+#
+# 数据流：
+#   app --OTLP--> otel-collector --metrics--> prometheus(拉)
+#                              \--traces-----> tempo
+#   app(stdout) --promtail--> loki
+#   grafana 统一查 prometheus/loki/tempo，trace 与 log 用 trace_id 互跳
+
+services:
+  app:
+    build: ./app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - otel-collector
+    environment:
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+      - OTEL_SERVICE_NAME=order-app
+    logging:
+      # 结构化 JSON 日志由 promtail 采集到 Loki
+      driver: json-file
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.102.1
+    command: ["--config=/etc/otel/config.yaml"]
+    volumes:
+      - ./otel-collector/otel-collector.yaml:/etc/otel/config.yaml
+    ports:
+      - "4317:4317"
+      - "4318:4318"
+      - "8889:8889"   # prometheus exporter
+    depends_on:
+      - tempo
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+  loki:
+    image: grafana/loki:2.9.4
+    command: -config.file=/etc/loki/loki-config.yaml
+    volumes:
+      - ./loki/loki-config.yaml:/etc/loki/loki-config.yaml
+    ports:
+      - "3100:3100"
+
+  promtail:
+    image: grafana/promtail:2.9.4
+    volumes:
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    command:
+      - "-config.file=/etc/promtail/promtail.yaml"
+    # promtail 配置见下；此处挂载由 ./promtail 目录提供
+    # 简化：用 docker 服务发现采集 app 容器日志，打 job=app 标签
+    entrypoint:
+      - sh
+      - -c
+      - |
+        cat > /etc/promtail/promtail.yaml <<'EOF'
+        server: { http_listen_port: 9080 }
+        positions: { filename: /tmp/positions.yaml }
+        clients: [ { url: http://loki:3100/loki/api/v1/push } ]
+        scrape_configs:
+          - job_name: app
+            docker_sd_configs: [ { host: unix:///var/run/docker.sock, refresh_interval: 5s } ]
+            relabel_configs:
+              - source_labels: [__meta_docker_container_name]
+                regex: '.*app.*'
+                action: keep
+              - target_label: job
+                replacement: app
+        EOF
+        /usr/bin/promtail -config.file=/etc/promtail/promtail.yaml
+
+  tempo:
+    image: grafana/tempo:2.5.0
+    command: [ "-config.file=/etc/tempo/tempo.yaml" ]
+    volumes:
+      - ./tempo/tempo.yaml:/etc/tempo/tempo.yaml
+    ports:
+      - "3200:3200"
+      - "4317:4317"
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+    depends_on:
+      - prometheus
+      - loki
+      - tempo

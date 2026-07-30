@@ -1,0 +1,23 @@
+# Grafana 数据源（自动配置）
+# 对应 [[entities/可观测性接入实战]] §4、[[concepts/可观测性工程]] §1
+
+apiVersion: 1
+datasources:
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true
+
+  - name: Loki
+    type: loki
+    access: proxy
+    url: http://loki:3100
+
+  - name: Tempo
+    type: tempo
+    access: proxy
+    url: http://tempo:3200
+    tracesToLogs:
+      datasourceUid: Loki
+      tags: ["trace_id"]

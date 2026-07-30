@@ -1,0 +1,45 @@
+# Loki 配置（最小）
+# 对应 [[entities/可观测性接入实战]] §5、[[concepts/可观测性工程]] §1
+#
+# 日志由 Promtail 采集（app stdout）→ Loki → Grafana 查询。
+# 本例用最小单实例配置。
+
+auth_enabled: false
+
+server:
+  http_listen_port: 3100
+
+ingester:
+  wal:
+    enabled: false
+  chunk_idle_period: 5m
+  max_chunk_age: 10m
+  chunk_target_size: 1048576
+  lifecycler:
+    ring:
+      kvstore:
+        store: inmemory
+      replication_factor: 1
+
+schema_config:
+  configs:
+    - from: 2024-01-01
+      store: tsdb
+      object_store: filesystem
+      schema: v13
+      index:
+        prefix: index_
+        period: 24h
+
+storage:
+  tsdb:
+    dir: /loki/tsdb
+  filesystem:
+    directory: /loki/chunks
+
+limits_config:
+  allow_structured_metadata: false
+
+compactor:
+  working_directory: /loki/compactor
+  retention_enabled: false

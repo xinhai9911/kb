@@ -1,0 +1,15 @@
+# Service：按 track 标签路由。金丝雀开启时，stable 与 canary 都匹配 app 标签，
+# 通过 readinessGate/权重控制器（如 Istio/Argo Rollouts）分流；本例用简单 selector 演示。
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  selector:
+    app: {{ .Release.Name }}
+{{- if .Values.canary.enabled }}
+    # 金丝雀期间同时选 stable + canary（实际分流由 mesh/ingress 权重控制）
+{{- end }}
+  ports:
+    - port: 80
+      targetPort: {{ .Values.service.port }}

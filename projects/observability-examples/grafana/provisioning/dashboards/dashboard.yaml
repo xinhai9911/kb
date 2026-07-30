@@ -1,0 +1,10 @@
+# Grafana 看板自动加载目录
+apiVersion: 1
+providers:
+  - name: default
+    folder: Observability
+    type: file
+    disableDeletion: false
+    editable: true
+    options:
+      path: /etc/grafana/provisioning/dashboards

@@ -1,0 +1,4 @@
+apiVersion: v2
+name: order
+description: Order service Helm chart (对应 [[entities/CI_CD 流水线实战]])
+version: 0.1.0

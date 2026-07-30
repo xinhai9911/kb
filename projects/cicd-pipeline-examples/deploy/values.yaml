@@ -1,0 +1,13 @@
+# values.yaml —— 默认值（对应 [[entities/CI_CD 流水线实战]] §3 不可变镜像标签）
+image:
+  repository: registry.example.com/order
+  tag: latest          # 流水线用 --set image.tag=$SHA 覆盖
+  pullPolicy: IfNotPresent
+
+service:
+  port: 8080
+
+# 金丝雀（[[concepts/韧性设计]] / 文档 §6）
+canary:
+  enabled: false
+  weight: 5            # 金丝雀流量百分比
