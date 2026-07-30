@@ -1,0 +1,162 @@
+---
+title: >-
+  色彩空间与色域工程
+category: concepts
+tags: [color-science, color-space, gamut, post-production, technical]
+created: 2026-07-30
+updated: 2026-07-30
+summary: >-
+  色彩空间与色域工程的深度解析：Rec.709/DCI-P3/Rec.2020/ACES AP0-AP1 对比、CST 原理、ACES 工作流、RCM vs ACES、色域映射、位深与示波器
+relationships:
+  - target: "[[concepts/color-grading-workflow]]"
+    type: extends
+  - target: "[[concepts/advanced-color-grading]]"
+    type: extends
+  - target: "[[concepts/color-theory-looks]]"
+    type: relates
+  - target: "[[concepts/hdr-production-pipeline]]"
+    type: relates
+base_confidence: 0.88
+lifecycle: draft
+lifecycle_changed: 2026-07-30
+---
+
+# 色彩空间与色域工程
+
+## 色彩空间深度对比
+
+| 色彩空间 | 色域覆盖 | 白点 | Gamma/EOTF | 典型位深 | 主要用途 |
+|---------|---------|------|-----------|---------|---------|
+| Rec.709 | 35.9% CIE 1931 | D65 | 2.4 (CRT) | 8-bit / 10-bit | HD 广播电视、SDR 标准 |
+| DCI-P3 | 45.5% CIE 1931 | D65 | 2.6 | 12-bit | 数字影院投影 |
+| Rec.2020 | 75.8% CIE 1931 | D65 | PQ (ST 2084) / HLG | 10-bit / 12-bit | UHD/HDR 电视标准 |
+| ACES AP0 | > CIE 1931 | D60 | Linear | 16-bit float | ACES 场景参照编码空间 |
+| ACES AP1 | 略大于 Rec.2020 | D60 | Linear | 16-bit float | ACES 工作空间（节制的宽色域） |
+
+### 关键理解
+
+- **Rec.709**：SDR 时代的绝对标准，所有广播电视和在线视频的基础定位色域。色域仅覆盖 CIE 1931 的约 36%
+- **DCI-P3**：数字影院的色域标准，比 Rec.709 大 26%，主要在绿色-红色区域扩展。Apple 设备（iMac/iPad/iPhone）以 DCI-P3 为显示标准
+- **Rec.2020**：UHD/HDR 的目标色域，覆盖约 76% 的可见光谱。但目前还没有消费级显示器能完整覆盖 Rec.2020——实际设备覆盖 70-85%
+- **ACES AP0**：ACES 内部用于编码的"超级色域"，大于所有可见光谱，甚至包含虚构颜色。用于场景参照色度编码
+- **ACES AP1**：ACES 内部工作色域，略大于 Rec.2020，平衡了色域大小和计算精度
+
+## Color Space Transform (CST) 原理
+
+CST 是 DaVinci Resolve 17 引入的色彩空间转换节点，核心功能是在不同色彩空间之间做精确数学变换。
+
+### CST 的内部运算
+
+```
+输入色彩空间 → 色域矩阵乘 → Gamma 逆转换 → 
+  → 线性光 → Gamma 转换 → 输出色域矩阵乘 → 输出色彩空间
+```
+
+### 为什么 CST 优于传统 LUT
+
+| 方面 | CST | LUT (3D) |
+|------|-----|----------|
+| 精度 | 32-bit float 矩阵运算 | 12-bit 网格插值（精度损失） |
+| 灵活性 | 参数可调（Gamma/Gamut/Lift Gamma Gain） | 固定不可调 |
+| 色域转换 | 全色域矩阵映射 | 受限于 LUT 色域大小 |
+| 级联 | 可无限串联不损失 | 串联多个 LUT 产生量化误差 |
+| 色域外处理 | 可指定 Gamut Mapping 算法 | 裁切 |
+
+### CST 典型应用
+- **Log → Rec.709**：SDR 调色的起始节点
+- **SDR → HDR (PQ)**：在 CST 中指定输出为 Rec.2020/PQ
+- **色彩空间中间转换**：匹配不同摄影机素材（ARRI LogC → Sony S-Log3）
+
+## ACES 工作流深入
+
+ACES（Academy Color Encoding System）是 AMPAS 制定的开源色彩管理框架，核心目标是**一次调色，多格式输出**。
+
+### 架构
+
+```
+输入（IDT）→ ACEScc（调色工作空间）→ RRT（参考渲染变换）→ ODT（输出显示变换）
+```
+
+#### IDT（Input Device Transform）
+每种摄影机/RAW 格式都有专有的 IDT，将摄影机原生色彩编码转换为 ACES AP0 场景参照数据。
+
+#### ACEScc（ACES Color Correction）
+ACEScc 是为人眼调色优化的对数色彩空间，特点是：
+- 对数编码提供近似感知均匀的亮度分布
+- AP1 色域作为工作空间
+- 调色操作在 ACEScc 下保持视觉一致性
+
+#### RRT（Reference Rendering Transform）
+RRT 是 ACES 的核心——将场景参照（Scene-Referred）的线性光数据转换为显示参照（Display-Referred）的感知映射。RRT 是不可定制的标准变换，模拟了胶片"S 曲线"风格。
+
+#### ODT（Output Device Transform）
+ODT 将 RRT 输出映射到特定显示设备的色彩空间和 Gamma。常见 ODT：
+- **ODT Rec.709**：SDR 电视/网络输出
+- **ODT DCI-P3**：数字影院输出
+- **ODT Rec.2020 (PQ/HLG)**：HDR 输出
+- **ODT sRGB**：标准显示器
+
+### ACES 版本演进
+- **ACES 1.0**（2014）：基础架构
+- **ACES 1.3**（2020）：ACEScct（带 Cineon 风格肩部）、改进的 RRT
+- **ACES 2.0**（即将）：可配置 RRT、改进肤色渲染、HDR 优先设计
+
+## DaVinci Resolve Color Management (RCM) vs ACES
+
+| 方面 | RCM | ACES |
+|------|-----|------|
+| 配置方式 | Resolve 项目设置中配置输入/输出色彩空间 | 需要导入 IDT + 自定义 ODT |
+| 易用性 | 一键设置，自动色彩管道 | 需要理解 ACES 架构 |
+| IDT 覆盖 | 所有 Resolve 支持的 Camera RAW + Log 格式 | 仅有官方 ACES IDT 的摄影机 |
+| 自定义 | 有限（预设色彩空间选择） | 灵活，可定制 RRT 替代 |
+| 协作 | 依赖 Resolve 生态 | 跨软件（Nuke/Baselight/Flame 均支持 ACES） |
+| 适用场景 | 纯 Resolve 工作流 | 跨工作室/跨软件协作项目 |
+
+**选择策略**：
+- 独立剪辑师/小型工作室：RCM 通常够用
+- 好莱坞 VFX 流程：必须 ACES（跨软件一致性）
+- Netflix/Disney 交付：要求 ACES 色彩管理
+
+## 色域映射（Gamut Mapping）与裁切
+
+当源色域大于目标色域时，必须处理色域外颜色：
+
+| 方法 | 原理 | 优缺点 |
+|------|------|--------|
+| 裁切(Clip) | 将色域外的颜色截断到色域边界 | 简单但丢失高饱和度细节，产生"烤焦"感 |
+| 压缩(Compress) | 按比例将整个色域缩小 | 保持关系但降低整体饱和度 |
+| Soft Clip | 仅压缩超出部分，保持内部不变 | 目前最优方案，保留大部分饱和度 |
+| 感知映射 | 根据人眼感知模型重新映射 | 高质量但计算复杂，不保证色彩精确 |
+
+## 色彩位深的实际影响
+
+| 位深 | 每通道色阶 | 总色阶 | 使用场景 | 缺陷 |
+|------|-----------|-------|---------|------|
+| 8-bit | 256 | 16.7M | 网络交付、H.264 最终输出 | 渐变带宽，天空/皮肤有明显色带 |
+| 10-bit | 1024 | 1.07B | H.265/ProRes/广播级 | 大部分素材标准，在 HDR 中仍需注意 |
+| 12-bit | 4096 | 68.7B | DCP/Dolby Vision Master | 数据量大，极少消费级支持 |
+| 16-bit float | 65536 | 281T | ACES/EXR/调色中间格式 | 精度冗余，但有舍入误差保护 |
+
+## 示波器深度阅读
+
+### 波形示波器（Waveform）
+- Y 轴：亮度（0-1023 对应 10-bit IRE）
+- X 轴：画面水平位置
+- 检查曝光：肤色应在 60-75 IRE（SDR）
+- 检查裁切：任何碰到 0/1023 的平坦区域表示裁切
+
+### 矢量示波器（Vectorscope）
+- X/Y 轴：色相平面的笛卡尔投影
+- 肤色线：矢量示波器的 +45 度角对角线
+- 色饱和度：距离中心越远越饱和
+- 检查偏色：整体偏移显示为图形中心偏离
+
+### 直方图（Histogram）
+- X 轴：亮度分布
+- Y 轴：像素数量
+- 检查对比度：全跨度的梯形分布通常表示健康对比度
+
+### 分光示波器（Parade）
+- RGB 三个波形并列显示
+- 检查白平衡：R/G/B 在亮部区域对齐 = 中性白
+- 检查肤色：R 通道略高于 G/B = 健康肤色

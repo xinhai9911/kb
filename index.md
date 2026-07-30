@@ -1,18 +1,18 @@
 ---
 summary: >-
-    *This index is automatically maintained. Last updated: 2026-07-29*
+    *This index is automatically maintained. Last updated: 2026-07-30*
 category: index
 title: Wiki Index
 base_confidence: 0.9
 lifecycle: reviewed
 created: 2026-07-29
 tags: [kb]
-updated: 2026-07-29
+updated: 2026-07-30
 ---
 
 # Wiki Index
 
-*This index is automatically maintained. Last updated: 2026-07-29*
+*This index is automatically maintained. Last updated: 2026-07-30*
 
 ## 索引
 
@@ -56,10 +56,31 @@ updated: 2026-07-29
 
 ### 概念
 - [[concepts/Nginx 架构与事件模型|Nginx 架构与事件模型]]
+- [[concepts/Nginx 框架内部实现|Nginx 框架内部实现（模块三元组 / 配置合并 / 阶段 handler / 内存池 slab / upstream 状态机）]]
 
 ### 实体
 - [[entities/Nginx 反向代理实战|Nginx 反向代理实战（配置大全）]]
 - [[entities/Nginx 性能调优与排障|Nginx 性能调优与排障]]
+- [[entities/Nginx 模块开发实战|Nginx 模块开发实战（Handler/Filter/Upstream/负载均衡器 + 调试）]]
+
+## 加密算法（系统/工程/性能视角）
+
+- [[synthesis/加密算法技术全景综述|加密算法技术全景综述（选型 + 学习地图）]]
+
+### 概念
+- [[concepts/加密算法总览与分类|加密算法总览与分类（对称/非对称/哈希/TLS 分层）]]
+- [[concepts/对称加密 AES与ChaCha20|AES 与 ChaCha20（模式 / AEAD / Nonce / 硬件加速边界）]]
+- [[concepts/非对称加密与密钥交换 RSA_ECC_ECDHE|RSA / ECC / ECDHE（填充 / PFS / 签名）]]
+- [[concepts/哈希函数与消息认证 HMAC|哈希与 HMAC（SHA-2/3 / SM3 / MAC vs 签名）]]
+- [[concepts/TLS 协议握手与记录层|TLS 1.2/1.3 握手与记录层（PFS / 0-RTT / 密钥派生）]]
+- [[concepts/加密硬件加速 AES-NI与协处理器|AES-NI / 协处理器 / TLS Offload 硬件加速]]
+- [[concepts/侧信道攻击与常量时间实现|侧信道攻击与常量时间实现（时序/缓存/Spectre）]]
+
+### 实体（实战）
+- [[entities/OpenSSL_BoringSSL 开发集成实战|OpenSSL/BoringSSL 开发集成（EVP/AEAD/证书/TLS）]]
+- [[entities/Nginx TLS 配置与证书管理实战|Nginx TLS 配置与证书管理（1.3/PFS/OCSP/HSTS）]]
+- [[entities/国密 SM2_SM3_SM4 实战|国密 SM2/SM3/SM4 + TLCP 实战]]
+- [[entities/证书与 X.509 公钥基础设施实战|X.509 证书与 PKI（链/CSR/mTLS/吊销）]]
 
 ## Linux 内核与性能
 
@@ -192,6 +213,12 @@ updated: 2026-07-29
 - [[concepts/mezzanine-codec|中间编解码器（Mezzanine Codec）]]
 - [[concepts/delivery-codec|交付编解码器（Delivery Codec）]]
 - [[concepts/narrative-psychology-editing|剪辑的叙事心理学]]
+- [[concepts/advanced-motion-graphics|动态图形进阶 — After Effects 实践]]
+- [[concepts/audio-repair-practical|音频修复实战]]
+- [[concepts/color-theory-looks|色彩理论与调色方案实战]]
+- [[concepts/titling-localization|字幕、图形与本地化]]
+- [[concepts/video-specs-compatibility|视频规格与兼容性]]
+- [[concepts/editor-career-path|剪辑师职业发展]]
 
 ### 实体
 
@@ -211,6 +238,106 @@ updated: 2026-07-29
 - [[sources/color-management-cinapex|Cinapex 色彩管理]]
 - [[sources/film-cognition-plos-one|PLOS ONE 库里肖夫效应 fMRI 研究]]
 
+## 电影导演
+
+### 综述
+
+- [[synthesis/film-directing-panorama|电影导演全景综述]]
+
+### 概念
+
+- [[concepts/three-act-structure|三幕剧结构]]
+- [[concepts/nonlinear-narrative|非线性叙事]]
+- [[concepts/mise-en-scene|场面调度]]
+- [[concepts/film-lighting-techniques|布光技法]]
+- [[concepts/color-psychology-in-film|色彩心理学]]
+- [[concepts/directing-actors|表演指导]]
+- [[concepts/film-production-workflow|制作流程]]
+- [[concepts/director-approaches|导演方法论]]
+- [[concepts/film-analysis-framework|拉片方法论]]
+- [[concepts/composition-techniques|构图技术]]
+- [[concepts/camera-angle-narrative|镜头角度叙事]]
+- [[concepts/genre-directing-strategies|类型片策略]]
+- [[concepts/short-film-directing|短片导演]]
+- [[concepts/low-budget-filmmaking|低成本制作]]
+- [[concepts/director-script-analysis|剧本分析]]
+- [[concepts/director-dp-collaboration|导演-DP协作]]
+- [[concepts/director-department-collaboration|部门协作]]
+- [[concepts/on-set-directing|片场决策]]
+- [[concepts/advanced-film-grammar|高级语法]]
+- [[concepts/advanced-staging-blocking|群戏走位]]
+- [[concepts/directing-with-sound|声音叙事]]
+- [[concepts/director-rehearsal-methods|排练方法]]
+- [[concepts/music-in-film-directing|音乐叙事]]
+- [[concepts/film-movements|电影运动]]
+- [[concepts/film-theory-essentials|电影理论]]
+- [[concepts/festival-distribution|电影节发行]]
+- [[concepts/performance-theory-adaptation|表演理论与改编]]
+- [[concepts/masterclass-film-analysis|经典拉片分析]]
+- [[concepts/documentary-directing|纪录片导演]]
+- [[concepts/director-business-legal|商业法律]]
+- [[concepts/camera-lens-decisions|摄影机与镜头]]
+- [[concepts/tv-series-directing|电视剧导演方法]]
+- [[concepts/animation-directing|动画导演方法]]
+- [[concepts/experimental-cinema|实验电影与先锋导演]]
+- [[concepts/director-color-signatures|导演色彩签名]]
+
+### 实体
+
+- [[entities/alfred-hitchcock|希区柯克]]
+- [[entities/stanley-kubrick|库布里克]]
+- [[entities/christopher-nolan|诺兰]]
+- [[entities/bong-joon-ho|奉俊昊]]
+- [[entities/kore-eda-hirokazu|是枝裕和]]
+- [[entities/tarkovsky-andrei|塔可夫斯基]]
+- [[entities/wong-kar-wai|王家卫]]
+- [[entities/coen-brothers|科恩兄弟]]
+- [[entities/spielberg-steven|斯皮尔伯格]]
+- [[entities/kurosawa-akira|黑泽明]]
+- [[entities/fellini-federico|费里尼]]
+- [[entities/david-fincher|芬奇]]
+- [[entities/quintin-tarantino|塔伦蒂诺]]
+- [[entities/villeneuve-denis|维伦纽瓦]]
+- [[entities/miyazaki-hayao|宫崎骏]]
+- [[entities/hou-hsiao-hsien|侯孝贤]]
+- [[entities/jia-zhangke|贾樟柯]]
+- [[entities/ang-lee|李安]]
+- [[entities/martin-scorsese|斯科塞斯]]
+- [[entities/wes-anderson|韦斯·安德森]]
+- [[entities/david-lynch|大卫·林奇]]
+- [[entities/paul-thomas-anderson|PTA]]
+- [[entities/apichatpong|阿彼察邦]]
+- [[entities/godard-jean-luc|戈达尔]]
+- [[entities/bergman-ingmar|伯格曼]]
+- [[entities/park-chan-wook|朴赞郁]]
+- [[entities/hamaguchi-ryusuke|滨口龙介]]
+- [[entities/zhang-yimou|张艺谋]]
+- [[entities/ozu-yasujiro|小津安二郎]]
+- [[entities/edward-yang|杨德昌]]
+- [[entities/bresson-robert|布列松]]
+- [[entities/claire-denis|克莱尔·德尼]]
+- [[entities/michael-haneke|哈内克]]
+- [[entities/charlie-chaplin|查理·卓别林]]
+- [[entities/francois-truffaut|弗朗索瓦·特吕弗]]
+- [[entities/pedro-almodovar|佩德罗·阿莫多瓦]]
+- [[entities/werner-herzog|沃纳·赫尔佐格]]
+- [[entities/spike-lee|斯派克·李]]
+
+### 来源
+
+- [[sources/studiobinder-three-act-structure|StudioBinder 三幕剧结构]]
+- [[sources/studiobinder-mise-en-scene|StudioBinder 场面调度]]
+- [[sources/studiobinder-film-lighting|StudioBinder 布光]]
+- [[sources/studiobinder-pre-production|StudioBinder 前期制作]]
+- [[sources/human-libretexts-film-analysis|Human LibreTexts 电影分析]]
+- [[sources/bang2write-nonlinear-narrative|Bang2Write 非线性叙事]]
+
+### 参考
+
+- [[50-reference/director-intro|导演基础]]
+- [[50-reference/montage-techniques|蒙太奇技术]]
+- [[50-reference/shot-sizing-axes-storyboard|镜头/景别/轴线/故事板]]
+
 ## 归档
 
 - [[90-archive/]]
@@ -221,3 +348,17 @@ updated: 2026-07-29
 - [[projects/db-decoder-ironhive/hive-protocol-analysis|Hive 协议分析]]
 - [[projects/db-decoder-ironhive/decoder-track|解码器开发 Track]]
 - [[projects/db-decoder-ironhive/hive-decoder-implementation|Hive 解码器实现]]
+
+## nginx-module-examples（模块开发示例工程）
+
+- [[projects/nginx-module-examples/README|示例工程总览 + 编译/运行配置]]
+- [[projects/nginx-module-examples/nginx.conf|最小 nginx.conf（一键 -c 启动）]]
+- [[entities/Nginx 模块开发实战|Nginx 模块开发实战（文档）]]
+- [[concepts/Nginx 框架内部实现|Nginx 框架内部实现（原理）]]
+
+## openssl-crypto-examples（加密示例工程）
+
+- [[projects/openssl-crypto-examples/README|OpenSSL 示例工程（AES-GCM / HMAC / ECDHE / TLS / 国密 GmSSL）]]
+- [[entities/OpenSSL_BoringSSL 开发集成实战|OpenSSL/BoringSSL 开发集成实战（文档）]]
+- [[entities/国密 SM2_SM3_SM4 实战|国密 SM2/SM3/SM4 实战（含 GmSSL 示例）]]
+- [[concepts/加密算法总览与分类|加密算法总览与分类（原理）]]

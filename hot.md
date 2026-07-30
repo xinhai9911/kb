@@ -3,7 +3,7 @@ title: Hot Cache
 summary: >-
     *A ~500-word semantic snapshot of recent activity.*
 category: index
-updated: 2026-07-29T19:00:00+00:00T18:00:00
+updated: 2026-07-30T22:00:00+00:00
 base_confidence: 0.7
 lifecycle: draft
 created: 2026-07-29
@@ -16,7 +16,11 @@ tags: [kb]
 
 ## Recent Activity
 
-- [2026-07-29] WIKI_RESEARCH topic="Film Directing" — 电影导演全景调研，21 篇页面（sources=6, concepts=8, entities=6, synthesis=1）。覆盖：叙事结构（三幕剧/非线性）、场面调度、布光技法、色彩心理学、表演指导、制作流程、导演方法论光谱、作者论、5 位代表导演方法（Hitchcock/Kubrick/Nolan/Bong/Kore-eda）
+- [2026-07-30] WIKI_RESEARCH topic="Video Editing Deep Dive (第五轮)" — 6 篇新概念页。覆盖：AE 动态图形进阶（表达式/插件/Dynamic Link）、音频修复实战（iZotope RX 工作流/免费替代）、色彩理论与调色方案（五大电影 Look/LUT 制作）、字幕/本地化（格式/Lower Thirds/Netflix 规范）、视频规格兼容性（帧率/PAR-DAR）、剪辑师职业发展（路径/费率/工会）。synthesis 综述页更新
+
+
+
+- [2026-07-30] WIKI_RESEARCH topic="Film Directing Deep Dive (第七轮)" — 第七轮深挖 9 篇页面（concepts=4, entities=5）。覆盖：电视剧导演方法（Showrunner 制/多导演协作/流媒体革命）、动画导演方法（2D/3D/定格差异/分镜核心地位）、实验电影与先锋导演（Deren/Brakhage/结构电影/扩展影院）、导演色彩签名（韦斯·安德森/王家卫/张艺谋/库布里克等 9 位对比）+ 5 位导演实体（卓别林/特吕弗/阿莫多瓦/赫尔佐格/斯派克·李）。synthesis 综述页第 7 轮更新
 
 - CROSS_LINK 5 links added: MCP↔protocols, Anthropic↔Claude prompt guide, OpenAI↔Transformer, Agent-memory↔decoder-track; how-to-use.md rewritten to cover all 86 pages
 
@@ -28,7 +32,7 @@ tags: [kb]
 
 ## Active Threads
 
-- **film-directing** — 2026-07-29 完成全景调研：21 篇（sources=6, concepts=8, entities=6, synthesis=1）。覆盖叙事结构（三幕剧/非线性）、场面调度、布光、色彩、表演指导、制作流程、导演方法论光谱、作者论、5 位代表导演（Hitchcock/Kubrick/Nolan/Bong/是枝）。现有 3 篇实操参考页（ffmpeg 剪辑/蒙太奇/分镜模板）。后续可深挖：拉片方法论、具体电影案例拆解、短片导演实战流程
+- **film-directing** — 2026-07-30 七轮深挖全部完成：累计 58+ 篇页面。七轮共覆盖：叙事结构（三幕剧/非线性）、场面调度/布光/色彩心理学、表演指导、制作流程、导演方法论光谱、作者论、拉片方法论、构图/角度、类型片策略、短片/低成本、剧本分析、导演-DP协作/部门协作/片场决策/高级语法、电影运动/理论/电影节/表演理论/改编、群戏走位/声音叙事/排练方法/音乐叙事、电视剧导演/动画导演/实验电影/导演色彩签名。38 位东西方导演实体。后续可深挖：制片人与导演博弈、电影心理学深度、各流派详细分支
 - **ebpf** — 已完成两轮调研：第一轮 7 篇（核心架构/Maps/Cilium/安全/工具链/来源/全景），第二轮深挖 5 篇（验证器与安全模型、程序类型全目录、XDP、sched_ext、生产案例）并扩展 synthesis 和工具链。合计 12 篇概念/实体/综述 + 1 篇来源。剩余可探索：验证器实战调试、eBPF + AI 工作负载调度、Windows eBPF 演进跟踪、BPF arena/exceptions 编程实践
 - **ai-llm** — Transformer 架构 → 三阶段管线 → 推理优化 → 开源/中国生态，已写 13 篇，后续可深挖多模态、Agent、评测
 - **ai-agent** — Agent 框架对比（LangGraph/CrewAI/AutoGen）、MCP 协议、记忆规划机制，已写 13 篇，可深挖 Agent 安全评估和调优
@@ -156,6 +160,17 @@ tags: [kb]
 - **io_uring 最大收益不在于单次延迟，在于消除 syscall + 中断路径**
 - **SPDK vs DPDK 完全对称**：用户态驱动 + 轮询 + 大页 + VFIO，一个控网络一个控存储
 - **NVMe-oF RDMA + SPDK**：跨网络存储延迟仅增加 ~5μs（RDMA 一跳），接近本地性能
+
+## Nginx 代理知识
+
+- [2026-07-29] NEW 3 篇 Nginx 代理深度知识入库：
+  - [[concepts/Nginx 架构与事件模型]] — Master/Worker 进程模型（惊群/accept_mutex/reuseport）、事件循环 epoll_wait → handler → timer、11 处理阶段（POST_READ→CONTENT→LOG）、内存池 ngx_pool_t 无碎片设计、upstream 与子请求机制、过滤器链（chunked/gzip/SSI）、共享内存 slab 分配器 / C10K 对比 Apache
+  - [[entities/Nginx 反向代理实战]] — upstream 定义 5 种负载均衡算法（轮询 least_conn ip_hash hash consistent random）、被动健康检查与 proxy_next_upstream、proxy_pass URI 截段陷阱（加/截 location 前缀）、请求头改写链（Host/X-Real-IP/X-Forwarded-For）、缓存配置（proxy_cache_path levels/keys_zone/max_size/inactive + cache lock/stale/background-update）、CLOSE_WAIT 陷阱）、SSL（session cache 50MB=40 万 session / OCSP stapling / HSTS）、限流（limit_req burst nodelay / limit_conn）、WebSocket 代理（Upgrade+Connection+关缓冲）、gRPC 代理、DNS 动态解析、日志 buffer
+  - [[entities/Nginx 性能调优与排障]] — worker 调优（rlimit_nofile/worker_connections/accept_mutex/multi_accept）、内核参数（somaxconn/tw_reuse/fastopen/file-max）、SSL async 硬件卸载和 session cache 命中率、upstream keepalive 连接池（省 ~2ms/req）、HTTP/2 多路复用与队头阻塞、监控（stub_status/Prometheus exporter）、排障（502/499/timeout/too many open files/共享内存满/worker 连接数满）、生产参考配置模板
+- **Nginx 连接池**：keepalive 256 省 TCP 握手，keepalive_requests 10000 减拆建频率
+- **SSL session cache 翻倍效果**：50MB=40 万 session，复用率 >50% 时 TLS 吞吐翻倍
+- **proxy_pass URI 陷阱**：加 `/` 截 location 前缀，不加保留完整路径——这是最常见的误配
+- **TFO + 0-RTT**：TCP fastopen + TLS 1.3 0-RTT 首次请求省 2 RTT
 
 ## New: CPU 框架知识
 

@@ -1,52 +1,190 @@
-{
-  "projects": {
-    "db-decoder-ironhive": {
-      "source_cwd": "Q:/AI/db-decoder-ironhive",
-      "last_synced": "2026-07-29",
-      "last_commit_synced": "first-sync",
-      "pages_in_vault": [
-        "projects/db-decoder-ironhive/db-decoder-ironhive.md",
-        "projects/db-decoder-ironhive/hive-protocol-analysis.md",
-        "projects/db-decoder-ironhive/decoder-track.md",
-        "projects/db-decoder-ironhive/hive-decoder-implementation.md"
-      ]
-    },
-    "video-editing": {
-      "source_cwd": null,
-      "last_synced": "2026-07-29",
-      "last_commit_synced": null,
-      "pages_in_vault": [
-        "sources/nle-comparison-larry-jordan.md",
-        "sources/workflow-pipeline-shot-ai.md",
-        "sources/codec-guide-mpegflow.md",
-        "sources/audio-post-forte-ai.md",
-        "sources/color-management-cinapex.md",
-        "sources/film-cognition-plos-one.md",
-        "concepts/offline-online-workflow.md",
-        "concepts/proxy-workflow.md",
-        "concepts/split-edits-j-cut-l-cut.md",
-        "concepts/color-grading-workflow.md",
-        "concepts/audio-post-production-pipeline.md",
-        "concepts/mezzanine-codec.md",
-        "concepts/delivery-codec.md",
-        "concepts/narrative-psychology-editing.md",
-        "entities/davinci-resolve.md",
-        "entities/adobe-premiere-pro.md",
-        "entities/apple-final-cut-pro.md",
-        "entities/avid-media-composer.md",
-        "entities/capcut.md",
-        "entities/avid-pro-tools.md",
-        "entities/walter-murch.md",
-        "entities/thelma-schoonmaker.md",
-        "concepts/editing-transitions.md",
-        "concepts/multicam-editing.md",
-        "concepts/chroma-key-compositing.md",
-        "concepts/editing-efficiency-workflow.md",
-        "concepts/case-studies-famous-edits.md",
-        "concepts/history-editing-technology.md",
-        "concepts/editor-industry-role.md",
-        "synthesis/video-editing-pipeline.md"
-      ]
-    }
-  }
-}
+﻿{
+    "projects":  {
+                     "db-decoder-ironhive":  {
+                                                 "source_cwd":  "Q:/AI/db-decoder-ironhive",
+                                                 "last_synced":  "2026-07-29",
+                                                 "last_commit_synced":  "first-sync",
+                                                 "pages_in_vault":  [
+                                                                        "projects/db-decoder-ironhive/db-decoder-ironhive.md",
+                                                                        "projects/db-decoder-ironhive/hive-protocol-analysis.md",
+                                                                        "projects/db-decoder-ironhive/decoder-track.md",
+                                                                        "projects/db-decoder-ironhive/hive-decoder-implementation.md"
+                                                                    ]
+                                             },
+                     "video-editing":  {
+                                           "source_cwd":  null,
+                                           "last_synced":  "2026-07-29",
+                                           "last_commit_synced":  null,
+                                           "pages_in_vault":  [
+                                                                  "sources/nle-comparison-larry-jordan.md",
+                                                                  "sources/workflow-pipeline-shot-ai.md",
+                                                                  "sources/codec-guide-mpegflow.md",
+                                                                  "sources/audio-post-forte-ai.md",
+                                                                  "sources/color-management-cinapex.md",
+                                                                  "sources/film-cognition-plos-one.md",
+                                                                  "concepts/offline-online-workflow.md",
+                                                                  "concepts/proxy-workflow.md",
+                                                                  "concepts/split-edits-j-cut-l-cut.md",
+                                                                  "concepts/color-grading-workflow.md",
+                                                                  "concepts/audio-post-production-pipeline.md",
+                                                                  "concepts/mezzanine-codec.md",
+                                                                  "concepts/delivery-codec.md",
+                                                                  "concepts/narrative-psychology-editing.md",
+                                                                  "entities/davinci-resolve.md",
+                                                                  "entities/adobe-premiere-pro.md",
+                                                                  "entities/apple-final-cut-pro.md",
+                                                                  "entities/avid-media-composer.md",
+                                                                  "entities/capcut.md",
+                                                                  "entities/avid-pro-tools.md",
+                                                                  "entities/walter-murch.md",
+                                                                  "entities/thelma-schoonmaker.md",
+                                                                  "concepts/editing-transitions.md",
+                                                                  "concepts/multicam-editing.md",
+                                                                  "concepts/chroma-key-compositing.md",
+                                                                  "concepts/editing-efficiency-workflow.md",
+                                                                  "concepts/case-studies-famous-edits.md",
+                                                                  "concepts/history-editing-technology.md",
+                                                                  "concepts/editor-industry-role.md",
+                                                                  "concepts/advanced-color-grading.md",
+                                                                  "concepts/sound-design-deep-dive.md",
+                                                                  "concepts/vfx-motion-graphics.md",
+                                                                  "concepts/documentary-editing.md",
+                                                                  "entities/colorist-grades.md",
+                                                                  "entities/sound-designer-ben-burtt.md",
+                                                                  "entities/gary-rydstrom.md",
+                                                                  "concepts/ai-in-post-production.md",
+                                                                  "concepts/collaboration-versioning.md",
+                                                                  "concepts/camera-raw-formats.md",
+                                                                  "concepts/nle-power-tips.md",
+                                                                   "concepts/storage-archive-strategy.md",
+                                                                   "concepts/advanced-motion-graphics.md",
+                                                                   "concepts/audio-repair-practical.md",
+                                                                   "concepts/color-theory-looks.md",
+                                                                   "concepts/titling-localization.md",
+                                                                   "concepts/video-specs-compatibility.md",
+                                                                    "concepts/editor-career-path.md",
+                                                                    "concepts/advanced-video-compression.md",
+                                                                    "concepts/hdr-production-pipeline.md",
+                                                                    "concepts/plugin-ecosystem.md",
+                                                                     "concepts/dit-workflow.md",
+                                                                     "concepts/qc-delivery-standards.md",
+                                                                     "concepts/advanced-vfx-matchmove.md",
+                                                                     "concepts/color-science-gamut.md",
+                                                                     "concepts/adr-dubbing-workflow.md",
+                                                                     "concepts/music-video-editing.md",
+                                                                     "concepts/sports-fast-cut-editing.md",
+                                                                     "synthesis/video-editing-pipeline.md"
+                                                              ]
+                                       }
+                 },
+    "research":  {
+                     "film-directing-round1":  {
+                                                   "type":  "research",
+                                                   "topic":  "Film Directing",
+                                                   "researched_at":  "2026-07-29",
+                                                   "rounds_completed":  3,
+                                                   "sources_fetched":  6,
+                                                   "pages_created":  21,
+                                                   "pages_updated":  1
+                                               },
+                     "film-directing-round2":  {
+                                                   "type":  "research",
+                                                   "topic":  "Film Directing Deep Dive (第二轮)",
+                                                   "researched_at":  "2026-07-29",
+                                                   "rounds_completed":  2,
+                                                   "sources_fetched":  0,
+                                                   "pages_created":  12,
+                                                   "pages_updated":  1
+                                               },
+                     "film-directing-round3":  {
+                                                   "type":  "research",
+                                                   "topic":  "Film Directing Deep Dive (第三轮)",
+                                                   "researched_at":  "2026-07-29",
+                                                   "rounds_completed":  3,
+                                                   "sources_fetched":  0,
+                                                   "pages_created":  12,
+                                                   "pages_updated":  1
+                                               },
+                     "video-editing-round3":  {
+                                                  "type":  "research",
+                                                  "topic":  "Video Editing Deep Dive (第三轮)",
+                                                  "researched_at":  "2026-07-29",
+                                                  "rounds_completed":  3,
+                                                  "sources_fetched":  4,
+                                                  "pages_created":  7,
+                                                  "pages_updated":  1
+                                              },
+                     "video-editing-round4":  {
+                                                  "type":  "research",
+                                                  "topic":  "Video Editing Deep Dive (第四轮)",
+                                                  "researched_at":  "2026-07-30",
+                                                  "rounds_completed":  4,
+                                                  "sources_fetched":  5,
+                                                  "pages_created":  5,
+                                                  "pages_updated":  1
+                                              },
+                       "film-directing-round4":  {
+                                                     "topic":  "Film Directing Deep Dive (第四轮)",
+                                                     "pages_created":  9,
+                                                     "researched_at":  "2026-07-30",
+                                                     "rounds_completed":  4,
+                                                     "type":  "research",
+                                                     "sources_fetched":  0,
+                                                     "pages_updated":  1
+                                                 },
+                        "video-editing-round5":  {
+                                                      "type":  "research",
+                                                      "topic":  "Video Editing Deep Dive (第五轮)",
+                                                      "researched_at":  "2026-07-30",
+                                                      "rounds_completed":  1,
+                                                      "sources_fetched":  0,
+                                                      "pages_created":  6,
+                                                      "pages_updated":  1
+                                                  },
+                        "video-editing-round6":  {
+                                                      "type":  "research",
+                                                      "topic":  "Video Editing Deep Dive (第六轮)",
+                                                      "researched_at":  "2026-07-30",
+                                                      "rounds_completed":  1,
+                                                      "sources_fetched":  10,
+                                                      "pages_created":  5,
+                                                      "pages_updated":  1
+                                                  },
+                        "film-directing-round5":  {
+                                                      "topic":  "Film Directing Deep Dive (第五轮)",
+                                                      "pages_created":  9,
+                                                      "researched_at":  "2026-07-30",
+                                                      "rounds_completed":  5,
+                                                      "type":  "research",
+                                                      "sources_fetched":  0,
+                                                      "pages_updated":  1
+                                                  },
+                        "film-directing-round6":  {
+                                                       "topic":  "Film Directing Deep Dive (第六轮)",
+                                                       "pages_created":  9,
+                                                       "researched_at":  "2026-07-30",
+                                                       "rounds_completed":  6,
+                                                       "type":  "research",
+                                                       "sources_fetched":  0,
+                                                       "pages_updated":  2
+                                                   },
+                         "film-directing-round7":  {
+                                                        "topic":  "Film Directing Deep Dive (第七轮)",
+                                                        "pages_created":  9,
+                                                        "researched_at":  "2026-07-30",
+                                                        "rounds_completed":  7,
+                                                        "type":  "research",
+                                                        "sources_fetched":  0,
+                                                        "pages_updated":  2
+                                                    },
+                         "video-editing-round7":  {
+                                                       "type":  "research",
+                                                       "topic":  "Video Editing Deep Dive (第七轮)",
+                                                       "researched_at":  "2026-07-30",
+                                                       "rounds_completed":  1,
+                                                       "sources_fetched":  0,
+                                                       "pages_created":  5,
+                                                       "pages_updated":  1
+                                                   }
+                      }
+   }
