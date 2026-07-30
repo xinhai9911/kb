@@ -1,3 +1,13 @@
+---
+project: true
+topic: 可观测性栈
+stack: Python + Docker
+deps: Docker Compose
+run: "`docker compose up -d`"
+docs: "可观测性接入实战 / 可观测性工程"
+updated: 2026-07-30
+---
+
 # 可观测性示例工程（observability-examples）
 
 本目录是 [[entities/可观测性接入实战]] 的可运行栈，配套 [[concepts/可观测性工程]]。

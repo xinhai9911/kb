@@ -48,7 +48,8 @@ lifecycle: reviewed
 | **openFPGALoader** | 开源烧写（JTAG/SPI，多厂商） | 多厂商 |
 | **GHDL** | 开源 VHDL 仿真/综合 | VHDL |
 
-> 注意：Xilinx/Intel 高端器件的完整开源 bitstream 生成仍依赖原厂工具；开源链路在 Lattice 系最完整。AMD 的 **Vivado 有免费 WebPACK 版**，足够大部分学习/中小设计。
+> [!info] 开源 bitstream 链路与工具限制
+> Xilinx/Intel 高端器件的完整开源 bitstream 生成仍依赖原厂工具；开源链路在 Lattice 系最完整。AMD 的 **Vivado 有免费 WebPACK 版**，足够大部分学习/中小设计。
 
 ## 3. 与本项目关联
 

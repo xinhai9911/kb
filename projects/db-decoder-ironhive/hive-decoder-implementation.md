@@ -40,5 +40,6 @@ updated: 2026-07-29
 
 ## 部署问题
 
-falcon 的 `app-layer.protocols` 不支持动态加载自定义协议 .so 文件。
-`RegisterHiveParsers` 函数从未被执行。需挂到 `hbase` 键名下使用。
+> [!warning] falcon 不支持动态加载自定义协议 .so
+> falcon 的 `app-layer.protocols` 不支持动态加载自定义协议 .so 文件。
+> `RegisterHiveParsers` 函数从未被执行。需挂到 `hbase` 键名下使用。

@@ -1,3 +1,13 @@
+---
+project: true
+topic: 加密（AES/HMAC/ECDHE/TLS）
+stack: C
+deps: OpenSSL dev
+run: "`bash scripts/build.sh`"
+docs: "OpenSSL_BoringSSL 开发集成实战 / 加密算法总览与分类"
+updated: 2026-07-30
+---
+
 # OpenSSL 加密示例工程（openssl-crypto-examples）
 
 本目录是 [[entities/OpenSSL_BoringSSL 开发集成实战]] 中示例的**可编译**代码，配套
@@ -48,7 +58,8 @@ GMSL_PREFIX=/opt/gmssl bash scripts/build.sh gmssl           # 编译全部国�
 GMSL_PREFIX=/opt/gmssl bash scripts/build.sh gmssl sm2       # 只编译 sm2
 ```
 
-> 注：本工程在 Windows/Git-Bash 无 OpenSSL 开发包与 POSIX 网络头，需 Linux/macOS 编译运行。
+> [!warning] 编译环境要求
+> 本工程在 Windows/Git-Bash 无 OpenSSL 开发包与 POSIX 网络头，**需 Linux/macOS 编译运行**。
 > 代码结构按 POSIX（`<arpa/inet.h>` 等），Windows 需用 WSL 或 MinGW 适配。
 
 ## 运行
@@ -86,7 +97,8 @@ cd build
 ./sm2        # SM2 密钥生成 + 签名验签 + 公钥加密解密
 ```
 
-> SM2 曲线为 `sm2p256v1`（≠ NIST P-256）；SM3 输出 256-bit 与 SHA-256 等长但值不同；
+> [!note] 国密与 NIST 的差异
+> SM2 曲线为 `sm2p256v1`（**≠ NIST P-256**）；SM3 输出 256-bit 与 SHA-256 等长但值不同；
 > 这些示例对应 [[entities/国密 SM2_SM3_SM4 实战]]。
 
 ## 与文档对应关系

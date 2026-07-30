@@ -21,9 +21,10 @@ lifecycle: reviewed
 
 ## 页内搜索
 
-> 在**浏览器**打开本页时，下方搜索框可实时过滤下面的「速览表」；
+> 在**浏览器**打开本页时，下方搜索框可实时过滤文末的「关键词索引」表；
 > 在 **Obsidian / 普通 markdown 阅读器**中 JS 不执行，搜索框不显示，
-> 请直接用下方的**静态关键词索引**查找（见文末「关键词索引」一节）。
+> 请直接看下方的**静态关键词索引**表（Obsidian 中可用）。
+> 「速览表」由 Dataview 动态生成，未装插件时见其折叠兜底。
 
 <input type="text" id="projSearch" placeholder="输入关键字过滤（如 nginx / 国密 / 熔断 / CI）" style="width:100%;padding:8px;font-size:14px;box-sizing:border-box;">
 
@@ -50,19 +51,32 @@ lifecycle: reviewed
 })();
 </script>
 
-## 速览表
+## 速览表（Dataview 动态生成）
 
-<a id="projTable"></a>
+> 下表由 **Dataview** 插件实时查询 `projects/` 下所有 `project: true` 的笔记 frontmatter
+> 生成。新增示例工程时，只要在它的 README 写好 `project: true` 与 `topic/stack/deps/run/docs`
+> 字段，本表会**自动出现新行**，无需手改此处。
+> 未装 Dataview 时，请直接用下方「关键词索引」静态表查找。
 
-| 工程 | 主题 | 语言/栈 | 依赖 | 一键启动 | 对应文档 |
-|------|------|---------|------|---------|---------|
-| [nginx-module-examples](nginx-module-examples/README.md) | Nginx 模块开发 | C | nginx 源码 + gcc | `bash scripts/build.sh` | [[entities/Nginx 模块开发实战]]、[[concepts/Nginx 框架内部实现]] |
-| [openssl-crypto-examples](openssl-crypto-examples/README.md) | 加密（AES/HMAC/ECDHE/TLS） | C | OpenSSL dev | `bash scripts/build.sh` | [[entities/OpenSSL_BoringSSL 开发集成实战]]、[[concepts/加密算法总览与分类]] |
-| [openssl-crypto-examples](openssl-crypto-examples/README.md) › gmssl | 国密 SM2/3/4 | C | GmSSL | `GMSL_PREFIX=/opt/gmssl bash scripts/build.sh gmssl` | [[entities/国密 SM2_SM3_SM4 实战]] |
-| [resilience-examples](resilience-examples/README.md) | 限流/熔断/重试 | C | gcc（零依赖） | `bash scripts/build.sh` | [[entities/限流熔断实战]]、[[concepts/韧性设计]] |
-| [observability-examples](observability-examples/README.md) | 可观测性栈 | Python + Docker | Docker Compose | `docker compose up -d` | [[entities/可观测性接入实战]]、[[concepts/可观测性工程]] |
-| [cicd-pipeline-examples](cicd-pipeline-examples/README.md) | CI/CD 流水线 | YAML + Python | kubectl/helm（可选） | pytest / `helm upgrade` | [[entities/CI_CD 流水线实战]]、[[concepts/CI_CD与测试策略]] |
-| [db-decoder-ironhive](db-decoder-ironhive/db-decoder-ironhive.md) | Hive 协议解码器 | — | — | — | 项目概述 |
+```dataview
+TABLE topic AS "主题", stack AS "语言/栈", deps AS "依赖", run AS "一键启动", docs AS "对应文档"
+FROM "projects"
+WHERE project = true
+SORT file.name ASC
+```
+
+<details>
+<summary>不装 Dataview 时的纯文本兜底（静态）</summary>
+
+- [nginx-module-examples](nginx-module-examples/README.md) ｜ Nginx 模块开发 ｜ C ｜ nginx 源码 + gcc ｜ `bash scripts/build.sh` ｜ Nginx 模块开发实战 / Nginx 框架内部实现
+- [openssl-crypto-examples](openssl-crypto-examples/README.md) ｜ 加密（AES/HMAC/ECDHE/TLS） ｜ C ｜ OpenSSL dev ｜ `bash scripts/build.sh` ｜ OpenSSL_BoringSSL 开发集成实战 / 加密算法总览与分类
+- [openssl-crypto-examples › gmssl](openssl-crypto-examples/README.md) ｜ 国密 SM2/3/4 ｜ C ｜ GmSSL ｜ `GMSL_PREFIX=/opt/gmssl bash scripts/build.sh gmssl` ｜ 国密 SM2_SM3_SM4 实战
+- [resilience-examples](resilience-examples/README.md) ｜ 限流/熔断/重试 ｜ C ｜ gcc（零依赖） ｜ `bash scripts/build.sh` ｜ 限流熔断实战 / 韧性设计
+- [observability-examples](observability-examples/README.md) ｜ 可观测性栈 ｜ Python + Docker ｜ Docker Compose ｜ `docker compose up -d` ｜ 可观测性接入实战 / 可观测性工程
+- [cicd-pipeline-examples](cicd-pipeline-examples/README.md) ｜ CI/CD 流水线 ｜ YAML + Python ｜ kubectl/helm（可选） ｜ pytest / `helm upgrade` ｜ CI_CD 流水线实战 / CI_CD与测试策略
+- [db-decoder-ironhive](db-decoder-ironhive/db-decoder-ironhive.md) ｜ Hive 协议解码器 ｜ — ｜ — ｜ — ｜ 项目概述
+
+</details>
 
 ## 按主题归类
 
@@ -88,6 +102,9 @@ lifecycle: reviewed
 ## 关键词索引（静态查找表，Obsidian 可用）
 
 > 按「想找什么」快速定位工程 / 文档。相当于页内搜索的离线版。
+> 浏览器中此表可被顶部搜索框实时过滤。
+
+<a id="projTable"></a>
 
 | 我想找… | 去哪个工程 | 对应文档 |
 |---------|-----------|---------|

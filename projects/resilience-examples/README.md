@@ -1,3 +1,13 @@
+---
+project: true
+topic: 限流/熔断/重试
+stack: C
+deps: gcc（零依赖）
+run: "`bash scripts/build.sh`"
+docs: "限流熔断实战 / 韧性设计"
+updated: 2026-07-30
+---
+
 # 限流熔断示例工程（resilience-examples）
 
 本目录是 [[entities/限流熔断实战]] 中算法的**可编译** C 实现，配套
@@ -23,8 +33,10 @@ resilience-examples/
 ## 依赖
 
 - C 编译器（gcc / clang），POSIX 时钟（`clock_gettime`/`nanosleep`）。
-- Linux / macOS 直接编译；Windows 用 WSL。
 - **无** TLS/网络/第三方库依赖——算法逻辑纯净可移植。
+
+> [!info] 编译环境
+> Linux / macOS 直接编译；Windows 需用 WSL（本工程面向 POSIX）。
 
 ## 编译
 

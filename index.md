@@ -18,6 +18,9 @@ updated: 2026-07-30
 
 - [[00-index/how-to-use|使用说明]]
 - [[00-index/tag-glossary|标签字典]]
+- [[50-reference/obsidian-usage|Obsidian 使用方法]]
+- [[50-reference/obsidian-plugins|Obsidian 已安装插件说明]]
+- [[50-reference/callout-conventions|全库 Callout 使用清单与规范]]
 
 ## 项目
 

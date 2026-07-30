@@ -59,7 +59,7 @@ sources: []
 - **wiki-query**: 用自然语言搜索知识库（推荐）
 - GitHub 网页：按 `t` 键（文件查找器），或仓库搜索框 `tags: [ebpf]`
 - 本地：`grep -r "关键词" Q:\AI\kb\`
-- Obsidian：装在 `Q:\AI\kb`，双链可点跳，全文搜索
+- Obsidian：装在 `Q:\AI\kb`，双链可点跳，全文搜索。详见 [[50-reference/obsidian-usage|Obsidian 使用方法]]。
 
 ## 双链语法
 

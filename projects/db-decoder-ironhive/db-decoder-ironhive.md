@@ -4,6 +4,12 @@ title: >-
 category: projects
 tags: [project, database, hive, decoder, ironhive]
 sources: [Q:/AI/db-decoder-ironhive]
+project: true
+topic: Hive 协议解码器
+stack: "—"
+deps: "—"
+run: "—"
+docs: "项目概述"
 summary: >-
     IronHive 框架项目，用于 TPR 数据库协议能力建设。一期目标包括 Hive 协议解码器开发、AI 能力梳理、流程优化和 Harness trace 接入。
 provenance:

@@ -1,3 +1,13 @@
+---
+project: true
+topic: Nginx 模块开发
+stack: C
+deps: nginx 源码 + gcc
+run: "`bash scripts/build.sh`"
+docs: "Nginx 模块开发实战 / Nginx 框架内部实现"
+updated: 2026-07-30
+---
+
 # Nginx 模块开发示例工程（nginx-module-examples）
 
 本目录是 [[entities/Nginx 模块开发实战]] 中四类的**可编译**代码骨架，配套
@@ -38,8 +48,9 @@ bash scripts/build.sh --static
 
 产物（动态模式）：`build/modules/ngx_http_{hello,xfilter,myupstream,mylb}_module.so`
 
-> 版本 / 编译参数必须匹配运行中的 nginx（动态模块务必加 `--with-compat`），否则加载崩溃。
-> 见 [[entities/Nginx 模块开发实战]] §0、§7。
+> [!warning] 动态模块兼容性（必读）
+> 版本 / 编译参数必须匹配运行中的 nginx（动态模块**务必加 `--with-compat`**），否则加载即崩溃。
+> 详见 [[entities/Nginx 模块开发实战]] §0、§7。
 
 ### 编译状态
 
@@ -120,7 +131,8 @@ curl -i http://127.0.0.1:8080/myup          # myupstream 模块（需后端首�
 # 模拟 backend 上游（看 mylb 轮转）：在 9001/9002 起两个回显服务
 ```
 
-> 注：nginx 的 `load_module` / `proxy_pass` 等需要对应内置模块（http、http_proxy）。
+> [!info] 依赖的内置模块
+> nginx 的 `load_module` / `proxy_pass` 等需要对应内置模块（http、http_proxy）。
 > 若用 `build.sh` 静态编译默认已包含；系统 nginx 通常也包含。
 
 ## 调试

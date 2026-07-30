@@ -27,7 +27,8 @@ lifecycle: draft
 | **SM3** | 哈希 256-bit | SHA-256 | 摘要、HMAC、签名哈希 |
 | **SM4** | 分组密码 128-bit | AES | 对称加密（CBC/ECB/GCM） |
 
-> 注意：SM2 曲线 `sm2p256v1` **不同于** NIST P-256，不能混用。实现/库必须支持国密曲线。
+> [!warning] SM2 曲线不可与 NIST P-256 混用
+> SM2 曲线 `sm2p256v1` **不同于** NIST P-256，不能混用。实现/库必须支持国密曲线。
 
 ## 2. SM3（哈希）
 

@@ -1,3 +1,13 @@
+---
+project: true
+topic: CI/CD 流水线
+stack: YAML + Python
+deps: kubectl/helm（可选）
+run: "pytest / `helm upgrade`"
+docs: "CI_CD 流水线实战 / CI_CD与测试策略"
+updated: 2026-07-30
+---
+
 # CI/CD 流水线示例工程（cicd-pipeline-examples）
 
 本目录是 [[entities/CI_CD 流水线实战]] 的可运行/可套用工程，配套 [[concepts/CI_CD与测试策略]]。
