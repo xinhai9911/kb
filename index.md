@@ -44,6 +44,10 @@ updated: 2026-07-30
 - [[50-reference/fpga-verification|FPGA 验证方法（Testbench / 断言 / 覆盖率 / CI）]]
 - [[entities/fpga-vendors|FPGA 厂商与开源工具链（选型 / Yosys / nextpnr）]]
 
+### 综述
+
+- [[_staging/synthesis/fpga-chip-design-systematic-guide|FPGA 完整芯片代码构建综述（设计流程/工程结构/顶层模块/子系统/约束/验证/学习路径）]]
+
 ## 网络数据面（VPP / VLIB）
 
 - [[20-protocols/vpp|VPP 知识（Vector Packet Processing）]]
@@ -97,6 +101,8 @@ updated: 2026-07-30
 - [[concepts/设计模式精讲|设计模式精讲（创建/结构/行为 + 反模式）]]
 - [[concepts/架构风格演进|架构风格演进（单体→微服务→事件驱动→CQRS→Serverless）]]
 - [[concepts/分布式系统基础|分布式系统基础（CAP/共识/幂等/时钟）]]
+- [[concepts/容器原理与运行时|容器原理与运行时（Namespace/Cgroups/OverlayFS/OCI 镜像/运行时栈，衔接 K8s 分布式编排）]]
+- [[concepts/容器安全|容器安全（Capabilities/seccomp/AppArmor/Rootless/镜像供应链/PodSecurity/Falco）]]
 - [[concepts/可观测性工程|可观测性工程（日志/指标/追踪/SLO）]]
 - [[concepts/韧性设计|韧性设计（超时/重试/熔断/限流/舱壁/降级）]]
 - [[concepts/CI_CD与测试策略|CI/CD 与测试策略（金字塔/契约/金丝雀）]]
@@ -110,6 +116,8 @@ updated: 2026-07-30
 - [[entities/可观测性接入实战|可观测性接入实战（OTel+Prometheus+Grafana）]]
 - [[entities/CI_CD 流水线实战|CI/CD 流水线实战（GitHub Actions/金丝雀）]]
 - [[entities/限流熔断实战|限流熔断实战（令牌桶/滑动窗口/熔断/退避）]]
+- [[entities/容器实战|容器实战（docker/nerdctl/ctr 命令、镜像构建、排障，衔接 K8s）]]
+- [[entities/容器可观测落地|容器可观测落地（cAdvisor/kube-state-metrics/Prometheus、容器日志管道 Loki、OTel 跨 Pod 追踪、RED+USE 排障闭环）]]
 
 ### 示例工程
 - [[projects/README|工程示例总览导航（一眼看全部示例工程）]]
@@ -197,6 +205,7 @@ updated: 2026-07-30
 - [[concepts/agent-frameworks|Agent 框架]]
 - [[concepts/mcp-protocol|Model Context Protocol]]
 - [[concepts/agent-memory-planning|Agent 记忆与规划]]
+- [[concepts/hybrid-retrieval-bm25-semantic-fusion|混合检索（BM25 + 语义 + 融合排序）]]
 - [[entities/anthropic|Anthropic]]
 - [[entities/openai|OpenAI]]
 - [[entities/langchain|LangChain]]
@@ -244,6 +253,41 @@ updated: 2026-07-30
 ### 来源
 
 - [[sources/eBPF 调研来源|eBPF 调研来源]]
+
+## Kubernetes
+
+### 综述
+
+- [[synthesis/Kubernetes 技术全景综述|Kubernetes 技术全景综述（声明式/控制循环/四大支柱/生态/学习路径）]]
+- [[synthesis/容器分布式技术全景综述|容器分布式技术全景综述（容器原理→运行时/镜像→实战→安全→K8s 编排→分布式支柱 的分层地图与学习路径）]]
+
+### 概念（原理）
+
+- [[concepts/Kubernetes 核心架构与组件|Kubernetes 核心架构与组件（控制面/数据面/API 对象模型）]]
+- [[concepts/Kubernetes 声明式模型与控制器|Kubernetes 声明式模型与控制器（Reconcile/finalizer/级联删除/SSA）]]
+- [[concepts/Kubernetes 工作负载与调度|Kubernetes 工作负载与调度（Pod/Deployment/StatefulSet/调度/QoS）]]
+- [[concepts/Kubernetes 网络模型|Kubernetes 网络模型（CNI/Service/kube-proxy/Ingress/NetworkPolicy）]]
+- [[concepts/Kubernetes 存储体系|Kubernetes 存储体系（PV/PVC/StorageClass/CSI）]]
+- [[concepts/Kubernetes 安全模型|Kubernetes 安全模型（RBAC/SA/Secret/PSS/准入/NetworkPolicy）]]
+- [[concepts/Kubernetes 高可用与自愈|Kubernetes 高可用与自愈（探针/滚动更新/PDB/控制面 HA/etcd）]]
+- [[concepts/Kubernetes Operator 与 CRD|Kubernetes Operator 与 CRD（扩展机制/成熟度模型/开发栈）]]
+- [[concepts/Kubernetes Service Mesh|Kubernetes Service Mesh（Sidecar/数据面控制面/Istio-Linkerd/mTLS/选型）]]
+
+### 实体（实战）
+
+- [[entities/Kubernetes 部署与工具链实战|Kubernetes 部署与工具链实战（minikube/kind/kubeadm/containerd）]]
+- [[entities/kubectl 与日常运维实战|kubectl 与日常运维实战（命令速查/故障排查）]]
+- [[entities/Helm 包管理实战|Helm 包管理实战（Chart/模板/Release/回滚/GitOps）]]
+- [[entities/Ingress-Nginx 详解实战|Ingress-Nginx 详解实战（架构/注解/TLS/金丝雀/常见坑）]]
+- [[entities/Kubernetes 网络实战|Kubernetes 网络实战（厂商中立：Service 四类型/CoreDNS/Ingress/NetworkPolicy + 排障清单）]]
+
+### 示例工程
+
+- [[projects/k8s-kind-examples/README|k8s-kind-examples（kind 一键集群 + 负载均衡/滚动更新/探针/Ingress 演示）]]
+
+### 来源
+
+- [[sources/Kubernetes 学习来源|Kubernetes 学习来源（官方文档/教程/书籍/社区）]]
 
 ## CPU 体系架构
 

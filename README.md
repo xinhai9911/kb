@@ -52,3 +52,9 @@ lifecycle: reviewed
 - 2026-07-29: 增加 CI 链接校验：`.github/workflows/check-links.yml`（push/PR 时跑 `scripts/check-links.js`，校验 wikilink 与目录链接，可选 `--check-external` 验外链可达性）
 - 2026-07-29: 新增 FPGA 知识库：[[20-protocols/fpga|FPGA 知识]]（LUT/FF/BRAM/DSP 架构、RTL→仿真→综合→实现→比特流全流程、VHDL/Verilog 对比、时序/CDC、与 ASIC/CPU/GPU 取舍）+ [[50-reference/fpga-usage|FPGA 使用方法]]（iverilog/Verilator/GHDL 仿真、Vivado/Quartus 综合上板、CDC 同步器、Makefile 流程，引用本地 Q:/AI/vhdl_examples）
 - 2026-07-29: 扩充 FPGA 知识库（丰富化）：+ [[20-protocols/fpga-design-patterns|RTL 设计模式]]（FSM/流水线/同步·异步FIFO/握手/AXI-S/仲裁器，含可综合代码）+ [[50-reference/fpga-verification|FPGA 验证方法]]（自检查 testbench/SVA 断言/功能覆盖率/约束随机/Verilator CI）+ [[entities/fpga-vendors|FPGA 厂商与开源工具链]]（AMD/Intel/Lattice/Microchip 选型 + Yosys/nextpnr/SymbiFlow）；主篇 fpga.md 增「深入主题」（时序收敛/SoC 软核/部分重配置/功耗面积权衡）并全量双链
+- 2026-08-12: 新增 [[concepts/容器原理与运行时|容器原理与运行时]]（容器不是虚拟化：三大内核基石 Namespace/Cgroups/OverlayFS、OCI 镜像分层、运行时栈 docker→containerd→runc、单容器到分布式编排的衔接，并全量双链到 K8s/分布式系统基础/Cilium 等既有笔记）
+- 2026-08-12: 新增 [[entities/容器实战|容器实战]]（docker/podman/nerdctl/ctr 工具选型、多阶段镜像构建与 Dockerfile 优化、日常命令速查、namespace/cgroup/网络/OOM 排障、docker→K8s 心智切换 crictl/kubectl，回扣容器原理）
+- 2026-08-12: 新增 [[concepts/容器安全|容器安全]]（4C 威胁模型、内核隔离非安全边界、Capabilities/seccomp/AppArmor+SELinux/Rootless+userns 降权、镜像供应链 SBOM+cosign 签名、PodSecurity/Falco 运行时检测、securityContext 速查模板，全量双链）
+- 2026-08-12: 新增 [[synthesis/容器分布式技术全景综述|容器分布式技术全景综述]]（入口地图：内核基石→镜像/运行时→实战→安全→K8s 编排→分布式支柱的分层架构图、由底向上学习路径、常见误区、入门/进阶/深入速通路线，全量双链汇总全库容器与分布式笔记）
+- 2026-08-12: 新增 [[entities/容器可观测落地|容器可观测落地]]（容器日志管道 stdout→DaemonSet→Loki、cAdvisor 容器资源 + kube-state-metrics 对象状态 + Prometheus kubernetes_sd、OTel 跨 Pod 追踪与 context 传播、RED+USE 排障闭环与 kubectl 速查，回扣 cgroups/OOM）
+- 2026-08-12: 新增 [[entities/Kubernetes 网络实战|Kubernetes 网络实战]]（厂商中立：网络模型三约定、Service 四类型 + Headless、CoreDNS 服务发现、Ingress 七层入口、NetworkPolicy 零信任、Pod/Service/DNS 不通排障清单 + netshoot 抓包，补充到既有 K8s 实体笔记）

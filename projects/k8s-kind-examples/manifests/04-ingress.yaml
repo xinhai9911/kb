@@ -1,0 +1,22 @@
+# Ingress：七层入口。需要先装 ingress-nginx（见 scripts/01-kind-create.sh）。
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web
+  namespace: demo
+  annotations:
+    # 去掉 /demo 前缀再转发（经典 rewrite 演示，path 需用正则捕获组）
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: demo.example.com
+    http:
+      paths:
+      - path: /demo(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: web
+            port:
+              number: 80

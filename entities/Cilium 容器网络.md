@@ -20,6 +20,8 @@ Cilium 是基于 eBPF 的 Kubernetes CNI，2026 年已成为 GKE、EKS、AKS 默
 
 核心理念：用 eBPF 程序替换传统的 iptables 数据路径，直接在内核中完成网络、安全和可观测性。
 
+> 关联：Pod 网络依赖每个容器的 Network Namespace（[[concepts/容器原理与运行时#2. 基石一：Namespace]]）；Cilium 实现的网络策略即 K8s NetworkPolicy（[[entities/Kubernetes 网络实战]]）；其安全能力可与容器级加固互补（[[concepts/容器安全]]）。
+
 ## 核心能力
 
 ### 高性能网络

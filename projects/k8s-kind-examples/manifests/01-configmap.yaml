@@ -1,0 +1,9 @@
+# ConfigMap：把「配置」与「代码/镜像」解耦。改 ConfigMap 后重建 Pod 生效。
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: web-config
+  namespace: demo
+data:
+  GREETING: "你好，Kubernetes"
+  APP_VERSION: "v1"

@@ -8,7 +8,8 @@ summary: >-
     projects/ 下所有示例工程与项目的导航总览：nginx-module-examples（C 模块）、
     openssl-crypto-examples（加密/C+GmSSL）、resilience-examples（限流熔断 C）、
     observability-examples（OTel 可观测栈）、cicd-pipeline-examples
-    （GitHub Actions+Helm 金丝雀）、db-decoder-ironhive（Hive 协议解码）。
+    （GitHub Actions+Helm 金丝雀）、k8s-kind-examples（kind 集群沙盒）、
+    db-decoder-ironhive（Hive 协议解码）。
     每个工程标注语言/依赖/一键启动方式，并回链对应知识文档。
 base_confidence: 0.9
 lifecycle: reviewed
@@ -74,6 +75,7 @@ SORT file.name ASC
 - [resilience-examples](resilience-examples/README.md) ｜ 限流/熔断/重试 ｜ C ｜ gcc（零依赖） ｜ `bash scripts/build.sh` ｜ 限流熔断实战 / 韧性设计
 - [observability-examples](observability-examples/README.md) ｜ 可观测性栈 ｜ Python + Docker ｜ Docker Compose ｜ `docker compose up -d` ｜ 可观测性接入实战 / 可观测性工程
 - [cicd-pipeline-examples](cicd-pipeline-examples/README.md) ｜ CI/CD 流水线 ｜ YAML + Python ｜ kubectl/helm（可选） ｜ pytest / `helm upgrade` ｜ CI_CD 流水线实战 / CI_CD与测试策略
+- [k8s-kind-examples](k8s-kind-examples/README.md) ｜ K8s 集群沙盒 ｜ Docker + kind + kubectl ｜ docker/kind/kubectl/helm ｜ `bash scripts/01-kind-create.sh` ｜ Kubernetes 工作负载与调度 / Kubernetes 网络模型 / Ingress-Nginx 详解实战
 - [db-decoder-ironhive](db-decoder-ironhive/db-decoder-ironhive.md) ｜ Hive 协议解码器 ｜ — ｜ — ｜ — ｜ 项目概述
 
 </details>
@@ -95,6 +97,10 @@ SORT file.name ASC
 - **cicd-pipeline-examples**：GitHub Actions 多阶段 + Helm 金丝雀 + 回滚脚本
   - 文档：[[concepts/韧性设计]]、[[concepts/可观测性工程]]、[[concepts/CI_CD与测试策略]]、[[entities/限流熔断实战]]、[[entities/可观测性接入实战]]、[[entities/CI_CD 流水线实战]]
 
+### 容器 / Kubernetes
+- **k8s-kind-examples**：kind 一键集群 + 探针/ConfigMap/Service/Ingress 部署 + 负载均衡/滚动更新/readiness 演示脚本
+  - 文档：[[concepts/Kubernetes 工作负载与调度]]、[[concepts/Kubernetes 网络模型]]、[[concepts/Kubernetes 高可用与自愈]]、[[entities/Ingress-Nginx 详解实战]]、[[entities/kubectl 与日常运维实战]]
+
 ### 协议分析 / 真实项目
 - **db-decoder-ironhive**：IronHive Hive 协议解码器项目（概述/协议分析/Track/实现）
   - 文档：[[projects/db-decoder-ironhive/db-decoder-ironhive|项目概述]]
@@ -114,6 +120,7 @@ SORT file.name ASC
 | 限流 / 熔断 / 重试 / 幂等 | [resilience-examples](resilience-examples/README.md) | [[entities/限流熔断实战]]、[[concepts/韧性设计]] |
 | 可观测性 / 日志 / 指标 / 追踪 / Grafana | [observability-examples](observability-examples/README.md) | [[entities/可观测性接入实战]]、[[concepts/可观测性工程]] |
 | CI/CD / 流水线 / 金丝雀 / 回滚 | [cicd-pipeline-examples](cicd-pipeline-examples/README.md) | [[entities/CI_CD 流水线实战]]、[[concepts/CI_CD与测试策略]] |
+| Kubernetes / Pod / Service / Ingress / kind | [k8s-kind-examples](k8s-kind-examples/README.md) | [[concepts/Kubernetes 工作负载与调度]]、[[concepts/Kubernetes 网络模型]]、[[entities/Ingress-Nginx 详解实战]] |
 | C 语言 / 零依赖 / 算法演示 | resilience-examples、nginx-module-examples | — |
 | Docker / Compose / OTel 栈 | observability-examples | [[concepts/可观测性工程]] |
 | Kubernetes / Helm / 部署 | cicd-pipeline-examples › deploy/ | [[entities/CI_CD 流水线实战]] |

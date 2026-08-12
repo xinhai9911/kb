@@ -21,6 +21,14 @@ node_modules/
 __pycache__/
 *.pyc
 
+# qkb local vector index lives outside the vault (at ~/.kb-index/);
+# if for any reason it ends up here, exclude it.
+.kb-index/
+
+# Local machine config — contains machine-specific absolute paths.
+# Template lives in .env.example.
+.env
+
 # Large binaries (consider Git LFS if needed)
 *.zip
 *.tar
