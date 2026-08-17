@@ -55,6 +55,26 @@ updated: 2026-07-30
 
 - [[synthesis/fpga-chip-design-systematic-guide|FPGA 完整芯片代码构建综述（设计流程/工程结构/顶层模块/子系统/约束/验证/学习路径）]]
 
+## 芯片 / 硬件加速
+
+### 芯片资料（蒸馏）
+- [[50-reference/sources/chips/nvme-ssd-controller|NVMe/SSD 控制器架构（NVMe 协议/FTL/ECC/PCIe PHY）]]
+- [[50-reference/sources/chips/smartnic-dpu|SmartNIC 与 DPU 网络加速芯片（BlueField/IPU/Pensando）]]
+- [[50-reference/sources/chips/gpu-ai-accelerator|GPU 与 AI 加速芯片架构（NVIDIA/国产/TPU/CUDA）]]
+- [[50-reference/sources/chips/domestic-switch-chips|国产交换芯片与网络芯片替代（盛科/裕太微/博通对比）]]
+- [[50-reference/sources/chips/asic-design-flow|ASIC 芯片设计全流程（RTL→综合→P&R→签核→流片）]]
+- [[50-reference/sources/chips/serdes-phy|高速 SerDes/PHY 物理层（PMA/PCS/CDR/均衡/PCIe/以太网）]]
+- [[50-reference/sources/chips/centec-ctc7132|盛科 CTC7132 交换芯片（TsingMa/L2/L3/VXLAN/PTP）]]
+- [[50-reference/sources/chips/centec-ctc8180|盛科 CTC8180 交换芯片（TsingMa.MX/FlexE/SRv6）]]
+- [[50-reference/sources/chips/centec-sdk|盛科 SDK 资料蒸馏（架构/API/调试）]]
+- [[50-reference/sources/chips/motorcomm-switch|裕太微交换芯片资料蒸馏（非管理型/SMI）]]
+- [[50-reference/sources/chips/nic-dpdk|网卡与 DPDK 资料蒸馏（Intel 82599/沐创/DPDK）]]
+- [[50-reference/sources/chips/hardware-design-nsf|硬件设计资料蒸馏（NSF 沐创网卡/框式机架）]]
+- [[50-reference/sources/chips/amd-epyc|AMD EPYC 处理器资料蒸馏（NUMA/HPC 调优）]]
+- [[50-reference/sources/chips/h3c-tap|H3C TAP 流量可视化设备资料蒸馏]]
+- [[50-reference/sources/chips/chips-papers-misc|芯片学术论文与培训资料（ASan/安全 RDMA/沐创培训）]]
+- [[50-reference/sources/chips/opencloudos-summit-2025|OpenCloudOS 2025 生态大会资料蒸馏]]
+
 ## 网络数据面（VPP / VLIB）
 
 - [[20-protocols/vpp|VPP 知识（Vector Packet Processing）]]
