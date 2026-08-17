@@ -120,3 +120,5 @@ lifecycle: draft
 - FPGA：[[20-protocols/fpga|FPGA 知识]]（FPGA 做 AI 推理加速）
 - SmartNIC/DPU：[[50-reference/sources/chips/smartnic-dpu|SmartNIC/DPU]]（GPU + DPU 组合加速）
 - RDMA：[[50-reference/sources/chips/nic-dpdk|网卡与 DPDK]]（InfiniBand/RoCE 互联）
+- 昇腾全栈：[[concepts/ascend-software-stack|昇腾 AI 软件栈]]（CANN / MindSpore / MindIE 分层架构）
+- 大模型套件：[[entities/mindspore-transformers|MindSpore Transformers]]（昇腾大模型全流程开发套件）

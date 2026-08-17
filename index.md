@@ -244,6 +244,7 @@ updated: 2026-07-30
 
 - [[concepts/llm-inference-optimization|LLM 推理优化]]
 - [[concepts/model-compression-distillation|模型压缩与知识蒸馏]]
+- [[concepts/ascend-software-stack|昇腾 AI 软件栈（CANN / MindSpore / MindIE）]]
 
 ### 应用与工具
 
@@ -266,6 +267,7 @@ updated: 2026-07-30
 - [[entities/openai|OpenAI]]
 - [[entities/hugging-face|Hugging Face]]
 - [[entities/deepseek|DeepSeek]]
+- [[entities/mindspore-transformers|MindSpore Transformers 大模型套件]]
 
 ### 来源
 
