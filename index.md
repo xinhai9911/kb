@@ -290,6 +290,11 @@ updated: 2026-07-30
 - [[concepts/agent-memory-planning|Agent 记忆与规划]]
 - [[concepts/agent-long-term-memory|Agent 长期记忆与反思机制]]
 - [[concepts/agent-tool-use-mcp|Agent 工具使用与 MCP 协议]]
+- [[concepts/llm-agent-harness|LLM Agent Harness（智能体运行时 / 控制循环）]]
+- [[concepts/harness-deep-dive|Harness 深度解析：为什么需要它]]
+- [[concepts/harness-framework-comparison|Harness 框架对比指南：如何选择适合的 harness]]
+- [[concepts/harness-evolution-future|Harness 演进历史与未来趋势]]
+- [[concepts/lightweight-agent-frameworks|轻量 Agent 框架（Pydantic AI / smolagents / Agno / LlamaIndex）]]
 - [[concepts/mcp-protocol|Model Context Protocol]]
 
 ### 协作与应用
@@ -312,6 +317,9 @@ updated: 2026-07-30
 - [[entities/openai|OpenAI]]
 - [[entities/langchain|LangChain]]
 - [[entities/crewai|CrewAI]]
+- [[entities/anthropic-agent-sdk|Anthropic Agent SDK]]
+- [[entities/openai-agents-sdk|OpenAI Agents SDK]]
+- [[entities/google-adk|Google ADK]]
 
 ### 来源
 
