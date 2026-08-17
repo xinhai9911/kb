@@ -43,6 +43,13 @@ updated: 2026-07-30
 - [[50-reference/fpga-usage|FPGA 使用方法（工具链 / 仿真 / 上板）]]
 - [[50-reference/fpga-verification|FPGA 验证方法（Testbench / 断言 / 覆盖率 / CI）]]
 - [[entities/fpga-vendors|FPGA 厂商与开源工具链（选型 / Yosys / nextpnr）]]
+- [[20-protocols/fpga-axi4-bus|AXI4 总线协议深度（Full/Lite/Stream / 5 通道 / Burst / Outstanding）]]
+- [[20-protocols/fpga-ddr-memory|DDR 存储器接口与 MIG 控制器（DDR3/4/5 / AXI4 用户接口 / ECC）]]
+- [[20-protocols/fpga-uart-spi-i2c-rtl|UART/SPI/I2C 外设接口 RTL 模板（可综合 Verilog / AXI-Lite 集成）]]
+- [[20-protocols/fpga-zynq-soc|Zynq SoC 开发（PS/PL AXI 互联 / Linux / HLS 加速）]]
+- [[20-protocols/fpga-riscv-softcore|RISC-V 软核在 FPGA 上部署（VexRiscv/LiteX/PicoRV32 / 调试）]]
+- [[20-protocols/fpga-constraints-xdc-sdc|FPGA 综合约束 XDC/SDC 写法（时钟/IO/伪路径/多周期）]]
+- [[20-protocols/fpga-ip-catalog|FPGA 常用 IP 核速查（MMCM/FIFO/DMA/XPM/SmartConnect）]]
 
 ### 综述
 
