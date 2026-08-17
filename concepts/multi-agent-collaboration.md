@@ -1,0 +1,116 @@
+---
+title: 多 Agent 协作架构
+tags: [ai-agent, multi-agent, collaboration, active]
+base_confidence: 0.83
+lifecycle: draft
+category: reference
+created: 2026-08-07
+updated: 2026-08-07
+---
+
+# 多 Agent 协作架构
+
+## 摘要
+
+多 Agent 协作架构：协作模式（主从/对等/辩论/层级）、通信机制（消息传递/共享黑板/事件驱动）、框架（CrewAI/AutoGen/MetaGPT/ChatDev）、典型场景（代码生成/研究/辩论）、挑战（一致性/死锁/成本）。
+
+## 协作模式
+
+| 模式 | 原理 | 适用场景 | 代表框架 |
+|------|------|----------|----------|
+| **主从模式** | 一个 Master Agent 分配任务，Worker Agent 执行并汇报结果 | 流程明确、需要统一调度的任务（如流水线处理、批量作业） | CrewAI（Manager 模式）、AutoGen |
+| **对等模式** | Agent 地位平等，通过协商或投票达成共识 | 头脑风暴、多角度分析、需要民主决策的场景 | AutoGen（Group Chat）、CrewAI（无 Manager） |
+| **辩论模式** | 多个 Agent 分持立场，通过多轮辩论收敛到最佳答案 | 复杂推理、代码 Review、决策验证、批判性思维 | MetaGPT（Code Review）、自定义辩论链 |
+| **层级模式** | Agent 组织成树状层级，逐级委派与汇总 | 大型项目拆解、组织化协作、多部门协同 | ChatDev（CEO→CTO→Programmer）、MetaGPT |
+
+## 通信机制
+
+| 机制 | 原理 | 优势 | 劣势 | 适用框架 |
+|------|------|------|------|----------|
+| **消息传递** | Agent 间直接发送结构化消息 | 低耦合、异步支持好、易于追踪 | 消息格式需统一，可能产生大量中间消息 | AutoGen、CrewAI |
+| **共享黑板** | 所有 Agent 读写同一共享存储空间 | 全局可见、无需显式路由 | 并发冲突、信息过载、缺乏访问控制 | LangGraph（状态图）、自定义系统 |
+| **事件驱动** | Agent 发布/订阅事件，松耦合触发 | 松耦合、可扩展、适合异步流程 | 事件顺序难保证、调试复杂 | CrewAI（事件回调）、LangGraph |
+| **工作流引擎** | 预定义 DAG/状态机控制 Agent 执行顺序 | 流程可预测、易审计、确定性强 | 灵活性受限、难以处理动态分支 | LangGraph、MetaGPT |
+
+## 框架对比
+
+| 框架 | 角色模型 | 通信方式 | 适用场景 | 开源 | 语言 |
+|------|----------|----------|----------|------|------|
+| **CrewAI** | 预定义角色（Agent + Task + Crew） | 消息传递 / 事件驱动 | 通用多 Agent 任务编排、研究、内容生成 | ✅ | Python |
+| **AutoGen** | 用户定义角色，支持 Group Chat | 消息传递 / 对话驱动 | 对话式协作、代码执行、多轮推理 | ✅ | Python |
+| **MetaGPT** | SOP 驱动角色（PM/Architect/Engineer/Tester） | 结构化文档传递 | 软件开发全流程、需求→设计→代码→测试 | ✅ | Python |
+| **ChatDev** | 虚拟公司层级（CEO/CTO/Programmer/Testers） | 对话传递 + 文件共享 | 端到端软件生成、教学演示 | ✅ | Python |
+| **LangGraph** | 有状态节点（任意角色映射为图节点） | 共享状态 + 条件路由 | 复杂工作流、需要细粒度控制的场景 | ✅ | Python |
+
+## 典型多 Agent 场景
+
+### 软件开发团队
+
+模拟真实软件公司分工，从需求分析到代码交付：
+
+- **MetaGPT**：ProductManager → Architect → Engineer → QA，通过结构化文档（PRD/API 设计/代码）传递信息
+- **ChatDev**：CEO 提需求 → CTO 设计架构 → Programmer 编码 → Tester 测试，通过对话驱动全流程
+- 多 Agent 联合 Code Review：一个 Agent 编写代码，另一个 Agent Review，迭代修复
+
+### 研究团队
+
+多 Agent 协作完成深度研究任务：
+
+- **Researcher Agent** 负责信息收集，**Analyst Agent** 负责数据分析，**Writer Agent** 负责报告生成
+- CrewAI 的 sequential/parallel 模式支持研究流水线
+- 可引入 **Fact-Checker Agent** 对输出进行事实核查
+
+### 辩论系统
+
+通过多角色辩论提升推理质量：
+
+- 两个 Agent 分持正反立场，多轮辩论后由裁判 Agent 综合结论
+- 在数学推理、逻辑分析、代码 Review 中效果显著
+- OpenAI o1/o3 系列的 Chain-of-Thought 本质上是内部辩论的简化版
+
+### 代码审查
+
+专业化的多 Agent 代码审查流程：
+
+- **Security Agent**：检查安全漏洞（SQL 注入、XSS、硬编码密钥）
+- **Performance Agent**：分析性能瓶颈和优化空间
+- **Style Agent**：确保代码风格和规范一致性
+- 最终由 **Summarizer Agent** 汇总所有审查意见
+
+## 挑战
+
+### 一致性
+
+- 多 Agent 独立推理可能导致输出不一致甚至矛盾
+- 需要共识机制或权威 Agent 做最终裁决
+- 长期记忆共享可缓解但增加复杂度
+
+### 死锁检测
+
+- 循环依赖（A 等 B、B 等 C、C 等 A）导致系统挂起
+- 需要超时机制、依赖图分析、死锁检测算法
+- LangGraph 的状态图可显式检测循环
+
+### Token 成本放大
+
+- N 个 Agent 协作，总 Token 消耗是单 Agent 的 N~N² 倍
+- Agent 间消息传递本身消耗大量上下文
+- 优化策略：任务分级（小任务用轻量 Agent）、缓存中间结果、压缩消息
+
+### 调试困难
+
+- 多 Agent 交互产生非确定性行为，复现困难
+- 消息流追踪需要可视化工具（LangSmith、LangGraph Studio）
+- 需要结构化日志和 Agent 行为 Trace
+
+### 错误传播
+
+- 一个 Agent 的错误输出可能被下游 Agent 当作正确输入继续放大
+- 需要验证层（Validator Agent）和回滚机制
+- 关键节点加入人类审核（Human-in-the-loop）
+
+## 延伸阅读
+
+- [[ai-agent-overview]] - AI Agent 综述，了解 Agent 基本概念
+- [[agent-frameworks]] - Agent 开发框架对比与选型
+- [[agent-memory-planning]] - Agent 记忆与规划机制，理解单 Agent 能力基础

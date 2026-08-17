@@ -278,12 +278,36 @@ updated: 2026-07-30
 
 ## AI Agent
 
+### 综述
+
 - [[synthesis/ai-agent-research|AI Agent 研究综述]]
+
+### 核心概念
+
 - [[concepts/ai-agent-overview|AI Agent 概述]]
 - [[concepts/agent-frameworks|Agent 框架]]
-- [[concepts/mcp-protocol|Model Context Protocol]]
+- [[concepts/agent-orchestration-patterns|Agent 编排模式]]
 - [[concepts/agent-memory-planning|Agent 记忆与规划]]
+- [[concepts/agent-long-term-memory|Agent 长期记忆与反思机制]]
+- [[concepts/agent-tool-use-mcp|Agent 工具使用与 MCP 协议]]
+- [[concepts/mcp-protocol|Model Context Protocol]]
+
+### 协作与应用
+
+- [[concepts/multi-agent-collaboration|多 Agent 协作架构]]
+- [[concepts/agentic-coding|Agentic Coding 智能编程]]
+- [[concepts/browser-agent|Browser Agent 浏览器自动化]]
+
+### 评测
+
+- [[concepts/agent-evaluation-benchmarks|Agent 评估基准]]
+
+### 检索增强
+
 - [[concepts/hybrid-retrieval-bm25-semantic-fusion|混合检索（BM25 + 语义 + 融合排序）]]
+
+### 实体
+
 - [[entities/anthropic|Anthropic]]
 - [[entities/openai|OpenAI]]
 - [[entities/langchain|LangChain]]

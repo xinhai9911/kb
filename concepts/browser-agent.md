@@ -1,0 +1,74 @@
+---
+title: Browser Agent 浏览器自动化
+lifecycle: draft
+category: reference
+tags: [ai-agent, browser, web-automation, active]
+created: 2026-08-07
+updated: 2026-08-07
+base_confidence: 0.83
+summary: Browser Agent 技术全景：架构（感知→推理→操作→反馈）、操作空间（DOM/C视觉/Accessibility Tree）、框架（Playwright/Puppeteer/Selenium+LLM）、产品（Multion/Induced AI/Browser Use/Stagehand）、挑战（动态页面/反爬/CAPTCHA/安全性）。
+---
+
+# Browser Agent 浏览器自动化
+
+## 架构概览
+
+Browser Agent 是一种以 LLM 为"大脑"，通过感知浏览器状态→推理决策→执行操作→获取反馈的闭环循环，自主完成网页任务的智能体。
+
+```
+┌──────────────┐    ┌──────────────┐    ┌──────────────┐    ┌──────────────┐
+│   感知层      │───▶│   推理层      │───▶│   操作层      │───▶│   反馈层      │
+│              │    │              │    │              │    │              │
+│ • 页面截图    │    │ • LLM 推理   │    │ • 点击坐标    │    │ • 截图对比    │
+│ • DOM 树     │    │ • 目标分解    │    │ • 键盘输入    │    │ • DOM 变化    │
+│ • AXTree     │    │ • 任务规划    │    │ • 页面滚动    │    │ • 网络请求    │
+│ • 网络日志    │    │ • 错误恢复    │    │ • 页面导航    │    │ • 错误检测    │
+└──────────────┘    └──────────────┘    └──────────────┘    └──────────────┘
+```
+
+## 操作空间对比
+
+| 操作空间 | 原理 | 优点 | 缺点 | 代表方案 |
+|---------|------|------|------|---------|
+| **DOM 选择器** | 通过 CSS/XPath 定位元素，执行 click/input 等操作 | 精确、速度快、可获取完整属性 | 依赖页面结构，动态渲染易失效 | Playwright + LLM |
+| **屏幕坐标视觉** | 截图 + 视觉模型定位目标位置 | 与人类感知一致，不依赖页面结构 | 精度受分辨率影响，速度较慢 | CogAgent, SeeClick |
+| **Accessibility Tree** | 语义化描述页面结构（角色/名称/状态） | 语义丰富、对辅助功能友好 | 部分页面缺失，信息量有限 | WebVoyager, OmniParser |
+| **混合方案** | 结合多种操作空间，动态选择最优 | 兼顾精度与鲁棒性 | 实现复杂度高 | Browser Use, Stagehand |
+
+## 框架与产品
+
+| 名称 | 类型 | 核心原理 | 开源 | 备注 |
+|------|------|---------|------|------|
+| **Playwright + LLM** | 框架 | 结合 Playwright 浏览器控制 + LLM 指令生成 | ✅ | 微软出品，支持 Chromium/Firefox/WebKit |
+| **Puppeteer + LLM** | 框架 | Chrome DevTools Protocol + LLM | ✅ | 仅 Chromium |
+| **Selenium + LLM** | 框架 | 经典 WebDriver + LLM | ✅ | 兼容性最广，社区最大 |
+| **Browser Use** | 开源框架 | 多模态感知 + 结构化输出 + 自定义动作 | ✅ | Python，支持截图+DOM+AXTree |
+| **Stagehand** | 开源框架 | "act/extract/navigate" 原语 + DOM 快照 | ✅ | TypeScript，类人交互 |
+| **Multion** | 产品 | 云端浏览器代理，支持自然语言任务 | ❌ | SaaS，支持 Chrome 扩展 |
+| **Induced AI** | 产品 | 企业级浏览器自动化，支持 iframe/多步 | ❌ | 商业，支持 headless 模式 |
+| **AutoGPT/Browser** | 产品 | Agent 自主浏览互联网完成目标 | ✅ | 通用 Agent 的浏览器子模块 |
+
+## 典型场景
+
+- **表单填写**：自动注册、申请、信息录入
+- **数据采集**：电商价格监控、招聘信息聚合、舆情监测
+- **测试自动化**：UI 回归测试、跨浏览器兼容性验证
+- **购物比价**：多平台价格比较、优惠信息聚合
+- **预订机票**：自动搜索、比较、下单（需处理登录/支付等安全环节）
+
+## 挑战
+
+| 挑战 | 说明 |
+|------|------|
+| **动态内容渲染** | SPA/SSR 页面 DOM 动态变化，选择器易失效 |
+| **反爬虫机制** | 行为检测、指纹识别、速率限制 |
+| **CAPTCHA 验证** | 图形/滑块/行为验证码 |
+| **登录态管理** | Cookie/Token 管理、MFA 处理 |
+| **多标签页协调** | 跨标签任务的上下文维护与切换 |
+| **安全风险** | 操作银行/支付等敏感站点的风险控制 |
+| **泛化能力** | 对从未见过的网站布局的适应性 |
+
+## 延伸阅读
+
+- [[ai-agent-overview]]
+- [[llm-application-ecosystem]]
