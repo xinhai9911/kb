@@ -24,7 +24,7 @@ sources:
 ## 电影风格
 
 ### 1. 缓慢电影（Slow Cinema）的东南亚表达
-- 阿彼察邦是"缓慢电影"运动的核心成员——但不是如 [[entities/hou-hsiao-hsien]] 那样的"静止的长镜头"，也不是 [[entities/tarkovsky-andrei]] 的"形而上的时间流"
+- 阿彼察邦是"缓慢电影"运动的核心成员——但不是如 [[entities/hou hsiao hsien]] 那样的"静止的长镜头"，也不是 [[entities/tarkovsky andrei]] 的"形而上的时间流"
 - **他的缓慢是"热带的缓慢"**——炎热气候下的时间感，吊扇、午睡、蝉鸣、汗水
 - **结构**：几乎全部由固定机位的中/远景组成，很少特写，很少快速剪辑
 - **目的**：让观众进入"感觉状态"而不是"理解状态"
@@ -36,7 +36,7 @@ sources:
 - **物灵化**：树木、河流、洞穴、动物都有灵魂，在电影中可以是"角色"
 
 ### 3. 热带超现实主义
-- 区别于 [[entities/david-lynch]] 的"美国小镇下的怪异"——阿彼察邦的超现实来自热带的"迷离感"
+- 区别于 [[entities/david lynch]] 的"美国小镇下的怪异"——阿彼察邦的超现实来自热带的"迷离感"
 - 密林中的神秘光柱、夜晚森林的呼吸声、老虎变成人、年老的公主和鲶鱼做爱……
 - **"热带无意识"**：茂密的植物、腐败的气味、闷热的空气——环境本身就是幻觉
 
@@ -64,7 +64,7 @@ sources:
 - 部分角色由导演的亲戚/朋友扮演——电影中有很强的"家族感"
 
 ### 声音创作
-- 阿彼察邦对声音的态度与 [[entities/david-lynch]] 类似——声音不是配乐，而是"空间感"
+- 阿彼察邦对声音的态度与 [[entities/david lynch]] 类似——声音不是配乐，而是"空间感"
 - 热带的声音画布：蝉鸣、狗吠、远处的鞭炮、溪水声
 - 这些声音不是"环境音效"，而是"叙事的材料"
 
@@ -85,8 +85,8 @@ sources:
 - 2010年《布米叔叔》获得金棕榈奖标志着"缓慢电影"和东南亚电影的国际认可
 - 影响了全球艺术电影的"灵性转向"
 - 作为泰国唯一的世界级导演，启发了东南亚新一代独立电影人
-- 被 [[entities/tarkovsky-andrei]] 的"时间雕刻"概念深度影响——但具体化为热带的时间
-- [[entities/david-lynch]] 对 [[entities/apichatpong]] 的影响：阿彼察邦公开承认林奇的《双峰》对《正午显影》的影响
+- 被 [[entities/tarkovsky andrei]] 的"时间雕刻"概念深度影响——但具体化为热带的时间
+- [[entities/david lynch]] 对 [[entities/apichatpong]] 的影响：阿彼察邦公开承认林奇的《双峰》对《正午显影》的影响
 
 ## 争议与讨论
 
@@ -96,10 +96,10 @@ sources:
 
 ## 交叉链接
 
-- [[entities/david-lynch]] — 超现实的两极
-- [[entities/tarkovsky-andrei]] — 时间雕刻与灵性电影
-- [[concepts/film-theory-essentials]] — 时间-影像的当代纯粹体现
-- [[concepts/nonlinear-narrative]] — 阿彼察邦的叙事结构
-- [[concepts/director-approaches]] — 观察型导演的极端代表
-- [[concepts/sound-design-deep-dive]] — 热带声音画布
-- [[synthesis/film-directing-panorama]] — 电影导演全景
+- [[entities/david lynch]] — 超现实的两极
+- [[entities/tarkovsky andrei]] — 时间雕刻与灵性电影
+- [[concepts/电影 理论 要点]] — 时间-影像的当代纯粹体现
+- [[concepts/非线性 叙事]] — 阿彼察邦的叙事结构
+- [[concepts/导演 方法]] — 观察型导演的极端代表
+- [[concepts/声音 设计 深入 深入]] — 热带声音画布
+- [[synthesis/电影 导演 全景]] — 电影导演全景

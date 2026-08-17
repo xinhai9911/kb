@@ -1,0 +1,74 @@
+---
+aliases: ["reverse-ida-pro"]
+title: 逆向工程书籍蒸馏（IDA Pro）
+tags: [reference, sources, reverse, ida-pro, binary, active]
+created: 2026-07-29
+updated: 2026-07-29
+summary: >-
+    | 文件名 | 体量 | 侧重点 |
+category: reference
+source_dir: Q:\常规书籍
+sources: []
+base_confidence: 0.6
+lifecycle: reviewed
+---
+
+# 逆向工程书籍蒸馏（IDA Pro）
+
+> IDA Pro 权威指南（扫描版），二进制分析与逆向基础工具书。
+
+> ✅ **已 OCR 蒸馏**：`IDA Pro权威指南_扫描版_12.2M.pdf`（451页）经 easyocr 抽样 OCR，正文与目录已提炼。Chris Eagle 著，石华耀等译，2009。
+> 原始路径：`Q:\常规书籍\IDA Pro权威指南_扫描版_12.2M.pdf`
+
+## 书目清单（原文路径 `Q:\常规书籍\`）
+
+| 文件名 | 体量 | 侧重点 |
+|---|---|---|
+| IDA Pro权威指南_扫描版_12.2M.pdf | ~12 MB | IDA 使用、反汇编、调试、插件 |
+
+## 关键要点
+
+> 以下要点基于**书名推测**，因原书为扫描版未做 OCR，**待 OCR 核实**，不可视为已提炼的可靠正文。
+
+- **静态分析**：反汇编视图、函数识别、交叉引用（xref）。
+- **调试**：本地/远程调试、断点。
+- **插件与脚本**：IDC / IDAPython 自动化。
+
+## 适用场景
+
+- 配合 [[50-reference/dlopen internal 内存]]（动态链接内部机制）做二进制逆向。
+- 分析交换芯片 SDK / 网卡固件时定位符号与逻辑。
+
+## 关联
+
+- 动态链接机制：[[50-reference/dlopen internal 内存]]
+
+---
+
+## 深度提炼
+
+### IDA Pro 权威指南（OCR 已提炼）
+
+> 来源：`Q:\AI\ocr_out\IDA_Pro权威指南_扫描版_12_2M.txt`（easyocr 抽样 OCR，含译者序、作者序、目录与第一部分）。
+> Chris Eagle 著，石华耀等译，No Starch Press，2009；原书以 IDA 5.2 为对象（原理适用于所有版本）。
+
+**全书结构（19 章 + 附录）**：
+- **第 1–2 章**：逆向工程入门、反汇编器基础（读者可按基础/进阶/高级分路径阅读）
+- **第 3 章**：IDA 基本布局
+- **第 4 章**：启动 IDA 并加载二进制文件
+- **第 5–7 章**：主要界面窗口与基本功能
+- **第 8 章**：处理复杂数据结构（含 C++ 类）
+- **第 9 章**：交叉引用（xref）与基于图形的反汇编
+- **第 10 章**：非 Windows 平台（Linux / OS X）运行 IDA
+- **第 11–14 章**：高级用法与自带工具（配置选项、FLIRT 签名技术区分库代码/应用代码、类型库与扩展、二进制修补）
+- **第 15–19 章**：可扩展性——脚本功能与 SDK 编程 API、IDC、插件、文件加载器与处理器模块
+
+**核心要点**：
+- **交互式静态反汇编**：IDA 是应用最广的静态反汇编工具，恶意代码分析/漏洞研究主力；交互、可编程、可扩展、支持多处理器与平台。
+- **FLIRT**（Fast Library Identification and Recognition Technology）：用库签名区分库代码与应用程序代码，识别编译器/库函数。
+- **可扩展性**：IDC 脚本、IDAPython、SDK 编程 API、插件、处理器模块——用户可让 IDA 完成定制任务。
+- **交叉引用（xref）**：函数/数据引用关系，是逆向追踪调用链的核心。
+
+**适用场景**：配合 [[50-reference/dlopen internal 内存]]（动态链接内部机制）做二进制逆向；分析交换芯片 SDK / 网卡固件时定位符号与逻辑。
+
+> OCR 注：少量错字（如"IDA"误为"IA"/"ID4"），已据上下文修正；目录与章节结构完整可靠。

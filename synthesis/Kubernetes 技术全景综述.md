@@ -81,7 +81,7 @@ K8s 的架构选择都源于这四条铁律：
 
 ## 5. 四大支柱
 
-- **网络**：每个 Pod 有独立 IP（CNI 扁平网络）；Service 做服务发现与负载均衡；Ingress/Gateway 管南北向；服务间治理（熔断/重试/mTLS/金丝雀）用 Service Mesh（[[concepts/Kubernetes Service Mesh]]）。对照 [[concepts/eBPF 核心架构]] 理解 Cilium 用 eBPF 替代 iptables 的高性能数据面。
+- **网络**：每个 Pod 有独立 IP（CNI 扁平网络）；Service 做服务发现与负载均衡；Ingress/Gateway 管南北向；服务间治理（熔断/重试/mTLS/金丝雀）用 Service Mesh（[[concepts/Kubernetes 服务 网格]]）。对照 [[concepts/eBPF 核心架构]] 理解 Cilium 用 eBPF 替代 iptables 的高性能数据面。
 - **存储**：PV（存储资源）/ PVC（存储请求）/ StorageClass（动态供给模板），CSI 让存储厂商插件化接入。
 - **安全**：RBAC 授权 + ServiceAccount 身份 + NetworkPolicy 微隔离 + 准入控制（安全上下文、PSS）+ Secret 加密。
 - **高可用**：控制器自愈、健康检查（liveness/readiness/startup）、滚动更新与回滚、控制面多副本 + etcd 集群。
@@ -154,7 +154,7 @@ K8s 的威力在于**用标准接口把实现做成插拔**：
 - [[concepts/Kubernetes 安全模型]]
 - [[concepts/Kubernetes 高可用与自愈]]
 - [[concepts/Kubernetes Operator 与 CRD]]
-- [[concepts/Kubernetes Service Mesh]]
+- [[concepts/Kubernetes 服务 网格]]
 - [[entities/Kubernetes 部署与工具链实战]]
 - [[entities/kubectl 与日常运维实战]]
 - [[entities/Helm 包管理实战]]

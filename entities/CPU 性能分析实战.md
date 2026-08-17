@@ -335,7 +335,7 @@ done
 ## 参考来源
 
 - [[concepts/CPU 核心架构|CPU 核心架构]]
-- [[50-reference/vpp-plugin-perf|VPP 插件性能调优]]
+- [[50-reference/VPP 插件 性能|VPP 插件性能调优]]
 - [[concepts/DPDK 核心架构|DPDK 核心架构（内存模型/NUMA 部分）]]
 - Brendan Gregg: _Performance Analysis Super_ (perf 权威指南)
 - Intel 优化手册 §PMC 事件列表

@@ -190,7 +190,7 @@ spec:
 ```
 
 - `canary-weight` 按百分比；`canary-by-header` / `canary-by-cookie` 可按用户/请求头精准分流。
-- 这是 Controller 级金丝雀，**与 Service Mesh**（[[concepts/Kubernetes Service Mesh]] §4）的权重路由是不同的实现路径。
+- 这是 Controller 级金丝雀，**与 Service Mesh**（[[concepts/Kubernetes 服务 网格]] §4）的权重路由是不同的实现路径。
 
 ## 7. 常见坑与排查
 
@@ -234,7 +234,7 @@ kubectl exec -it <ingress-pod> -n ingress-nginx -- cat /etc/nginx/nginx.conf | g
 ## 相关文档
 
 - [[concepts/Kubernetes 网络模型]]
-- [[concepts/Kubernetes Service Mesh]]
+- [[concepts/Kubernetes 服务 网格]]
 - [[concepts/Kubernetes 高可用与自愈]]
 - [[entities/Helm 包管理实战]]
 - [[entities/kubectl 与日常运维实战]]

@@ -111,7 +111,7 @@ Service 的虚拟 IP 需要**数据面**把流量转给后端 Pod，kube-proxy �
 ### 5.2 Gateway API（Ingress 的后继）
 
 - 面向服务网格/多协议的下一代入口标准：`Gateway`、`GatewayClass`、`HTTPRoute`。
-- 与 Service Mesh（[[concepts/Kubernetes Service Mesh]]）更贴近，表达能力更强。
+- 与 Service Mesh（[[concepts/Kubernetes 服务 网格]]）更贴近，表达能力更强。
 
 ## 6. NetworkPolicy（东西向微隔离）
 
@@ -165,7 +165,7 @@ Pod（容器网络命名空间） → 进程
 - [[concepts/eBPF 核心架构]]
 - [[synthesis/eBPF 技术全景]]
 - [[entities/Ingress-Nginx 详解实战]]
-- [[concepts/Kubernetes Service Mesh]]
+- [[concepts/Kubernetes 服务 网格]]
 - [[concepts/Kubernetes 安全模型]]
 - [[concepts/Kubernetes 工作负载与调度]]
 - [[concepts/HTTP2 与 HTTP3(QUIC)]] — Ingress/gRPC 底层传输协议

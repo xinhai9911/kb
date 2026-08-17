@@ -302,8 +302,8 @@ perf stat -e cycles,instructions,cache-misses,branch-misses \
 
 ## 参考来源
 
-- [[50-reference/sources/books/intel-architecture-perf|Intel 架构优化手册蒸馏]]
-- [[50-reference/sources/chips/amd-epyc|AMD EPYC NUMA 配置]]
+- [[50-reference/sources/books/Intel 架构 性能|Intel 架构优化手册蒸馏]]
+- [[50-reference/sources/chips/AMD EPYC|AMD EPYC NUMA 配置]]
 - [[entities/CPU 性能分析实战|CPU 性能分析实战]]
 - Intel® 64 and IA-32 Architectures Optimization Reference Manual
 - AMD Processor Programming Reference (PPR)

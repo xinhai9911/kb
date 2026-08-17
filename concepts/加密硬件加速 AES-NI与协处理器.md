@@ -53,7 +53,7 @@ AES-GCM 的认证（GHASH）是 GF(2^128) 上的多项式乘，软件慢。`PCLM
 |------|------|------|
 | **HSM**（硬件安全模块） | 私钥**不出硬件**，签名在内部完成 | CA 根密钥、金融合规 |
 | **TPM** | 平台绑定密钥、磁盘加密 | 设备身份、BitLocker |
-| **加密引擎/IPsec 协处理** | 批量对称加解密 offload | 路由器/VPN/[[20-protocols/vpp|VPP]] 数据面 |
+| **加密引擎/IPsec 协处理** | 批量对称加解密 offload | 路由器/VPN/[[20-protocols/VPP 2|VPP]] 数据面 |
 | **SmartNIC / DPU** | 网卡内做 TLS/IPsec | 数据中心 TLS 卸载 |
 
 关键区别：**加速**（更快算出结果）vs **密钥隔离**（私钥永不离开硬件）。HSM/TPM 主打后者——即使主机被入侵，私钥仍安全。
@@ -75,7 +75,7 @@ AES-GCM 的认证（GHASH）是 GF(2^128) 上的多项式乘，软件慢。`PCLM
   见 [[entities/Nginx TLS 配置与证书管理实战]]
 ```
 
-- **数据面框架**直接受益：DPDK/VPP（[[20-protocols/vpp|VPP]]）可在轮询线程里调用 AES-NI/协处理做线速 IPsec/TLS。
+- **数据面框架**直接受益：DPDK/VPP（[[20-protocols/VPP 2|VPP]]）可在轮询线程里调用 AES-NI/协处理做线速 IPsec/TLS。
 - 反代 Nginx（[[concepts/Nginx 架构与事件模型]]）开启 `ssl_engine` / 底层 OpenSSL 加速即可。
 
 ## 5. 在 Nginx/VPP 中的实际切入点

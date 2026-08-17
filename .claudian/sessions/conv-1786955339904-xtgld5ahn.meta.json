@@ -3,7 +3,7 @@
   "providerId": "opencode",
   "title": "大模型基于相同准确性下的吞吐调优怎么理解",
   "createdAt": 1786955339916,
-  "lastActivityAt": 1786960887693,
+  "lastActivityAt": 1786961105778,
   "sessionId": "ses_ff128f2daffem6D344jTdfxx6Z",
   "selectedModel": "opencode:opencode/big-pickle",
   "providerState": {
@@ -13,11 +13,11 @@
   "usage": {
     "cacheCreationInputTokens": 0,
     "cacheReadInputTokens": 0,
-    "contextTokens": 69468,
+    "contextTokens": 110737,
     "contextWindow": 200000,
     "contextWindowIsAuthoritative": true,
     "inputTokens": 0,
     "model": "opencode/big-pickle",
-    "percentage": 35
+    "percentage": 55
   }
 }

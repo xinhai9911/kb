@@ -15,7 +15,7 @@ sources: []
 
 > 本文教你从零开始写一个 VPP 插件。每段代码均可编译运行。
 >
-> 背景知识见 [[20-protocols/vpp|VPP 知识（架构）]]，深度 API 见 [[50-reference/vpp-plugin-dev|VPP 插件开发参考]]，性能调优见 [[50-reference/vpp-plugin-perf]]。
+> 背景知识见 [[20-protocols/VPP 2|VPP 知识（架构）]]，深度 API 见 [[50-reference/VPP 插件 开发|VPP 插件开发参考]]，性能调优见 [[50-reference/VPP 插件 性能]]。
 
 ## 1. 环境搭建
 
@@ -402,7 +402,7 @@ VLIB_REGISTER_NODE (timer_process_node) = {
 **process node 要点**：
 - `wait_for_event_or_clock` 是让出点，**不能阻塞或忙等**
 - 数据面**不能**放在 process node 里——用 interrupt pending 唤醒 INTERNAL node
-- 实际案例参考 NPP 的 `flowtable-clear-process`（[[50-reference/npp-timer-mechanism]]）
+- 实际案例参考 NPP 的 `flowtable-clear-process`（[[50-reference/NPP 定时器 机制]]）
 
 ## 6. 完整外部插件项目模板
 
@@ -510,7 +510,7 @@ nm -D my_plugin.so | grep register  # 确认符号导出了
 | 修包后校验和错 | 改了 IP/TCP/UDP 头没重算校验和 | `ip4_header_checksum()` / 用 VPP 的 checksum 计算函数 |
 | 多核丢包 / 乱序 | 流被 RSS 分到多核 | 确认 RSS 哈希一致，流状态 per-worker |
 | 内存相关崩溃 | buffer 越界访问 | `vlib_buffer_validate()` 检查 buffer 状态 |
-| 性能差 / pps 上不去 | node function 逐包分配或拿锁 | 预分配 + per-worker 状态，见 [[50-reference/vpp-plugin-perf]] |
+| 性能差 / pps 上不去 | node function 逐包分配或拿锁 | 预分配 + per-worker 状态，见 [[50-reference/VPP 插件 性能]] |
 
 ## 9. 快速参考
 
@@ -553,9 +553,9 @@ vppctl show cpu
 
 ## 参考来源
 
-- [[20-protocols/vpp|VPP 核心架构]]
-- [[50-reference/vpp-usage|VPP 使用方法]]
-- [[50-reference/vpp-plugin-dev|VPP 插件开发参考]]
-- [[50-reference/vpp-plugin-perf|VPP 性能调优]]
-- [[50-reference/npp-timer-mechanism|NPP 定时触发机制（实战案例）]]
+- [[20-protocols/VPP 2|VPP 核心架构]]
+- [[50-reference/VPP 用法|VPP 使用方法]]
+- [[50-reference/VPP 插件 开发|VPP 插件开发参考]]
+- [[50-reference/VPP 插件 性能|VPP 性能调优]]
+- [[50-reference/NPP 定时器 机制|NPP 定时触发机制（实战案例）]]
 - FD.io 文档: https://s3-docs.fd.io/

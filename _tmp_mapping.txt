@@ -1,0 +1,557 @@
+log	->	日志
+hot	->	热点
+index	->	索引
+how-to-use	->	如何 使用
+tag-glossary	->	标签 术语表
+_template	->	模板
+database-decoder	->	数据库 解码器
+training	->	训练
+_template	->	模板
+elasticsearch	->	Elasticsearch 2
+hbase-drop-table-packet	->	HBase 删除 表 包
+hbase-static-analysis	->	HBase 静态 分析
+hbase-test-execution	->	HBase 测试 执行
+hbase-test-plan	->	HBase 测试 计划
+hbase	->	HBase 2
+influxdb	->	InfluxDB 2
+vpp	->	VPP 2
+fpga	->	FPGA 2
+fpga-design-patterns	->	FPGA 设计 模式
+fpga-axi4-bus	->	FPGA AXI 4 总线
+fpga-ddr-memory	->	FPGA DDR 内存
+fpga-uart-spi-i2c-rtl	->	FPGA UART SPI 2 RTL
+fpga-zynq-soc	->	FPGA Zynq SoC
+fpga-riscv-softcore	->	FPGA RISC-V softcore
+fpga-constraints-xdc-sdc	->	FPGA 约束 XDC SDC
+fpga-ip-catalog	->	FPGA IP 目录
+_template	->	模板
+snippets-index	->	片段 索引
+hbase-test-report-template	->	HBase 测试 报告 模板
+claude-prompting-best-practices	->	Claude 提示工程 最佳 实践
+director-intro	->	导演 入门
+dlopen-internal-memory	->	dlopen internal 内存
+montage-techniques	->	蒙太奇 技巧
+npp-timer-mechanism	->	NPP 定时器 机制
+shot-sizing-axes-storyboard	->	镜头 尺寸 轴线 分镜
+sources	->	来源
+vpp-usage	->	VPP 用法
+vpp-plugin-dev	->	VPP 插件 开发
+vpp-plugin-perf	->	VPP 插件 性能
+npp-flowtable-cleanup-example	->	NPP 流表 清理 示例
+npp-flowtable-perf-test	->	NPP 流表 性能 测试
+fpga-usage	->	FPGA 用法
+fpga-verification	->	FPGA 验证
+obsidian-usage	->	Obsidian 用法
+obsidian-plugins	->	Obsidian 插件
+callout-conventions	->	标注 规范
+0001-use-markdown-for-kb	->	0001 使用 Markdown 知识库
+architecture-zero-to-hero	->	架构 零 入门
+elasticsearch-elk	->	Elasticsearch ELK
+intel-architecture-perf	->	Intel 架构 性能
+network-hcna-hcnp	->	网络 HCNA HCNP
+reverse-ida-pro	->	逆向 IDA Pro
+es-book-01-inaction	->	ES 书籍 01 实战
+es-book-02-server-dev	->	ES 书籍 02 服务端 开发
+es-book-03-search-dev	->	ES 书籍 03 搜索 开发
+es-book-04-kibana	->	ES 书籍 04 Kibana
+es-book-05-paas	->	ES 书籍 05 PaaS
+es-book-06-bigdata-elk	->	ES 书籍 06 大数据 ELK
+es-book-07-mastering	->	ES 书籍 07 精通
+es-book-08-tech-analysis	->	ES 书籍 08 技术 分析
+amd-epyc	->	AMD EPYC
+centec-ctc7132	->	Centec CTC 7132
+centec-ctc8180	->	Centec CTC 8180
+centec-sdk	->	Centec SDK
+h3c-tap	->	3 TAP
+hardware-design-nsf	->	硬件 设计 NSF
+motorcomm-switch	->	Motorcomm 交换机
+nic-dpdk	->	NIC DPDK
+opencloudos-summit-2025	->	OpenCloudOS 峰会 2025
+chips-papers-misc	->	芯片 论文 杂项
+nvme-ssd-controller	->	NVMe SSD 控制器
+smartnic-dpu	->	SmartNIC DPU
+gpu-ai-accelerator	->	GPU AI 加速器
+domestic-switch-chips	->	国产 交换机 芯片
+asic-design-flow	->	ASIC 设计 流
+serdes-phy	->	SerDes PHY
+mindformers-overview-r1.8.0	->	mindformers 概览 r 1 8 0
+mindformers-models-r1.8.0	->	mindformers 模型 r 1 8 0
+db-decoder-ironhive	->	DB 解码器 IronHive
+hive-protocol-analysis	->	Hive 协议 分析
+decoder-track	->	解码器 轨道
+hive-decoder-implementation	->	Hive 解码器 实现
+transformer-architecture	->	Transformer 架构
+llm-training-pipeline	->	LLM 训练 流水线
+llm-inference-optimization	->	LLM 推理 优化
+ai-agent-overview	->	AI 智能体 概览
+agent-frameworks	->	智能体 框架
+mcp-protocol	->	MCP 协议
+agent-memory-planning	->	智能体 内存 规划
+three-act-structure	->	三 幕 结构
+mise-en-scene	->	场面 英 场景
+film-lighting-techniques	->	电影 灯光 技巧
+directing-actors	->	导演 演员
+film-production-workflow	->	电影 制作 工作流
+color-psychology-in-film	->	调色 心理学 电影
+nonlinear-narrative	->	非线性 叙事
+director-approaches	->	导演 方法
+offline-online-workflow	->	离线 在线 工作流
+split-edits-j-cut-l-cut	->	拆分 剪辑 剪辑 剪辑
+color-grading-workflow	->	调色 调色 工作流
+mezzanine-codec	->	夹层 编解码器
+delivery-codec	->	交付 编解码器
+audio-post-production-pipeline	->	音频 后期 制作 流水线
+narrative-psychology-editing	->	叙事 心理学 剪辑
+proxy-workflow	->	代理 工作流
+editing-transitions	->	剪辑 转场
+multicam-editing	->	多机位 剪辑
+chroma-key-compositing	->	色度 键 合成
+editing-efficiency-workflow	->	剪辑 效率 工作流
+case-studies-famous-edits	->	案例 研究 著名 剪辑
+film-analysis-framework	->	电影 分析 框架
+history-editing-technology	->	历史 剪辑 技术
+composition-techniques	->	构图 技巧
+editor-industry-role	->	剪辑师 行业 角色
+camera-angle-narrative	->	摄影机 角度 叙事
+genre-directing-strategies	->	类型 导演 策略
+short-film-directing	->	短 电影 导演
+low-budget-filmmaking	->	低 预算 电影制作
+director-script-analysis	->	导演 剧本 分析
+director-dp-collaboration	->	导演 摄影指导 协作
+director-department-collaboration	->	导演 部门 协作
+on-set-directing	->	片场 导演
+advanced-film-grammar	->	进阶 电影 文法
+advanced-color-grading	->	进阶 调色 调色
+sound-design-deep-dive	->	声音 设计 深入 深入
+vfx-motion-graphics	->	视觉特效 运动 图形
+documentary-editing	->	纪录片 剪辑
+ai-in-post-production	->	AI 后期 制作
+film-movements	->	电影 运动
+collaboration-versioning	->	协作 版本管理
+film-theory-essentials	->	电影 理论 要点
+camera-raw-formats	->	摄影机 RAW 格式
+festival-distribution	->	电影节 发行
+nle-power-tips	->	NLE 强力 技巧
+performance-theory-adaptation	->	表演 理论 改编
+storage-archive-strategy	->	存储 归档 策略
+advanced-motion-graphics	->	进阶 运动 图形
+audio-repair-practical	->	音频 修复 实用
+color-theory-looks	->	调色 理论 影调
+titling-localization	->	字幕 本地化
+video-specs-compatibility	->	视频 规格 兼容性
+masterclass-film-analysis	->	大师课 电影 分析
+editor-career-path	->	剪辑师 职业 路径
+documentary-directing	->	纪录片 导演
+director-business-legal	->	导演 商业 法务
+camera-lens-decisions	->	摄影机 镜头 决策
+advanced-video-compression	->	进阶 视频 压缩
+hdr-production-pipeline	->	HDR 制作 流水线
+plugin-ecosystem	->	插件 生态
+dit-workflow	->	DIT 工作流
+qc-delivery-standards	->	QC 交付 标准
+advanced-staging-blocking	->	进阶 走位 走位
+directing-with-sound	->	导演 声音
+director-rehearsal-methods	->	导演 排练 方法
+music-in-film-directing	->	音乐 电影 导演
+tv-series-directing	->	电视 剧集 导演
+animation-directing	->	动画 导演
+experimental-cinema	->	实验 电影
+director-color-signatures	->	导演 调色 签名
+advanced-vfx-matchmove	->	进阶 视觉特效 匹配移动
+color-science-gamut	->	调色 科学 色域
+adr-dubbing-workflow	->	ADR 配音 工作流
+music-video-editing	->	音乐 视频 剪辑
+sports-fast-cut-editing	->	体育 快速 剪辑 剪辑
+pm-pmbok	->	项目管理 PMBOK
+pm-agile-methodologies	->	项目管理 敏捷 方法论
+pm-scrum	->	项目管理 Scrum
+pm-kanban	->	项目管理 看板
+pm-risk-management	->	项目管理 风险 管理
+pm-requirements-management	->	项目管理 需求 管理
+pm-schedule-cost-management	->	项目管理 进度 成本 管理
+pm-quality-management	->	项目管理 质量 管理
+pm-team-stakeholder-management	->	项目管理 团队 干系人 管理
+pm-scaling-agile	->	项目管理 扩展 敏捷
+pm-estimation-deep	->	项目管理 估算 深入
+pm-change-configuration	->	项目管理 变更 配置
+pm-metrics-kpi	->	项目管理 指标 KPI
+pm-documentation	->	项目管理 文档
+pm-lean-xp	->	项目管理 精益 XP
+hybrid-retrieval-bm25-semantic-fusion	->	混合 检索 bm 25 语义 融合
+Kubernetes Service Mesh	->	Kubernetes 服务 网格
+vector-db-embedding	->	向量 DB 嵌入
+rag-retrieval-augmented-generation	->	RAG 检索 增强 生成
+tokenizer-llm	->	分词器 LLM
+rlhf-dpo-alignment	->	RLHF DPO 对齐
+lora-peft-finetuning	->	LoRA PEFT 微调
+multimodal-llm	->	多模态 LLM
+llm-evaluation-benchmarks	->	LLM 评估 基准
+ai-safety-alignment	->	AI 安全 对齐
+prompt-engineering-patterns	->	提示词 工程 模式
+llm-application-ecosystem	->	LLM 应用 生态
+agent-tool-use-mcp	->	智能体 工具 使用 MCP
+model-compression-distillation	->	模型 压缩 蒸馏
+multi-agent-collaboration	->	多 智能体 协作
+browser-agent	->	浏览器 智能体
+agent-long-term-memory	->	智能体 长 期 内存
+agentic-coding	->	智能体 编程
+agent-orchestration-patterns	->	智能体 编排 模式
+agent-evaluation-benchmarks	->	智能体 评估 基准
+llm-agent-harness	->	LLM 智能体 测试框架
+inference-engine-mastery	->	推理 引擎 精通
+inference-engine-principles	->	推理 引擎 原则
+inference-engine-tuning	->	推理 引擎 调优
+inference-engine-selection	->	推理 引擎 选择
+inference-engine-monitoring	->	推理 引擎 监控
+lightweight-agent-frameworks	->	轻量 智能体 框架
+harness-deep-dive	->	测试框架 深入 深入
+harness-framework-comparison	->	测试框架 框架 对比
+harness-evolution-future	->	测试框架 演进 未来
+ascend-software-stack	->	ascend software stack
+qkb-local-hybrid-search	->	QKB 本地 混合 搜索
+openai	->	OpenAI 2
+hugging-face	->	Hugging Face
+deepseek	->	DeepSeek 2
+anthropic	->	Anthropic 2
+langchain	->	LangChain 2
+crewai	->	CrewAI 2
+christopher-nolan	->	christopher nolan
+bong-joon-ho	->	bong joon ho
+kore-eda-hirokazu	->	kore EDA hirokazu
+alfred-hitchcock	->	alfred hitchcock
+stanley-kubrick	->	stanley kubrick
+auteur-theory	->	作者论 理论
+davinci-resolve	->	DaVinci Resolve
+adobe-premiere-pro	->	Adobe Premiere Pro
+apple-final-cut-pro	->	Apple Final 剪辑 Pro
+avid-media-composer	->	Avid 媒体 合成器
+capcut	->	CapCut 2
+avid-pro-tools	->	Avid Pro 工具
+walter-murch	->	walter murch
+thelma-schoonmaker	->	thelma schoonmaker
+tarkovsky-andrei	->	tarkovsky andrei
+wong-kar-wai	->	wong kar wai
+coen-brothers	->	coen brothers
+spielberg-steven	->	spielberg steven
+kurosawa-akira	->	kurosawa akira
+fpga-vendors	->	FPGA 厂商
+fellini-federico	->	fellini federico
+david-fincher	->	david fincher
+quintin-tarantino	->	quintin tarantino
+villeneuve-denis	->	villeneuve denis
+miyazaki-hayao	->	miyazaki hayao
+hou-hsiao-hsien	->	hou hsiao hsien
+jia-zhangke	->	jia zhangke
+ang-lee	->	ang lee
+colorist-grades	->	调色师 调色
+sound-designer-ben-burtt	->	声音 设计师 ben burtt
+gary-rydstrom	->	gary rydstrom
+martin-scorsese	->	martin scorsese
+wes-anderson	->	wes anderson
+david-lynch	->	david lynch
+paul-thomas-anderson	->	paul thomas anderson
+godard-jean-luc	->	godard jean luc
+bergman-ingmar	->	bergman ingmar
+park-chan-wook	->	park chan wook
+hamaguchi-ryusuke	->	hamaguchi ryusuke
+zhang-yimou	->	zhang yimou
+ozu-yasujiro	->	ozu yasujiro
+edward-yang	->	edward yang
+bresson-robert	->	bresson robert
+claire-denis	->	claire denis
+michael-haneke	->	michael haneke
+charlie-chaplin	->	charlie chaplin
+francois-truffaut	->	francois truffaut
+pedro-almodovar	->	pedro almodovar
+werner-herzog	->	werner herzog
+spike-lee	->	spike lee
+pm-jira	->	项目管理 Jira
+pm-common-tools	->	项目管理 常见 工具
+pm-zentao	->	项目管理 禅道
+pm-turnitin-kanban	->	项目管理 Turnitin 看板
+anthropic-agent-sdk	->	Anthropic 智能体 SDK
+openai-agents-sdk	->	OpenAI 智能体 SDK
+google-adk	->	Google ADK
+mindspore-transformers	->	mindspore Transformer
+ai-llm-overview	->	AI LLM 概览
+ai-agent-research	->	AI 智能体 研究
+film-directing-panorama	->	电影 导演 全景
+video-editing-pipeline	->	视频 剪辑 流水线
+fpga-chip-design-systematic-guide	->	FPGA 芯片 设计 系统性 指南
+vaswani2017-attention	->	Vaswani 2017 Attention
+deepseek-v4-technical	->	DeepSeek 4 技术
+llm-training-pipeline-guide	->	LLM 训练 流水线 指南
+llm-inference-optimization	->	LLM 推理 优化
+chinese-llm-landscape	->	中文 LLM 全景
+huggingface-ecosystem	->	HuggingFace 生态
+anthropic-agent-build	->	Anthropic 智能体 构建
+langchain-intro	->	LangChain 入门
+mcp-specification	->	MCP 规范
+agent-frameworks-comparison	->	智能体 框架 对比
+studiobinder-three-act-structure	->	StudioBinder 三 幕 结构
+studiobinder-film-lighting	->	StudioBinder 电影 灯光
+studiobinder-pre-production	->	StudioBinder 预 制作
+human-libretexts-film-analysis	->	人类 教材 电影 分析
+bang2write-nonlinear-narrative	->	爆款 2 写作 非线性 叙事
+studiobinder-mise-en-scene	->	StudioBinder 场面 英 场景
+nle-comparison-larry-jordan	->	NLE 对比 拉里 乔丹
+workflow-pipeline-shot-ai	->	工作流 流水线 镜头 AI
+codec-guide-mpegflow	->	编解码器 指南 MPEGFlow
+audio-post-forte-ai	->	音频 后期 强项 AI
+film-cognition-plos-one	->	电影 认知 PLOS 一
+color-management-cinapex	->	调色 管理 CinApex
+pm-classic-references	->	项目管理 经典 参考
+README.en	->	README 英
+README.ru	->	README 俄
+index	->	索引
+index	->	索引
+translation-notes	->	翻译 笔记
+index	->	索引
+intelligence-emergence-and-the-origin-of-agi	->	智能 涌现 起源 AGI
+llm-papers-2017	->	LLM 论文 2017
+llm-papers-2019	->	LLM 论文 2019
+llm-papers-2020	->	LLM 论文 2020
+llm-papers-2021	->	LLM 论文 2021
+llm-papers-2022	->	LLM 论文 2022
+llm-papers-2023	->	LLM 论文 2023
+llm-papers-2024	->	LLM 论文 2024
+llm-papers-2018	->	LLM 论文 2018
+what-is-scaling-law	->	什么 扩展 定律
+devops-aiops-mlops-llmops-what-do-these-ops-mean	->	DevOps AIOps MLOps LLMOps 什么 运维 含义
+how-to-evaluate-llm-output-speed-first-token-and-following-token-latency	->	如何 评估 LLM 输出 速度 首 词元 跟随 词元 延迟
+index	->	索引
+latency-and-throughput-in-llms-whats-the-difference	->	延迟 吞吐 LLM 区别
+llm-inference-frameworks-part-1-overview	->	LLM 推理 框架 部分 1 概览
+llm-inference-frameworks-part-2-vllm	->	LLM 推理 框架 部分 2 vLLM
+llm-inference-frameworks-part-3-text-generation-inference-tgi	->	LLM 推理 框架 部分 3 文本 生成 推理 TGI
+llm-inference-frameworks-part-4-tensorrt-llm	->	LLM 推理 框架 部分 4 TensorRT LLM
+llm-inference-frameworks-part-5-ollama	->	LLM 推理 框架 部分 5 Ollama
+local-llm-deployment	->	本地 LLM 部署
+self-service-deployment-estimates-ttft-and-throughput-formulas	->	自 服务 部署 估算 首字延迟 吞吐 公式
+vllm-and-pagedattention-easy-fast-cheap-llm-serving	->	vLLM PagedAttention 简易 快速 廉价 LLM 服务部署
+why-output-tokens-cost-more-than-input-tokens-in-llms	->	为什么 输出 词元 成本 输入 词元 LLM
+fine-tuning-frameworks-1-overview	->	微调 调优 框架 1 概览
+fine-tuning-frameworks-2-huggingface-peft	->	微调 调优 框架 2 HuggingFace PEFT
+fine-tuning-frameworks-3-llama-factory	->	微调 调优 框架 3 LLaMA Factory
+fine-tuning-llm-adapters-1-overview	->	微调 调优 LLM 适配器 1 概览
+fine-tuning-llm-adapters-2-lora	->	微调 调优 LLM 适配器 2 LoRA
+fine-tuning-llm-adapters-4-adalora	->	微调 调优 LLM 适配器 4 AdaLoRA
+fine-tuning-llm-soft-prompts-1-overview	->	微调 调优 LLM soft 提示词 1 概览
+fine-tuning-llm-soft-prompts-2-prompt-tuning	->	微调 调优 LLM soft 提示词 2 提示词 调优
+fine-tuning-llm-soft-prompts-3-prefix-tuning	->	微调 调优 LLM soft 提示词 3 prefix 调优
+fine-tuning-llm-soft-prompts-4-p-tuning	->	微调 调优 LLM soft 提示词 4 调优
+fine-tuning-llm-soft-prompts-5-multitask-prompt-tuning	->	微调 调优 LLM soft 提示词 5 multitask 提示词 调优
+index	->	索引
+fine-tuning-llm-adapters-3-qlora	->	微调 调优 LLM 适配器 3 QLoRA
+parameter-efficient-fine-tuning-peft-lora-and-other-methods	->	参数 高效 微调 调优 PEFT LoRA 其他 方法
+index	->	索引
+llm-quantization-in-10-minutes	->	LLM 量化 10 分钟
+three-levels-of-understanding-llm-quantization	->	三 层级 理解 LLM 量化
+gpu-parallelism-transformer-and-earlier-nlp-algorithms	->	GPU 并行 Transformer 早期 NLP 算法
+index	->	索引
+three-factors-in-llm-deployment-memory-compute-communication	->	三 因素 LLM 部署 内存 计算 通信
+can-past-tense-jailbreak-llm-security-and-attacks	->	能 过去 时态 越狱 LLM 安全 攻击
+cot-tot-got-chain-tree-and-graph-of-thought	->	CoT ToT GoT 链 树 图 思考
+index	->	索引
+long-guide-to-prompt-engineering-unlocking-llm-power	->	长 指南 提示词 工程 解锁 LLM 强力
+agent-design-paradigms-and-common-frameworks	->	智能体 设计 范式 常见 框架
+develop-llms-or-use-llms	->	开发 LLM 使用 LLM
+graphrag-unlocking-llm-retrieval-over-narrative-private-data	->	GraphRAG 解锁 LLM 检索 在 叙事 私有 数据
+how-to-design-agent-architecture-openai-or-anthropic	->	如何 设计 智能体 架构 OpenAI Anthropic
+langchain-to-the-left-coze-to-the-right	->	LangChain 左 Coze 右
+llm-application-adoption-architecture-design-part-2	->	LLM 应用 落地 架构 设计 部分 2
+llm-application-adoption-classification-part-1	->	LLM 应用 落地 分类 部分 1
+llm-application-adoption-text-to-sql-part-3	->	LLM 应用 落地 文本 SQL 部分 3
+mcp-basic-concepts-quick-start-and-internals	->	MCP 基础 概念 快速 启动 原理
+multimodal-rag-in-10-minutes	->	多模态 RAG 10 分钟
+practical-guide-to-enterprise-rag	->	实用 指南 企业 RAG
+rag-architecture-with-knowledge-graph	->	RAG 架构 知识 图
+vector-databases-and-llms	->	向量 数据库 LLM
+index	->	索引
+from-nl2sql-to-chatbi-end-of-crud-etl-engineer	->	nl 2 SQL ChatBI 端 CRUD ETL 工程师
+index	->	索引
+llm-adoption-challenge-hallucinations	->	LLM 落地 挑战 幻觉
+llm-adoption-challenge-output-uncertainty	->	LLM 落地 挑战 输出 不确定性
+llm-adoption-challenge-structured-output	->	LLM 落地 挑战 结构化 输出
+llm-repeater-problem	->	LLM 复述 问题
+new-profession-red-teaming-for-llm-applications	->	新 职业 红队 协作 LLM 应用
+index	->	索引
+llm-evaluation-counting-stars	->	LLM 评估 计数 星
+llm-evaluation-needle-in-a-haystack	->	LLM 评估 针 大海
+what-evaluation-metrics-do-llms-have	->	什么 评估 指标 LLM 有
+deepfake-nth-room-case-technology-and-protection	->	deepfake 第N 房间 案例 技术 保护
+exploit-and-explore-for-choosing-what-to-eat	->	漏洞利用 探索 选择 什么 吃
+how-i-passed-ruankao-system-architect-design-exam-2022-h2	->	如何 通过 ruankao 系统 架构师 设计 考试 2022 2
+index	->	索引
+index	->	索引
+math-for-ai-llm-from-scratch-calculus-part-1-derivative	->	数学 AI LLM 从零 微积分 部分 1 导数
+math-for-ai-llm-from-scratch-calculus-part-2-gradient-and-gradient-descent	->	数学 AI LLM 从零 微积分 部分 2 梯度 梯度 下降
+math-for-ai-llm-from-scratch-linear-algebra-part-1-matrix-singularity-determinant	->	数学 AI LLM 从零 线性 代数 部分 1 矩阵 奇异 行列式
+math-for-ai-llm-from-scratch-linear-algebra-part-2-row-reduction-rank-row-echelon	->	数学 AI LLM 从零 线性 代数 部分 2 行 归约 秩 行 分解
+math-for-ai-llm-from-scratch-linear-algebra-part-3-vectors-and-linear-transformations	->	数学 AI LLM 从零 线性 代数 部分 3 向量 线性 变换
+math-for-ai-llm-from-scratch-linear-algebra-part-4-linear-transformations-and-determinant	->	数学 AI LLM 从零 线性 代数 部分 4 线性 变换 行列式
+math-for-ai-llm-from-scratch-linear-algebra-part-5-basis-eigenvalues-eigenvectors	->	数学 AI LLM 从零 线性 代数 部分 5 基 特征值 特征向量
+math-for-ai-llm-from-scratch-probability-and-statistics-part-1-bayes-and-distributions	->	数学 AI LLM 从零 概率 统计 部分 1 贝叶斯 分布
+math-for-ai-llm-from-scratch-probability-and-statistics-part-2-describing-distributions	->	数学 AI LLM 从零 概率 统计 部分 2 描述 分布
+math-for-ai-llm-from-scratch-probability-and-statistics-part-3-central-limit-theorem	->	数学 AI LLM 从零 概率 统计 部分 3 中心 极限 定理
+complex-functions-in-llm-positional-encoding	->	复 函数 LLM 位置 编码
+deepseek-mla-explained-in-one-article	->	DeepSeek MLA 详解 一 文章
+from-eulers-formula-to-rope	->	欧拉 公式 RoPE
+index	->	索引
+llm-distributed-training-parallelism-part-1-overview	->	LLM 分布式 训练 并行 部分 1 概览
+llm-distributed-training-parallelism-part-2-data-parallelism	->	LLM 分布式 训练 并行 部分 2 数据 并行
+llm-distributed-training-parallelism-part-4-tensor-parallelism	->	LLM 分布式 训练 并行 部分 4 张量 并行
+llm-distributed-training-parallelism-part-5-hybrid-parallelism	->	LLM 分布式 训练 并行 部分 5 混合 并行
+llm-tokenizers-overview	->	LLM 分词器 概览
+llm-tokenizers-part-1	->	LLM 分词器 部分 1
+llm-tokenizers-part-2-bpe	->	LLM 分词器 部分 2 BPE
+llm-tokenizers-part-3-wordpiece	->	LLM 分词器 部分 3 WordPiece
+llm-tokenizers-part-4-unigram	->	LLM 分词器 部分 4 Unigram
+llm-tokenizers-part-5-sentencepiece	->	LLM 分词器 部分 5 SentencePiece
+llm-tokenizers-part-6-bbpe	->	LLM 分词器 部分 6 BBPE
+llm-training-frameworks-part-1-overview	->	LLM 训练 框架 部分 1 概览
+llm-training-frameworks-part-2-fsdp	->	LLM 训练 框架 部分 2 FSDP
+llm-training-frameworks-part-4-megatron-lm	->	LLM 训练 框架 部分 4 Megatron lm
+math-needed-to-understand-flashattention	->	数学 所需 理解 FlashAttention
+mixture-of-experts-moe-explained-excerpt	->	混合 专家 MoE 详解 摘录
+neural-network-activation-functions-part-2-sigmoid-softmax-tanh	->	神经 网络 激活 函数 部分 2 Sigmoid Softmax Tanh
+neural-network-activation-functions-part-3-relu-and-variants	->	神经 网络 激活 函数 部分 3 ReLU 变体
+neural-network-activation-functions-part-4-elu-and-selu	->	神经 网络 激活 函数 部分 4 ELU SeLU
+neural-network-activation-functions-part-5-glu-swish-swiglu	->	神经 网络 激活 函数 部分 5 GLU Swish SwiGLU
+neural-network-activation-functions-part-6-gelu-and-mish	->	神经 网络 激活 函数 部分 6 GELU Mish
+neural-network-optimizers-complete-overview	->	神经 网络 优化器 完整 概览
+neural-network-optimizers-part-1-overview	->	神经 网络 优化器 部分 1 概览
+neural-network-optimizers-part-10-nadam	->	神经 网络 优化器 部分 10 NAdam
+neural-network-optimizers-part-11-adamw	->	神经 网络 优化器 部分 11 AdamW
+neural-network-optimizers-part-12-radam	->	神经 网络 优化器 部分 12 RAdam
+neural-network-optimizers-part-3-momentum	->	神经 网络 优化器 部分 3 momentum
+neural-network-optimizers-part-4-asgd	->	神经 网络 优化器 部分 4 ASGD
+neural-network-optimizers-part-5-rprop	->	神经 网络 优化器 部分 5 RProp
+neural-network-optimizers-part-6-adagrad	->	神经 网络 优化器 部分 6 AdaGrad
+neural-network-optimizers-part-9-adam	->	神经 网络 优化器 部分 9 Adam
+the-easiest-way-to-understand-mamba	->	最简单 方式 理解 Mamba
+the-most-beautiful-mathematical-formula-eulers-formula	->	最 优美 数学 公式 欧拉 公式
+what-changed-in-flashattention-v2-vs-v1	->	什么 改变 FlashAttention 2 对比 1
+what-is-a-multimodal-llm-in-10-minutes	->	什么 多模态 LLM 10 分钟
+what-is-positional-encoding-in-llms	->	什么 位置 编码 LLM
+why-multi-query-attention-and-grouped-query-attention-appeared	->	为什么 多 查询 Attention 分组 查询 Attention 出现
+why-transformers-use-layernorm-instead-of-batchnorm-in-10-minutes	->	为什么 Transformer 使用 LayerNorm 替代 BatchNorm 10 分钟
+llm-distributed-training-parallelism-part-3-pipeline-parallelism	->	LLM 分布式 训练 并行 部分 3 流水线 并行
+llm-training-frameworks-part-3-deepspeed	->	LLM 训练 框架 部分 3 DeepSpeed
+llm-training-frameworks-part-5-accelerate	->	LLM 训练 框架 部分 5 Accelerate
+neural-network-activation-functions-part-1-overview	->	神经 网络 激活 函数 部分 1 概览
+neural-network-optimizers-part-2-sgd	->	神经 网络 优化器 部分 2 SGD
+neural-network-optimizers-part-8-rmsprop	->	神经 网络 优化器 部分 8 RMSProp
+neural-network-optimizers-part-7-adadelta	->	神经 网络 优化器 部分 7 AdaDelta
+why-large-language-models-use-swiglu-as-activation	->	为什么 大 语言 模型 使用 SwiGLU 激活
+genai-main-battlefield-from-imitator-to-platform-controller	->	生成式AI 主 战场 模仿者 平台 控制器
+index	->	索引
+index	->	索引
+translation-notes	->	翻译 笔记
+index	->	索引
+index	->	索引
+index	->	索引
+fine-tuning-frameworks-2-huggingface-peft	->	微调 调优 框架 2 HuggingFace PEFT
+fine-tuning-frameworks-3-llama-factory	->	微调 调优 框架 3 LLaMA Factory
+fine-tuning-llm-adapters-1-overview	->	微调 调优 LLM 适配器 1 概览
+fine-tuning-llm-adapters-2-lora	->	微调 调优 LLM 适配器 2 LoRA
+fine-tuning-llm-adapters-3-qlora	->	微调 调优 LLM 适配器 3 QLoRA
+fine-tuning-llm-adapters-4-adalora	->	微调 调优 LLM 适配器 4 AdaLoRA
+fine-tuning-llm-soft-prompts-1-overview	->	微调 调优 LLM soft 提示词 1 概览
+fine-tuning-llm-soft-prompts-2-prompt-tuning	->	微调 调优 LLM soft 提示词 2 提示词 调优
+fine-tuning-llm-soft-prompts-4-p-tuning	->	微调 调优 LLM soft 提示词 4 调优
+fine-tuning-llm-soft-prompts-5-multitask-prompt-tuning	->	微调 调优 LLM soft 提示词 5 multitask 提示词 调优
+index	->	索引
+fine-tuning-frameworks-1-overview	->	微调 调优 框架 1 概览
+fine-tuning-llm-soft-prompts-3-prefix-tuning	->	微调 调优 LLM soft 提示词 3 prefix 调优
+parameter-efficient-fine-tuning-peft-lora-and-other-methods	->	参数 高效 微调 调优 PEFT LoRA 其他 方法
+index	->	索引
+index	->	索引
+index	->	索引
+mozhno-li-vzlomat-llm-proshedshim-vremenem-bezopasnost-i-ataki	->	可 破解 LLM 过去 时间 安全 攻击
+bolshoy-tekst-prompt-engineering-raskryvaem-silu-llm	->	大 文本 提示词 工程 揭示 潜力 LLM
+graphrag-poisk-po-narrativnym-privatnym-dannym-dlya-llm	->	GraphRAG 搜索 叙事 私有 数据 用于 LLM
+index	->	索引
+kak-proektirovat-arhitekturu-agent-openai-ili-anthropic	->	设计 架构 智能体 OpenAI Anthropic
+langchain-nalevo-coze-napravo	->	LangChain 左 Coze 右
+llm-prilozheniya-arhitekturnoe-proektirovanie-chast-2	->	LLM 应用 架构 设计 部分 2
+llm-prilozheniya-klassifikaciya-chast-1	->	LLM 应用 分类 部分 1
+llm-prilozheniya-text-to-sql-chast-3	->	LLM 应用 文本 SQL 部分 3
+mcp-bazovye-ponyatiya-bystryy-start-i-vnutrennie-principy	->	MCP 基础 概念 快速 启动 内部 原则
+multimodal-rag-za-10-minut	->	多模态 RAG 10 分钟
+paradigmy-proektirovaniya-agent-i-populyarnye-freymvorki	->	范式 设计 智能体 流行 框架
+prakticheskoe-rukovodstvo-po-enterprise-rag	->	实用 指南 企业 RAG
+razrabatyvat-llm-ili-ispolzovat-llm	->	开发 LLM 使用 LLM
+vektornye-bazy-dannyh-i-llm	->	向量 库 数据 LLM
+rag-arhitektura-s-knowledge-graph	->	RAG 架构 知识 图
+exploit-and-explore-protiv-problemy-vybora-edy	->	漏洞利用 探索 对抗 问题 选择 食
+index	->	索引
+kak-ya-sdal-ekzamen-sistemnogo-arhitektora-vo-vtoroy-polovine-2022	->	通过 考试 系统 架构师 第二 半 2022
+povtorenie-nth-room-cherez-deepfake-tehnologii-i-zaschita	->	复习 第N 房间 通过 deepfake 技术 保护
+index	->	索引
+matematika-dlya-ai-llm-s-nulya-lineynaya-algebra-chast-1-matricy-singularity-determinant	->	数学 用于 AI LLM 从零 线性 代数 部分 1 矩阵 奇异 行列式
+matematika-dlya-ai-llm-s-nulya-lineynaya-algebra-chast-2-row-reduction-rank-row-echelon	->	数学 用于 AI LLM 从零 线性 代数 部分 2 行 归约 秩 行 分解
+matematika-dlya-ai-llm-s-nulya-lineynaya-algebra-chast-3-vektory-i-lineynye-preobrazovaniya	->	数学 用于 AI LLM 从零 线性 代数 部分 3 向量 线性 变换
+matematika-dlya-ai-llm-s-nulya-lineynaya-algebra-chast-4-linear-transformations-i-determinant	->	数学 用于 AI LLM 从零 线性 代数 部分 4 线性 变换 行列式
+matematika-dlya-ai-llm-s-nulya-lineynaya-algebra-chast-5-basis-eigenvalues-eigenvectors	->	数学 用于 AI LLM 从零 线性 代数 部分 5 基 特征值 特征向量
+matematika-dlya-ai-llm-s-nulya-matanaliz-chast-1-proizvodnaya	->	数学 用于 AI LLM 从零 数学分析 部分 1 导数
+matematika-dlya-ai-llm-s-nulya-matanaliz-chast-2-gradient-i-gradientnyy-spusk	->	数学 用于 AI LLM 从零 数学分析 部分 2 梯度 梯度 下降
+matematika-dlya-ai-llm-s-nulya-veroyatnost-statistika-chast-2-opisanie-raspredeleniy	->	数学 用于 AI LLM 从零 概率 统计 部分 2 描述 分布
+matematika-dlya-ai-llm-s-nulya-veroyatnost-statistika-chast-1-bayes-i-raspredeleniya	->	数学 用于 AI LLM 从零 概率 统计 部分 1 贝叶斯 分布
+matematika-dlya-ai-llm-s-nulya-veroyatnost-statistika-chast-3-centralnaya-predelnaya-teorema	->	数学 用于 AI LLM 从零 概率 统计 部分 3 中心 极限 定理
+glavnoe-pole-bitvy-genai-ot-imitatora-k-vladelcu-platformy	->	主 场 战场 生成式AI 模仿者 所有者 平台
+index	->	索引
+index	->	索引
+novaya-professiya-v-llm-prilozheniyah-red-teaming	->	新 职业 LLM 应用 红队 协作
+ot-nl2sql-k-chatbi-konets-crud-etl-inzhenera	->	nl 2 SQL ChatBI 端 CRUD ETL 工程师
+problema-povtorov-v-llm	->	问题 重复 LLM
+slozhnost-vnedreniya-llm-gallyucinacii	->	复杂度 应用 LLM 幻觉
+slozhnost-vnedreniya-llm-neopredelennost-vyvoda	->	复杂度 应用 LLM 不确定性 推理
+slozhnost-vnedreniya-llm-strukturirovannyy-vyvod	->	复杂度 应用 LLM 结构化 输出
+index	->	索引
+kakie-metriki-ocenki-est-u-llm	->	哪些 指标 评估 LLM
+ocenka-llm-needle-in-a-haystack	->	评估 LLM 针 大海
+ocenka-llm-zadacha-podscheta-zvezd	->	评估 LLM 任务 计算 星
+repo	->	仓库
+template	->	模板
+Drawing 2026-07-30 11.38.24.excalidraw	->	Drawing 2026 07 30 11 38 24 Excalidraw
+Fix grammar and spelling	->	修复 文法 拼写
+Translate to Chinese	->	翻译 中文
+Summarize	->	摘要
+Simplify	->	简化
+Explain like I am 5	->	解释 5
+Emojify	->	表情化
+Make shorter	->	生成 更短
+Make longer	->	生成 更长
+Generate table of contents	->	生成 表 contents
+Generate glossary	->	生成 术语表
+Remove URLs	->	移除 UR Ls
+Rewrite as tweet	->	改写 推文
+Rewrite as tweet thread	->	改写 推文 线程
+Clip YouTube Transcript	->	CLIP 你 视频 转录
+Clip Web Page	->	CLIP 网页 页面
+today-2026-08-03	->	今天 2026 08 03
+now	->	现在
+resume	->	简历
+id-card	->	id 卡
+education	->	教育
+2008-gaokao	->	2008 高考
+2012-first-job	->	2012 首 工作
+2015-ali	->	2015 阿里
+2018-bytedance	->	2018 字节
+2020-marriage	->	2020 婚姻
+2021-house	->	2021 房
+2023-startup	->	2023 创业
+2024-divorce-illness	->	2024 离婚 病
+2026-08-03-fpga-examples-skeleton-design	->	2026 08 03 FPGA 示例 骨架 设计
+2026-08-03-fpga-examples-skeleton	->	2026 08 03 FPGA 示例 骨架
+progress	->	进度
+task-1-brief	->	任务 1 简报
+system	->	系统
+system	->	系统
+system	->	系统
+system	->	系统
+system	->	系统
+system	->	系统
+system	->	系统
+system	->	系统

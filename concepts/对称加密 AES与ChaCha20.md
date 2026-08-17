@@ -81,7 +81,7 @@ ChaCha20 是 **Salsa20 的改良流密码**，基于 32-bit 加法/异或/旋转
 
 - AES-NI（Intel/AMD）把「单块加解密」做成 1–2 条指令（`AESENC`/`AESDEC`），吞吐从 ~100 MB/s 提升到 ~1–10 GB/s。
 - 但 **GCM 的 GHASH（认证）没有免费指令**（部分平台有 `PCLMULQDQ`  Galois 乘加速）；ChaCha20 纯算术，反而适合无专用指令的场景。
-- 网络数据面（[[20-protocols/vpp|VPP]]、DPDK、[[concepts/Nginx 架构与事件模型]]）常把 TLS 加解密 offload 到 NIC（TLS 卸载 / kTLS），让 CPU 只处理应用逻辑。
+- 网络数据面（[[20-protocols/VPP 2|VPP]]、DPDK、[[concepts/Nginx 架构与事件模型]]）常把 TLS 加解密 offload 到 NIC（TLS 卸载 / kTLS），让 CPU 只处理应用逻辑。
 
 ## 6. 常见实现陷阱
 

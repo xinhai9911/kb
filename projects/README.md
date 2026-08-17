@@ -76,7 +76,7 @@ SORT file.name ASC
 - [observability-examples](observability-examples/README.md) ｜ 可观测性栈 ｜ Python + Docker ｜ Docker Compose ｜ `docker compose up -d` ｜ 可观测性接入实战 / 可观测性工程
 - [cicd-pipeline-examples](cicd-pipeline-examples/README.md) ｜ CI/CD 流水线 ｜ YAML + Python ｜ kubectl/helm（可选） ｜ pytest / `helm upgrade` ｜ CI_CD 流水线实战 / CI_CD与测试策略
 - [k8s-kind-examples](k8s-kind-examples/README.md) ｜ K8s 集群沙盒 ｜ Docker + kind + kubectl ｜ docker/kind/kubectl/helm ｜ `bash scripts/01-kind-create.sh` ｜ Kubernetes 工作负载与调度 / Kubernetes 网络模型 / Ingress-Nginx 详解实战
-- [db-decoder-ironhive](db-decoder-ironhive/db-decoder-ironhive.md) ｜ Hive 协议解码器 ｜ — ｜ — ｜ — ｜ 项目概述
+- [db-decoder-ironhive](db-decoder-ironhive/DB 解码器 IronHive.md) ｜ Hive 协议解码器 ｜ — ｜ — ｜ — ｜ 项目概述
 
 </details>
 
@@ -103,7 +103,7 @@ SORT file.name ASC
 
 ### 协议分析 / 真实项目
 - **db-decoder-ironhive**：IronHive Hive 协议解码器项目（概述/协议分析/Track/实现）
-  - 文档：[[projects/db-decoder-ironhive/db-decoder-ironhive|项目概述]]
+  - 文档：[[projects/db-decoder-ironhive/DB 解码器 IronHive|项目概述]]
 
 ## 关键词索引（静态查找表，Obsidian 可用）
 
@@ -124,7 +124,7 @@ SORT file.name ASC
 | C 语言 / 零依赖 / 算法演示 | resilience-examples、nginx-module-examples | — |
 | Docker / Compose / OTel 栈 | observability-examples | [[concepts/可观测性工程]] |
 | Kubernetes / Helm / 部署 | cicd-pipeline-examples › deploy/ | [[entities/CI_CD 流水线实战]] |
-| Hive / 协议解码 / 真实项目 | [db-decoder-ironhive](db-decoder-ironhive/db-decoder-ironhive.md) | 项目概述 |
+| Hive / 协议解码 / 真实项目 | [db-decoder-ironhive](db-decoder-ironhive/DB 解码器 IronHive.md) | 项目概述 |
 | 加密原理总览 | — | [[concepts/加密算法总览与分类]]、[[synthesis/加密算法技术全景综述]] |
 | 软件工程全景 | — | [[concepts/软件设计原则与代码质量]]、[[synthesis/软件工程与架构技术全景综述]] |
 

@@ -307,7 +307,7 @@ load_module modules/ngx_http_xxx_module.so;
 
 ## 12. 与其他数据面框架对照
 
-| 维度 | Nginx 模块 | [[20-protocols/vpp|VPP 插件]] | eBPF |
+| 维度 | Nginx 模块 | [[20-protocols/VPP 2|VPP 插件]] | eBPF |
 |------|-----------|-------------------------------|------|
 | 挂载点 | 11 阶段 / filter 链 | Graph node | 内核挂载点 |
 | 生命周期 | init_module/process | node init/verify | load/attach |

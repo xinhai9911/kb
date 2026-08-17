@@ -142,7 +142,8 @@
       "rawDisplayText": "可以爬虫看看https://www.mindspore.cn/mindformers/docs/zh-CN/r1.8.0/introduction/overview.html 将内容抓下来存到我的知识库中",
       "canonicalText": "可以爬虫看看https://www.mindspore.cn/mindformers/docs/zh-CN/r1.8.0/introduction/overview.html 将内容抓下来存到我的知识库中",
       "images": [],
-      "contentDigest": "ee7cdb307b6d0e00d0d0af2992415f653227a2af614456a8e75821790e45437b"
+      "contentDigest": "ee7cdb307b6d0e00d0d0af2992415f653227a2af614456a8e75821790e45437b",
+      "providerAssistantMessageId": "msg_00f2e63790011tawwBC0nhr7ow"
     }
   ]
 }

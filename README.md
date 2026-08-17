@@ -30,29 +30,29 @@ lifecycle: reviewed
 
 ## 双链示例
 
-- 协议笔记：[[20-protocols/influxdb]]、[[20-protocols/hbase]]、[[20-protocols/elasticsearch]]
-- 项目笔记：[[10-projects/database-decoder]]、[[10-projects/training]]
+- 协议笔记：[[20-protocols/InfluxDB 2]]、[[20-protocols/HBase 2]]、[[20-protocols/Elasticsearch 2]]
+- 项目笔记：[[10-projects/数据库 解码器]]、[[10-projects/训练]]
 
 ## 标签速查
 
-详见 [00-index/tag-glossary.md](00-index/tag-glossary.md)。
+详见 [00-index/tag-glossary.md](00-index/标签 术语表.md)。
 
 ## 最近更新
-- 2026-08-17: 导入外部知识库 [[sources/LLMForEverybody/index|LLMForEverybody]]（中文大模型知识体系，12 章 420+ 篇；已扁平并入 sources/ 并作好 Obsidian 双链：导航页汇总 12 章 + 英/俄译本索引 + 草稿，回链库内 Transformer/分词器/推理引擎/微调·LoRA/量化/RAG·Agent·MCP/评估/安全 等 32 篇既有笔记）
+- 2026-08-17: 导入外部知识库 [[sources/LLMForEverybody/索引|LLMForEverybody]]（中文大模型知识体系，12 章 420+ 篇；已扁平并入 sources/ 并作好 Obsidian 双链：导航页汇总 12 章 + 英/俄译本索引 + 草稿，回链库内 Transformer/分词器/推理引擎/微调·LoRA/量化/RAG·Agent·MCP/评估/安全 等 32 篇既有笔记）
 
 <!-- 手动维护：每次重要新增/更新追加一行，格式: - YYYY-MM-DD: [标题](path) -->
 - 2026-06-10: 知识库初始化
 - 2026-06-10: 迁入 5 个 HBase 笔记到 [[20-protocols/]]（静态分析、dropTable 报文、测试计划/执行、报告模板）
-- 2026-06-11: 新增 [[50-reference/dlopen-internal-memory]]（dlopen 内部内存动作详解：mmap、重定位、GOT/PLT、RELRO、TLS 全链路拆解）
-- 2026-06-15: 新增 [[50-reference/npp-timer-mechanism]]（NPP flowtable 定时触发机制：PROCESS + INTERRUPT 两级架构、空闲判定、慢/快清理策略）
-- 2026-07-13: 新增导演系列参考笔记到 [[50-reference/]]：[[50-reference/director-intro]]（入门+ffmpeg秒点）、[[50-reference/montage-techniques]]（平行/积累/对比蒙太奇）、[[50-reference/shot-sizing-axes-storyboard]]（景别/轴线图+分镜模板）
+- 2026-06-11: 新增 [[50-reference/dlopen internal 内存]]（dlopen 内部内存动作详解：mmap、重定位、GOT/PLT、RELRO、TLS 全链路拆解）
+- 2026-06-15: 新增 [[50-reference/NPP 定时器 机制]]（NPP flowtable 定时触发机制：PROCESS + INTERRUPT 两级架构、空闲判定、慢/快清理策略）
+- 2026-07-13: 新增导演系列参考笔记到 [[50-reference/]]：[[50-reference/导演 入门]]（入门+ffmpeg秒点）、[[50-reference/蒙太奇 技巧]]（平行/积累/对比蒙太奇）、[[50-reference/镜头 尺寸 轴线 分镜]]（景别/轴线图+分镜模板）
 - 2026-07-29: 蒸馏 `Q:\常规书籍` 与 `Q:\芯片资料` 到 [[50-reference/sources/]]（常规书籍 5 篇 + 芯片资料 9 篇，索引式笔记，保留原文路径便于回查）
-- 2026-07-29: 新增 VPP 网络数据面笔记：[[20-protocols/vpp|VPP 知识]]（向量化节点图架构、缓冲管理、多线程模型）+ [[50-reference/vpp-usage|VPP 使用方法]]（startup.conf、CLI 命令、抓包调试、运维）+ [[50-reference/vpp-plugin-dev|VPP 插件开发]]（自定义 node/plugin、Process Node 协程、CMake 构建、加载调试）+ [[50-reference/vpp-plugin-perf|VPP 插件性能调优]]（批处理范式、无锁多核、巨页缓冲、瓶颈定位、NPP 实战）
-- 2026-07-29: 新增 [[50-reference/npp-flowtable-cleanup-example|NPP 流表清理代码实例]]（三级协作完整可编译骨架：clear-process 定时调度 + cleaner 中断执行 + try_cleanup slow/fast 双策略，per-thread 无锁、exapi del_handler 解耦）
-- 2026-07-29: 新增 [[50-reference/npp-flowtable-perf-test|NPP 流表性能测试实例]]（四类用例：基线转发/空闲清理开销/满表 fast_cleanup 回收/多核无锁扩展，观测 show cpu·runtime·errors，含结果表与判定标准）
+- 2026-07-29: 新增 VPP 网络数据面笔记：[[20-protocols/VPP 2|VPP 知识]]（向量化节点图架构、缓冲管理、多线程模型）+ [[50-reference/VPP 用法|VPP 使用方法]]（startup.conf、CLI 命令、抓包调试、运维）+ [[50-reference/VPP 插件 开发|VPP 插件开发]]（自定义 node/plugin、Process Node 协程、CMake 构建、加载调试）+ [[50-reference/VPP 插件 性能|VPP 插件性能调优]]（批处理范式、无锁多核、巨页缓冲、瓶颈定位、NPP 实战）
+- 2026-07-29: 新增 [[50-reference/NPP 流表 清理 示例|NPP 流表清理代码实例]]（三级协作完整可编译骨架：clear-process 定时调度 + cleaner 中断执行 + try_cleanup slow/fast 双策略，per-thread 无锁、exapi del_handler 解耦）
+- 2026-07-29: 新增 [[50-reference/NPP 流表 性能 测试|NPP 流表性能测试实例]]（四类用例：基线转发/空闲清理开销/满表 fast_cleanup 回收/多核无锁扩展，观测 show cpu·runtime·errors，含结果表与判定标准）
 - 2026-07-29: 增加 CI 链接校验：`.github/workflows/check-links.yml`（push/PR 时跑 `scripts/check-links.js`，校验 wikilink 与目录链接，可选 `--check-external` 验外链可达性）
-- 2026-07-29: 新增 FPGA 知识库：[[20-protocols/fpga|FPGA 知识]]（LUT/FF/BRAM/DSP 架构、RTL→仿真→综合→实现→比特流全流程、VHDL/Verilog 对比、时序/CDC、与 ASIC/CPU/GPU 取舍）+ [[50-reference/fpga-usage|FPGA 使用方法]]（iverilog/Verilator/GHDL 仿真、Vivado/Quartus 综合上板、CDC 同步器、Makefile 流程，引用本地 Q:/AI/vhdl_examples）
-- 2026-07-29: 扩充 FPGA 知识库（丰富化）：+ [[20-protocols/fpga-design-patterns|RTL 设计模式]]（FSM/流水线/同步·异步FIFO/握手/AXI-S/仲裁器，含可综合代码）+ [[50-reference/fpga-verification|FPGA 验证方法]]（自检查 testbench/SVA 断言/功能覆盖率/约束随机/Verilator CI）+ [[entities/fpga-vendors|FPGA 厂商与开源工具链]]（AMD/Intel/Lattice/Microchip 选型 + Yosys/nextpnr/SymbiFlow）；主篇 fpga.md 增「深入主题」（时序收敛/SoC 软核/部分重配置/功耗面积权衡）并全量双链
+- 2026-07-29: 新增 FPGA 知识库：[[20-protocols/FPGA 2|FPGA 知识]]（LUT/FF/BRAM/DSP 架构、RTL→仿真→综合→实现→比特流全流程、VHDL/Verilog 对比、时序/CDC、与 ASIC/CPU/GPU 取舍）+ [[50-reference/FPGA 用法|FPGA 使用方法]]（iverilog/Verilator/GHDL 仿真、Vivado/Quartus 综合上板、CDC 同步器、Makefile 流程，引用本地 Q:/AI/vhdl_examples）
+- 2026-07-29: 扩充 FPGA 知识库（丰富化）：+ [[20-protocols/FPGA 设计 模式|RTL 设计模式]]（FSM/流水线/同步·异步FIFO/握手/AXI-S/仲裁器，含可综合代码）+ [[50-reference/FPGA 验证|FPGA 验证方法]]（自检查 testbench/SVA 断言/功能覆盖率/约束随机/Verilator CI）+ [[entities/FPGA 厂商|FPGA 厂商与开源工具链]]（AMD/Intel/Lattice/Microchip 选型 + Yosys/nextpnr/SymbiFlow）；主篇 fpga.md 增「深入主题」（时序收敛/SoC 软核/部分重配置/功耗面积权衡）并全量双链
 - 2026-08-12: 新增 [[concepts/容器原理与运行时|容器原理与运行时]]（容器不是虚拟化：三大内核基石 Namespace/Cgroups/OverlayFS、OCI 镜像分层、运行时栈 docker→containerd→runc、单容器到分布式编排的衔接，并全量双链到 K8s/分布式系统基础/Cilium 等既有笔记）
 - 2026-08-12: 新增 [[entities/容器实战|容器实战]]（docker/podman/nerdctl/ctr 工具选型、多阶段镜像构建与 Dockerfile 优化、日常命令速查、namespace/cgroup/网络/OOM 排障、docker→K8s 心智切换 crictl/kubectl，回扣容器原理）
 - 2026-08-12: 新增 [[concepts/容器安全|容器安全]]（4C 威胁模型、内核隔离非安全边界、Capabilities/seccomp/AppArmor+SELinux/Rootless+userns 降权、镜像供应链 SBOM+cosign 签名、PodSecurity/Falco 运行时检测、securityContext 速查模板，全量双链）

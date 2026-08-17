@@ -20,7 +20,7 @@ sources: []
 
 本目录是 AI 测试用的**真实感合成数据集 (synthetic but realistic persona dataset)**,服务于:
 
-1. **检索质量评测** — 配合刚入库的 [[concepts/hybrid-retrieval-bm25-semantic-fusion|BM25+语义融合检索]] 概念页,作为已知答案的 query ↔ page 回归集
+1. **检索质量评测** — 配合刚入库的 [[concepts/混合 检索 bm 25 语义 融合|BM25+语义融合检索]] 概念页,作为已知答案的 query ↔ page 回归集
 2. **Agent 多跳推理** — 测试"张三 2023 年为什么离开字节"、"张三的母亲目前在哪个医院"这类需要跨文档 join 的问题
 3. **长上下文理解** — 跨 15 年时间线的实体追踪(谁是谁的谁、什么时候发生了什么事)
 4. **RAG 幻觉检测** — 故意留一些"事实缺口",让 AI 区分"档案里有"vs"自己编的"
@@ -44,14 +44,14 @@ sources: []
 
 | 年份 | 事件 | 文档 |
 |---|---|---|
-| 2008 | 高考,湖北理科 587 分,进武汉理工 | [[10-timeline/2008-gaokao|2008-gaokao]] |
-| 2012 | 本科毕业,校招进腾讯深圳(微信事业群) | [[10-timeline/2012-first-job|2012-first-job]] |
-| 2015 | 跳阿里北京,转 Java 后端 / 支付 | [[10-timeline/2015-ali|2015-ali]] |
-| 2018 | 跳字节跳动,做今日头条推荐后端,带 4 人小组 | [[10-timeline/2018-bytedance|2018-bytedance]] |
-| 2020 | 结婚;对象林晓彤(同阿里前同事) | [[10-timeline/2020-marriage|2020-marriage]] |
-| 2021 | 北京朝阳区望京买房(二手房,贷款 280 万) | [[10-timeline/2021-house|2021-house]] |
-| 2023 | 辞职创业(AI 客服 SaaS),A 轮失败,团队解散 | [[10-timeline/2023-startup|2023-startup]] |
-| 2024 | 离婚,卖房还债;母亲确诊乳腺癌 | [[10-timeline/2024-divorce-illness|2024-divorce-illness]] |
+| 2008 | 高考,湖北理科 587 分,进武汉理工 | [[10-timeline/2008 高考|2008-gaokao]] |
+| 2012 | 本科毕业,校招进腾讯深圳(微信事业群) | [[10-timeline/2012 首 工作|2012-first-job]] |
+| 2015 | 跳阿里北京,转 Java 后端 / 支付 | [[10-timeline/2015 阿里|2015-ali]] |
+| 2018 | 跳字节跳动,做今日头条推荐后端,带 4 人小组 | [[10-timeline/2018 字节|2018-bytedance]] |
+| 2020 | 结婚;对象林晓彤(同阿里前同事) | [[10-timeline/2020 婚姻|2020-marriage]] |
+| 2021 | 北京朝阳区望京买房(二手房,贷款 280 万) | [[10-timeline/2021 房|2021-house]] |
+| 2023 | 辞职创业(AI 客服 SaaS),A 轮失败,团队解散 | [[10-timeline/2023 创业|2023-startup]] |
+| 2024 | 离婚,卖房还债;母亲确诊乳腺癌 | [[10-timeline/2024 离婚 病|2024-divorce-illness]] |
 
 ## 核心关系网
 
@@ -141,5 +141,5 @@ test-data/zhangsan/
 
 ## Related
 
-- [[concepts/hybrid-retrieval-bm25-semantic-fusion|混合检索（BM25 + 语义 + 融合排序）]] — 本数据集主用途之一
-- [[50-reference/sources|来源蒸馏索引]] — 数据生成可借鉴的参考资源
+- [[concepts/混合 检索 bm 25 语义 融合|混合检索（BM25 + 语义 + 融合排序）]] — 本数据集主用途之一
+- [[50-reference/来源|来源蒸馏索引]] — 数据生成可借鉴的参考资源

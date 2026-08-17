@@ -8,7 +8,7 @@ summary: >-
     Consul 服务发现与网格：服务注册与发现（DNS/HTTP API）、健康检查（HTTP/TCP/Script/GRPC）、
     KV 存储（配置中心/Feature Flag）、Service Mesh（Envoy sidecar/mTLS）、多数据中心、
     与 K8s CoreDNS/Service 对比、与 etcd 定位对比。
-    衔接 [[concepts/Kubernetes 网络模型]]、[[concepts/Kubernetes Service Mesh]]、[[concepts/etcd 与 Raft 共识实战]]。
+    衔接 [[concepts/Kubernetes 网络模型]]、[[concepts/Kubernetes 服务 网格]]、[[concepts/etcd 与 Raft 共识实战]]。
 base_confidence: 0.85
 lifecycle: draft
 sources: []
@@ -93,7 +93,7 @@ consul watch -type=keyprefix -prefix=config/ redis/ /reload.sh
 Consul 的 Service Mesh 功能：
 - **mTLS**：自动为服务间通信加密（零信任）。
 - **Intent**：声明式访问控制（Service A 可以调 Service B）。
-- **Sidecar Proxy**：默认用 Envoy（[[concepts/Kubernetes Service Mesh]] 同款）。
+- **Sidecar Proxy**：默认用 Envoy（[[concepts/Kubernetes 服务 网格]] 同款）。
 
 ```
 Service A ──▶ Sidecar (Envoy) ═══mTLS═══▶ Sidecar (Envoy) ──▶ Service B
@@ -130,7 +130,7 @@ Consul 原生支持多数据中心：
 ## 7. 衔接
 
 - K8s 网络：[[concepts/Kubernetes 网络模型]]
-- Service Mesh：[[concepts/Kubernetes Service Mesh]]
+- Service Mesh：[[concepts/Kubernetes 服务 网格]]
 - etcd 对照：[[concepts/etcd 与 Raft 共识实战]]
 - 安全：[[concepts/Kubernetes 安全模型]]（mTLS/零信任）
 - 多集群：[[concepts/多集群管理与联邦]]
@@ -141,7 +141,7 @@ Consul 原生支持多数据中心：
 
 **库内双链**
 - [[concepts/Kubernetes 网络模型]] — K8s 原生服务发现
-- [[concepts/Kubernetes Service Mesh]] — Istio/Linkerd 对照
+- [[concepts/Kubernetes 服务 网格]] — Istio/Linkerd 对照
 - [[concepts/etcd 与 Raft 共识实战]] — KV 存储对照
 - [[concepts/多集群管理与联邦]] — 多 DC 场景
 - [[concepts/Kubernetes 安全模型]] — mTLS/零信任

@@ -1,3 +1,7 @@
+---
+aliases: ["system"]
+---
+
 ## Time Context
 
 - **Current Date**: Use `bash: date` to get the current date and time. Never guess or assume.
