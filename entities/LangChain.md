@@ -1,5 +1,5 @@
 ---
-aliases: ["langchain"]
+aliases: ["langchain", "LangChain 2"]
 title: LangChain
 category: entities
 tags: [ai-agent, framework, langchain, orchestration]

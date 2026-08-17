@@ -1,5 +1,5 @@
 ---
-aliases: ["influxdb"]
+aliases: ["influxdb", "InfluxDB 2"]
 title: InfluxDB 协议分析
 tags: [protocol, influxdb, time-series, active]
 created: 2026-06-10

@@ -1,5 +1,5 @@
 ---
-aliases: ["deepseek"]
+aliases: ["deepseek", "DeepSeek 2"]
 title: DeepSeek
 category: entities
 tags: [ai, llm, deepseek, open-source]

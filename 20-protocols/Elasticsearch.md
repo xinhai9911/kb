@@ -1,5 +1,5 @@
 ---
-aliases: ["elasticsearch"]
+aliases: ["elasticsearch", "Elasticsearch 2"]
 title: Elasticsearch 协议分析
 tags: [protocol, elasticsearch, search, active]
 created: 2026-06-10

@@ -1,5 +1,5 @@
 ---
-aliases: ["fpga"]
+aliases: ["fpga", "FPGA 2"]
 title: FPGA 知识（现场可编程门阵列）
 tags: [protocol, fpga, vhd, vhdl, verilog, hardware, active]
 created: 2026-07-29

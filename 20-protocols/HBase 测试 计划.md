@@ -91,7 +91,7 @@ scp libhbase.so user@host:/home/lujun2/test_falcon_run_osms/falcon-database-prot
 
 ## 相关笔记
 
-- 协议总览：[[HBase 2]]
+- 协议总览：[[HBase]]
 - 静态分析报告：[[HBase 静态 分析]]
 - 报文解析示例（dropTable）：[[HBase 删除 表 包]]
 - 测试执行计划：[[HBase 测试 执行]]

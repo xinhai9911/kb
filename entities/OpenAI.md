@@ -1,5 +1,5 @@
 ---
-aliases: ["openai"]
+aliases: ["openai", "OpenAI 2"]
 title: OpenAI
 category: entities
 tags: [ai, company, openai, gpt]

@@ -1,5 +1,5 @@
 ---
-aliases: ["capcut"]
+aliases: ["capcut", "CapCut 2"]
 title: CapCut（剪映）
 category: entities
 tags: [nle, capcut, short-video, mobile-editing, ai-editing, bytedance]

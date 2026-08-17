@@ -1,5 +1,5 @@
 ---
-aliases: ["hbase"]
+aliases: ["hbase", "HBase 2"]
 title: HBase 协议分析
 tags: [protocol, hbase, database, active]
 created: 2026-06-10

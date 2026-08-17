@@ -1,5 +1,5 @@
 ---
-aliases: ["anthropic"]
+aliases: ["anthropic", "Anthropic 2"]
 title: Anthropic
 category: entities
 tags: [ai, company, anthropic, claude]

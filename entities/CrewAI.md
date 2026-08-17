@@ -1,5 +1,5 @@
 ---
-aliases: ["crewai"]
+aliases: ["crewai", "CrewAI 2"]
 title: CrewAI
 category: entities
 tags: [ai-agent, framework, crewai, orchestration]

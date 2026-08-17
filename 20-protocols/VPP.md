@@ -1,5 +1,5 @@
 ---
-aliases: ["vpp"]
+aliases: ["vpp", "VPP 2"]
 title: VPP 知识（Vector Packet Processing）
 tags: [protocol, vpp, networking, dpdk, active]
 created: 2026-07-29
