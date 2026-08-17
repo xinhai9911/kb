@@ -53,7 +53,7 @@ updated: 2026-07-30
 
 ### 综述
 
-- [[_staging/synthesis/fpga-chip-design-systematic-guide|FPGA 完整芯片代码构建综述（设计流程/工程结构/顶层模块/子系统/约束/验证/学习路径）]]
+- [[synthesis/fpga-chip-design-systematic-guide|FPGA 完整芯片代码构建综述（设计流程/工程结构/顶层模块/子系统/约束/验证/学习路径）]]
 
 ## 网络数据面（VPP / VLIB）
 
