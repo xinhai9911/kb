@@ -10,6 +10,25 @@ summary: >
   LLM 评测体系：主流基准（MMLU/HumanEval/GSM8K/MATH/LMSYS Arena）、评测方法（人工/自动/LLM-as-Judge）、中国模型评测（C-Eval/CMMLU）、评测陷阱（数据污染/过拟合benchmark）。
 ---
 
+<!-- kb-import-backlink:LLMForEverybody -->
+
+> [!info] 外部资料 · LLMForEverybody
+> 中文大模型知识库 [[sources/LLMForEverybody/index|LLMForEverybody 导航]] 中的相关章节：
+> - [[sources/LLMForEverybody/09-第九章-评估指标/大模型有哪些评估指标？|评估指标总览]]
+> - [[sources/LLMForEverybody/09-第九章-评估指标/大模型性能评测之大海捞针|大海捞针评测]]
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 大模型评测与基准
 
 ## 主流评测基准

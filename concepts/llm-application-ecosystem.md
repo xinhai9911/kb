@@ -9,6 +9,25 @@ updated: 2026-08-07
 summary: 大模型应用生态全景：AI编程助手（GitHub Copilot/Cursor/Windsurf）、AI搜索（Perplexity/秘塔）、AI写作/设计工具、AI客服、企业落地场景（金融/医疗/法律/教育）。
 ---
 
+<!-- kb-import-backlink:LLMForEverybody -->
+
+> [!info] 外部资料 · LLMForEverybody
+> 中文大模型知识库 [[sources/LLMForEverybody/index|LLMForEverybody 导航]] 中的相关章节：
+> - [[sources/LLMForEverybody/08-第八章-大模型企业落地/大模型复读机问题|复读机问题]]
+> - [[sources/LLMForEverybody/07-第七章-Agent/langchain向左coze向右|LangChain vs Coze]]
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 大模型应用生态
 
 ## 应用分类总览

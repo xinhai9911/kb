@@ -1,0 +1,21 @@
+# Chapter 4. Quantization
+
+This chapter explains LLM quantization from the practical side: precision, quantization types, granularity, PTQ, QAT, formats, and deployment tools.
+
+[Back to English index](../index.md)
+
+## Full Translations
+
+- [LLM Quantization in 10 Minutes](<llm-quantization-in-10-minutes.md>)
+- [Three Levels of Understanding LLM Quantization](<three-levels-of-understanding-llm-quantization.md>)
+
+## Materials
+
+| Subsection | English title | English article | Source file |
+| --- | --- | --- | --- |
+| Main section | LLM Quantization in 10 Minutes | [Translation](<llm-quantization-in-10-minutes.md>) | [Original](<../../../04-第四章-量化/10分钟理解大模型的量化.md>) |
+| Main section | Three Levels of Understanding LLM Quantization | [Translation](<three-levels-of-understanding-llm-quantization.md>) | [Original](<../../../04-第四章-量化/大模型量化认知的三重境界.md>) |
+
+## Localization Note
+
+Commands, APIs, library names, model names, and paths keep their original spelling. Technical terms that are normally used in English remain in English.

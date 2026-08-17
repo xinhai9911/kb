@@ -1,4 +1,4 @@
-﻿---
+---
 title: RAG 检索增强生成
 tags: [llm, rag, retrieval, generation, active]
 created: 2026-08-07
@@ -10,6 +10,18 @@ sources: []
 base_confidence: 0.83
 lifecycle: draft
 ---
+
+<!-- kb-import-backlink:LLMForEverybody -->
+
+> [!info] 外部资料 · LLMForEverybody
+> 中文大模型知识库 [[sources/LLMForEverybody/index|LLMForEverybody 导航]] 中的相关章节：
+> - [[sources/LLMForEverybody/07-第七章-Agent/搭配Knowledge-Graph的RAG架构|KG+RAG 架构]]
+> - [[sources/LLMForEverybody/07-第七章-Agent/干货-落地企业级RAG的实践指南|企业级 RAG 实践]]
+> - [[sources/LLMForEverybody/07-第七章-Agent/10分钟了解如何进行多模态RAG|多模态 RAG]]
+
+
+
+
 
 # RAG 检索增强生成
 
@@ -146,3 +158,5 @@ result = qa_chain.invoke({"query": "什么是 RAG？"})
 - 混合检索：[[concepts/hybrid-retrieval-bm25-semantic-fusion|混合检索]]
 - Agent：[[concepts/ai-agent-overview|AI Agent 概述]]
 - LLM 推理：[[concepts/llm-inference-optimization|LLM 推理优化]]
+
+

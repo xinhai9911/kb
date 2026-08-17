@@ -17,6 +17,25 @@ related:
   - "[[inference-engine-principles]]"
 ---
 
+<!-- kb-import-backlink:LLMForEverybody -->
+
+> [!info] 外部资料 · LLMForEverybody
+> 中文大模型知识库 [[sources/LLMForEverybody/index|LLMForEverybody 导航]] 中的相关章节：
+> - [[sources/LLMForEverybody/02-第二章-部署与推理/大模型推理框架（一）综述|推理框架综述]]
+> - [[sources/LLMForEverybody/02-第二章-部署与推理/大模型output-token为什么比input-token贵？|input/output token 成本差异]]
+
+
+
+
+
+
+
+
+
+
+
+
+
 # LLM 推理优化
 
 > 📚 **知识定位**：本文档详细讲解LLM推理优化的核心技术、原理和实践，是[[inference-engine-mastery]]知识体系的重要组成部分。

@@ -1,0 +1,28 @@
+# Translation Notes
+
+## Principles
+
+- Keep technical names, commands, APIs, paths, variables, model names, and English abbreviations as they are.
+- Translate for meaning, not word order. If a literal sentence sounds like translated prose, rewrite it.
+- Keep the tone human and useful. Short practical sentences are fine.
+- Avoid long dash punctuation.
+- Use `LLM` for `大模型` when the article is clearly about large language models.
+- Use `deployment` for `部署`, and `inference` for runtime `推理`.
+- Use `reasoning` only when the text is about thinking or chain-of-thought style behavior.
+- Use `hallucination` for `幻觉`.
+- Keep terms like `few-shot`, `zero-shot`, `alignment`, `post-training`, `KV Cache`, `Tokenizer`, `LoRA`, `QLoRA`, `PEFT`, `PTQ`, and `QAT` in English.
+
+## Style Guardrails
+
+- Prefer "you can", "in practice", "the point is", and "this means" where they make the explanation easier to follow.
+- Avoid formal filler such as "it is worth noting that" unless it genuinely helps.
+- Avoid perfect machine-translated symmetry. English paragraphs may be split or merged when it reads better.
+- Keep article titles clear and searchable, not overly clever.
+
+## Links
+
+- English filenames use lowercase kebab-case.
+- Full translations should include a link back to the original source material when practical.
+- Images are not copied into `docs/en`; markdown image links should reference the original `assest` folders through relative paths.
+
+[Back to English index](index.md)

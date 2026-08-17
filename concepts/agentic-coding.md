@@ -8,6 +8,25 @@ created: 2026-08-07
 updated: 2026-08-07
 ---
 
+<!-- kb-import-backlink:LLMForEverybody -->
+
+> [!info] 外部资料 · LLMForEverybody
+> 中文大模型知识库 [[sources/LLMForEverybody/index|LLMForEverybody 导航]] 中的相关章节：
+> - [[sources/LLMForEverybody/07-第七章-Agent/Agent设计范式与常见框架|Agent 设计范式]]
+> - [[sources/LLMForEverybody/07-第七章-Agent/如何设计智能体架构：参考OpenAI还是Anthropic|Agent 架构：OpenAI vs Anthropic]]
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Agentic Coding 智能编程
 
 ## 摘要
@@ -152,3 +171,4 @@ Agentic Coding 的核心是一个迭代式循环，Agent 自主完成从需求�
 
 - [[agent-tool-use-mcp]] - Agent 工具使用与 MCP 协议，理解代码 Agent 的工具链基础
 - [[llm-application-ecosystem]] - LLM 应用生态，了解 Agentic Coding 在整体生态中的位置
+- [[llm-agent-harness]] - 代码 Agent 即运行在 harness 中的典型应用（运行时 / 控制循环）

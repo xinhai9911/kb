@@ -9,6 +9,24 @@ updated: 2026-08-07
 summary: LLM Agent 工具使用机制：Function Calling、ReAct 框式、MCP 协议架构（Host/Client/Server/Transport）、工具发现与注册、多工具编排、安全考量。
 ---
 
+<!-- kb-import-backlink:LLMForEverybody -->
+
+> [!info] 外部资料 · LLMForEverybody
+> 中文大模型知识库 [[sources/LLMForEverybody/index|LLMForEverybody 导航]] 中的相关章节：
+> - [[sources/LLMForEverybody/07-第七章-Agent/MCP：基础概念、快速应用和背后原理|MCP 原理]]
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Agent 工具使用与 MCP 协议
 
 ## Function Calling 流程
@@ -161,5 +179,6 @@ Model Context Protocol (MCP) — Anthropic 提出的开放标准，统一 LLM �
 
 - → [[mcp-protocol]] — MCP 协议规范深入解析
 - → [[agent-frameworks]] — Agent 框架对比（LangChain、CrewAI、AutoGen）
+- → [[llm-agent-harness]] — 包裹模型的运行时 / 控制循环（为什么需要 harness）
 - → [[ai-safety-alignment]] — 工具使用场景的安全风险与防御
 - → [[function-calling-deep-dive]] — Function Calling 底层机制

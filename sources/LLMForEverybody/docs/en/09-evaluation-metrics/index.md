@@ -1,0 +1,23 @@
+# Chapter 9. Evaluation Metrics
+
+LLM quality metrics and practical benchmarks such as Needle in a Haystack and counting tasks.
+
+[Back to English index](../index.md)
+
+## Full Translations
+
+- [LLM Evaluation: Needle in a Haystack](<llm-evaluation-needle-in-a-haystack.md>)
+- [LLM Evaluation: Counting Stars](<llm-evaluation-counting-stars.md>)
+- [What Evaluation Metrics Do LLMs Have?](<what-evaluation-metrics-do-llms-have.md>)
+
+## Materials
+
+| Subsection | English title | English article | Source file |
+| --- | --- | --- | --- |
+| Main section | LLM Evaluation: Needle in a Haystack | [Translation](<llm-evaluation-needle-in-a-haystack.md>) | [Original](<../../../09-第九章-评估指标/大模型性能评测之大海捞针.md>) |
+| Main section | LLM Evaluation: Counting Stars | [Translation](<llm-evaluation-counting-stars.md>) | [Original](<../../../09-第九章-评估指标/大模型性能评测之数星星.md>) |
+| Main section | What Evaluation Metrics Do LLMs Have? | [Translation](<what-evaluation-metrics-do-llms-have.md>) | [Original](<../../../09-第九章-评估指标/大模型有哪些评估指标？.md>) |
+
+## Localization Note
+
+Commands, APIs, library names, model names, and paths keep their original spelling. Technical terms that are normally used in English remain in English.

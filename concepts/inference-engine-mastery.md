@@ -16,6 +16,24 @@ related:
   - "[[transformer-architecture]]"
 ---
 
+<!-- kb-import-backlink:LLMForEverybody -->
+
+> [!info] 外部资料 · LLMForEverybody
+> 中文大模型知识库 [[sources/LLMForEverybody/index|LLMForEverybody 导航]] 中的相关章节：
+> - [[sources/LLMForEverybody/02-第二章-部署与推理/10分钟私有化部署大模型到本地|本地私有化部署]]
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 推理引擎知识体系：从原理到实践
 
 > 📚 **知识定位**：本文档是推理引擎知识的主索引，涵盖从理论基础到生产部署的完整知识图谱。

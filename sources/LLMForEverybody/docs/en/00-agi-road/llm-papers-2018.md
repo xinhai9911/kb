@@ -1,0 +1,96 @@
+# [Classic LLM Papers] 2018: GPT and BERT Split Pre-training Into Two Lines
+
+Looking back at 2018, the main direction of NLP had almost become visible. GPT-1 and BERT appeared one after the other, and together they made the recipe "pre-train on a large corpus first, then fine-tune for the task" hard to ignore. From that point on, two lines started to separate: GPT moved toward generation, while BERT moved toward understanding.
+
+But this year was not only about those two papers. Top-K sampling made text generation easier to control, GPipe took the GPU memory problem in large model training seriously, Tesla T4 made inference deployment more realistic, and Hugging Face brought pre-trained models outside the small circle of research teams. If you connect these points today, you can already see a rough sketch of the large model era.
+
+## Top-K
+
+In May 2018, Top-K sampling was explicitly proposed in `Hierarchical Neural Story Generation`. It solved a very practical problem: how exactly should a model choose the next word during text generation?
+
+If you always pick the most likely word at each step, also known as greedy search, the result usually becomes more and more bland and often repetitive. Fully random sampling from the probability distribution has the opposite problem: the text can drift away before the sentence gets very far. Top-K sampling is straightforward. At each step, keep only the K most likely candidates, then randomly choose one of them.
+
+The method is simple, but useful. It leaves some randomness in generation, so every run does not follow the exact same path, while also removing obviously unreliable words from the long tail. The value of K really matters. If K is too small, the text becomes conservative. If K is too large, noise comes back. In many later practices, K was set around 40 to 50 for this reason.
+
+Top-K was not the final answer. Its main problem is that K is fixed and does not adapt to different probability distributions. If the distribution is very sharp, K may be too large. If the distribution is flatter, K may be too narrow. The later Top-P method, also called nucleus sampling, grew directly out of this weakness.
+
+## GPT-1
+
+In June 2018, OpenAI released GPT-1 and officially put "unsupervised pre-training + supervised fine-tuning" at the center of NLP.
+
+Before that, many NLP systems were still built separately for each task. One model for sentiment classification, another for textual entailment, another for question answering. Labeled data was expensive and did not scale well. Word embedding methods had already improved things compared with earlier approaches, but representations such as Word2Vec were still mostly static and had limited context.
+
+The idea of GPT-1 was very clear: first train a Transformer decoder on a large unlabeled text corpus as a language model, so the model learns how text usually continues. Then take this model, which has already seen a lot of text, and fine-tune it on downstream tasks. Pre-training used BooksCorpus, with about 800 million words. The task itself was simple: predict the next word.
+
+The real importance of the work was not that it dramatically improved one specific metric. It proved something that later became common sense: the same pre-trained model, after a small amount of task adaptation, can transfer to many outwardly different NLP tasks. That is much broader than training a separate model from scratch for every task.
+
+Of course, GPT-1 had limits. It is a unidirectional language model. When predicting a word, it sees only the left context, not the right context. For generation this is natural, but for many tasks that require understanding the full context, it is not ideal. It also had only 117 million parameters, which is small by today's standards. So GPT-1 showed the road more than it pushed the capability ceiling.
+
+## Tesla T4
+
+In September 2018, NVIDIA released Tesla T4. This card was not mainly about making training even more powerful. It was much more clearly focused on inference deployment.
+
+T4 is based on the Turing architecture. One of its key strengths was second-generation Tensor Cores with better support for low precision, including INT8 and INT4. This direction is close to production scenarios. After quantization, many models lose only a little accuracy, while throughput and deployment cost improve noticeably. Unlike a training card, an inference card is usually judged less by absolute peak performance and more by how many requests it can process per watt.
+
+The 70W power consumption and single-slot half-height form factor were also important. T4 was easier to place densely in standard servers. This is a very different tradeoff from a 300W V100. One card helps you deploy inference widely; the other helps you train faster.
+
+The Turing architecture also introduced RT Cores for the first time. For T4, that was not the central AI feature, but it did give the card a role in graphics and virtualization scenarios too. Even then, it was clear that NVIDIA did not want GPU to mean training hardware only.
+
+In the broader context, T4 reminded the industry of an important point: training and inference are never the same optimization problem. One needs high throughput and large memory. The other needs low latency, low power, and low cost. Later inference chips would diverge more and more along these lines, but the idea was already on the table.
+
+## BERT
+
+In October 2018, Google released BERT. If you were reading NLP papers at the time, it was almost impossible to avoid it.
+
+The difference between BERT and GPT-1 is not just that one uses an encoder and the other a decoder. The bigger difference is the training method. GPT-1 predicts text from left to right, while BERT uses a masked language model to learn bidirectional context: some words are hidden, and the model must guess them using both previous and following context. This representation works very well for understanding tasks such as question answering, classification, and sequence labeling.
+
+BERT also added next sentence prediction to learn relationships between sentences. Its pre-training data came from BooksCorpus and English Wikipedia, and the scale was larger than many earlier works. The paper introduced Base and Large versions with about 110 million and 340 million parameters. At the time, that already looked like a serious setup.
+
+Why did BERT spread so quickly through the community? The reason is not mysterious. Many researchers and engineers had been struggling with problems such as incomplete context and mediocre transfer. BERT immediately improved results across a set of major benchmarks, and the method looked reusable. Soon after, RoBERTa, ALBERT, ELECTRA, and many other variants appeared.
+
+BERT's strengths and weaknesses are equally clear. It is strong at understanding tasks, but encoder architecture is not naturally good at long-form text generation. Later development confirmed this. If the goal was generation, people still moved toward GPT. If the goal was understanding, BERT's influence continued for years.
+
+Interestingly, in 2018 BERT looked brighter than GPT-1 in the moment. But as time moved on, the scalability of the GPT generation line became more and more obvious. History often works this way: the method that wins benchmarks first does not necessarily win the next stage.
+
+## GPipe
+
+In November 2018, Google released GPipe. It tackled a very engineering-heavy problem: models are getting bigger, and one GPU can no longer fit them. What now?
+
+The obvious answer is model parallelism, placing different layers on different devices. The problem is that naive partitioning gives poor utilization. One device is computing while the next waits. Then the next starts computing while the previous one becomes idle. There are many devices, but also a lot of idle time.
+
+GPipe's idea is to split a batch into several micro-batches and pass those small batches through different devices as a pipeline. When the first machine finishes the first micro-batch, it passes it to the next machine and immediately starts the second. As a result, different devices are busy more often, and pipeline bubbles shrink.
+
+GPipe also used recomputation. In simple terms, it does not store all intermediate activations in GPU memory. It keeps only the necessary boundaries and reruns part of the forward computation during the backward pass. The cost is more computation. The benefit is less memory pressure. This tradeoff is valuable because in large model training, GPU memory often becomes the bottleneck before raw compute does.
+
+After GPipe, pipeline parallelism became a permanent part of the large-model training toolbox. Later systems such as PipeDream and Megatron changed the details, but the questions were already close to GPipe's: how to split, how to schedule, and how to keep hardware busy.
+
+## Hugging Face
+
+Also in November 2018, Hugging Face open-sourced a PyTorch implementation of BERT. At the time, it looked like a community tool release. Later, its weight became much clearer.
+
+Hugging Face did not start as the company we know today. The team originally worked on a consumer chatbot product, but the business was not going especially well. During development, they had accumulated a lot of Transformer-related code, and eventually decided to open it. The library was called `pytorch-pretrained-bert`, and it gradually became the now familiar `Transformers`.
+
+Why did the library grow so quickly? The reason is simple: it removed the annoying gap between "reproduce the paper" and "actually use the model." Developers no longer had to rewrite the model architecture, manually parse parameter formats, or change half of their training code just to swap one model for another. A unified API does not sound dramatic, but in practice it saves a lot of time.
+
+The later transformation of Hugging Face also shows something important. If an open-source tool hits a real community pain point, the commercial path becomes clearer over time. Model hosting, dataset management, and online demos later became a full ecosystem, but the start was not grandiose. First, they simply built a good tool.
+
+Without that infrastructure layer, pre-trained models would have spread much more slowly. For many papers, the path from "I read it" to "I used it" depends on whether a decent open-source implementation exists.
+
+## Summary
+
+The main thing to remember about 2018 is this: pre-training finally moved from an interesting direction to the default method. GPT-1 and BERT followed different lines, but both said the same thing clearly: first learn from a huge amount of unlabeled data, then adapt to a specific task. That usually works better than training from scratch.
+
+The progress of the year was very coherent. At the model level, there were GPT-1 and BERT. For generation quality, there was Top-K. In training systems, GPipe. On the deployment side, Tesla T4. In engineering tools, Hugging Face. No single item explains the whole future, but together they already outlined the directions that would explode in later years.
+
+If we look for the long-term split in 2018, it is the GPT and BERT split. BERT quickly dominated understanding tasks, while GPT gradually showed that generative pre-training, when scaled further, had more room for imagination. Short-term results and long-term potential are not always the same thing.
+
+From an engineering point of view, this year exposed very real problems: not enough GPU memory, inefficient parallelism, and expensive online deployment. Many works in later years kept fighting these same old problems. The models just became larger, and the price became higher.
+
+## References
+
+1. Hierarchical Neural Story Generation (2018-05-13): https://arxiv.org/abs/1805.04833
+2. Improving Language Understanding by Generative Pre-Training (2018-06-11): https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf
+3. NVIDIA Tesla T4 GPU (2018-09-13): https://www.nvidia.com/en-us/data-center/tesla-t4/
+4. BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding (2018-10-11): https://arxiv.org/abs/1810.04805
+5. GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism (2018-11-16): https://arxiv.org/abs/1811.06965
+6. Hugging Face Transformers Library (2018-11-26): https://huggingface.co

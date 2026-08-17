@@ -1,0 +1,43 @@
+# Глава 7. Agent и RAG
+
+Архитектуры agent-систем, MCP, Text-to-SQL, RAG, GraphRAG, Knowledge Graph и прикладное проектирование LLM-продуктов.
+
+[К общему русскому индексу](../index.md)
+
+## Полные переводы
+
+- [За 10 минут: как делать мультимодальный RAG](<multimodal-rag-za-10-minut.md>)
+- [GraphRAG: поиск по нарративным приватным данным для LLM, перевод](<graphrag-poisk-po-narrativnym-privatnym-dannym-dlya-llm.md>)
+- [Внедрение LLM-приложений: Text-to-SQL, часть 3](<llm-prilozheniya-text-to-sql-chast-3.md>)
+- [Внедрение LLM-приложений: архитектурное проектирование, часть 2](<llm-prilozheniya-arhitekturnoe-proektirovanie-chast-2.md>)
+- [Руководство по внедрению LLM-приложений: классификация, часть 1](<llm-prilozheniya-klassifikaciya-chast-1.md>)
+- [LangChain налево, Coze направо: выбор инструментария](<langchain-nalevo-coze-napravo.md>)
+- [Векторные базы данных и LLM](<vektornye-bazy-dannyh-i-llm.md>)
+- [Парадигмы проектирования Agent и популярные фреймворки](<paradigmy-proektirovaniya-agent-i-populyarnye-freymvorki.md>)
+- [MCP: базовые понятия, быстрый старт и внутренние принципы](<mcp-bazovye-ponyatiya-bystryy-start-i-vnutrennie-principy.md>)
+- [Как проектировать архитектуру Agent: ориентироваться на OpenAI или Anthropic](<kak-proektirovat-arhitekturu-agent-openai-ili-anthropic.md>)
+- [Практическое руководство по enterprise RAG](<prakticheskoe-rukovodstvo-po-enterprise-rag.md>)
+- [Разрабатывать LLM или использовать LLM](<razrabatyvat-llm-ili-ispolzovat-llm.md>)
+- [RAG-архитектура с Knowledge Graph](<rag-arhitektura-s-knowledge-graph.md>)
+
+## Материалы
+
+| Подраздел | Русское название | Русская статья | Исходный файл |
+| --- | --- | --- | --- |
+| Основной раздел | За 10 минут: как делать мультимодальный RAG | [Перевод](<multimodal-rag-za-10-minut.md>) | [Оригинал](<../../../07-第七章-Agent/10分钟了解如何进行多模态RAG.md>) |
+| Основной раздел | Парадигмы проектирования Agent и популярные фреймворки | [Перевод](<paradigmy-proektirovaniya-agent-i-populyarnye-freymvorki.md>) | [Оригинал](<../../../07-第七章-Agent/Agent设计范式与常见框架.md>) |
+| Основной раздел | GraphRAG: поиск по нарративным приватным данным для LLM, перевод | [Перевод](<graphrag-poisk-po-narrativnym-privatnym-dannym-dlya-llm.md>) | [Оригинал](<../../../07-第七章-Agent/GraphRAG解锁大模型对叙述性私人数据的检索能力（中文翻译）.md>) |
+| Основной раздел | Внедрение LLM-приложений: Text-to-SQL, часть 3 | [Перевод](<llm-prilozheniya-text-to-sql-chast-3.md>) | [Оригинал](<../../../07-第七章-Agent/LLM应用落地之Text-2-SQL（三）.md>) |
+| Основной раздел | Внедрение LLM-приложений: архитектурное проектирование, часть 2 | [Перевод](<llm-prilozheniya-arhitekturnoe-proektirovanie-chast-2.md>) | [Оригинал](<../../../07-第七章-Agent/LLM应用落地之架构设计（二）.md>) |
+| Основной раздел | Руководство по внедрению LLM-приложений: классификация, часть 1 | [Перевод](<llm-prilozheniya-klassifikaciya-chast-1.md>) | [Оригинал](<../../../07-第七章-Agent/LLM应用落地指南之应用的分类(一).md>) |
+| Основной раздел | MCP: базовые понятия, быстрый старт и внутренние принципы | [Перевод](<mcp-bazovye-ponyatiya-bystryy-start-i-vnutrennie-principy.md>) | [Оригинал](<../../../07-第七章-Agent/MCP：基础概念、快速应用和背后原理.md>) |
+| Основной раздел | LangChain налево, Coze направо: выбор инструментария | [Перевод](<langchain-nalevo-coze-napravo.md>) | [Оригинал](<../../../07-第七章-Agent/langchain向左coze向右.md>) |
+| Основной раздел | Векторные базы данных и LLM | [Перевод](<vektornye-bazy-dannyh-i-llm.md>) | [Оригинал](<../../../07-第七章-Agent/向量数据库拥抱大模型.md>) |
+| Основной раздел | Как проектировать архитектуру Agent: ориентироваться на OpenAI или Anthropic | [Перевод](<kak-proektirovat-arhitekturu-agent-openai-ili-anthropic.md>) | [Оригинал](<../../../07-第七章-Agent/如何设计智能体架构：参考OpenAI还是Anthropic.md>) |
+| Основной раздел | Практическое руководство по enterprise RAG | [Перевод](<prakticheskoe-rukovodstvo-po-enterprise-rag.md>) | [Оригинал](<../../../07-第七章-Agent/干货-落地企业级RAG的实践指南.md>) |
+| Основной раздел | Разрабатывать LLM или использовать LLM | [Перевод](<razrabatyvat-llm-ili-ispolzovat-llm.md>) | [Оригинал](<../../../07-第七章-Agent/开发大模型or使用大模型.md>) |
+| Основной раздел | RAG-архитектура с Knowledge Graph | [Перевод](<rag-arhitektura-s-knowledge-graph.md>) | [Оригинал](<../../../07-第七章-Agent/搭配Knowledge-Graph的RAG架构.md>) |
+
+## Примечание по локализации
+
+В командах, API, именах библиотек, моделях и путях сохранена исходная форма. Если термин встречается в английском виде в статье, он сохранен и в русской навигации.

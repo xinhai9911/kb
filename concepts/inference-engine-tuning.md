@@ -16,6 +16,25 @@ related:
   - "[[llm-inference-optimization]]"
 ---
 
+<!-- kb-import-backlink:LLMForEverybody -->
+
+> [!info] 外部资料 · LLMForEverybody
+> 中文大模型知识库 [[sources/LLMForEverybody/index|LLMForEverybody 导航]] 中的相关章节：
+> - [[sources/LLMForEverybody/02-第二章-部署与推理/大模型部署不求人！从TTFT到Throughput的性能估算终极公式|TTFT/Throughput 性能估算]]
+> - [[sources/LLMForEverybody/05-第五章-显卡与并行/大模型部署三要素：显存、计算与通信深度解析|部署三要素]]
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 推理引擎调优实践：从入门到精通
 
 > 📚 **知识定位**：本文档提供推理引擎调优的完整实践指南，是[[inference-engine-mastery]]知识体系的核心实践部分。

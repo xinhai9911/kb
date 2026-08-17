@@ -1,0 +1,61 @@
+# Chapter 1. Pre-training
+
+Architectures, optimizers, activation functions, attention, positional encodings, tokenization, parallelism, and training frameworks.
+
+[Back to the English index](../index.md)
+
+## Full Translations
+
+- [A broad overview of LLM tokenizers](<llm-tokenizers-overview.md>)
+- [Understanding LLM tokenizers, part 1](<llm-tokenizers-part-1.md>)
+- [Understanding LLM tokenizers, part 2: BPE](<llm-tokenizers-part-2-bpe.md>)
+- [Understanding LLM tokenizers, part 3: WordPiece](<llm-tokenizers-part-3-wordpiece.md>)
+- [Understanding LLM tokenizers, part 4: Unigram](<llm-tokenizers-part-4-unigram.md>)
+- [Understanding LLM tokenizers, part 5: SentencePiece](<llm-tokenizers-part-5-sentencepiece.md>)
+- [Understanding LLM tokenizers, part 6: BBPE](<llm-tokenizers-part-6-bbpe.md>)
+- [LLM distributed training parallelism, part 1: overview](<llm-distributed-training-parallelism-part-1-overview.md>)
+- [LLM distributed training parallelism, part 2: data parallelism](<llm-distributed-training-parallelism-part-2-data-parallelism.md>)
+- [LLM distributed training parallelism, part 3: pipeline parallelism](<llm-distributed-training-parallelism-part-3-pipeline-parallelism.md>)
+- [LLM distributed training parallelism, part 4: tensor parallelism](<llm-distributed-training-parallelism-part-4-tensor-parallelism.md>)
+- [LLM distributed training parallelism, part 5: hybrid parallelism](<llm-distributed-training-parallelism-part-5-hybrid-parallelism.md>)
+- [Neural network activation functions, part 1: overview](<neural-network-activation-functions-part-1-overview.md>)
+- [Neural network activation functions, part 2: Sigmoid, Softmax, and Tanh](<neural-network-activation-functions-part-2-sigmoid-softmax-tanh.md>)
+- [Neural network activation functions, part 3: ReLU and variants](<neural-network-activation-functions-part-3-relu-and-variants.md>)
+- [Neural network activation functions, part 4: ELU and SELU](<neural-network-activation-functions-part-4-elu-and-selu.md>)
+- [Neural network activation functions, part 5: GLU, Swish, and SwiGLU](<neural-network-activation-functions-part-5-glu-swish-swiglu.md>)
+- [Neural network activation functions, part 6: GELU and Mish](<neural-network-activation-functions-part-6-gelu-and-mish.md>)
+- [LLM training frameworks, part 1: overview](<llm-training-frameworks-part-1-overview.md>)
+- [LLM training frameworks, part 2: FSDP](<llm-training-frameworks-part-2-fsdp.md>)
+- [LLM training frameworks, part 3: DeepSpeed](<llm-training-frameworks-part-3-deepspeed.md>)
+- [LLM training frameworks, part 4: Megatron-LM](<llm-training-frameworks-part-4-megatron-lm.md>)
+- [LLM training frameworks, part 5: Accelerate](<llm-training-frameworks-part-5-accelerate.md>)
+- [What is positional encoding in LLMs?](<what-is-positional-encoding-in-llms.md>)
+- [From the beauty of Euler's formula to RoPE](<from-eulers-formula-to-rope.md>)
+- [Complex functions in LLM positional encoding](<complex-functions-in-llm-positional-encoding.md>)
+- [What math do you need to understand FlashAttention?](<math-needed-to-understand-flashattention.md>)
+- [What changed in FlashAttention v2 compared with v1?](<what-changed-in-flashattention-v2-vs-v1.md>)
+- [MLA in the DeepSeek series: one-article overview](<deepseek-mla-explained-in-one-article.md>)
+- [Why Multi-Query Attention and Grouped-Query Attention appeared](<why-multi-query-attention-and-grouped-query-attention-appeared.md>)
+- [Why large language models use SwiGLU as an activation function](<why-large-language-models-use-swiglu-as-activation.md>)
+- [What is a multimodal LLM? A 10-minute explanation](<what-is-a-multimodal-llm-in-10-minutes.md>)
+- [Why Transformers use LayerNorm instead of BatchNorm in 10 minutes](<why-transformers-use-layernorm-instead-of-batchnorm-in-10-minutes.md>)
+- [A broad overview of neural network optimizers](<neural-network-optimizers-complete-overview.md>)
+- [The easiest way to understand Mamba](<the-easiest-way-to-understand-mamba.md>)
+- [The most beautiful mathematical formula: Euler's formula](<the-most-beautiful-mathematical-formula-eulers-formula.md>)
+- [Mixture of Experts (MoE), detailed explanation excerpt](<mixture-of-experts-moe-explained-excerpt.md>)
+- [Neural network optimizers, part 1: overview](<neural-network-optimizers-part-1-overview.md>)
+- [Neural network optimizers, part 2: SGD](<neural-network-optimizers-part-2-sgd.md>)
+- [Neural network optimizers, part 3: Momentum](<neural-network-optimizers-part-3-momentum.md>)
+- [Neural network optimizers, part 4: ASGD](<neural-network-optimizers-part-4-asgd.md>)
+- [Neural network optimizers, part 5: Rprop](<neural-network-optimizers-part-5-rprop.md>)
+- [Neural network optimizers, part 6: AdaGrad](<neural-network-optimizers-part-6-adagrad.md>)
+- [Neural network optimizers, part 7: AdaDelta](<neural-network-optimizers-part-7-adadelta.md>)
+- [Neural network optimizers, part 8: RMSProp](<neural-network-optimizers-part-8-rmsprop.md>)
+- [Neural network optimizers, part 9: Adam](<neural-network-optimizers-part-9-adam.md>)
+- [Neural network optimizers, part 10: Nadam](<neural-network-optimizers-part-10-nadam.md>)
+- [Neural network optimizers, part 11: AdamW](<neural-network-optimizers-part-11-adamw.md>)
+- [Neural network optimizers, part 12: RAdam](<neural-network-optimizers-part-12-radam.md>)
+
+## Localization Note
+
+Commands, APIs, library names, model names, and file paths keep their original form. Terms that already appear in English in the source are usually kept in English here too.

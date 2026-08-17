@@ -11,6 +11,24 @@ lifecycle_changed: 2026-07-29
 sources: []
 ---
 
+<!-- kb-import-backlink:LLMForEverybody -->
+
+> [!info] 外部资料 · LLMForEverybody
+> 中文大模型知识库 [[sources/LLMForEverybody/index|LLMForEverybody 导航]] 中的相关章节：
+> - [[sources/LLMForEverybody/07-第七章-Agent/langchain向左coze向右|LangChain 向左 Coze 向右]]
+
+
+
+
+
+
+
+
+
+
+
+
+
 # LangChain
 
 ## 概述

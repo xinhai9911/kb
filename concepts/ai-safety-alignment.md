@@ -9,6 +9,25 @@ updated: 2026-08-07
 summary: AI 安全技术体系：对齐问题（外层对齐/内层对齐）、越狱攻击（GCG/AutoDAN/多语言绕过）、防御（Guardrails/输入过滤/Output检测）、红队测试、负责任AI（模型卡/伦理审查）。
 ---
 
+<!-- kb-import-backlink:LLMForEverybody -->
+
+> [!info] 外部资料 · LLMForEverybody
+> 中文大模型知识库 [[sources/LLMForEverybody/index|LLMForEverybody 导航]] 中的相关章节：
+> - [[sources/LLMForEverybody/06-第六章-Prompt Engineering/过去式就能越狱大模型？一文了解大模型安全攻防战|大模型安全攻防]]
+> - [[sources/LLMForEverybody/08-第八章-大模型企业落地/大模型落地难点之幻觉|幻觉问题]]
+
+
+
+
+
+
+
+
+
+
+
+
+
 # AI 安全与对齐
 
 ## 安全威胁分类

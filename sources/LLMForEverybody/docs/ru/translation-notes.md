@@ -1,0 +1,126 @@
+# Заметки по переводу
+
+## Принципы
+
+- Технические названия, команды, API, пути, переменные, имена моделей и англоязычные аббревиатуры сохранены без перевода: `LLM`, `RAG`, `Agent`, `Prompt Engineering`, `Fine-Tuning`, `Token`, `Throughput`, `Latency`, `vLLM`, `TensorRT-LLM`, `Ollama`.
+- `大模型` в навигации передано как `LLM`, потому что в репозитории речь почти всегда идет о больших языковых моделях, а не обо всех больших моделях вообще.
+- `落地` переведено как `внедрение`, а не дословно `приземление`: это ближе к русскому продуктово-инженерному употреблению.
+- `微调` переведено как `тонкая настройка` или `fine-tuning` в зависимости от контекста; в заголовках методов оставлены исходные английские названия.
+- `幻觉` переведено как `галлюцинации`, что является стандартным термином для LLM-ошибок фактичности.
+
+## Раздел 00: AGI и ежегодные обзоры
+
+- `Scaling Law` сохраняется как основной термин; при первом объяснении используется `закон масштабирования`.
+- `涌现` переводится как `эмерджентность`, а `智能涌现` - как `эмерджентность интеллекта`.
+- `推理` переводится по контексту: runtime-сценарии - `инференс`, reasoning-сценарии - `рассуждение`.
+- `对齐` передается как `alignment` или `выравнивание` по контексту; для методов вроде RLHF допустимо `AI alignment`.
+- `后训练` передается как `post-training`, при необходимости с пояснением `этап донастройки после предобучения`.
+- `少样本` и `零样本` сохраняются как `few-shot` и `zero-shot`.
+- `思维链` передается как `цепочка рассуждений (Chain-of-Thought, CoT)`.
+- `MoE` при первом объяснении раскрывается как `смесь экспертов (MoE)`, а `稀疏 MoE` - как `разреженная смесь экспертов`.
+- `KV Cache` сохраняется в английской форме; в русской прозе используется как `объем KV Cache`, `нагрузка на KV Cache`.
+- `token` в обычной русской прозе переводится как `токен`, но в устойчивых технических выражениях может сохраняться английская форма.
+
+## Раздел 01: Предобучение
+
+- `分词器` переводится как `токенизатор`; при первом объяснении допустимо `токенизатор (Tokenizer)`.
+- `分词` переводится как `токенизация`, а `词表` - как `словарь` или `словарь токенизатора` по контексту.
+- Названия алгоритмов `BPE`, `WordPiece`, `SentencePiece`, `Unigram`, `BBPE` сохраняются без перевода.
+- `Byte-level` передается как `на уровне байтов` или `байтовый`; `encode`/`decode` - как `кодирование`/`декодирование`, не как криптографические операции.
+- `激活函数` переводится как `функция активации`; вариант `активационная функция` не используется.
+- Названия функций `Sigmoid`, `Softmax`, `Tanh`, `ReLU`, `Leaky ReLU`, `PReLU`, `ELU`, `SELU`, `GLU`, `Swish`, `SwiGLU`, `GELU`, `Mish` сохраняются в английской форме.
+- `Linear Unit` в названиях функций активации передается как `линейный блок`.
+- `Dying ReLU` при пояснении передается как проблема `мертвых нейронов` или `умирающего ReLU` по контексту.
+- `Gated` в контексте `GLU` передается как `управляемый` или через `механизм gating`, чтобы не смешивать с бытовым словом `ворота`.
+- `优化器` переводится как `оптимизатор`.
+- `Gradient Descent` передается как `градиентный спуск`; `Stochastic Gradient Descent` - как `стохастический градиентный спуск`.
+- Названия алгоритмов `SGD`, `Momentum`, `ASGD`, `AdaGrad`, `AdaDelta`, `RMSProp`, `Adam`, `Nadam`, `AdamW`, `RAdam`, `Rprop` сохраняются в английской форме; `AdaDeleta` в имени исходного файла считается опечаткой и переводится как `AdaDelta`.
+- `learning rate` сохраняется как `learning rate`, если в исходном тексте термин уже дан по-английски; в пояснениях допустимо `скорость обучения`.
+- `momentum` в названии алгоритма сохраняется как `Momentum`; как механизм переводится по контексту через `импульс`, `инерция` или `член momentum`.
+- В Adam-подобных оптимизаторах `moment estimate` передается как `оценка момента`, `weight decay` сохраняется как `weight decay`, а в RAdam `variance of adaptive learning rate` передается как `дисперсия адаптивного learning rate`.
+- `训练框架` переводится как `фреймворк обучения`; названия `FSDP`, `DeepSpeed`, `Megatron-LM`, `Accelerate`, `PyTorch`, `Hugging Face` сохраняются без перевода.
+- `Data Parallelism`, `Tensor Parallelism`, `Pipeline Parallelism`, `Model Parallelism`, `ZeRO`, `offload`, `checkpoint` и `mixed precision training` могут сохраняться в английской форме, если так яснее рядом с названием технологии.
+- `位置编码` переводится как `позиционное кодирование`, `旋转位置编码` - как `вращательное позиционное кодирование`; `RoPE`, `FlashAttention`, `Self-Attention`, `Online Softmax`, `Safe Softmax` и `softmax` сохраняются в английской форме.
+- `复变函数` передается как `комплексная функция` или `функция комплексной переменной` по математическому контексту.
+- `MLA`, `Multi-head Latent Attention`, `Multi-Head Attention (MHA)`, `Multi-Query Attention (MQA)` и `Grouped-Query Attention (GQA)` сохраняются в английской форме; при объяснении допустимы `многоголовое внимание` и `группировка query/head`.
+- В статьях про SwiGLU `FFN` сохраняется, `функция активации` остается основным переводом для `激活函数`.
+- `Multimodal LLM` передается как `мультимодальная LLM`; `LayerNorm`, `BatchNorm`, `Mamba`, `State Space Model (SSM)`, `selective scan`, `gating`, `routing` и `throughput` сохраняются в английской форме при техническом объяснении.
+- `MoE` раскрывается как `смесь экспертов (MoE)` при первом объяснении, а затем может использоваться сокращение `MoE`.
+
+## Раздел 02: Развертывание и инференс
+
+- `部署` переводится как `развертывание`, `推理` в runtime-контексте - как `инференс`.
+- `vLLM`, `PagedAttention`, `Text Generation Inference (TGI)`, `TensorRT-LLM`, `Ollama`, `DeepSpeed-Inference`, `KV Cache`, `TTFT`, `Latency`, `Throughput`, `DevOps`, `AIOps`, `MLOps` и `LLMOps` сохраняются в английской форме.
+
+## Раздел 03: Тонкая настройка
+
+- `Adapter` и `Adapters` сохраняются в английской форме в названиях серии; в пояснениях допустимо `адаптер`.
+- `LoRA`, `QLoRA`, `AdaLoRA`, `PEFT`, `Low-Rank Adapter`, `Low-Rank Adaptation`, `Quantized Low-Rank Adaptation`, `NormalFloat (NF4)` и `SVD` сохраняются в английской форме.
+- `low-rank` передается как `низкоранговый`, `rank` - как `ранг`, `parameter budget` - как `бюджет параметров`.
+- `fine-tuning` и `тонкая настройка` используются по контексту; для `параметрически эффективной тонкой настройки` сохраняется аббревиатура `PEFT`.
+- `Prompting`, `Soft Prompts`, `Hard Prompts`, `Prompt Tuning`, `Prefix-Tuning`, `P-Tuning`, `Multitask Prompt Tuning (MPT)`, `prompt tokens`, `prompt encoder`, `embedding`, `Causal Language Model`, `NLU`, `PLM`, `encoder-decoder` и `decoder` сохраняются в английской форме.
+- `Hadamard product` передается как `произведение Адамара`; `downstream task` - как `downstream-задача`.
+- `Hugging Face PEFT`, `LLaMA-Factory`, `ModelScope`, `ms-swift`, `Megatron-LM`, `Transformers`, `Diffusers`, `Accelerate`, `Trainer`, `Full Fine-tuning`, `freeze fine-tuning`, `LoRA fine-tuning`, `QLoRA fine-tuning`, `PPO`, `DPO`, `KTO`, `ORPO`, `GaLore`, `DoRA`, `LongLoRA`, `LoftQ` и `LlamaBoard` сохраняются в английской форме.
+- `Full Fine-tuning` при объяснении передается как `обновление всех параметров`; `storage costs` - как `расходы на хранение`.
+
+## Раздел 04: Квантизация
+
+- `квантизация` используется как основной перевод для `量化`; `PTQ`, `QAT`, `INT8`, `AWQ`, `GPTQ`, `SmoothQuant`, `KV Cache`, `GGUF`, `GGML`, `llama.cpp`, `Ollama`, `vLLM`, `SGLang`, `BitsAndBytes`, `Inflight quantization`, `Dynamic Quantization`, `Hessian` и `OBS` сохраняются в английской форме.
+- `Quantization Granularity` передается как `гранулярность квантизации`, `zero-point` сохраняется в английской форме, `Hadamard product` при необходимости передается как `произведение Адамара`.
+
+## Раздел 05: GPU и параллелизм
+
+- `GPU`, `CPU`, `DDP`, `FSDP`, `Distributed Data Parallel`, `Fully Sharded Data Parallel`, `ZeRO`, `all-reduce`, `reduce-scatter`, `all-gather`, `Offload`, `FP32`, `FP16`, `BF16`, `FLOPs`, `FLOPS`, `TOPS`, `MAC`, `HBM`, `SRAM`, `Tensor Core`, `NVLink`, `NVSwitch`, `InfiniBand`, `TP` и `PP` сохраняются в английской форме.
+- `显存` передается как `видеопамять`; `计算` - как `вычисления` или `вычислительная мощность`; `通信` - как `коммуникация`.
+
+## Раздел 06: Prompt Engineering
+
+- `Prompt Engineering`, `prompt`, `prompt injection`, `jailbreak`, `DAN`, `CoT`, `ToT`, `GoT`, `Chain-of-Thought`, `Tree-of-Thought`, `Graph-of-Thought`, `Self-Consistency`, `Auto-CoT`, `few-shot`, `zero-shot`, `RLHF`, `Reward model`, `PPO`, `DPO`, `ORPO`, `alignment` и `red teaming` сохраняются в английской форме по контексту.
+- `思维链` передается как `цепочка рассуждений`, `思维树` - как `дерево рассуждений`, `思维图` - как `граф рассуждений`; `越狱` в контексте LLM передается как `jailbreak`.
+
+## Раздел 07: Agent и RAG
+
+- `RAG`, `GraphRAG`, `Baseline RAG`, `Vector DB`, `embedding`, `retrieval`, `query`, `LVLM`, `LLaVA`, `BridgeTower`, `semantic search`, `Long Context`, `Knowledge Graph`, `chunk`, `Load & Process`, `Split/Chunking`, `hybrid search`, `JSON`, `JSONL`, `OCR`, `DLD`, `ViT`, `DONUT`, `private dataset`, `prompt augmentation` и `graph machine learning` сохраняются в английской форме по контексту.
+- `叙述性私人数据` передается как `нарративные приватные данные`; `知识图谱` - как `Knowledge Graph` или `граф знаний` в пояснениях.
+- `LLM application`, `Text-to-SQL`, `Text-to-Code`, `NL2SQL`, `Schema-Linking`, `LangChain`, `LangGraph`, `Coze`, `workflow`, `DAG`, `Multi-Agent`, `Self-Reflection`, `MLflow`, `Temperature`, `Top P`, `CT`, `SFT` и `foundation model` сохраняются в английской форме по контексту.
+- `应用落地` передается как `внедрение LLM-приложений`; `任务拆解` - как `декомпозиция задачи`; `意图识别` - как `распознавание намерения`.
+- `Agentic systems`, `Reflection`, `Tool use`, `Planning`, `Memory`, `Short-term memory`, `Long-term memory`, `ReAct`, `AutoGen`, `Guardrails`, `orchestration`, `Model Context Protocol`, `MCP`, `Host`, `Client`, `Server`, `Resources`, `Tools`, `Prompts`, `stdio`, `SSE`, `Cherry Studio` и `Dify` сохраняются в английской форме по контексту.
+- `模型上下文协议` передается как `Model Context Protocol` или `протокол контекста модели`; `工作流` в Agent-архитектурах сохраняется как `workflow`, если рядом обсуждаются фреймворки и orchestration.
+
+## Раздел 08: Внедрение LLM в бизнесе
+
+- `企业落地` передается как `enterprise-внедрение` или `внедрение в бизнесе` по контексту; `应用至上` - как `приложения прежде всего`.
+- `CRUD`, `ETL`, `NL2SQL`, `ChatBI`, `BI`, `AIGC`, `DataWind`, `Feishu`, `Prompt Engineering`, `Self-reflection`, `Few-shot learning`, `Instruction Fine-tuning`, `JSON Schema`, `structured outputs`, `function calling`, `workflow`, `corner case`, `edge case`, `hard code validation`, `top-k`, `top-p`, `Greedy`, `Sampling`, `Probabilistic` и `Deterministic` сохраняются в английской форме по контексту.
+- `复读机问题` передается как `проблема повторов` или образно `проблема "LLM-попугая"`; `智能涌现失败` - как `неудачная эмерджентность интеллекта`.
+- `红队测试` передается как `red teaming`; `提示词注入` - как `prompt injection`; `越狱` - как `jailbreaking`.
+
+## Раздел 09: Метрики оценки
+
+- `评估指标` передается как `метрики оценки`; `性能评测` - как `оценка производительности`.
+- `Needle In A Haystack`, `Counting Stars`, `long-context`, `Ground Truth`, `accuracy`, `Cross Entropy`, `Entropy`, `Perplexity`, `BLEU`, `ROUGE`, `N-gram`, `benchmark`, `GLUE`, `SuperGLUE`, `SQuAD`, `CoLA`, `CMMLU`, `MathEval`, `Arena`, `Leaderboard` и `Chatbot Arena` сохраняются в английской форме по контексту.
+
+## Раздел 10: Актуальные темы
+
+- `热点` передается как `актуальные темы`; `软考` в статье об экзамене передается как `Ruankao`.
+- `Exploit and Explore`, `reinforcement learning`, `chain of thought`, `Multi-armed bandit`, `MAB`, `epsilon-greedy`, `UCB`, `Thompson Sampling`, `Hoeffding's inequality`, `Beta distribution`, `Bayesian inference`, `Monte Carlo sampling`, `DeepFake`, `Deepfake`, `Diffusion Model`, `GANs`, `AIGC`, `Forward Diffusion`, `Reverse Diffusion`, `embedding` и `facial features` сохраняются в английской форме по контексту.
+- `N 号房` передается как `Nth Room`; в чувствительных темах DeepFake формулировки сохраняются нейтральными и техническими, без усиления деталей.
+
+## Раздел 11: Математика
+
+- `高数` передается как `высшая математика`; `微积分` - как `calculus` или `математический анализ` по контексту.
+- `calculus`, `differentiation`, `derivative`, `partial derivative`, `gradient`, `gradient descent`, `backpropagation`, `slope`, `second derivative`, `Hessian matrix`, `learning rate`, `objective function`, `loss function`, `iteration`, `threshold`, `PyTorch` и `TensorFlow` сохраняются в английской форме по контексту.
+- `线性代数` передается как `линейная алгебра`; `matrix`, `singularity`, `singular`, `non-singular`, `determinant`, `augmented matrix`, `row reduction`, `row echelon form`, `reduced row echelon form`, `rank`, `pivot`, `Gauss elimination`, `back substitution`, `vector`, `L1-norm`, `L2-norm`, `Manhattan distance`, `Euclidean distance`, `cosine similarity`, `dot product`, `Hadamard product`, `linear transformation`, `identity matrix`, `inverse`, `basis`, `span`, `eigenbasis`, `eigenvalue`, `eigenvector` и `characteristic polynomial` сохраняются в английской форме по контексту.
+- `概率统计` передается как `probability and statistics` или `вероятность и статистика` по контексту; `Probability`, `Statistics`, `Bayes' Theorem`, `Prior Probability`, `Posterior Probability`, `Naive Bayes`, `Binomial Distribution`, `Bernoulli Distribution`, `Probability Density Function`, `PDF`, `Cumulative Distribution Function`, `CDF`, `Uniform Distribution`, `Normal Distribution`, `Gaussian Distribution`, `Expected Value`, `Variance`, `Standard Deviation`, `Skewness`, `Kurtosis`, `Quantile`, `Boxplot`, `Kernel Density Estimation`, `KDE`, `Violin Plot`, `Quantile-Quantile Plot`, `QQ plot`, `Central Limit Theorem`, `CLT` и `Law of Large Numbers` сохраняются в английской форме по контексту.
+
+## Раздел 12: Бизнес и профессиональная стратегия
+
+- `平台掌控者` передается как `platform controller` или `владелец платформы` по контексту; `护城河` - как `moat`.
+- `GenAI`, `Agent`, `foundation model`, `Prompt Engineering`, `workflow`, `UI`, `unbundle`, `rebundling`, `Vertical Advantage`, `data flywheel`, `domain data`, `fine-tuning`, `Core Creative Activity`, `Scenario Advantage`, `Intelligence Advantage`, `Relationship Advantage`, `hub`, `value chain` и `red ocean` сохраняются в английской форме по контексту.
+
+## Ссылки на оригиналы
+
+- Имена файлов и каталогов русского зеркала локализованы в нижнем регистре через дефисы.
+- Ссылки с пометкой `Оригинал` ведут на исходные markdown-файлы в корне репозитория.
+- Изображения в полных русских переводах не копируются в `docs/ru`; markdown-ссылки должны вести на исходные китайские `assest`-папки через корректный относительный путь.
+
+[К русскому индексу](index.md)

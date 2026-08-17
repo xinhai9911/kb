@@ -10,6 +10,24 @@ lifecycle: draft
 lifecycle_changed: 2026-07-29
 sources: []
 ---
+
+<!-- kb-import-backlink:LLMForEverybody -->
+
+> [!info] 外部资料 · LLMForEverybody
+> 中文大模型知识库 [[sources/LLMForEverybody/index|LLMForEverybody 导航]] 中的相关章节：
+> - [[sources/LLMForEverybody/01-第一章-预训练/一文了解Deepseek系列中的MLA技术|DeepSeek MLA]]
+
+
+
+
+
+
+
+
+
+
+
+
 # DeepSeek
 
 ## 概览

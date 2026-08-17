@@ -1,0 +1,21 @@
+# Chapter 5. GPU and Parallelism
+
+Memory, compute, communication, and how parallel execution in Transformer differs from older NLP approaches.
+
+[Back to English index](../index.md)
+
+## Full Translations
+
+- [How GPU Parallelism in Transformer Differs from Earlier NLP Algorithms](<gpu-parallelism-transformer-and-earlier-nlp-algorithms.md>)
+- [Three Factors in LLM Deployment: Memory, Compute, and Communication](<three-factors-in-llm-deployment-memory-compute-communication.md>)
+
+## Materials
+
+| Subsection | English title | English article | Source file |
+| --- | --- | --- | --- |
+| Main section | How GPU Parallelism in Transformer Differs from Earlier NLP Algorithms | [Translation](<gpu-parallelism-transformer-and-earlier-nlp-algorithms.md>) | [Original](<../../../05-第五章-显卡与并行/Transformer架构的GPU并行和之前的NLP算法有什么不同？.md>) |
+| Main section | Three Factors in LLM Deployment: Memory, Compute, and Communication | [Translation](<three-factors-in-llm-deployment-memory-compute-communication.md>) | [Original](<../../../05-第五章-显卡与并行/大模型部署三要素：显存、计算与通信深度解析.md>) |
+
+## Localization Note
+
+Commands, APIs, library names, model names, and paths keep their original spelling. Technical terms that are normally used in English remain in English.

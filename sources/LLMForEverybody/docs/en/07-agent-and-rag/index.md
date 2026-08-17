@@ -1,0 +1,43 @@
+# Chapter 7. Agent and RAG
+
+Agent-system architectures, MCP, Text-to-SQL, RAG, GraphRAG, Knowledge Graphs, and applied LLM product design.
+
+[Back to English index](../index.md)
+
+## Full Translations
+
+- [Multimodal RAG in 10 Minutes](<multimodal-rag-in-10-minutes.md>)
+- [Agent Design Paradigms and Common Frameworks](<agent-design-paradigms-and-common-frameworks.md>)
+- [GraphRAG: Unlocking LLM Retrieval Over Narrative Private Data](<graphrag-unlocking-llm-retrieval-over-narrative-private-data.md>)
+- [LLM Application Adoption: Text-to-SQL, Part 3](<llm-application-adoption-text-to-sql-part-3.md>)
+- [LLM Application Adoption: Architecture Design, Part 2](<llm-application-adoption-architecture-design-part-2.md>)
+- [LLM Application Adoption Guide: Classification, Part 1](<llm-application-adoption-classification-part-1.md>)
+- [MCP: Basic Concepts, Quick Start, and Internal Principles](<mcp-basic-concepts-quick-start-and-internals.md>)
+- [LangChain to the Left, Coze to the Right](<langchain-to-the-left-coze-to-the-right.md>)
+- [Vector Databases and LLMs](<vector-databases-and-llms.md>)
+- [RAG Architecture with Knowledge Graph](<rag-architecture-with-knowledge-graph.md>)
+- [How to Design Agent Architecture: OpenAI or Anthropic?](<how-to-design-agent-architecture-openai-or-anthropic.md>)
+- [Practical Guide to Enterprise RAG](<practical-guide-to-enterprise-rag.md>)
+- [Develop LLMs or Use LLMs?](<develop-llms-or-use-llms.md>)
+
+## Materials
+
+| Subsection | English title | English article | Source file |
+| --- | --- | --- | --- |
+| Main section | Multimodal RAG in 10 Minutes | [Translation](<multimodal-rag-in-10-minutes.md>) | [Original](<../../../07-第七章-Agent/10分钟了解如何进行多模态RAG.md>) |
+| Main section | Agent Design Paradigms and Common Frameworks | [Translation](<agent-design-paradigms-and-common-frameworks.md>) | [Original](<../../../07-第七章-Agent/Agent设计范式与常见框架.md>) |
+| Main section | GraphRAG: Unlocking LLM Retrieval Over Narrative Private Data | [Translation](<graphrag-unlocking-llm-retrieval-over-narrative-private-data.md>) | [Original](<../../../07-第七章-Agent/GraphRAG解锁大模型对叙述性私人数据的检索能力（中文翻译）.md>) |
+| Main section | LLM Application Adoption: Text-to-SQL, Part 3 | [Translation](<llm-application-adoption-text-to-sql-part-3.md>) | [Original](<../../../07-第七章-Agent/LLM应用落地之Text-2-SQL（三）.md>) |
+| Main section | LLM Application Adoption: Architecture Design, Part 2 | [Translation](<llm-application-adoption-architecture-design-part-2.md>) | [Original](<../../../07-第七章-Agent/LLM应用落地之架构设计（二）.md>) |
+| Main section | LLM Application Adoption Guide: Classification, Part 1 | [Translation](<llm-application-adoption-classification-part-1.md>) | [Original](<../../../07-第七章-Agent/LLM应用落地指南之应用的分类(一).md>) |
+| Main section | MCP: Basic Concepts, Quick Start, and Internal Principles | [Translation](<mcp-basic-concepts-quick-start-and-internals.md>) | [Original](<../../../07-第七章-Agent/MCP：基础概念、快速应用和背后原理.md>) |
+| Main section | LangChain to the Left, Coze to the Right | [Translation](<langchain-to-the-left-coze-to-the-right.md>) | [Original](<../../../07-第七章-Agent/langchain向左coze向右.md>) |
+| Main section | Vector Databases and LLMs | [Translation](<vector-databases-and-llms.md>) | [Original](<../../../07-第七章-Agent/向量数据库拥抱大模型.md>) |
+| Main section | How to Design Agent Architecture: OpenAI or Anthropic? | [Translation](<how-to-design-agent-architecture-openai-or-anthropic.md>) | [Original](<../../../07-第七章-Agent/如何设计智能体架构：参考OpenAI还是Anthropic.md>) |
+| Main section | Practical Guide to Enterprise RAG | [Translation](<practical-guide-to-enterprise-rag.md>) | [Original](<../../../07-第七章-Agent/干货-落地企业级RAG的实践指南.md>) |
+| Main section | Develop LLMs or Use LLMs? | [Translation](<develop-llms-or-use-llms.md>) | [Original](<../../../07-第七章-Agent/开发大模型or使用大模型.md>) |
+| Main section | RAG Architecture with Knowledge Graph | [Translation](<rag-architecture-with-knowledge-graph.md>) | [Original](<../../../07-第七章-Agent/搭配Knowledge-Graph的RAG架构.md>) |
+
+## Localization Note
+
+Commands, APIs, library names, model names, and paths keep their original spelling. Technical terms that are normally used in English remain in English.

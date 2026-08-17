@@ -1,0 +1,25 @@
+# Chapter 3. Fine-Tuning
+
+PEFT, LoRA, QLoRA, AdaLoRA, soft prompts, and frameworks for applied fine-tuning.
+
+[Back to the English index](../index.md)
+
+## Full Translations
+
+- [Parameter-Efficient Fine-Tuning, PEFT, LoRA, and other methods](<parameter-efficient-fine-tuning-peft-lora-and-other-methods.md>)
+- [Fine-tuning LLMs with Adapters, part 1: overview](<fine-tuning-llm-adapters-1-overview.md>)
+- [Fine-tuning LLMs with Adapters, part 2: LoRA](<fine-tuning-llm-adapters-2-lora.md>)
+- [Fine-tuning LLMs with Adapters, part 3: QLoRA](<fine-tuning-llm-adapters-3-qlora.md>)
+- [Fine-tuning LLMs with Adapters, part 4: AdaLoRA](<fine-tuning-llm-adapters-4-adalora.md>)
+- [Fine-tuning LLMs with Soft Prompts, part 1: overview](<fine-tuning-llm-soft-prompts-1-overview.md>)
+- [Fine-tuning LLMs with Soft Prompts, part 2: Prompt Tuning](<fine-tuning-llm-soft-prompts-2-prompt-tuning.md>)
+- [Fine-tuning LLMs with Soft Prompts, part 3: Prefix-Tuning](<fine-tuning-llm-soft-prompts-3-prefix-tuning.md>)
+- [Fine-tuning LLMs with Soft Prompts, part 4: P-Tuning](<fine-tuning-llm-soft-prompts-4-p-tuning.md>)
+- [Fine-tuning LLMs with Soft Prompts, part 5: Multitask Prompt Tuning](<fine-tuning-llm-soft-prompts-5-multitask-prompt-tuning.md>)
+- [LLM fine-tuning frameworks, part 1: overview](<fine-tuning-frameworks-1-overview.md>)
+- [LLM fine-tuning frameworks, part 2: Hugging Face PEFT](<fine-tuning-frameworks-2-huggingface-peft.md>)
+- [LLM fine-tuning frameworks, part 3: Llama-Factory](<fine-tuning-frameworks-3-llama-factory.md>)
+
+## Localization Note
+
+Commands, APIs, library names, model names, and file paths keep their original form. Terms that already appear in English in the source are usually kept in English here too.

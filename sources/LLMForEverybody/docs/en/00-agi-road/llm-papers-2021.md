@@ -1,0 +1,107 @@
+# [Classic LLM Papers] 2021: Not Just Text, CLIP Teaches Models to Look at Images
+
+If 2020 convinced many people that models would develop new abilities as scale kept growing, 2021 asked where to go next. One obvious change was that models stopped orbiting only around pure text. Images, text, and code started to converge into one broader line. Another change was more practical: researchers took the old problems of training cost, GPU memory, and the fine-tuning entry barrier more seriously.
+
+Looking back, the year had roughly three main lines. The first was multimodality: CLIP and DALL-E really brought vision and language closer together. The second was efficiency: LoRA, ZeRO, and MoE answered the same question in different ways. If models keep getting larger, can ordinary teams still use them? The third was that generative models themselves moved closer to application: latent diffusion and code generation started to look less like demos and more like real tools.
+
+## CLIP
+
+In February 2021, OpenAI released CLIP. The most important thing about it was not simply that it was a model for images and text. It proposed a different view of supervised visual learning.
+
+Traditional image classification models rely heavily on fixed labels. First you define the classes, then label every image. CLIP works differently. It collects huge amounts of internet images together with corresponding text, then uses contrastive learning to make an image encoder and a text encoder agree with each other. The training goal is simple: matching image-text pairs should be closer, and non-matching pairs should be farther apart.
+
+The strength of this approach is that the training signal becomes open-ended. You no longer have to choose an answer from 1000 predefined classes. You can ask the model directly with natural language. For example, with `a photo of a dog`, the model can match an image to that semantic direction. Today this feels natural, but at the time it meant a visual model had become somewhat language-like: it could work with open concepts through a text interface.
+
+CLIP's zero-shot results were also convincing. On many datasets it performed strongly without extra fine-tuning, and on out-of-distribution tests it was often more robust than traditional supervised learning models. The important point was not one specific number, but the proof that natural language itself can be a universal training signal.
+
+Many later vision-language models effectively continue living inside this idea. First place images and text in a shared semantic space. Then build classification, search, generation, or reasoning around that space. CLIP stated this pattern very clearly.
+
+## DALL-E 1
+
+Also in February 2021, OpenAI released DALL-E. From today's perspective, it was not as mature as later diffusion models, but it was the first widely visible demonstration of the idea "type one phrase and get a decent image."
+
+DALL-E 1 used a two-stage scheme. First, a discrete variational autoencoder compressed images into discrete visual tokens. Then a very large autoregressive Transformer modeled the joint distribution of text tokens and image tokens. In simple terms, the image also became a kind of sequence, then entered an architecture similar to a language model.
+
+At the time, this design made sense because Transformer had already proven its scalability in text. So it was reasonable to first turn images into tokens, then test whether the same modeling principle could handle them too. It partly could, and it showed strong compositional generalization. The model could recombine concepts seen during training and generate strange but meaningful things: animals in clothing, objects with specified properties, and even simple text rendering.
+
+Of course, DALL-E 1 was still far from later product quality. Detail, stability, and image consistency were limited. But it played an important role: it showed that text-to-image generation did not have to rely on many complex specialized modules. A sufficiently large universal sequence model could also produce results.
+
+## LoRA
+
+In June 2021, LoRA appeared. This paper had a very different character from CLIP and DALL-E. It became visible not because of a flashy new capability, but because of a simple reality: full-parameter fine-tuning is too expensive.
+
+When a large model reaches billions or tens of billions of parameters, adapting it to one task often requires saving a whole new set of weights. GPU memory, storage, and training cost all grow together. LoRA starts from a simple thought: if the information we really need to update is much smaller, can we train a much smaller addition?
+
+The method approximates the weight update matrix through low-rank decomposition. The original model parameters are frozen. Only two small matrices are trained, and their product is used as a correction to the original weights. The number of trainable parameters drops sharply, while the model can still adapt to many downstream tasks.
+
+LoRA's real strength is that it almost changed the standard meaning of fine-tuning. In many cases, the first question is no longer "do we need to change all weights", but "can we solve this with LoRA?" Not because LoRA is theoretically omnipotent, but because its cost-quality balance is so good.
+
+It has limits, of course. If a task requires a serious reshaping of model behavior, the low-rank assumption may not be enough. But for many common tasks, LoRA's price-to-result ratio is extremely strong. That is why it was later adopted widely in language models and image generation models.
+
+## Stable Diffusion
+
+In December 2021, Robin Rombach and coauthors released the latent diffusion models paper, which became the theoretical foundation for Stable Diffusion. Strictly speaking, 2021 saw LDM rather than the later product form, but the key direction was already set.
+
+By then, diffusion models were already strong, but they had a practical problem: they were too expensive. If you do multi-step denoising directly in pixel space, training and sampling cost becomes very high as resolution grows. LDM's idea was direct: first compress the image into latent space, then run diffusion in that compressed representation.
+
+The benefit is easy to understand. The latent representation has lower dimensionality, so much less compute is needed. Also, after compression removes some high-frequency pixel details, the model can focus more on semantic structure. You can think of it as first learning where something looks like a cat, where something looks like a window, and how the composition works, then leaving details to the decoder.
+
+Another key element was conditional control through cross-attention. The text condition was no longer just crudely attached to the input. It was inserted naturally into the U-Net generation process. Later text-to-image diffusion models worked so well partly because of this step.
+
+LDM mattered not only because quality was good. It moved diffusion models from "very strong but too expensive" toward "strong enough and computationally accessible." The later rise of Stable Diffusion essentially relied on this engineering decision.
+
+## Switch Transformer
+
+In January 2021, Google released Switch Transformer. This paper represents another important line: if dense models are becoming harder to scale, make parameters sparse.
+
+The basic MoE idea is simple. Put many expert networks into the model, but let each token pass through only a small part of them. Then total parameter size can be very large, while actual computation per step does not have to explode with it. The difficulty is not the concept. It is implementation: routing, load balancing, communication reduction, and training stability.
+
+Switch Transformer's key simplification is Top-1 routing. Each token is sent to only one expert, not several. This is a very engineering-minded choice. It directly reduces inter-device communication and makes implementation more manageable than earlier MoE schemes. The paper also adds several stability techniques, showing that the authors understood where these models usually break.
+
+The significance is that MoE moved from "theoretically saves compute" toward "can actually be trained at very large scale." Many later discussions of very large models returned to this road for a simple reason: we want to increase total parameter count, but not let computation per token get out of control. A sparse approach is almost inevitable.
+
+## Codex
+
+In July 2021, OpenAI released Codex. It is the key model behind GitHub Copilot, and for many people this was when code LLMs became truly practical.
+
+The method was not fancy: take weights from the GPT family as initialization and fine-tune them on a large amount of code data. The real result depended on the scale of the code corpus, data cleaning, and how the model connected natural language instructions with code generation.
+
+Code differs from ordinary text. Indentation, brackets, spaces, and punctuation are much more sensitive, and errors are easier to amplify through execution results. So Codex used special decisions around tokenizer and training data construction, helping the model not only see a lot of code, but better learn how to complete a function from comments or docstrings.
+
+HumanEval and Pass@k are two other important legacies of this paper. Many old evaluation methods for text tasks do not fit code well, because code correctness is not about surface similarity. It is about whether the code passes tests. Pass@k matches practice well: give the model several attempts and see whether it writes a correct solution at least once.
+
+Codex was not yet a system that could write programs fully on its own, but it already looked like a partner that could guess what you wanted, and often guess pretty well. The rapid growth of AI-assisted programming owes a lot to this work.
+
+## Other Important Works
+
+Several other works from 2021 are worth mentioning.
+
+`ZeRO-Offload` and `ZeRO-Infinity` continued to push GPU memory boundaries. The first moves optimizer states and gradients to CPU, while the second also uses NVMe. The idea behind both is simple: if GPU memory is not enough, do not look only at the GPU.
+
+`Megatron-LM 3D` systematically combines tensor parallelism, pipeline parallelism, and data parallelism. This is not one local trick, but an answer to how large model training should work as a single system.
+
+`ViLT` connects multimodal Transformer with very lightweight visual processing and reminds us of an important fact: a vision-language model does not necessarily need a heavy detector and convolutional backbone to work.
+
+`GLaM` continues the MoE line, using Top-2 routing for better expressiveness and showing that the sparse model design space is far from exhausted.
+
+## Summary
+
+The strongest feeling from 2021 is not that one paper solved everything, but that the road of large models started branching and converging at the same time. Multimodal learning, generation, efficiency, and code had once been relatively separate directions. They gradually met inside one broader methodology.
+
+CLIP and DALL-E showed that language can be not only the output target, but also the interface for understanding and generating images. LoRA, ZeRO, and Switch Transformer reminded us of something else: without lower cost, even the strongest large model remains a toy for a few teams. LDM and Codex pushed generation one step further, one toward images and the other toward code.
+
+So the legacy of 2021 is not one conclusion, but a fuller picture of large models. Models began to work with more modalities and enter more practical scenarios. The engineering methods around training, deployment, and fine-tuning finally started catching up with that expansion.
+
+## References
+
+1. Radford, A., et al. (2021-02-26): Learning Transferable Visual Models From Natural Language Supervision. https://arxiv.org/abs/2103.00020
+2. Ramesh, A., et al. (2021-02-24): Zero-Shot Text-to-Image Generation. https://arxiv.org/abs/2102.12092
+3. Hu, E. J., et al. (2021-06-17): LoRA: Low-Rank Adaptation of Large Language Models. https://arxiv.org/abs/2106.09685
+4. Rombach, R., et al. (2021-12-20): High-Resolution Image Synthesis with Latent Diffusion Models. https://arxiv.org/abs/2112.10752
+5. Fedus, W., et al. (2021-01-11): Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity. https://arxiv.org/abs/2101.03961
+6. Chen, M., et al. (2021-07-07): Evaluating Large Language Models Trained on Code. https://arxiv.org/abs/2107.03374
+7. Ren, J., et al. (2021-01-18): ZeRO-Offload: Democratizing Billion-Scale Model Training. https://arxiv.org/abs/2101.06840
+8. Rajbhandari, S., et al. (2021-04-16): ZeRO-Infinity: Breaking the GPU Memory Wall for Extreme Scale Deep Learning. https://arxiv.org/abs/2104.07857
+9. Narayanan, D., et al. (2021-04-09): Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM. https://arxiv.org/abs/2104.04473
+10. Kim, W., et al. (2021-02-05): ViLT: Vision-and-Language Transformer Without Convolution or Region Supervision. https://arxiv.org/abs/2102.03334
+11. Du, N., et al. (2021-12-13): GLaM: Efficient Scaling of Language Models with Mixture-of-Experts. https://arxiv.org/abs/2112.06905

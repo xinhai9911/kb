@@ -9,6 +9,24 @@ base_confidence: 0.83
 summary: Agent 编排模式详解：顺序链/并行扇出/条件路由/DAG/状态机/事件驱动/Actor 模型。含代码示例、框架支持、选型决策树。
 ---
 
+<!-- kb-import-backlink:LLMForEverybody -->
+
+> [!info] 外部资料 · LLMForEverybody
+> 中文大模型知识库 [[sources/LLMForEverybody/index|LLMForEverybody 导航]] 中的相关章节：
+> - [[sources/LLMForEverybody/07-第七章-Agent/Agent设计范式与常见框架|Agent 设计范式]]
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Agent 编排模式
 
 ## 七种编排模式
@@ -119,3 +137,4 @@ class MyWorkflow:
 - [[agent-frameworks]]
 - [[multi-agent-collaboration]]
 - [[agent-tool-use-mcp]]
+- [[llm-agent-harness]] — 包裹模型的运行时 / 控制循环（编排跑在 harness 之上）

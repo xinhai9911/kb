@@ -1,0 +1,92 @@
+# [Classic LLM Papers] 2019: Models Start Growing, GPT-2 and T5
+
+If 2018 explained pre-training, 2019 answered a more direct question: if this path works, how do we make it bigger, more stable, and actually usable?
+
+Two items stand out most. The first is GPT-2, which seriously showed for the first time that when model and data scale keep growing, zero-shot abilities begin to appear. The second is T5, which did not chase one new trick, but organized many choices in transfer learning and tested them systematically. At the same time, engineering did not stand still. Top-p sampling, Tensor Parallel, ZeRO, and MQA may look less flashy than GPT-2, but almost all of them later became standard tools in the large model toolbox.
+
+## GPT-2
+
+GPT-2 matters in 2019 not only because it was larger. It made the idea that scale itself brings new abilities feel much less like a guess.
+
+After 2018, BERT was strong, and many people naturally thought the next step might be to move fully toward bidirectional encoders. OpenAI went in a different direction. The team doubled down on autoregressive language modeling. GPT-2 asked: if a model keeps doing "predict the next word", what will it learn when the scale grows?
+
+The dataset WebText was also crucial. It was built from web pages linked by highly rated Reddit posts, ending up at about 40 GB of data. This dataset was not just large. It was diverse and close to real internet text. The model saw summaries, question answering, translation, stories, forum replies, and a mixture of distributions. The paper later noted that even GPT-2 with 1.5 billion parameters had not exhausted WebText. That observation is very telling.
+
+Architecturally, GPT-2 did not replace the whole framework. It was still a Transformer decoder. But it included several important changes. For example, LayerNorm was moved before the residual connection, often called Pre-LN. The initialization of the residual path was also scaled so gradients would not accumulate uncontrollably in deep networks. Taken alone, these look like small repairs. In large model training, they are not small at all.
+
+The zero-shot abilities were what people remembered most. If you gave the model a prefix such as `TL;DR:` or `translate English to French:`, it could do summarization or translation without fine-tuning. Today that no longer feels new, but in 2019 the feeling that "the task is written directly in the input" was fresh. It did not mean GPT-2 was already strong enough for every task, but it showed that one model could use the same parameters to adapt to different task formats.
+
+Of course, GPT-2 had weak points. On data such as One Billion Word Benchmark, where sentence order is shuffled, it performed poorly because this preprocessing destroys long-range structure, and autoregressive Transformers rely on that structure. Zero-shot translation was also far from replacing specialized models. But GPT-2 established one thing: a single model that switches tasks through prompts is possible.
+
+## Top-p
+
+Top-p sampling, also called nucleus sampling, solves a practical generation-stage question: how do we make text less wooden without letting it fall apart?
+
+Before that, people often used Top-K. The logic is simple: at each step, keep the k words with the highest probability and sample only from them. The problem is that a fixed k behaves awkwardly across contexts. When the model is very confident, that many candidates are unnecessary. When the model is less confident, the set may be too narrow.
+
+Top-p works through cumulative probability. Words are sorted from high probability to low probability, then selected one by one until their total probability reaches a threshold p, such as 0.9. That small group becomes the candidate set. If the distribution is sharp, the candidate set is automatically small. If the distribution is flatter, it automatically grows. You do not need to manually choose a fixed k in advance.
+
+This work also highlighted a problem that is easy to underestimate: language models have a very long probability tail. Each individual tail word has tiny probability, but the tail is so long that the total mass is not zero. Many generation errors come from randomly choosing an unsuitable word from that tail. Top-p shortens the tail.
+
+Later, Top-p was often used with temperature, which makes sense. Temperature controls whether the distribution becomes flatter or sharper. Top-p decides where to cut it off. Together, the two parameters are more convenient than tuning only one.
+
+## Tensor Parallel
+
+Once a model crosses a billion parameters, the question becomes practical: what if it does not fit on one GPU? Megatron-LM's answer was tensor parallelism, meaning split the matrix computation inside a layer across multiple GPUs.
+
+The key is not simply handing different layers to different devices. It is reducing communication. For the first linear layer in an MLP, you can split by columns. Each GPU computes its part of the outputs, then the activation function is applied immediately. The second linear layer can be split by rows, and the result is collected with one All-Reduce at the end. This design avoids synchronizing again and again before and after nonlinear operations.
+
+The self-attention layer can also be split this way. Multi-head attention already has natural parallelism because different heads are relatively independent, so different heads can be placed on different GPUs. Q, K, V projections and the final output projection are split in similar ways.
+
+The value of tensor parallelism is clear: the model is no longer limited by the memory of one GPU. The cost is also obvious. It requires high inter-GPU bandwidth, makes the code more complex, and if communication scheduling is slightly poor, the benefit can disappear quickly. Later large model training usually did not rely on this technique alone. It mixed tensor parallelism, pipeline parallelism, and data parallelism.
+
+## ZeRO
+
+If tensor parallelism asks "how do we split computation", ZeRO asks another question: can we reduce duplicated storage in data parallelism?
+
+The waste in traditional data parallelism is obvious. Each GPU not only runs the same forward and backward passes, but also stores a full copy of model parameters, gradients, and optimizer states. Once the model becomes large, this duplication hits GPU memory hard.
+
+ZeRO breaks the solution into three stages. Stage 1 shards optimizer states, so each GPU is responsible for only a part of them. Stage 2 also shards gradients and synchronizes them through Reduce-Scatter. Stage 3 goes further and shards the model parameters themselves. During forward and backward, needed parameters are temporarily gathered, then released after use.
+
+The elegance of this approach is that it does not overturn the familiar data parallel setup. It keeps the usual way of working and gradually removes memory redundancy. Many very large models were trainable later not because of one surprising new architecture, but because engineering optimizations like this carefully removed existing waste.
+
+## T5
+
+T5 is another 2019 work that is impossible to skip. Its character is different from GPT-2. GPT-2 shows the capability boundary that appears from scale, while T5 feels like a careful systematization of an entire methodology.
+
+The Google team ran many ablation experiments, comparing pre-training objectives, model architectures, dataset choices, and transfer settings. The final conclusion was simple: if you write different NLP tasks as text-to-text, many things become easier.
+
+The text-to-text framework in T5 sounds almost too simple. Translation is input text with a prefix and output text. Classification works the same way, except the output is a label word. Question answering and summarization are also expressed in this format. The benefit is not only a unified interface. The model also does not need a separate head structure for each task type.
+
+T5 built the C4 dataset, about 750 GB, from cleaned Common Crawl. Architecturally, it chose encoder-decoder because in this unified framework, that structure balances understanding and generation better. Its pre-training objective is Span Corruption: hide a continuous span of tokens, and ask the model to recover the whole span. Compared with BERT, where masked tokens are often individual tokens, this task is a bit harder and closer to how chunks of real text go missing.
+
+There were many engineering details that would later appear again and again: SentencePiece Unigram tokenization, relative position bias, the AdaFactor optimizer, and learning rate scheduling for long training. None of these items looks dramatic alone, but together they make T5 not a conceptual note, but a reusable method set.
+
+The results were also clear: the larger the model, the more obvious the benefit from fine-tuning usually became. T5-11B was very strong on several benchmarks at the time. The paper also touched early directions in parameter-efficient fine-tuning, such as adapters and gradual unfreezing. Today those no longer look secondary.
+
+The real legacy of T5 is not only the model name. It is a durable way of thinking: do not rush after a local trick. First unify the task formulation, then test choices one by one in a systematic way.
+
+## MQA
+
+Outside training, inference was becoming unavoidable in 2019: how do we make it affordable at all? MQA, or Multi-Query Attention, appeared in that context.
+
+During autoregressive generation, the model must keep Key and Value for previous tokens in GPU memory. This is usually called the KV Cache. The longer the sequence, the larger the cost, linearly. In standard multi-head attention, each head has its own K and V, so with many heads the cache becomes huge.
+
+The MQA solution is direct: keep multiple Query heads, but make them share one Key and Value pair. Then KV Cache size no longer grows linearly with the number of heads. For models with many heads, the memory savings are significant, and decoding speed improves too.
+
+Experiments showed that this sharing caused a small quality loss, but usually not a large one, while the inference benefit was real. Later GQA can be seen as a continuation of this compromise: instead of forcing all heads to share K and V completely, share them by groups to find a better balance between expressive capacity and cache cost. Many later models ended up there.
+
+## Summary
+
+The main line of 2019 is fairly clear. First, the community began to believe that scale changes model behavior, not just strengthens existing abilities. Second, unifying task formats became important, and T5 described that idea very fully. Third, the engineering problems of training and inference were stated directly instead of postponed.
+
+So the legacy of this year is half models and half engineering. GPT-2 and T5 expanded the direction, while Top-p, Tensor Parallel, ZeRO, and MQA kept the path from running into GPU memory, communication, and inference cost. The later large model boom was not created by 2019 alone, of course, but many key details were established there.
+
+## References
+
+1. Language Models are Unsupervised Multitask Learners (GPT-2), 2019.02.14, https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf
+2. The Curious Case of Neural Text Degeneration (Top-p), 2019.04.22, https://arxiv.org/abs/1904.09751
+3. Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism (Tensor Parallel), 2019.09.17, https://arxiv.org/abs/1909.08053
+4. ZeRO: Memory Optimizations Toward Training Trillion Parameter Models (Data Parallel), 2019.10.07, https://arxiv.org/abs/1910.02054
+5. Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer (T5), 2019.10.23, https://arxiv.org/abs/1910.10683
+6. Fast Transformer Decoding: One Write-Head is All You Need (MQA), 2019.11.06, https://arxiv.org/abs/1911.02150

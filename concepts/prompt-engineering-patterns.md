@@ -10,6 +10,25 @@ summary: >
   Prompt Engineering 系统性模式：Zero/Few-Shot、Chain-of-Thought、Self-Consistency、Tree-of-Thought、ReAct、Chain-of-Verification、Meta-Prompting。含代码示例。
 ---
 
+<!-- kb-import-backlink:LLMForEverybody -->
+
+> [!info] 外部资料 · LLMForEverybody
+> 中文大模型知识库 [[sources/LLMForEverybody/index|LLMForEverybody 导航]] 中的相关章节：
+> - [[sources/LLMForEverybody/06-第六章-Prompt Engineering/万字长文Prompt-Engineering-解锁大模型的力量|Prompt Engineering 长文]]
+> - [[sources/LLMForEverybody/06-第六章-Prompt Engineering/COT思维链，TOT思维树，GOT思维图，这些都是什么|CoT/ToT/GoT]]
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Prompt Engineering 模式库
 
 ## 模式详解

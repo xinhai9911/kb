@@ -11,6 +11,24 @@ base_confidence: 0.83
 lifecycle: draft
 ---
 
+<!-- kb-import-backlink:LLMForEverybody -->
+
+> [!info] 外部资料 · LLMForEverybody
+> 中文大模型知识库 [[sources/LLMForEverybody/index|LLMForEverybody 导航]] 中的相关章节：
+> - [[sources/LLMForEverybody/07-第七章-Agent/向量数据库拥抱大模型|向量数据库]]
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 向量数据库与 Embedding
 
 > LLM 无法直接处理外部知识——Embedding 把文本转为向量，向量数据库做高速相似度检索，是 RAG 的基础设施。

@@ -16,6 +16,27 @@ related:
   - "[[inference-engine-tuning]]"
 ---
 
+<!-- kb-import-backlink:LLMForEverybody -->
+
+> [!info] 外部资料 · LLMForEverybody
+> 中文大模型知识库 [[sources/LLMForEverybody/index|LLMForEverybody 导航]] 中的相关章节：
+> - [[sources/LLMForEverybody/02-第二章-部署与推理/大模型推理框架（二）vLLM|vLLM]]
+> - [[sources/LLMForEverybody/02-第二章-部署与推理/大模型推理框架（三）Text generation inference (TGI)|TGI]]
+> - [[sources/LLMForEverybody/02-第二章-部署与推理/大模型推理框架（四）TensorRT-LLM|TensorRT-LLM]]
+> - [[sources/LLMForEverybody/02-第二章-部署与推理/大模型推理框架（五）Ollama|Ollama]]
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 推理引擎选型指南：从需求到落地
 
 > 📚 **知识定位**：本文档提供推理引擎选型的完整指南，是[[inference-engine-mastery]]知识体系的核心决策部分。

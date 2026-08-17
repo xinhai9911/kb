@@ -14,6 +14,24 @@ lifecycle_changed: 2026-07-29
 sources: []
 ---
 
+<!-- kb-import-backlink:LLMForEverybody -->
+
+> [!info] 外部资料 · LLMForEverybody
+> 中文大模型知识库 [[sources/LLMForEverybody/index|LLMForEverybody 导航]] 中的相关章节：
+> - [[sources/LLMForEverybody/07-第七章-Agent/如何设计智能体架构：参考OpenAI还是Anthropic|Agent 架构：OpenAI vs Anthropic]]
+
+
+
+
+
+
+
+
+
+
+
+
+
 # OpenAI
 
 ## 概述

@@ -1,0 +1,37 @@
+# Глава 11. Математика
+
+Линейная алгебра, математический анализ, вероятность и статистика для изучения AI/LLM.
+
+[К общему русскому индексу](../index.md)
+
+## Полные переводы
+
+- [Математика для AI/LLM с нуля: математический анализ, часть 1](<matematika-dlya-ai-llm-s-nulya-matanaliz-chast-1-proizvodnaya.md>)
+- [Математика для AI/LLM с нуля: математический анализ, часть 2](<matematika-dlya-ai-llm-s-nulya-matanaliz-chast-2-gradient-i-gradientnyy-spusk.md>)
+- [Математика для AI/LLM с нуля: линейная алгебра, часть 1](<matematika-dlya-ai-llm-s-nulya-lineynaya-algebra-chast-1-matricy-singularity-determinant.md>)
+- [Математика для AI/LLM с нуля: линейная алгебра, часть 2](<matematika-dlya-ai-llm-s-nulya-lineynaya-algebra-chast-2-row-reduction-rank-row-echelon.md>)
+- [Математика для AI/LLM с нуля: линейная алгебра, часть 3](<matematika-dlya-ai-llm-s-nulya-lineynaya-algebra-chast-3-vektory-i-lineynye-preobrazovaniya.md>)
+- [Математика для AI/LLM с нуля: линейная алгебра, часть 4](<matematika-dlya-ai-llm-s-nulya-lineynaya-algebra-chast-4-linear-transformations-i-determinant.md>)
+- [Математика для AI/LLM с нуля: линейная алгебра, часть 5](<matematika-dlya-ai-llm-s-nulya-lineynaya-algebra-chast-5-basis-eigenvalues-eigenvectors.md>)
+- [Математика для AI/LLM с нуля: вероятность и статистика, часть 1](<matematika-dlya-ai-llm-s-nulya-veroyatnost-statistika-chast-1-bayes-i-raspredeleniya.md>)
+- [Математика для AI/LLM с нуля: вероятность и статистика, часть 2](<matematika-dlya-ai-llm-s-nulya-veroyatnost-statistika-chast-2-opisanie-raspredeleniy.md>)
+- [Математика для AI/LLM с нуля: вероятность и статистика, часть 3](<matematika-dlya-ai-llm-s-nulya-veroyatnost-statistika-chast-3-centralnaya-predelnaya-teorema.md>)
+
+## Материалы
+
+| Подраздел | Русское название | Русская статья | Исходный файл |
+| --- | --- | --- | --- |
+| Вероятность и статистика | Математика для AI/LLM с нуля: вероятность и статистика, часть 1, теорема Байеса и распределения | [Перевод](<matematika-dlya-ai-llm-s-nulya-veroyatnost-statistika-chast-1-bayes-i-raspredeleniya.md>) | [Оригинал](<../../../11-第十一章-数学/Probability&Statistics/0基础学习AI大模型必备数学知识之概率统计（一）贝叶斯定理和概率分布.md>) |
+| Вероятность и статистика | Математика для AI/LLM с нуля: вероятность и статистика, часть 3, центральная предельная теорема | [Перевод](<matematika-dlya-ai-llm-s-nulya-veroyatnost-statistika-chast-3-centralnaya-predelnaya-teorema.md>) | [Оригинал](<../../../11-第十一章-数学/Probability&Statistics/0基础学习AI大模型必备数学知识之概率统计（三）中心极限定理.md>) |
+| Вероятность и статистика | Математика для AI/LLM с нуля: вероятность и статистика, часть 2, описание распределений | [Перевод](<matematika-dlya-ai-llm-s-nulya-veroyatnost-statistika-chast-2-opisanie-raspredeleniy.md>) | [Оригинал](<../../../11-第十一章-数学/Probability&Statistics/0基础学习AI大模型必备数学知识之概率统计（二）概率分布的描述方法.md>) |
+| Математический анализ | Математика для AI/LLM с нуля: математический анализ, часть 1 | [Перевод](<matematika-dlya-ai-llm-s-nulya-matanaliz-chast-1-proizvodnaya.md>) | [Оригинал](<../../../11-第十一章-数学/calculus/0基础学习AI大模型必备数学知识之微积分（一）.md>) |
+| Математический анализ | Математика для AI/LLM с нуля: математический анализ, часть 2 | [Перевод](<matematika-dlya-ai-llm-s-nulya-matanaliz-chast-2-gradient-i-gradientnyy-spusk.md>) | [Оригинал](<../../../11-第十一章-数学/calculus/0基础学习AI大模型必备数学知识之微积分（二）.md>) |
+| Линейная алгебра | Математика для AI/LLM с нуля: линейная алгебра, часть 1 | [Перевод](<matematika-dlya-ai-llm-s-nulya-lineynaya-algebra-chast-1-matricy-singularity-determinant.md>) | [Оригинал](<../../../11-第十一章-数学/linear-algebra/0基础学习AI大模型必备数学知识之线性代数（一）.md>) |
+| Линейная алгебра | Математика для AI/LLM с нуля: линейная алгебра, часть 3 | [Перевод](<matematika-dlya-ai-llm-s-nulya-lineynaya-algebra-chast-3-vektory-i-lineynye-preobrazovaniya.md>) | [Оригинал](<../../../11-第十一章-数学/linear-algebra/0基础学习AI大模型必备数学知识之线性代数（三）.md>) |
+| Линейная алгебра | Математика для AI/LLM с нуля: линейная алгебра, часть 2 | [Перевод](<matematika-dlya-ai-llm-s-nulya-lineynaya-algebra-chast-2-row-reduction-rank-row-echelon.md>) | [Оригинал](<../../../11-第十一章-数学/linear-algebra/0基础学习AI大模型必备数学知识之线性代数（二）.md>) |
+| Линейная алгебра | Математика для AI/LLM с нуля: линейная алгебра, часть 5 | [Перевод](<matematika-dlya-ai-llm-s-nulya-lineynaya-algebra-chast-5-basis-eigenvalues-eigenvectors.md>) | [Оригинал](<../../../11-第十一章-数学/linear-algebra/0基础学习AI大模型必备数学知识之线性代数（五）.md>) |
+| Линейная алгебра | Математика для AI/LLM с нуля: линейная алгебра, часть 4 | [Перевод](<matematika-dlya-ai-llm-s-nulya-lineynaya-algebra-chast-4-linear-transformations-i-determinant.md>) | [Оригинал](<../../../11-第十一章-数学/linear-algebra/0基础学习AI大模型必备数学知识之线性代数（四）.md>) |
+
+## Примечание по локализации
+
+В командах, API, именах библиотек, моделях и путях сохранена исходная форма. Если термин встречается в английском виде в статье, он сохранен и в русской навигации.

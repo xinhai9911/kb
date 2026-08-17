@@ -8,6 +8,24 @@ created: 2026-08-07
 updated: 2026-08-07
 ---
 
+<!-- kb-import-backlink:LLMForEverybody -->
+
+> [!info] 外部资料 · LLMForEverybody
+> 中文大模型知识库 [[sources/LLMForEverybody/index|LLMForEverybody 导航]] 中的相关章节：
+> - [[sources/LLMForEverybody/09-第九章-评估指标/大模型有哪些评估指标？|评估指标总览]]
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Agent 评估基准
 
 ## 摘要

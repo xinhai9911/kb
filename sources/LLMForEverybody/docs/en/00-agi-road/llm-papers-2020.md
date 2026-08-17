@@ -1,0 +1,81 @@
+# [Classic LLM Papers] 2020: GPT-3 Arrives, and 175 Billion Parameters Change the Picture
+
+The main change in 2020 was that scaling stopped being a vague slogan and became a route people could calculate, test, and implement.
+
+That year, OpenAI first used Scaling Law to explain more clearly how model size, data size, compute, and quality relate to one another. Then GPT-3 pushed that relationship to an impressive scale. At the same time, hardware such as A100 was being designed with large model needs in mind, GShard explored even larger parameter counts in distributed training, and ViT carried Transformer from language into vision. Taken together, the main line of 2020 is clear: people stopped asking again and again whether Transformer worked, and started seriously asking what would happen if we kept scaling it.
+
+## Scaling Law
+
+In January 2020, OpenAI released `Scaling Laws for Neural Language Models`. The most important part of this paper was not a new model, but the way it turned something many people felt intuitively into quantitative relationships.
+
+Before that, everyone more or less knew that larger models were often stronger, but the knowledge was mostly empirical. OpenAI did something fairly simple: train a series of models at different sizes, control the variables carefully, and observe how parameter count, data size, and compute budget separately affected final loss.
+
+They saw a fairly stable power-law trend. A larger model, more data, and more compute all reduced loss in a smooth way, and this trend held across several orders of magnitude. In other words, a small experiment could do more than say "this direction seems to work." It could help estimate what might happen at larger scale.
+
+The paper also gave advice that looked counterintuitive at the time: if the total compute budget is fixed, it may be better to make the model larger, use data more sparingly, and stop before full convergence, rather than train a smaller model almost to convergence. Chinchilla later corrected this conclusion, but in 2020 it really pushed the industry to bet more boldly on scale.
+
+So the real change brought by Scaling Law was not only a formula. It was a way to make R&D decisions. How much to expand the model, how much data to prepare, where to spend the budget: these questions started to look more like engineering planning and less like guesswork.
+
+## NVIDIA A100
+
+In May 2020, NVIDIA released A100. In the context of large models, this card mattered because it was not just a small speedup over the previous generation. It was clearly aimed at large-scale training and data center scenarios.
+
+A100 is based on the Ampere architecture, and its third-generation Tensor Cores support several precision formats, including TF32, BF16, and FP64. In practice, TF32 and BF16 mattered most. TF32 allowed much training code originally written for FP32 to get higher throughput with almost no changes. BF16, because it has the same exponent range as FP32, makes training more numerically stable and less likely to hit overflow than lower-precision formats.
+
+If we treat large model training as a long series of tradeoffs, both formats are important. One lowers migration cost, the other makes mixed precision training feel like a default option rather than a risky trick. Many later training systems worked smoothly in part because hardware support finally caught up with the need.
+
+A100 has another often underestimated aspect: interconnect capability. Faster HBM2e memory and NVLink 3.0 speed up gradient synchronization, activation exchange, and similar operations across multiple cards. When a model is distributed over many GPUs, the bottleneck is often not just how fast one card computes, but how fast the cards can talk to each other. A100 gave direct support for that.
+
+Today, A100's influence is obvious not simply because of its specs, but because it arrived at the right moment. Models had become so large that paper tricks were no longer enough. Hardware had to truly serve large model training.
+
+## GPT-3
+
+In May 2020, OpenAI published `Language Models are Few-Shot Learners` and introduced GPT-3 with 175 billion parameters. Even today the paper feels powerful, because it made learning a task from examples in context so convincing that the whole industry could no longer ignore it.
+
+GPT-3's main assumption was simple: when the model is large enough and the data is broad enough, it may not need separate fine-tuning for every task. It can understand what you want directly from the prompt and a few examples. Compared with the mainstream approach at the time, "pre-train, then fine-tune for the task", this was a different way to use a model.
+
+The training data reflected that logic. Common Crawl provided large-scale internet text, while WebText2, Books, and Wikipedia added higher-quality or more structured material. GPT-3 did not try to keep to one clean data source. It tried to cover as many real language distributions as possible. Once a model reaches 175 billion parameters, data mixture strategy itself becomes important.
+
+Architecturally, GPT-3 continued the decoder-only Transformer line of GPT-2. The focus was not on a new structure, but on scaling a proven paradigm as far as possible. Large batch training, mixed precision, gradient checkpointing, and combinations of parallelism methods in the training process all served one goal: actually train a model of this size, rather than leaving it as a theoretical plan.
+
+The real impact came from few-shot and zero-shot evaluation. In many tasks, giving a few input-output examples was enough for the model to imitate the task format and produce a decent answer. Today we are used to calling this prompt learning or in-context learning, but in 2020 this experience practically redefined how people used language models.
+
+Of course, GPT-3 was not all-powerful. It still made many mistakes in tasks requiring robust logical reasoning and precise knowledge retrieval, and it was far from reliable. But it had become strong enough that it was hard to keep treating it as "just a bigger language model." After this, the industry's attitude toward scale-up changed almost completely.
+
+## GShard
+
+In June 2020, Google released `GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding`. The paper addressed a concrete problem: if models keep growing, simply making dense Transformers larger quickly hits hard limits in training cost and parallelism complexity. Is there another path?
+
+GShard's answer was mixture of experts, or MoE. The idea is to replace part of the feed-forward layers with many expert networks, while activating only a small number of experts for each input. As a result, the total parameter count can be huge, but the compute path for one token does not grow linearly with the total number of parameters.
+
+The real difficulty is not "add a few experts", but routing. Which token should go to which expert? How do you avoid all tokens crowding into a few experts? How do you make sparse communication across devices efficient enough? These are the real implementation problems. GShard used Top-2 gating, an auxiliary load balancing loss, and automatic sharding to handle them. The goals were to keep experts from sitting idle and prevent communication from eating the whole gain.
+
+The significance of this work is that it made MoE more than a neat lab idea. It became a trainable and scalable system solution. Later, many large models returned to MoE for a practical reason: if you want to increase total parameter count without increasing compute cost per token linearly, this path is almost unavoidable.
+
+## ViT
+
+In October 2020, Google Research released `An Image is Worth 16x16 Words`, the ViT paper. The idea looks simple: cut an image into small patches and pass them to a Transformer as a sequence of tokens.
+
+At the time, the idea was not completely new. ViT mattered because it made the case convincingly. For a long time, the default backbone in vision was CNN, because convolution naturally fits the local structure of images. ViT instead splits the image into patches, adds positional encoding, and applies a standard Transformer encoder.
+
+The difference from CNN is not only structure, but inductive bias. CNNs come with locality and translation invariance built in. ViT does not have those built-in advantages, so on small datasets it often loses to convolutional networks. But once pre-training data becomes large enough, Transformer's more general modeling style starts to show its advantages.
+
+The key result of the paper is exactly that: with large enough pre-training data, ViT matched or exceeded the strongest CNNs of the time on transferred image classification tasks, while giving a more unified way to train and scale. Today this feels natural, but in 2020 it meant something important: Transformer was not a special case for language. It could be a more general modeling tool.
+
+ViT's influence was direct. Vision started moving more systematically toward Transformer, and multimodal model interfaces became more unified. Full replacement of CNNs was still far away, but the direction had changed.
+
+## Summary
+
+If we describe 2020 in one sentence: the large model route gained theoretical explanation, engineering tools, and a convincing result at the same time.
+
+Scaling Law made scaling more than intuition, and GPT-3 turned that intuition into a phenomenon the whole industry could see. A100 showed that hardware was beginning to serve large model training directly. GShard showed that sparsity and automatic parallelism could open a path to even larger scale. ViT pushed Transformer far beyond language.
+
+Many later stories had not happened yet, and ChatGPT was still ahead. But 2020 had already written down the key assumption clearly: as long as data, compute, and training systems can keep growing, model capabilities probably have not reached their limit.
+
+## References
+
+1. Scaling Laws for Neural Language Models (2020-01-23): https://arxiv.org/abs/2001.08361
+2. NVIDIA A100 GPU (2020-05-04)
+3. Language Models are Few-Shot Learners (2020-05-28): https://arxiv.org/abs/2005.14165
+4. GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding (2020-06-30): https://arxiv.org/abs/2006.16668
+5. An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale (2020-10-22): https://arxiv.org/abs/2010.11929

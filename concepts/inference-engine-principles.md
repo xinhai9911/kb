@@ -16,6 +16,26 @@ related:
   - "[[transformer-architecture]]"
 ---
 
+<!-- kb-import-backlink:LLMForEverybody -->
+
+> [!info] 外部资料 · LLMForEverybody
+> 中文大模型知识库 [[sources/LLMForEverybody/index|LLMForEverybody 导航]] 中的相关章节：
+> - [[sources/LLMForEverybody/02-第二章-部署与推理/大模型推理框架（一）综述|推理框架综述]]
+> - [[sources/LLMForEverybody/01-第一章-预训练/FlashAttentionv2相比于v1有哪些更新？|FlashAttention v2]]
+> - [[sources/LLMForEverybody/05-第五章-显卡与并行/大模型部署三要素：显存、计算与通信深度解析|部署三要素]]
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 推理引擎原理详解：从理论到实现
 
 > 📚 **知识定位**：本文档深入解析推理引擎的核心原理，为[[inference-engine-mastery]]知识体系提供理论基础。

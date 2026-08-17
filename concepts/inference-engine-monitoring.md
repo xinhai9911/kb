@@ -16,6 +16,24 @@ related:
   - "[[inference-engine-tuning]]"
 ---
 
+<!-- kb-import-backlink:LLMForEverybody -->
+
+> [!info] 外部资料 · LLMForEverybody
+> 中文大模型知识库 [[sources/LLMForEverybody/index|LLMForEverybody 导航]] 中的相关章节：
+> - [[sources/LLMForEverybody/02-第二章-部署与推理/如何评判大模型的输出速度？首Token延迟和其余Token延迟有什么不同？|首 Token 延迟]]
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 推理引擎监控体系：从指标到告警
 
 > 📚 **知识定位**：本文档提供推理引擎监控的完整体系，是[[inference-engine-mastery]]知识体系的运维保障部分。

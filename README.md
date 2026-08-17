@@ -38,6 +38,7 @@ lifecycle: reviewed
 详见 [00-index/tag-glossary.md](00-index/tag-glossary.md)。
 
 ## 最近更新
+- 2026-08-17: 导入外部知识库 [[sources/LLMForEverybody/index|LLMForEverybody]]（中文大模型知识体系，12 章 420+ 篇；已扁平并入 sources/ 并作好 Obsidian 双链：导航页汇总 12 章 + 英/俄译本索引 + 草稿，回链库内 Transformer/分词器/推理引擎/微调·LoRA/量化/RAG·Agent·MCP/评估/安全 等 32 篇既有笔记）
 
 <!-- 手动维护：每次重要新增/更新追加一行，格式: - YYYY-MM-DD: [标题](path) -->
 - 2026-06-10: 知识库初始化
@@ -58,3 +59,4 @@ lifecycle: reviewed
 - 2026-08-12: 新增 [[synthesis/容器分布式技术全景综述|容器分布式技术全景综述]]（入口地图：内核基石→镜像/运行时→实战→安全→K8s 编排→分布式支柱的分层架构图、由底向上学习路径、常见误区、入门/进阶/深入速通路线，全量双链汇总全库容器与分布式笔记）
 - 2026-08-12: 新增 [[entities/容器可观测落地|容器可观测落地]]（容器日志管道 stdout→DaemonSet→Loki、cAdvisor 容器资源 + kube-state-metrics 对象状态 + Prometheus kubernetes_sd、OTel 跨 Pod 追踪与 context 传播、RED+USE 排障闭环与 kubectl 速查，回扣 cgroups/OOM）
 - 2026-08-12: 新增 [[entities/Kubernetes 网络实战|Kubernetes 网络实战]]（厂商中立：网络模型三约定、Service 四类型 + Headless、CoreDNS 服务发现、Ingress 七层入口、NetworkPolicy 零信任、Pod/Service/DNS 不通排障清单 + netshoot 抓包，补充到既有 K8s 实体笔记）
+- 2026-08-12: 缺口补全①：新增 [[concepts/Kafka 消息队列与流处理]]（事件驱动支柱：分区/offset/Consumer Group、追加写日志为何快、ISR/acks/Exactly-once/KRaft、位移与再均衡、RabbitMQ·Pulsar 对比、Kafka Streams、Strimzi 上 K8s；回链 架构风格演进/微服务拆分/分布式系统基础），并补回链到 架构风格演进/微服务拆分实战

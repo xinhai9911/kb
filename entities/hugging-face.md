@@ -10,6 +10,25 @@ lifecycle: draft
 lifecycle_changed: 2026-07-29
 sources: []
 ---
+
+<!-- kb-import-backlink:LLMForEverybody -->
+
+> [!info] 外部资料 · LLMForEverybody
+> 中文大模型知识库 [[sources/LLMForEverybody/index|LLMForEverybody 导航]] 中的相关章节：
+> - [[sources/LLMForEverybody/03-第三章-微调/大模型微调框架（二）Huggingface-PEFT|Huggingface PEFT]]
+> - [[sources/LLMForEverybody/01-第一章-预训练/大模型训练框架（一）综述|训练框架综述]]
+
+
+
+
+
+
+
+
+
+
+
+
 # Hugging Face
 
 ## 概览

@@ -1,4 +1,4 @@
-﻿---
+---
 lifecycle: draft
 base_confidence: 0.85
 category: reference
@@ -14,6 +14,18 @@ aliases:
   - 微调
   - QLoRA
 ---
+
+<!-- kb-import-backlink:LLMForEverybody -->
+
+> [!info] 外部资料 · LLMForEverybody
+> 中文大模型知识库 [[sources/LLMForEverybody/index|LLMForEverybody 导航]] 中的相关章节：
+> - [[sources/LLMForEverybody/03-第三章-微调/大模型微调之Adapters（二）LoRA|LoRA]]
+> - [[sources/LLMForEverybody/03-第三章-微调/大模型微调之Adapters（三）QLoRA|QLoRA]]
+> - [[sources/LLMForEverybody/03-第三章-微调/大模型的参数高效微调（PEFT），LoRA微调以及其它|PEFT 总览]]
+
+
+
+
 
 # LoRA/PEFT 参数高效微调
 
@@ -205,3 +217,5 @@ max_seq_length: 2048
 - QLoRA 论文: https://arxiv.org/abs/2305.14314
 - PEFT 库: https://github.com/huggingface/peft
 - LLaMA-Factory: https://github.com/hiyouga/LLaMA-Factory
+
+

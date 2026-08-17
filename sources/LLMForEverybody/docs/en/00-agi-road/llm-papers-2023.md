@@ -1,0 +1,123 @@
+# [Classic LLM Papers] 2023: After LLaMA, Open Models Started Catching Up
+
+Looking back at 2023, the biggest change in large models was not that one more larger model appeared. It was that the open-source line gained strength in quality, cost, and accessibility at the same time.
+
+In earlier years, the conversation often centered on closed APIs, huge parameter counts, and scaling laws. In 2023, the questions changed. Is there a foundation model strong enough to study and modify ourselves? Can we fine-tune on cheaper hardware? Can deployment control GPU memory and throughput problems? Does alignment have to go through a heavy full RLHF pipeline? In other words, this year did not only spread model capability. It spread the right to build, change, and use models.
+
+Compressed into a few lines, 2023 looked like this: LLaMA sharply lowered the entry barrier for open base models; LLaVA made multimodal instruction tuning a reproducible paradigm; DPO and QLoRA made alignment and fine-tuning lighter; AWQ, FlashAttention 2, and Mistral 7B brought efficiency to the foreground; Llama 2 and Qwen put practical questions on the table, such as commercial use, Chinese capability, and tool use.
+
+## LLaMA 1
+
+On February 27, 2023, Meta released LLaMA. The most important thing about it was not a radically new architecture, but a confirmed judgment that had previously often been a guess: under a fixed compute budget, smaller but better-trained models can be more useful than older larger models.
+
+The LLaMA line was clear. It did not invent a new architecture from scratch. It took the standard Transformer and added proven changes such as pre-normalization, SwiGLU, and RoPE, together with a training strategy closer to Chinchilla. In the paper, the 7B model was trained on about 1T tokens, and the larger models on about 1.4T tokens. The main idea was more data for a better-sized model, not simply a parameter race.
+
+The paper's influence mainly came from two conclusions. First, a model can be trained to a very strong level using only publicly available data. Second, the 13B version already beat 175B GPT-3 on most benchmarks, while the 65B version approached the strongest very large models of the time. It changed industry expectations: open models could be more than a roughly working research base. They could approach frontier capabilities.
+
+LLaMA's limits were also obvious. It was a base model, so its dialog ability was weak, and the default context length was only 2048. Strictly speaking, it was not a fully freely distributed open-source project at the time. But much of what happened later in 2023, including Vicuna, Alpaca, Llama 2, Mistral, and Qwen, built on the ecosystem that LLaMA ignited.
+
+## LLaVA
+
+LLaVA appeared on April 17, 2023. It is one of the year's most representative multimodal works because it did not try to build an especially complex unified system. Instead, it found the real bottleneck: multimodal instruction data is expensive.
+
+LLaVA's solution was clever. The authors did not make GPT-4 look directly at images. They gave GPT-4 textual information about images: captions, descriptions, and bounding boxes. Based on that, GPT-4 generated visual question answering, detailed descriptions, and multi-turn dialogue data. In the end, they collected about 158 thousand visual instruction examples and used them to fine-tune a relatively simple multimodal model.
+
+The architecture was restrained too: CLIP ViT-L/14 as the visual encoder, then a trainable linear projection that maps visual features into the embedding space of the language model, then Vicuna. Training had two stages: feature alignment, then end-to-end visual instruction tuning. The value of this design was that it showed a vision-language model does not have to be built as a heavy system from scratch. You can connect a mature visual encoder and a mature language model.
+
+The results were convincing at the time. LLaVA reached about 85% of GPT-4's level on the authors' GPT-4-based benchmark, and reached 92.53% on ScienceQA when combined with GPT-4. These numbers did not mean the multimodal problem was solved, but they showed something important: visual instruction tuning and the synthetic data route work. Many later open-source multimodal models continued along this path.
+
+## DPO
+
+DPO came out on May 19, 2023. It became popular quickly not because of a famous name, but because it hit the hardest and most inconvenient part of RLHF.
+
+Traditional RLHF usually requires SFT first, then a reward model, and then policy optimization through PPO or a similar reinforcement learning algorithm. This pipeline is possible, but long, hard to tune, and unstable in training. Many teams got stuck not because they did not understand alignment, but because the engineering process was too heavy.
+
+DPO's key observation is that a reward maximization objective with a KL constraint can be rewritten as a function of the policy model itself. Then, through the Bradley-Terry preference model, the original optimization problem becomes a much simpler classification loss. The result: train the policy model directly on preference data, without explicitly training a reward model and without a new reinforcement learning stage.
+
+The value of the paper is that it rewrote preference optimization from something that felt like engineering-heavy reinforcement learning into something closer to supervised learning. It has assumptions, of course: it relies on a preference modeling form and keeps design elements such as a reference model and temperature parameter. But compared with traditional RLHF, DPO lowered cost, improved stability, and reduced the reproduction barrier. Later IPO, KTO, ORPO, and SimPO all clearly carry DPO's trace.
+
+## QLoRA
+
+QLoRA appeared on May 23, 2023. Its significance was especially visible because it gave a convincing engineering answer to something many people wanted to hear: fine-tuning a large model does not necessarily require an expensive cluster.
+
+The problem is simple. The main bottleneck of full-parameter fine-tuning is often not the algorithm, but GPU memory. For a 65B model, just putting the weights in memory already excludes most individual developers and medium-sized teams. QLoRA's idea is to quantize the base model to 4-bit, freeze the quantized backbone during training, and add LoRA adapters on top.
+
+Three technical elements matter especially. NF4 better matches the real distribution of weights and controls quantization error. Double quantization further compresses the quantization constants themselves. Paged optimizer helps prevent sudden memory spikes from breaking training. Together, these decisions made fine-tuning a 65B model on one 48 GB GPU real.
+
+QLoRA's influence was practical. It not only produced the strong dialogue model Guanaco, but also reminded people that many popular chat benchmarks were less reliable than they looked: automatic evaluation and human preference often diverged. In other words, QLoRA's real value was not only a model with a high score. It made low-cost adaptation of LLMs a real option for many teams.
+
+## AWQ
+
+AWQ came out on June 1, 2023. Unlike QLoRA, which is mainly about training, AWQ is more about inference deployment. It solves another practical problem: once the model has already been trained, how do we compress it reliably into low-bit form without hurting quality too much?
+
+Many quantization methods treat all weights the same by default, but reality is not like that. AWQ starts from the idea that only a small part of the weights are especially important for output quality, and these salient weights should be protected. The paper identifies such channels through activation distribution, then uses a suitable scaling strategy to protect about 1% of key weights while quantizing the rest into low-bit form.
+
+The benefit is obvious. It does not depend on backpropagation, does not do reconstruction optimization, does not require retraining, and needs only a small amount of calibration data. For deployment teams, this matters because the expensive part is often not quantization itself, but preparing training resources again.
+
+AWQ's meaning is not that it is one more quantization algorithm. It made weight-only quantization more practical. Later versions also showed generalization to instruction-tuned models and multimodal models, plus faster inference on desktop and mobile GPUs. By this point, quantization was no longer just reducing model size. It was changing where open models could be deployed at all.
+
+## FlashAttention 2
+
+FlashAttention 2 was released on July 17, 2023. Compared with the first version, it is more of a deep engineering rewrite than a small improvement.
+
+FlashAttention 1 had already established the key point: attention's bottleneck is not only mathematical complexity, but also IO. FlashAttention 2 breaks the problem down further and reshapes parallelism for modern GPUs, reducing overhead from non-matmul operations and moving the truly expensive computation onto Tensor Cores.
+
+One important shift is the granularity of parallelism. The second version no longer focuses mainly on splitting along the sequence dimension. It moves more work inside each head and distributes tasks better between thread blocks and warps. As a result, GPU utilization is higher, and attention overhead in training and inference drops further.
+
+The impact is deep. The paper shows roughly another 2x speedup over the first version on A100, and single-GPU training throughput can approach a noticeable fraction of hardware peak. More importantly, it eased the old problem where long context was theoretically possible but practically hard to run. The fact that long context and high-throughput inference became major themes in 2024 relies heavily on low-level optimizations like FlashAttention 2.
+
+## Llama 2
+
+On July 18, 2023, Meta released Llama 2. Compared with LLaMA 1, the signal was clearer: Meta was not just offering a research base, but seriously pushing the question of whether open models could officially enter products.
+
+Llama 2 was released publicly in three sizes: 7B, 13B, and 70B. The paper also trained a 34B version, but it was not published as an official open model. Compared with the previous generation, context length increased to 4096, pretraining data grew to about 2T tokens, and post-training became more complete. The 70B version also used GQA to reduce KV Cache cost during inference.
+
+The alignment process for Llama 2-Chat is especially worth noting. It does not end with one SFT stage. It combines supervised fine-tuning, rejection sampling, and RLHF, while handling helpfulness and safety in one post-training framework. By 2023, this was already close to the industry standard practice that followed.
+
+Llama 2 mattered on two levels. First, it brought the question of commercial use for open-source models into serious discussion. Second, it proved that LLaMA had created not only research interest, but a path that could enter business. Llama 2 was not perfect: 4K context no longer looks long today, and safety alignment was not always stable. Still, it moved open models from something you can study toward something you can seriously use in products.
+
+## Qwen 1
+
+On September 28, 2023, the Qwen Technical Report was released. For Chinese-language developers, this was important because it answered not only "what about Chinese", but also whether an open model could better fit local scenarios and tool use needs.
+
+Qwen's base line is similar to LLaMA: a decoder-only Transformer, but with more directed training data and product orientation. The paper reports about 3T tokens covering Chinese, English, and other languages. All sizes use inference-friendly choices such as GQA. Compared with many earlier open models, attention to Chinese capability begins at the training stage rather than being patched in later alignment.
+
+Qwen has two especially characteristic lines. The first is long context: NTK-aware interpolation and LogN-scaling extend context capability, making long-document scenarios more useful. The second is tool use and specialized models: Qwen-Chat, Qwen-Agent, CodeQwen, Qwen-Math, and other directions appear soon after. This shows that the goal is not simply a Chinese chat model, but moving a foundation model toward a fuller usage chain.
+
+The value of Qwen 1 is exactly this. It gave Chinese teams a fairly systematic example of how to build a base-model route that accounts for Chinese and English, long context, tool calling, and open-source usability. The Qwen series kept expanding partly because this technical report laid a fairly complete foundation.
+
+## Mistral 7B
+
+Mistral 7B came out on October 10, 2023. When it appeared, many people had the same first reaction: 7B, and why is it this strong?
+
+The two key ideas in Mistral 7B are GQA and Sliding Window Attention. The first reduces KV Cache pressure. The second limits attention computation to a local window and controls memory usage with a rolling buffer cache. The problem it solves is clear: if you do not want to endlessly increase parameter scale, you need to design architecture and inference path more carefully.
+
+The paper's conclusion was strong: in evaluations, Mistral 7B fully beats Llama 2 13B, and in reasoning, mathematics, and code generation it can beat Llama 1 34B. The most important signal is not that a small model suddenly does everything. It is that with good enough training strategy and architecture design, a 7B model can enter a very competitive zone.
+
+The limits remain. Sliding Window Attention still has boundaries in tasks that require global information, and 7B capacity is not all-powerful for complex reasoning. But Mistral 7B's meaning is clear: small models are no longer merely cheap substitutes for larger models. They are a serious line of their own. Later Mixtral, Gemma, Phi, and similar routes inherit this view to some degree.
+
+## What Changed This Year
+
+If we compress large model progress in 2023 into a few points, four stand out.
+
+First, open models moved from "usable for research" to "usable for serious work." LLaMA ignited the ecosystem, Llama 2 pushed commercial use forward, and Qwen and Mistral strengthened the Chinese route and small-model route.
+
+Second, efficiency became a main line for real. QLoRA answers who can afford fine-tuning. AWQ and FlashAttention 2 answer whether the model can actually run after deployment. Mistral 7B shows that architectural efficiency can also convert directly into quality.
+
+Third, alignment methods became lighter. DPO's main contribution is not that it fully replaced RLHF, but that preference optimization no longer has to default to the whole reinforcement learning pipeline. Much of the following year's alignment innovation developed along this line.
+
+Fourth, multimodality was no longer a monopoly of closed large companies. LLaVA proved that visual instruction data and a vision-language assistant could be built in a lighter and more open way. It did not solve the whole multimodal problem, but it lowered the entry barrier.
+
+So the real legacy of 2023 is not one winning paper, but a new rhythm: foundation models kept improving, while training, alignment, fine-tuning, and deployment became cheaper, faster, and closer to ordinary teams. Many 2024 competitions around long context, MoE, reasoning enhancement, and agents were planted here.
+
+## References
+
+1. Touvron, H., et al. (2023-02-27). LLaMA: Open and Efficient Foundation Language Models. https://arxiv.org/abs/2302.13971
+2. Liu, H., et al. (2023-04-17). Visual Instruction Tuning. https://arxiv.org/abs/2304.08485
+3. Rafailov, R., et al. (2023-05-19). Direct Preference Optimization: Your Language Model is Secretly a Reward Model. https://arxiv.org/abs/2305.18290
+4. Dettmers, T., et al. (2023-05-23). QLoRA: Efficient Finetuning of Quantized LLMs. https://arxiv.org/abs/2305.14314
+5. Lin, J., et al. (2023-06-01). AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration. https://arxiv.org/abs/2306.00978
+6. Dao, T. (2023-07-17). FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning. https://arxiv.org/abs/2307.08691
+7. Touvron, H., et al. (2023-07-18). Llama 2: Open Foundation and Fine-Tuned Chat Models. https://arxiv.org/abs/2307.09288
+8. Bai, J., et al. (2023-09-28). Qwen Technical Report. https://arxiv.org/abs/2309.16609
+9. Jiang, A. Q., et al. (2023-10-10). Mistral 7B. https://arxiv.org/abs/2310.06825

@@ -10,6 +10,25 @@ summary: >
   LLM 压缩技术全景：知识蒸馏（白盒/黑盒）、结构化剪枝、非结构化剪枝、量化（PTQ/QAT/GPTQ/AWQ/GGUF）、小模型（Phi/Gemma/Grok-mini）。
 ---
 
+<!-- kb-import-backlink:LLMForEverybody -->
+
+> [!info] 外部资料 · LLMForEverybody
+> 中文大模型知识库 [[sources/LLMForEverybody/index|LLMForEverybody 导航]] 中的相关章节：
+> - [[sources/LLMForEverybody/04-第四章-量化/10分钟理解大模型的量化|量化入门]]
+> - [[sources/LLMForEverybody/04-第四章-量化/大模型量化认知的三重境界|量化三重境界]]
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 模型压缩与知识蒸馏
 
 ## 压缩技术分类

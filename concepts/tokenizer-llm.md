@@ -1,4 +1,4 @@
-﻿---
+---
 lifecycle: draft
 base_confidence: 0.84
 category: reference
@@ -14,6 +14,17 @@ aliases:
   - BPE
   - Token
 ---
+
+<!-- kb-import-backlink:LLMForEverybody -->
+
+> [!info] 外部资料 · LLMForEverybody
+> 中文大模型知识库 [[sources/LLMForEverybody/index|LLMForEverybody 导航]] 中的相关章节：
+> - [[sources/LLMForEverybody/01-第一章-预训练/全网最全的大模型分词器（Tokenizer）总结|分词器 Tokenizer 总览]]
+> - [[sources/LLMForEverybody/01-第一章-预训练/搞懂大模型的分词器（一）|分词器系列（一）]]
+
+
+
+
 
 # Tokenizer 分词器
 
@@ -132,3 +143,5 @@ API 费用 = (input_tokens + output_tokens) x 单价
 - [[llm-inference-optimization]] - 推理阶段 KV Cache 与 token 的关系
 - SentencePiece 官方文档: https://github.com/google/sentencepiece
 - HuggingFace Tokenizers: https://github.com/huggingface/tokenizers
+
+

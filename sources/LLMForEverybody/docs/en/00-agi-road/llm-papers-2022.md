@@ -1,0 +1,102 @@
+# [Classic LLM Papers] 2022: Making Models More Obedient, InstructGPT and RLHF
+
+The change in 2022 was very direct. In previous years, people mostly asked whether models could get bigger and whether their abilities could become stronger. This year, the question shifted: will the model actually work the way people want? At first that sounds like a wording change, but the difference is huge. A model that can write, answer, and generate is not automatically convenient to use.
+
+So the main theme of 2022 was alignment. InstructGPT made the RLHF path workable, at least enough for the whole industry to start taking it seriously. Another line also became clearer: if models are going to keep moving forward, we cannot rely only on parameter growth. Training strategy, attention implementation, quantization, and deployment all have to change together.
+
+Looking back, two things matter most. First, the model started to look more like an assistant, not just a text continuation machine. Second, researchers became more serious about cost and more aware of when to rely on scale and when to rely on design.
+
+## InstructGPT
+
+In March 2022, OpenAI released InstructGPT. People keep referring to this paper not because it made the largest model, but because it answered a clear question: why does a model that can predict the next word not necessarily give the answer a person actually wants?
+
+The goal of a traditional language model is simple: continue text from context. This training is useful, of course. The model learns language patterns, pieces of knowledge, and the forms of many tasks. But the problem is also obvious. Internet text contains noise, offensive content, and many phrases that look like answers but are not helpful. If a model learns all of that, it does not automatically learn what it means to be useful.
+
+InstructGPT uses three steps. First, supervised fine-tuning is done on human-written responses to instructions, moving the model toward listening to instructions. Then a reward model is trained, not by assigning absolute scores, but by comparing several answers and choosing the best one according to human labelers. Finally, PPO is used for reinforcement learning, so under the reward signal the language model generates responses that better match preferences.
+
+The impressive part is not only the pipeline, but the result. In human preference evaluation, a 1.3B parameter model beat GPT-3 with 175B parameters. The lesson is basically this: more parameters do not mean better collaboration with humans. Very often, usefulness depends on how seriously the model has been tuned toward being helpful, honest, and harmless.
+
+Later ChatGPT was not simply InstructGPT scaled up without changes. But this paper clearly stated an important idea: the value of a large model is not only its capability ceiling, but also its behavior.
+
+## Chain-of-Thought
+
+In January 2022, Google proposed Chain-of-Thought Prompting. Compared with InstructGPT, this work looks almost laughably simple, because it did not change the model architecture and did not require new training. It discovered that the way you ask a question can noticeably affect reasoning performance.
+
+The main idea is simple: do not force the model to give the answer immediately. Ask it to write intermediate steps first. For example, when solving a word problem, do not immediately name the result. First list the conditions, then derive the solution path, and only then assemble the answer. Later, this process became known as chain of thought.
+
+Two things were surprising. First, this method really helps in math, commonsense reasoning, and multi-step inference. Second, it does not work equally well on all models. It looks more like an ability that appears with scale. Small models, when asked to write steps, often just say more useless text. Larger models are more likely to use intermediate steps to decompose the problem.
+
+This changed how many people interact with models. Before, it felt more like question-answer. Now it became a way of guiding the model into a longer reasoning process. Later self-consistency, tool use, and agent reasoning chains all continue using this discovery: the model does not only output an answer. Sometimes the intermediate process helps it make the answer correct.
+
+## Chinchilla
+
+In March 2022, DeepMind released Chinchilla. Its importance is that it convincingly slowed down the idea that bigger is always better.
+
+Before that, the industry story looked like a parameter race. GPT-3 had 175B parameters, Gopher had 280B, PaLM was even larger, and the default direction seemed to be competing over who could build the taller model. Chinchilla asked a counter-question: you increased the parameters, but did you train these models enough?
+
+The authors' answer was no. Many large models were in a state of "many parameters, too few tokens." This produced a new scaling law: with a fixed compute budget, it is better to increase model size and training data together, not just grow parameters.
+
+Chinchilla itself had only 70B parameters, but it was trained on more tokens and ended up beating the larger Gopher on many tasks. The key point is not the number 70B, but the clarification of a compute-optimal approach. A model does not become more valuable simply because it is larger. It matters whether the budget was spent at the right balance point.
+
+This idea had enormous later influence. Many open-source models later achieved strong results with relatively smaller parameter counts, and Chinchilla is part of that lineage.
+
+## FlashAttention
+
+If Chinchilla recalculated the economics at the macro level, FlashAttention recalculated it at the micro level.
+
+Self-attention in Transformer had long had a problem: as sequence length grows, computation slows and memory use rises sharply. People often explained this through high complexity, but the bottleneck is not only the mathematical quadratic complexity. It is also the way memory is accessed.
+
+The core of FlashAttention is IO-aware design. It does not materialize the full attention matrix in high-bandwidth memory. Instead, it computes in blocks and keeps more data in faster on-chip memory. The mathematical result is the same as standard attention, but the implementation better matches what GPUs are actually good at.
+
+This sounds like an engineering detail, but the impact is huge. Long-context training became more realistic, inference speed improved, and memory pressure dropped noticeably. More importantly, FlashAttention reminded people of an often forgotten fact: a model can be slow not because the formula is not advanced enough, but because the implementation does not fit the hardware.
+
+Later, a whole wave of attention optimization largely continued along this road. FlashAttention became an example of rewriting an algorithm from the hardware point of view.
+
+## DALL-E 2
+
+In the multimodal line, one of the brightest works of 2022 was DALL-E 2. Its main difference from DALL-E 1 was not just that the images became prettier, but that the basic generation route changed.
+
+DALL-E 1 still converted images into tokens and gave them to an autoregressive model. DALL-E 2 moved to a diffusion model and combined it with CLIP semantic representations. Roughly, text is first mapped into a semantic space aligned with images, then a diffusion model gradually generates an image from that semantic condition.
+
+The improvement from this architecture was obvious. Image resolution became higher, details more stable, and style control more natural. More importantly, DALL-E 2 was no longer only creating images from scratch. It began to support image editing, local modification, and generation of variations, which are much closer to real use cases.
+
+This work also reinforced another observation: for image generation, diffusion models really had an advantage over the autoregressive line at that time. The later explosion of Imagen, Stable Diffusion, and similar models mostly developed from the same conclusion.
+
+## Whisper
+
+At the end of 2022, OpenAI released Whisper. Its meaning for speech recognition is somewhat similar to the meaning of large language models for text in previous years: not a fancy new architecture, but large-scale weak supervision that made one unified model robust enough.
+
+Whisper uses a standard encoder-decoder Transformer, but it is trained on a very large dataset covering multiple languages, multiple tasks, and many noisy real-world situations. It does not only do speech-to-text. It also learns translation, language identification, and other abilities inside one framework.
+
+The benefit is direct. The model depends less on one clean scenario or accent distribution and works more robustly on real recordings. Many traditional ASR systems look good in the lab but degrade with noise, accents, and mixed context. Whisper holds up much better in those conditions.
+
+It is worth remembering not only for recognition quality, but because it brought the unified large-model approach into speech. As later multimodal models increasingly emphasized the coexistence of audio, images, and text, this work became a natural part of the bigger picture.
+
+## Breakthroughs in Quantization
+
+Another very practical advance in 2022: quantization finally started changing the deployment threshold for real.
+
+`LLM.int8()` caught an important fact: not all values inside a large model are equally important. Most numbers can be represented with low precision, but if a small number of outlier values are handled poorly, quality drops sharply. So the method uses a mixed strategy: most computation is done in 8-bit, while the few outliers are kept at higher precision.
+
+`GPTQ` presents another route: do not retrain the model, but perform post-training quantization directly and compensate for error with a small amount of calibration data. Its value is mainly practical: the process is fast, the compression ratio is high, and accuracy is preserved well enough.
+
+The importance of these works is simple but critical. If a model can run only on a pile of expensive accelerators, it is hard to spread no matter how strong it is. Quantization moved many models that previously required expensive servers toward a single GPU and even consumer hardware. The later growth of the open-source ecosystem relied heavily on this foundation.
+
+## Lessons from 2022
+
+If we compress 2022 into two lines, they are alignment and efficiency.
+
+On the alignment line, InstructGPT and Chain-of-Thought say the same thing in different ways: it is not enough for a model to answer questions. It must work in a way people can accept, understand, and guide. On the efficiency line, Chinchilla, FlashAttention, and quantization show another point: scale matters, but not every problem should be solved by adding parameters.
+
+Because these two lines became so clear in 2022, ChatGPT's release at the end of the year felt like a sudden explosion to many people. But looking back, the road to it had almost already been paved. The difference was that these technologies finally landed in a product that ordinary people could immediately feel.
+
+## References
+
+1. Ouyang, L., et al. (2022). Training language models to follow instructions with human feedback. *NeurIPS*. https://arxiv.org/abs/2203.02155
+2. Wei, J., et al. (2022). Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. *NeurIPS*. https://arxiv.org/abs/2201.11903
+3. Hoffmann, J., et al. (2022). Training Compute-Optimal Large Language Models. *NeurIPS*. https://arxiv.org/abs/2203.15556
+4. Dao, T., et al. (2022). FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness. *NeurIPS*. https://arxiv.org/abs/2205.14135
+5. Ramesh, A., et al. (2022). Hierarchical Text-Conditional Image Generation with CLIP Latents. *arXiv*. https://arxiv.org/abs/2204.06125
+6. Radford, A., et al. (2022). Robust Speech Recognition via Large-Scale Weak Supervision. *arXiv*. https://arxiv.org/abs/2212.04356
+7. Dettmers, T., et al. (2022). LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale. *NeurIPS*. https://arxiv.org/abs/2208.07339
+8. Frantar, E., et al. (2022). GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers. *arXiv*. https://arxiv.org/abs/2210.17323
