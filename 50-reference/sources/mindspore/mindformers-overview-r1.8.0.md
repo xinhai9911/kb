@@ -1,4 +1,5 @@
 ---
+aliases: ["mindformers-overview-r1.8.0"]
 title: "MindSpore Transformers 整体架构（官方文档 r1.8.0）"
 tags: [mindspore, ascend, llm, inference, training, official-docs, active]
 lifecycle: active
@@ -183,9 +184,9 @@ MindSpore Transformers 构建了"北向生态融合、南向深度优化"的推�
 
 ## 知识关联
 
-- → [[entities/mindspore-transformers]] — MindFormers 套件详解（模型库/架构/安装）
-- → [[concepts/ascend-software-stack]] — 昇腾全栈架构（CANN/MindSpore/MindIE 分层）
-- → [[llm-inference-optimization]] — 推理优化总论
+- → [[entities/mindspore Transformer]] — MindFormers 套件详解（模型库/架构/安装）
+- → [[concepts/ascend software stack]] — 昇腾全栈架构（CANN/MindSpore/MindIE 分层）
+- → [[LLM 推理 优化]] — 推理优化总论
 
 ---
 
