@@ -16,16 +16,35 @@ sources: []
 
 ```
 Transformer 架构 [concepts/transformer-architecture]
+  ├── Tokenizer [concepts/tokenizer-llm]
   ├── 来源于: [sources/vaswani2017-attention]
-  ├── 改进: [concepts/llm-inference-optimization]
   │
-  ├── 代表实体:
-  │   ├── [entities/openai] → GPT 系列 (闭源)
-  │   ├── [entities/deepseek] → DeepSeek V4 (开源, 中国)
-  │   └── [entities/hugging-face] → 开源生态枢纽
+  ├── 训练方法: [concepts/llm-training-pipeline]
+  │   ├── 对齐技术: [concepts/rlhf-dpo-alignment]
+  │   ├── 参数高效微调: [concepts/lora-peft-finetuning]
+  │   └── 详细指南: [sources/llm-training-pipeline-guide]
   │
-  └── 训练方法: [concepts/llm-training-pipeline]
-      └── 详细指南: [sources/llm-training-pipeline-guide]
+  ├── 推理优化: [concepts/llm-inference-optimization]
+  │   └── 模型压缩: [concepts/model-compression-distillation]
+  │
+  ├── 多模态: [concepts/multimodal-llm]
+  │
+  ├── 应用层:
+  │   ├── RAG: [concepts/rag-retrieval-augmented-generation]
+  │   ├── 向量DB: [concepts/vector-db-embedding]
+  │   ├── Prompt工程: [concepts/prompt-engineering-patterns]
+  │   └── 应用生态: [concepts/llm-application-ecosystem]
+  │
+  ├── 安全与评测:
+  │   ├── AI安全: [concepts/ai-safety-alignment]
+  │   └── 评测基准: [concepts/llm-evaluation-benchmarks]
+  │
+  ├── Agent工具: [concepts/agent-tool-use-mcp]
+  │
+  └── 代表实体:
+      ├── [entities/openai] → GPT 系列 (闭源)
+      ├── [entities/deepseek] → DeepSeek V4 (开源, 中国)
+      └── [entities/hugging-face] → 开源生态枢纽
 ```
 
 ## 核心结论
@@ -74,4 +93,16 @@ DeepSeek V4 和 LLaMA-3 405B 证明开源模型在多数基准上可与 GPT-4 �
 - ✅ 推理优化技术 → [sources/llm-inference-optimization] (extracted)
 - ✅ 中国大模型格局 → [sources/chinese-llm-landscape] (extracted)
 - ✅ Hugging Face 生态 → [sources/huggingface-ecosystem] (extracted)
+- ✅ Tokenizer → [concepts/tokenizer-llm] (领域知识)
+- ✅ 对齐技术 → [concepts/rlhf-dpo-alignment] (领域知识)
+- ✅ 参数高效微调 → [concepts/lora-peft-finetuning] (领域知识)
+- ✅ 多模态 → [concepts/multimodal-llm] (领域知识)
+- ✅ 模型压缩 → [concepts/model-compression-distillation] (领域知识)
+- ✅ RAG → [concepts/rag-retrieval-augmented-generation] (领域知识)
+- ✅ 向量DB → [concepts/vector-db-embedding] (领域知识)
+- ✅ Prompt工程 → [concepts/prompt-engineering-patterns] (领域知识)
+- ✅ 应用生态 → [concepts/llm-application-ecosystem] (领域知识)
+- ✅ AI安全 → [concepts/ai-safety-alignment] (领域知识)
+- ✅ 评测基准 → [concepts/llm-evaluation-benchmarks] (领域知识)
+- ✅ Agent工具 → [concepts/agent-tool-use-mcp] (领域知识)
 - ✅ 开放式问题标记 → 已在各 source 页的 ambiguous 字段记录

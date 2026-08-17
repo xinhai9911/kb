@@ -227,10 +227,42 @@ updated: 2026-07-30
 
 ## AI 大模型
 
+### 综述
+
 - [[synthesis/ai-llm-overview|AI 大模型全景综述]]
+
+### 架构与训练
+
 - [[concepts/transformer-architecture|Transformer 架构]]
 - [[concepts/llm-training-pipeline|LLM 训练管线]]
+- [[concepts/tokenizer-llm|Tokenizer 分词器]]
+- [[concepts/rlhf-dpo-alignment|RLHF/DPO/GRPO 对齐技术]]
+- [[concepts/lora-peft-finetuning|LoRA/PEFT 参数高效微调]]
+- [[concepts/multimodal-llm|多模态大模型]]
+
+### 推理与部署
+
 - [[concepts/llm-inference-optimization|LLM 推理优化]]
+- [[concepts/model-compression-distillation|模型压缩与知识蒸馏]]
+
+### 应用与工具
+
+- [[concepts/rag-retrieval-augmented-generation|RAG 检索增强生成]]
+- [[concepts/vector-db-embedding|向量数据库与 Embedding]]
+- [[concepts/prompt-engineering-patterns|Prompt Engineering 模式库]]
+- [[concepts/llm-application-ecosystem|大模型应用生态]]
+
+### 安全与评测
+
+- [[concepts/ai-safety-alignment|AI 安全与对齐]]
+- [[concepts/llm-evaluation-benchmarks|大模型评测与基准]]
+
+### Agent 工具
+
+- [[concepts/agent-tool-use-mcp|Agent 工具使用与 MCP 协议]]
+
+### 实体
+
 - [[entities/openai|OpenAI]]
 - [[entities/hugging-face|Hugging Face]]
 - [[entities/deepseek|DeepSeek]]

@@ -1,0 +1,160 @@
+---
+title: "Prompt Engineering 模式库"
+lifecycle: draft
+category: reference
+tags: [llm, prompt, engineering, active]
+base_confidence: 0.84
+created: 2026-08-07
+updated: 2026-08-07
+summary: >
+  Prompt Engineering 系统性模式：Zero/Few-Shot、Chain-of-Thought、Self-Consistency、Tree-of-Thought、ReAct、Chain-of-Verification、Meta-Prompting。含代码示例。
+---
+
+# Prompt Engineering 模式库
+
+## 模式详解
+
+### Zero-Shot Prompting
+
+**原理**：直接向模型提问，不提供任何示例。依赖模型预训练阶段学到的内化知识。
+
+**示例**：
+```
+Classify the sentiment of the following review as positive, negative, or neutral:
+"The battery life is impressive, but the screen feels a bit dim outdoors."
+```
+
+**适用场景**：简单分类、翻译、摘要等通用任务；模型能力足够强时优先使用。
+
+---
+
+### Few-Shot Prompting
+
+**原理**：在提示中提供少量输入-输出示例，引导模型学习任务格式和推理模式。
+
+**示例**：
+```
+Classify the sentiment:
+Review: "Amazing product!" → Positive
+Review: "Terrible experience." → Negative
+Review: "It's okay, nothing special." → Neutral
+
+Review: "The battery life is impressive, but the screen feels a bit dim outdoors." →
+```
+
+**适用场景**：需要特定输出格式、领域专业任务、Zero-Shot 效果不佳时。
+
+---
+
+### Chain-of-Thought (CoT)
+
+**原理**：引导模型在回答前逐步推理，将复杂问题分解为中间步骤。
+
+**示例**：
+```
+Question: A store has 5 boxes. Each box has 4 bags. Each bag has 3 apples. 
+How many apples are there in total?
+
+Let me think step by step:
+1. Total bags = 5 boxes × 4 bags = 20 bags
+2. Total apples = 20 bags × 3 apples = 60 apples
+
+Answer: 60
+```
+
+**适用场景**：数学推理、逻辑推理、多步决策、代码调试。Zero-Shot CoT（加入"Let's think step by step"）可直接启用。
+
+---
+
+### Self-Consistency
+
+**原理**：对同一问题多次采样生成不同推理路径，通过多数投票选择最终答案。
+
+**流程**：
+1. 使用 CoT 对同一问题生成 N 条独立推理链
+2. 提取每条链的最终答案
+3. 选择出现次数最多的答案作为最终输出
+
+**适用场景**：数学、逻辑推理等有明确答案的任务；模型参数温度 > 0 时效果更好。牺牲推理成本换取准确率。
+
+---
+
+### Tree-of-Thought (ToT)
+
+**原理**：将问题分解为多个思考步骤，每个步骤生成多个候选思路，通过评估和回溯选择最优路径。
+
+**流程**：
+1. 在每一步生成 B 个候选思路
+2. 使用 LLM 评估每个候选的前景
+3. 保留前 K 个最有前景的思路继续扩展
+4. 到达终止条件时选择最佳路径
+
+**适用场景**：需要探索和规划的复杂问题（如 24 点游戏、创意写作规划）；复杂度高于 CoT。
+
+---
+
+### ReAct (Reasoning + Acting)
+
+**原理**：将推理与外部工具调用交替进行，模型先思考（Thought），再行动（Action），观察结果（Observation）后继续推理。
+
+**示例**：
+```
+Question: What is the elevation range for the area that the 
+eastern sector of the Colorado orogeny extends into?
+
+Thought 1: I need to find what area the eastern sector extends into.
+Action 1: Search[eastern sector of Colorado orogeny]
+Observation 1: The eastern sector extends into the High Plains.
+Thought 2: Now I need to find the elevation range of the High Plains.
+Action 2: Search[elevation range of High Plains]
+Observation 2: The High Plains rise from around 1,800 ft to 7,000 ft.
+Thought 3: The elevation range is 1,800 ft to 7,000 ft.
+Action 3: Finish[1,800 ft to 7,000 ft]
+```
+
+**适用场景**：需要实时信息检索、多步工具调用的复杂任务；Agent 系统的基础模式。
+
+---
+
+### Chain-of-Verification (CoVe)
+
+**原理**：生成初始回答后，自主提出验证问题并逐一核查，修正发现的错误。
+
+**流程**：
+1. 模型生成初始回答
+2. 基于回答生成一组验证问题
+3. 独立回答每个验证问题（避免回归偏见）
+4. 对比初始回答与验证结果，修正不一致之处
+
+**适用场景**：减少幻觉、事实核查、需要高准确度的知识密集型任务。
+
+---
+
+### Meta-Prompting
+
+**原理**：使用一个 LLM（Meta-LLM）协调多个专门化的 LLM 实例协作完成任务。
+
+**流程**：
+1. Meta-LLM 分析任务并拆分为子任务
+2. 为每个子任务分配专门的 LLM 实例（可能使用不同提示模板）
+3. 收集各实例输出，由 Meta-LLM 整合为最终结果
+
+**适用场景**：复杂多步骤任务、需要不同视角或专业能力的综合任务。
+
+## 模式对比
+
+| 模式 | 核心思路 | 推理成本 | 准确率提升 | 适用任务类型 |
+|---|---|---|---|---|
+| Zero-Shot | 直接提问 | 低 | 基准 | 简单通用任务 |
+| Few-Shot | 示例引导 | 低-中 | 中 | 格式化/领域任务 |
+| CoT | 逐步推理 | 中 | 中-高 | 数学/逻辑推理 |
+| Self-Consistency | 多路采样投票 | 高 | 高 | 有明确答案的推理 |
+| ToT | 探索+回溯 | 高 | 高 | 规划/创意/搜索 |
+| ReAct | 推理+工具交替 | 中-高 | 高 | 信息检索/工具使用 |
+| CoVe | 自我验证修正 | 中 | 高 | 事实准确性要求高 |
+| Meta-Prompting | 多模型协调 | 高 | 高 | 复杂多步骤任务 |
+
+## 延伸阅读
+
+- [[ai-agent-overview]]：ReAct 等模式在 Agent 架构中的应用
+- [[claude-prompting-best-practices]]：Claude 特定的 Prompt 优化技巧
