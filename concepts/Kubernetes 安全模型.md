@@ -169,5 +169,6 @@ roleRef:
 
 - [[concepts/Kubernetes 网络模型]]
 - [[concepts/Kubernetes 核心架构与组件]]
+- [[concepts/认证授权 OAuth2 OIDC JWT]] — OIDC/RBAC 认证授权原理
 - [[entities/eBPF 安全工具]]
 - [[entities/Cilium 容器网络]]

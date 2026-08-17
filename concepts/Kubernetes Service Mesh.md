@@ -170,3 +170,4 @@ spec:
 - [[entities/Cilium 容器网络]]
 - [[synthesis/eBPF 技术全景]]
 - [[concepts/Kubernetes 安全模型]]
+- [[concepts/认证授权 OAuth2 OIDC JWT]] — mTLS 身份认证与 OAuth2/OIDC 的关系

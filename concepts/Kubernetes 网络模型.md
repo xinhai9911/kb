@@ -168,4 +168,5 @@ Pod（容器网络命名空间） → 进程
 - [[concepts/Kubernetes Service Mesh]]
 - [[concepts/Kubernetes 安全模型]]
 - [[concepts/Kubernetes 工作负载与调度]]
+- [[concepts/HTTP2 与 HTTP3(QUIC)]] — Ingress/gRPC 底层传输协议
 - [[projects/k8s-kind-examples/README]]

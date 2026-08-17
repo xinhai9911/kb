@@ -3,14 +3,15 @@ title: Kubernetes 技术全景综述
 category: synthesis
 tags: [kubernetes, container, orchestration, cloud-native, synthesis, active]
 created: 2026-08-12
-updated: 2026-08-12
+updated: 2026-08-17
 summary: >-
     Kubernetes（K8s）技术全景：核心设计哲学（声明式/控制循环）、
     分层架构、十大核心概念、网络/存储/安全/高可用四大支柱、
     生态全景（CRI/CNI/CSI/Operator/Helm/Gateway API）、学习路径与
     常见误区。配套概念/实体文档为学习地图。
-base_confidence: 0.9
-lifecycle: draft
+    衔接 Go 运行时、GitOps、认证授权、HTTP/2&3 等。
+base_confidence: 0.92
+lifecycle: review
 ---
 
 # Kubernetes 技术全景综述
@@ -114,6 +115,11 @@ K8s 的威力在于**用标准接口把实现做成插拔**：
 - [[concepts/分布式系统基础]] — etcd 依赖 Raft 共识；控制器循环是分布式系统里「对账」的典型。
 - [[concepts/可观测性工程]] / [[concepts/韧性设计]] — K8s 健康检查、探针、滚动更新都是这两个主题的容器化实例。
 - [[entities/CI_CD 流水线实战]] — K8s 是 CI/CD 的部署目标；Helm 与 GitOps（ArgoCD）是发布载体。
+- [[concepts/Go 运行时与并发模型]] — K8s/etcd/Cilium 全是 Go 写的，理解运行时即理解并发与内存行为。
+- [[entities/GitOps 与 ArgoCD 实战]] — 声明式交付进 K8s，Git 为唯一事实源。
+- [[concepts/认证授权 OAuth2 OIDC JWT]] — K8s OIDC 集成、ServiceAccount/RBAC 认证授权原理。
+- [[concepts/HTTP2 与 HTTP3(QUIC)]] — Ingress/gRPC 底层传输协议，现代微服务通信基础。
+- [[concepts/基础设施即代码 Terraform]] — 云上拉起 K8s 集群的 IaC 工具，与 GitOps 互补。
 
 ## 9. 学习路径（建议顺序）
 
