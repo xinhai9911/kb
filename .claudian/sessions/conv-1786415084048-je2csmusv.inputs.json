@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "conversationId": "conv-1786415084048-je2csmusv",
+  "records": [
+    {
+      "schemaVersion": 1,
+      "id": "msg-1786415084312-ta160g0",
+      "userTurnOrdinal": 1,
+      "state": "accepted",
+      "localMessageId": "msg-1786415084046-w4m1srb",
+      "timestamp": 1786415084046,
+      "rawDisplayText": "你能用吗",
+      "canonicalText": "你能用吗",
+      "context": {
+        "currentNote": {
+          "path": "Excalidraw/Drawing 2026-07-30 11.38.24.excalidraw.md"
+        }
+      },
+      "images": [],
+      "contentDigest": "5bf69e2bec60618918ce8f86bc23f729445d3e08dae87eb20270b6b4149fa057",
+      "providerUserMessageId": "01de8ea4-0e7d-4944-a06a-07e66b5fb796"
+    }
+  ]
+}

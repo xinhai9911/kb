@@ -38,3 +38,13 @@ sources: []
 - 从无状态向有状态演进
 - 从单 Agent 向多 Agent 协作演进
 - 框架正趋向标准化（MCP、Function Calling）
+
+## 官方 Agent SDK（薄 harness）
+
+除上述"重编排"框架外，模型厂商也提供官方 SDK，定位更轻、更贴近 harness 本身（见 [[llm-agent-harness]] B 类）：
+
+- [[anthropic-agent-sdk|Anthropic Agent SDK]] — tool-use loop + sub-agents + trace
+- [[openai-agents-sdk|OpenAI Agents SDK]] — handoffs + guardrails + tracing
+- [[google-adk|Google ADK]] — 全栈式（编排 + 记忆 + 部署），绑定 Gemini
+
+更轻量的库见 [[lightweight-agent-frameworks]]（Pydantic AI / smolagents / Agno / LlamaIndex）。

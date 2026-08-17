@@ -1,0 +1,22 @@
+{
+  "id": "conv-1786415084048-je2csmusv",
+  "providerId": "claude",
+  "title": "你能用吗",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1786415084050,
+  "lastActivityAt": 1786415090017,
+  "sessionId": null,
+  "selectedModel": "haiku",
+  "currentNote": "Excalidraw/Drawing 2026-07-30 11.38.24.excalidraw.md",
+  "isPinned": false,
+  "isArchived": true,
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 0,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 0,
+    "contextWindow": 200000,
+    "contextTokens": 0,
+    "percentage": 0
+  }
+}

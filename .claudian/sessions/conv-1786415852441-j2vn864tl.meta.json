@@ -1,0 +1,24 @@
+{
+  "id": "conv-1786415852441-j2vn864tl",
+  "providerId": "claude",
+  "title": "确认能否使用RTK工具",
+  "titleGenerationStatus": "success",
+  "createdAt": 1786415852443,
+  "lastActivityAt": 1786415980831,
+  "sessionId": "33d51ccb-b6e5-49f2-8cef-ad1a797961b9",
+  "selectedModel": "haiku",
+  "providerState": {
+    "providerSessionId": "33d51ccb-b6e5-49f2-8cef-ad1a797961b9"
+  },
+  "currentNote": "Excalidraw/Drawing 2026-07-30 11.38.24.excalidraw.md",
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 553,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 33024,
+    "contextWindow": 200000,
+    "contextTokens": 33577,
+    "percentage": 17,
+    "contextWindowIsAuthoritative": false
+  }
+}

@@ -3,7 +3,7 @@ title: Hot Cache
 summary: >-
     *A ~500-word semantic snapshot of recent activity.*
 category: index
-updated: 2026-07-30T22:00:00+00:00
+updated: 2026-08-03T10:48:00+00:00
 base_confidence: 0.7
 lifecycle: draft
 created: 2026-07-29
@@ -15,6 +15,9 @@ tags: [kb]
 *A ~500-word semantic snapshot of recent activity.*
 
 ## Recent Activity
+
+- [2026-08-03] CAPTURE → STAGE_COMMIT 1 page: concepts/hybrid-retrieval-bm25-semantic-fusion（混合检索：BM25 + 向量 + RRF 融合排序 + 可选 rerank；含工程化 checklist、反模式、与本库 qmd 检索衔接路径）
+- [2026-08-03] CAPTURE → STAGING 1 page: _staging/synthesis/fpga-chip-design-systematic-guide（FPGA 完整芯片代码构建综述：设计流程/工程目录/chip_top 骨架/时钟-复位/总线矩阵/CPU 软核/IP 集成/地址映射/约束/验证/八条工程铁律/五阶段学习路径）
 
 - [2026-07-30] WIKI_RESEARCH topic="Video Editing Deep Dive (第五轮)" — 6 篇新概念页。覆盖：AE 动态图形进阶（表达式/插件/Dynamic Link）、音频修复实战（iZotope RX 工作流/免费替代）、色彩理论与调色方案（五大电影 Look/LUT 制作）、字幕/本地化（格式/Lower Thirds/Netflix 规范）、视频规格兼容性（帧率/PAR-DAR）、剪辑师职业发展（路径/费率/工会）。synthesis 综述页更新
 
@@ -35,7 +38,7 @@ tags: [kb]
 - **film-directing** — 2026-07-30 七轮深挖全部完成：累计 58+ 篇页面。七轮共覆盖：叙事结构（三幕剧/非线性）、场面调度/布光/色彩心理学、表演指导、制作流程、导演方法论光谱、作者论、拉片方法论、构图/角度、类型片策略、短片/低成本、剧本分析、导演-DP协作/部门协作/片场决策/高级语法、电影运动/理论/电影节/表演理论/改编、群戏走位/声音叙事/排练方法/音乐叙事、电视剧导演/动画导演/实验电影/导演色彩签名。38 位东西方导演实体。后续可深挖：制片人与导演博弈、电影心理学深度、各流派详细分支
 - **ebpf** — 已完成两轮调研：第一轮 7 篇（核心架构/Maps/Cilium/安全/工具链/来源/全景），第二轮深挖 5 篇（验证器与安全模型、程序类型全目录、XDP、sched_ext、生产案例）并扩展 synthesis 和工具链。合计 12 篇概念/实体/综述 + 1 篇来源。剩余可探索：验证器实战调试、eBPF + AI 工作负载调度、Windows eBPF 演进跟踪、BPF arena/exceptions 编程实践
 - **ai-llm** — Transformer 架构 → 三阶段管线 → 推理优化 → 开源/中国生态，已写 13 篇，后续可深挖多模态、Agent、评测
-- **ai-agent** — Agent 框架对比（LangGraph/CrewAI/AutoGen）、MCP 协议、记忆规划机制，已写 13 篇，可深挖 Agent 安全评估和调优
+- **ai-agent** — Agent 框架对比（LangGraph/CrewAI/AutoGen）、MCP 协议、记忆规划机制，已写 13 篇。新增混合检索概念页（BM25 + 语义双路 + RRF 融合），覆盖 RAG 召回层范式；可继续深挖：Agent 安全评估、调优、工具检索（Function/Tool Calling Routing）
 - **db-decoder-ironhive** — Hive 解码器开发一期，解码器代码已完成（libhive.so），falcon 部署因框架限制受阻，待平台团队介入
 
 ## Key Takeaways

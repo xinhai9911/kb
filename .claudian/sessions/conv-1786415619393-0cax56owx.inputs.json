@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "conversationId": "conv-1786415619393-0cax56owx",
+  "records": [
+    {
+      "schemaVersion": 1,
+      "id": "msg-1786415619709-n1hipnq",
+      "userTurnOrdinal": 1,
+      "state": "accepted",
+      "localMessageId": "msg-1786415619391-tgr8co9",
+      "timestamp": 1786415619391,
+      "rawDisplayText": "你能用吗",
+      "canonicalText": "你能用吗",
+      "images": [],
+      "contentDigest": "5bf69e2bec60618918ce8f86bc23f729445d3e08dae87eb20270b6b4149fa057",
+      "providerUserMessageId": "b9c720c6-21ec-4470-bd16-a46eaaac2f17",
+      "providerAssistantMessageId": "f2ae9398-72f3-4c63-ba96-62cc780aef89"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1786415659793-5a4kly9",
+      "userTurnOrdinal": 2,
+      "state": "accepted",
+      "localMessageId": "msg-1786415659791-opau74g",
+      "timestamp": 1786415659791,
+      "rawDisplayText": "//model",
+      "canonicalText": "//model",
+      "images": [],
+      "contentDigest": "2264d3858fc2bc4fd8678bf5b1ee9028240202a52231c38af9bad595ea126787",
+      "providerUserMessageId": "a0bdfac9-5f72-4dcf-870e-25d0b100f499"
+    }
+  ]
+}

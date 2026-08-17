@@ -1,6 +1,7 @@
 ---
 summary: >-
     - [2026-07-29] INIT vault_path="Q:/AI/kb" (接入 obsidian-wiki 框架)
+    - [2026-08-03] QUERY query="摄影" result_pages=5 mode=normal escalated=false
 category: index
 title: Wiki Log
 updated: 2026-07-30
@@ -33,3 +34,8 @@ tags: [kb]
 - [2026-07-30] WIKI_RESEARCH topic="Film Directing Deep Dive (第六轮)" rounds=6 topics=4(advanced-staging-blocking, directing-with-sound, director-rehearsal-methods, music-in-film-directing) + 5-directors(ozu, edward-yang, bresson, claire-denis, haneke) pages_created=9(concepts=4,entities=5) synthesis_updated=1 source=knowledge
 - [2026-07-30] WIKI_RESEARCH topic="Video Editing Deep Dive (第七轮)" rounds=1 topics=5(advanced-vfx-matchmove, color-science-gamut, adr-dubbing-workflow, music-video-editing, sports-fast-cut-editing) pages_created=5(concepts=5) synthesis_updated=1 source=knowledge
 - [2026-07-30] WIKI_RESEARCH topic="Film Directing Deep Dive (第七轮)" topics=4(tv-series-directing, animation-directing, experimental-cinema, director-color-signatures) + 5-directors(chaplin, truffaut, almodovar, herzog, spike-lee) pages_created=9(concepts=4,entities=5) synthesis_updated=1 source=knowledge
+- [2026-08-03] CAPTURE type=concept page="concepts/hybrid-retrieval-bm25-semantic-fusion" title="关键词检索（BM25）+ 语义检索双路，融合排序" source=conversation
+- [2026-08-03 10:48] STAGE_COMMIT accepted=1 rejected=0 skipped=0
+- [2026-08-03 10:48] INDEX_UPDATED page="concepts/hybrid-retrieval-bm25-semantic-fusion" section="AI Agent → 概念"
+- [2026-08-03 13:58] CAPTURE type=synthesis page="_staging/synthesis/fpga-chip-design-systematic-guide" title="FPGA 完整芯片代码构建综述" source=conversation staged=true
+- [2026-08-03 13:58] INDEX_UPDATED page="_staging/synthesis/fpga-chip-design-systematic-guide" section="FPGA / 硬件逻辑 → 综述" staged=true

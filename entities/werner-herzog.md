@@ -1,4 +1,4 @@
-﻿---
+---
 title: 沃纳·赫尔佐格
 category: entities
 tags: [directing, german-cinema, documentary, extreme, ecstatic-truth]

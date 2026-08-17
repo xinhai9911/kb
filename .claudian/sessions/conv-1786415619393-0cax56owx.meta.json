@@ -1,0 +1,26 @@
+{
+  "id": "conv-1786415619393-0cax56owx",
+  "providerId": "claude",
+  "title": "你能用吗",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1786415619395,
+  "lastActivityAt": 1786415660176,
+  "sessionId": null,
+  "selectedModel": "haiku",
+  "providerState": {
+    "previousProviderSessionIds": [
+      "7a826b50-4001-4e74-8962-e8b8946e48e8"
+    ]
+  },
+  "isPinned": false,
+  "isArchived": true,
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 0,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 0,
+    "contextWindow": 200000,
+    "contextTokens": 0,
+    "percentage": 0
+  }
+}

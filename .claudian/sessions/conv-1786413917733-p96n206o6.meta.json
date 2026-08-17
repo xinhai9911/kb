@@ -1,0 +1,28 @@
+{
+  "id": "conv-1786413917733-p96n206o6",
+  "providerId": "claude",
+  "title": "确认能否使用",
+  "titleGenerationStatus": "success",
+  "createdAt": 1786413917772,
+  "lastActivityAt": 1786413942030,
+  "sessionId": null,
+  "selectedModel": "haiku",
+  "providerState": {
+    "previousProviderSessionIds": [
+      "e15772ca-f356-4467-aa0d-14e4ca8b07cc"
+    ]
+  },
+  "currentNote": "Excalidraw/Drawing 2026-07-30 11.38.24.excalidraw.md",
+  "isPinned": false,
+  "isArchived": true,
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 1185,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 29696,
+    "contextWindow": 200000,
+    "contextTokens": 30881,
+    "percentage": 15,
+    "contextWindowIsAuthoritative": false
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "conversationId": "conv-1786530702257-zaq2w0aa0",
+  "records": [
+    {
+      "schemaVersion": 1,
+      "id": "msg-1786530702311-xikfvjd",
+      "userTurnOrdinal": 1,
+      "state": "accepted",
+      "localMessageId": "msg-1786530702253-nlen6lf",
+      "timestamp": 1786530702253,
+      "rawDisplayText": "你能用吗",
+      "canonicalText": "你能用吗",
+      "images": [],
+      "contentDigest": "5bf69e2bec60618918ce8f86bc23f729445d3e08dae87eb20270b6b4149fa057"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1786531234333-4hdj8yx",
+      "userTurnOrdinal": 2,
+      "state": "staged",
+      "localMessageId": "msg-1786531234309-s4x5sa1",
+      "timestamp": 1786531234309,
+      "rawDisplayText": "你能用吗",
+      "canonicalText": "你能用吗",
+      "images": [],
+      "contentDigest": "5bf69e2bec60618918ce8f86bc23f729445d3e08dae87eb20270b6b4149fa057"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1786609686855-9iauqhg",
+      "userTurnOrdinal": 1,
+      "state": "staged",
+      "localMessageId": "msg-1786609686836-ahd8sah",
+      "timestamp": 1786609686836,
+      "rawDisplayText": "检查下我的知识库缺少什么东西，帮我补充一下",
+      "canonicalText": "检查下我的知识库缺少什么东西，帮我补充一下",
+      "images": [],
+      "contentDigest": "a7b624e7715e8f01c2635b476939b6352fde874858919f9a92908865bdcd75cb"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1786936022934-tnjie6r",
+      "userTurnOrdinal": 1,
+      "state": "accepted",
+      "localMessageId": "msg-1786936022919-e2ymb6c",
+      "timestamp": 1786936022919,
+      "rawDisplayText": "顺序 待补知识点 价值 衔接点 ② Go 运行时（GMP/GC/Channel/内存模型） ★★★ K8s/容器/etcd/Cilium 全是 Go ③ Redis 缓存与数据结构 ★★ 分布式缓存经典模式 ④ GitOps（ArgoCD/Flux） ★★ 声明式交付进 K8s ⑤ HTTP/2 & HTTP/3(QUIC) ★★ 现代传输，当前只有 TLS ⑥ 关系型数据库内核（MySQL/PG） ★★ 现有只有 NoSQL ⑦ 认证授权（OAuth2/OIDC/JWT） ★★ 应用级 authn，安全域缺口 ⑧ 基础设施即代码（Terraform） ★ 运维域缺口",
+      "canonicalText": "顺序 待补知识点 价值 衔接点 ② Go 运行时（GMP/GC/Channel/内存模型） ★★★ K8s/容器/etcd/Cilium 全是 Go ③ Redis 缓存与数据结构 ★★ 分布式缓存经典模式 ④ GitOps（ArgoCD/Flux） ★★ 声明式交付进 K8s ⑤ HTTP/2 & HTTP/3(QUIC) ★★ 现代传输，当前只有 TLS ⑥ 关系型数据库内核（MySQL/PG） ★★ 现有只有 NoSQL ⑦ 认证授权（OAuth2/OIDC/JWT） ★★ 应用级 authn，安全域缺口 ⑧ 基础设施即代码（Terraform） ★ 运维域缺口",
+      "images": [],
+      "contentDigest": "c36312a6781f005bcd8805cfe716f888d6b14ec4fecb0f62117ef7898e6e4ee0"
+    }
+  ]
+}

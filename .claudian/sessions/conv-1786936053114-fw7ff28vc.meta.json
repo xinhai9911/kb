@@ -1,0 +1,23 @@
+{
+  "id": "conv-1786936053114-fw7ff28vc",
+  "providerId": "opencode",
+  "title": "顺序 待补知识点 价值 衔接点 ② Go 运行时（GMP/GC/Channel/内存模型） ★★★ ...",
+  "createdAt": 1786936053116,
+  "lastActivityAt": 1786950115255,
+  "sessionId": "ses_ff24fa836ffeDFnCRnLjVIELkn",
+  "selectedModel": "opencode:opencode/big-pickle",
+  "providerState": {
+    "databasePath": "C:\\Users\\DELL\\AppData\\Roaming\\opencode\\opencode.db",
+    "nativeConversationContextEstablished": true
+  },
+  "usage": {
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 0,
+    "contextTokens": 61042,
+    "contextWindow": 200000,
+    "contextWindowIsAuthoritative": true,
+    "inputTokens": 0,
+    "model": "opencode/big-pickle",
+    "percentage": 31
+  }
+}
