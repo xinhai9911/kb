@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "conversationId": "conv-1787040162627-g169rezmp",
+  "records": [
+    {
+      "schemaVersion": 1,
+      "id": "msg-1787040162717-lt9dtga",
+      "userTurnOrdinal": 1,
+      "state": "accepted",
+      "localMessageId": "msg-1787040162624-4i351yb",
+      "timestamp": 1787040162624,
+      "rawDisplayText": "大模型推理框架 怎么没有看SGLang 的介绍，帮我补充一下",
+      "canonicalText": "大模型推理框架 怎么没有看SGLang 的介绍，帮我补充一下",
+      "context": {
+        "currentNote": {
+          "path": "sources/LLMForEverybody/02-第二章-部署与推理/大模型推理框架（四）TensorRT-LLM.md"
+        }
+      },
+      "images": [],
+      "contentDigest": "797b5de3959bc376643467b9f29cb272595145f06bed25abbe716127895d92bd",
+      "providerAssistantMessageId": "msg_013e68b10001WFW7N0wBnX7khI"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1787040813785-kni1px0",
+      "userTurnOrdinal": 2,
+      "state": "accepted",
+      "localMessageId": "msg-1787040813780-4pxpjoq",
+      "timestamp": 1787040813780,
+      "rawDisplayText": "SGLANG 另起一个章节 （六）不要放在综述中",
+      "canonicalText": "SGLANG 另起一个章节 （六）不要放在综述中",
+      "images": [],
+      "contentDigest": "eb12906d19ffa15ab951636a0184cee6b0e634284f2a8c370c9b8c0bfb3a7f55",
+      "providerAssistantMessageId": "msg_013ef366b001kaLqA0RC1G4G0X"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1787040908340-tjdyikp",
+      "userTurnOrdinal": 3,
+      "state": "accepted",
+      "localMessageId": "msg-1787040908330-o5i2ulb",
+      "timestamp": 1787040908330,
+      "rawDisplayText": "建立链接关系了吗",
+      "canonicalText": "建立链接关系了吗",
+      "images": [],
+      "contentDigest": "89ff381ed223a359145b54df9b966a4a492e9c21bcc447288468f7fe644c96c8",
+      "providerAssistantMessageId": "msg_013f10511001DO0e37H4M1iVOB"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1787041006984-8colqri",
+      "userTurnOrdinal": 4,
+      "state": "accepted",
+      "localMessageId": "msg-1787041006979-t3bknz7",
+      "timestamp": 1787041006979,
+      "rawDisplayText": "还缺少 llama.cpp 在补充一下",
+      "canonicalText": "还缺少 llama.cpp 在补充一下",
+      "images": [],
+      "contentDigest": "3d573c144d9baae8fc034f6b652b1315e0952c6ed37eed06815695b5f16df7f9",
+      "providerAssistantMessageId": "msg_013f3498d001C90orxLN83RnEN"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1787046693277-zcov4p1",
+      "userTurnOrdinal": 5,
+      "state": "accepted",
+      "localMessageId": "msg-1787046693261-1p97rf1",
+      "timestamp": 1787046693261,
+      "rawDisplayText": "增加vllm 相关的资料，源码在 Q:\\AI\\vllm\\vllm 这个位置，可以在网上也查查。我想了解vllm 的详细情况",
+      "canonicalText": "增加vllm 相关的资料，源码在 Q:\\AI\\vllm\\vllm 这个位置，可以在网上也查查。我想了解vllm 的详细情况",
+      "images": [],
+      "contentDigest": "538c526d1f0504dd46a734cfa411a2921b6d9a583bf7885550e37c93225a6037",
+      "providerAssistantMessageId": "msg_014523b30001PIsPlNeFHvkqzC"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1787047361900-j0oglhc",
+      "userTurnOrdinal": 6,
+      "state": "accepted",
+      "localMessageId": "msg-1787047361895-81650w7",
+      "timestamp": 1787047361895,
+      "rawDisplayText": "你放在哪个位置的？",
+      "canonicalText": "你放在哪个位置的？",
+      "images": [],
+      "contentDigest": "0860faf213fadcfa7ac812035807320bb9ab935cec6ee4f7a12b7594eb3b5184",
+      "providerAssistantMessageId": "msg_01452bda3001KvGMqdjAms3W3d"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1787047514821-dz20ts9",
+      "userTurnOrdinal": 7,
+      "state": "accepted",
+      "localMessageId": "msg-1787047514816-11proho",
+      "timestamp": 1787047514816,
+      "rawDisplayText": "好的",
+      "canonicalText": "好的",
+      "images": [],
+      "contentDigest": "51b4536a9712c455aa8cd06222caa1e9d708079cb60e8e40d55da1270e07d62a",
+      "providerAssistantMessageId": "msg_014551318001AP9TBavBc0vSrp"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1787047693280-opghy3q",
+      "userTurnOrdinal": 8,
+      "state": "accepted",
+      "localMessageId": "msg-1787047693275-a6jw57l",
+      "timestamp": 1787047693275,
+      "rawDisplayText": "obsidian 链接处理了没有",
+      "canonicalText": "obsidian 链接处理了没有",
+      "images": [],
+      "contentDigest": "f5dfeb4d1fcf9543da903b2dbcf3b768c862b5a61cf04510f19a491316c8fd88",
+      "providerAssistantMessageId": "msg_0145b8b06001Z0vCqOcm3mtCuo"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1787048052796-bbyn521",
+      "userTurnOrdinal": 9,
+      "state": "accepted",
+      "localMessageId": "msg-1787048052791-n6c4na4",
+      "timestamp": 1787048052791,
+      "rawDisplayText": "内容详细不，不要到时候看不懂",
+      "canonicalText": "内容详细不，不要到时候看不懂",
+      "images": [],
+      "contentDigest": "bedf20a340f8f3e4f8568451ad50ed1560eed6d59cac1f9ae3270c73308055f8",
+      "providerAssistantMessageId": "msg_0146cecd3001ise1ShsRkPtlPQ"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1787049169898-j37ythh",
+      "userTurnOrdinal": 10,
+      "state": "accepted",
+      "localMessageId": "msg-1787049169882-r7n9xjo",
+      "timestamp": 1787049169882,
+      "rawDisplayText": "你处理了吗",
+      "canonicalText": "你处理了吗",
+      "images": [],
+      "contentDigest": "459464eaa7ee5715ff69cd9d986cf3de2b7ecd274a6bb6e1e5dec1134d7403fd"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1787049188850-vvmci6l",
+      "userTurnOrdinal": 11,
+      "state": "accepted",
+      "localMessageId": "msg-1787049188846-0edmvsp",
+      "timestamp": 1787049188846,
+      "rawDisplayText": "你放在哪个位置的？",
+      "canonicalText": "你放在哪个位置的？",
+      "images": [],
+      "contentDigest": "0860faf213fadcfa7ac812035807320bb9ab935cec6ee4f7a12b7594eb3b5184"
+    }
+  ]
+}

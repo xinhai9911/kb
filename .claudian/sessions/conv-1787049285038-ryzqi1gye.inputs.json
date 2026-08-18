@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "conversationId": "conv-1787049285038-ryzqi1gye",
+  "records": [
+    {
+      "schemaVersion": 1,
+      "id": "msg-1787049285068-7ul2w4y",
+      "userTurnOrdinal": 1,
+      "state": "accepted",
+      "localMessageId": "msg-1787049285035-wzzl3qh",
+      "timestamp": 1787049285035,
+      "rawDisplayText": "现在还有哪些修改没有提交",
+      "canonicalText": "现在还有哪些修改没有提交",
+      "images": [],
+      "contentDigest": "7dfe4cbbc376d1c753c5150bd67a0a4ffcb7979c0175876b7a845dd938c501a5",
+      "providerAssistantMessageId": "msg_014706cf2001yREDr3j6Bukl24"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1787049384675-6jcynmc",
+      "userTurnOrdinal": 2,
+      "state": "accepted",
+      "localMessageId": "msg-1787049384670-abnbvki",
+      "timestamp": 1787049384670,
+      "rawDisplayText": "帮我提交修改",
+      "canonicalText": "帮我提交修改",
+      "images": [],
+      "contentDigest": "f31e0c0a3f2b721328e0630a3f6aa24d74e426f70b71d70f0db55e56a642c70e"
+    }
+  ]
+}

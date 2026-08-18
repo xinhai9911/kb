@@ -65,12 +65,12 @@ LLM 推理的自回归特性（逐 token 生成）导致两个瓶颈：
 
 ## 主流推理引擎
 
-| 引擎 | 适用场景 | 关键特性 |
-|------|----------|----------|
-| vLLM | 通用生产部署 | PagedAttention, Continuous Batching |
-| llama.cpp | CPU/边缘/本地 | GGUF 量化格式, 跨平台 |
-| TensorRT-LLM | NVIDIA 最优 | 图优化, 融合核, FP8 |
-| TGI | Hugging Face 生态 | 与 Transformers 库深度集成 |
+| 引擎           | 适用场景            | 关键特性                                |
+| ------------ | --------------- | ----------------------------------- |
+| vLLM         | 通用生产部署          | PagedAttention, Continuous Batching |
+| llama.cpp    | CPU/边缘/本地       | GGUF 量化格式, 跨平台                      |
+| TensorRT-LLM | NVIDIA 最优       | 图优化, 融合核, FP8                       |
+| TGI          | Hugging Face 生态 | 与 Transformers 库深度集成                |
 
 ## 参考文献
 

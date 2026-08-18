@@ -215,5 +215,6 @@ python -m sglang.launch_server \
 
 ## 📖 来源参考
 
-- **LLMForEverybody**：[[sources/LLMForEverybody/索引#部署与推理|部署与推理（第02章）]]
+- **LLMForEverybody**：[[sources/LLMForEverybody/02-第二章-部署与推理/大模型推理框架（六）SGLang|大模型推理框架（六）SGLang]] — 专题介绍文章
+- **导航**：[[sources/LLMForEverybody/索引#部署与推理|部署与推理（第02章）]]
 > 来自 [luhengshiwo/LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody) 外部知识库导入

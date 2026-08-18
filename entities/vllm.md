@@ -1,11 +1,11 @@
 ---
 title: vLLM 推理引擎
-tags: [llm, inference-engine, vllm, pagedattention, serving, active]
+tags: [llm, inference-engine, vllm, pagedattention, serving, distributed, active]
 lifecycle: active
 category: entity
-base_confidence: 0.85
+base_confidence: 0.88
 created: 2026-08-17
-updated: 2026-08-17
+updated: 2026-08-18
 summary: >-
   vLLM：高性能 LLM 推理和服务引擎，核心创新 PagedAttention 实现高效 KV Cache 管理，
   支持 Continuous Batching、Prefix Caching、FP8 量化、张量并行，是当前最流行的开源推理引擎。
@@ -28,32 +28,37 @@ summary: >-
 
 ## 核心架构
 
+> 当前版本以 **V1 架构**为默认主线（约 vLLM ≥ 0.8 起逐步成为默认，新版移除/弱化 V0）。V1 把调度、KV 管理、注意力全部重写到 `vllm/vllm/v1/`，请求流转更扁平、开销更低。下图为逻辑组件视图，真实进程/代码路径见 [[sources/vLLM 源码 导读|vLLM 源码导读]] 与 [[concepts/PagedAttention|PagedAttention]]。
+
 ```
 ┌──────────────────────────────────────────┐
-│              API Server (OpenAI 兼容)     │
+│              API Server (OpenAI 兼容)     │  vllm/entrypoints/openai/api_server.py
 ├──────────────────────────────────────────┤
-│          Scheduler（调度器）              │
-│  ┌─────────┐  ┌──────────┐  ┌────────┐  │
-│  │ Waiting  │→│ Running  │→│Swapped │  │
-│  │  Queue   │  │  Queue   │  │ Queue  │  │
-│  └─────────┘  └──────────┘  └────────┘  │
+│   LLMEngine（主进程, 用户态 API）         │  vllm/v1/engine/llm_engine.py
+│   ├─ add_request / step / from_engine_args│
+│   └─ 通过 EngineCoreClient 与核心通信     │  vllm/v1/engine/core_client.py
+├─────────────── ZMQ / 共享内存 ────────────┤
+│   EngineCore（独立后台进程）              │  vllm/v1/engine/core.py
+│   ├─ Scheduler（调度器, 连续批处理）      │  vllm/v1/core/sched/scheduler.py
+│   │   Waiting → Running → Swapped        │
+│   ├─ KV Cache Manager（块管理/前缀命中） │  vllm/v1/core/kv_cache_manager.py
+│   └─ Executor（单机多卡/多机）           │  vllm/v1/executor/
 ├──────────────────────────────────────────┤
-│       Block Manager（块管理器）           │
-│  ┌──────────────────────────────────┐    │
-│  │  PagedAttention KV Cache Store   │    │
-│  │  Block Table: Logical→Physical   │    │
-│  └──────────────────────────────────┘    │
-├──────────────────────────────────────────┤
-│       Model Runner（模型执行器）          │
-│  ┌─────────┐  ┌──────────┐  ┌────────┐  │
-│  │ Attention│  │  MLP     │  │  All   │  │
-│  │ (FA/PA)  │  │ (Fused)  │  │ Layers │  │
-│  └─────────┘  └──────────┘  └────────┘  │
-├──────────────────────────────────────────┤
-│       Worker（多 GPU 并行）               │
-│  Worker 0 │ Worker 1 │ ... │ Worker N    │
+│       Worker（每 GPU 一个进程）           │  vllm/v1/worker/gpu_worker.py
+│   ├─ GPUModelRunner（前向 + 采样核心）    │  vllm/v1/worker/gpu_model_runner.py
+│   ├─ Block Table（逻辑→物理块映射）       │  vllm/v1/worker/block_table.py
+│   └─ PagedAttention（块表 + 分页 kernel） │  vllm/v1/attention/ops/paged_attn.py
 └──────────────────────────────────────────┘
 ```
+
+### V1 的请求流转（一次 `generate`）
+
+1. **入口**：`LLM`（Python 库，`vllm/entrypoints/llm.py`）或 OpenAI 服务（`vllm/entrypoints/openai/api_server.py`）接收请求，构造 `EngineArgs` → `VllmConfig`。
+2. **主进程引擎** `LLMEngine`（`vllm/v1/engine/llm_engine.py`）：`add_request()` 入队，`step()` 驱动迭代，通过 `EngineCoreClient`（进程内 / 多进程 `MPClient` / 异步 `AsyncMPClient`）把请求发往核心。
+3. **后台核心** `EngineCore`/`EngineCoreProc`（`vllm/v1/engine/core.py`）：跑在**独立进程**，每个迭代 `step()` = `Scheduler.schedule()`（选请求、分配 KV 块、处理前缀/抢占）→ `Executor.execute_model()`（把 batch 喂给 Worker）。
+4. **调度** `Scheduler.schedule()`（`vllm/v1/core/sched/scheduler.py`）：**没有显式的 prefill/decode 阶段**，每个请求只维护 `num_computed_tokens` 与 `num_tokens_with_spec`，统一覆盖 chunked prefill、前缀缓存、推测解码。统一用 `max_num_batched_tokens` token 预算调度。
+5. **执行** `Executor`（`vllm/v1/executor/`）：`MultiprocExecutor` 单机多卡（每卡一个 `WorkerProc`），`RayDistributedExecutor` 多机（Ray）。
+6. **Worker** `Worker`（`vllm/v1/worker/gpu_worker.py`）：每张 GPU 一个，核心逻辑在 `GPUModelRunner`（`gpu_model_runner.py`）——组装输入批、构建注意力元数据、跑模型前向、采样，并调用 PagedAttention kernel 读写分页 KV Cache。
 
 ## 核心特性
 
@@ -289,5 +294,7 @@ docker run --gpus all \
 
 ## 📖 来源参考
 
-- **LLMForEverybody**：[[sources/LLMForEverybody/索引#部署与推理|部署与推理（第02章）]]
+- **深度解析**：[[sources/vLLM-Deep-Dive|vLLM 深度解析]] — 基于源码的架构与技术详解
+- **LLMForEverybody**：[[sources/LLMForEverybody/02-第二章-部署与推理/大模型推理框架（二）vLLM|大模型推理框架（二）vLLM]] — 专题介绍文章
+- **导航**：[[sources/LLMForEverybody/索引#部署与推理|部署与推理（第02章）]]
 > 来自 [luhengshiwo/LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody) 外部知识库导入

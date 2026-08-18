@@ -1,10 +1,10 @@
 {
-  "id": "conv-1787019235007-131jvywfp",
+  "id": "conv-1787040162627-g169rezmp",
   "providerId": "opencode",
   "title": "大模型推理框架 怎么没有看SGLang 的介绍，帮我补充一下",
-  "createdAt": 1787019235028,
-  "lastActivityAt": 1787040128898,
-  "sessionId": "ses_fed5a6524ffe3JqvcDwtBYbugq",
+  "createdAt": 1787040162697,
+  "lastActivityAt": 1787049202346,
+  "sessionId": "ses_fec1b1181ffe11VyjjuP8RI41S",
   "selectedModel": "opencode:opencode/big-pickle",
   "providerState": {
     "databasePath": "C:\\Users\\DELL\\AppData\\Roaming\\opencode\\opencode.db",
@@ -13,11 +13,11 @@
   "usage": {
     "cacheCreationInputTokens": 0,
     "cacheReadInputTokens": 0,
-    "contextTokens": 39369,
+    "contextTokens": 128001,
     "contextWindow": 200000,
     "contextWindowIsAuthoritative": false,
     "inputTokens": 0,
     "model": "opencode:opencode/big-pickle",
-    "percentage": 20
+    "percentage": 64
   }
 }

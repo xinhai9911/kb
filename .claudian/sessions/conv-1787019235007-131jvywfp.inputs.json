@@ -63,7 +63,20 @@
       "rawDisplayText": "提交",
       "canonicalText": "提交",
       "images": [],
-      "contentDigest": "5dc86c74fbf304de0a09c341f4beeec53630756409f8d52be60b94adba9b2a98"
+      "contentDigest": "5dc86c74fbf304de0a09c341f4beeec53630756409f8d52be60b94adba9b2a98",
+      "providerAssistantMessageId": "msg_012bfca3e001ZTFijx275Jta8L"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1787040114993-0har7ho",
+      "userTurnOrdinal": 1,
+      "state": "staged",
+      "localMessageId": "msg-1787040114923-dslwdxv",
+      "timestamp": 1787040114923,
+      "rawDisplayText": "大模型推理框架 怎么没有看SGLang 的介绍，帮我补充一下",
+      "canonicalText": "大模型推理框架 怎么没有看SGLang 的介绍，帮我补充一下",
+      "images": [],
+      "contentDigest": "797b5de3959bc376643467b9f29cb272595145f06bed25abbe716127895d92bd"
     }
   ]
 }
