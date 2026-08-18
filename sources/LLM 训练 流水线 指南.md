@@ -73,3 +73,11 @@ base_confidence: 0.6
 ## 参考文献
 
 DataSci Ocean. (2026). LLM Training Pipeline Guide. Zhipu AI Technical Blog.
+
+
+---
+
+## 📖 来源参考
+
+- **LLMForEverybody**：[[sources/LLMForEverybody/索引#预训练|预训练（第01章）]]
+> 来自 [luhengshiwo/LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody) 外部知识库导入

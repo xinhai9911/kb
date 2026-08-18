@@ -97,3 +97,12 @@ Prompt Tuning — это техника тонкой настройки круп
 [2] [HuggingFace:PEFT](https://huggingface.co/docs/peft/package_reference/)
 
 [3] [GitHub: LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody)
+
+
+---
+
+## 📚 相关概念
+
+[[concepts/LoRA PEFT 微调|LoRA PEFT 微调]] | [[concepts/模型 压缩 蒸馏|模型 压缩 蒸馏]] | [[entities/Hugging Face|Hugging Face]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：微调

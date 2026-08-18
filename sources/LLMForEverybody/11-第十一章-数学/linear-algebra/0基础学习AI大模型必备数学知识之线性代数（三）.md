@@ -108,3 +108,11 @@ identity 在英语中有‘身份’的意思，在数学术语中，identity也
 [GitHub: LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody)
 
 仓库上有原始的Markdown文件，完全开源，欢迎大家Star和Fork！
+
+---
+
+## 📚 相关概念
+
+[[concepts/Transformer 架构|Transformer 架构]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：数学

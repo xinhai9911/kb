@@ -73,3 +73,12 @@ Based on checking answers, multiple-choice and case analysis were passed, but I 
 <div id="refer-anchor-1"></div>
 
 [1] [GitHub: LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody)
+
+
+---
+
+## 📚 相关概念
+
+[[concepts/AI 安全 对齐|AI 安全 对齐]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：热点

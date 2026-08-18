@@ -188,3 +188,10 @@ docker run --gpus all \
 **最后更新**：2026-08-17
 **维护者**：Claudian
 **状态**：活跃维护中
+
+---
+
+## 📖 来源参考
+
+- **LLMForEverybody**：[[sources/LLMForEverybody/索引#部署与推理|部署与推理（第02章）]]
+> 来自 [luhengshiwo/LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody) 外部知识库导入

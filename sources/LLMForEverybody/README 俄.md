@@ -507,3 +507,9 @@ aliases: ["README.ru"]
 
 
 [![Star History Chart](https://star-history.dera.page/svg?repos=luhengshiwo/LLMForEverybody&type=Date)](https://star-history.dera.page/#luhengshiwo/LLMForEverybody&Date)
+
+---
+
+## 🔗 关联
+
+- [[sources/LLMForEverybody/索引|LLMForEverybody 导航总览]]

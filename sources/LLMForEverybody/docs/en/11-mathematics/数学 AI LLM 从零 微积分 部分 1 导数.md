@@ -49,3 +49,12 @@ Chain rule is an important concept in calculus, used to find the derivative of a
 <div id="refer-anchor-1"></div>
 
 [1] [machine-learning-calculus](https://www.coursera.org/learn/machine-learning-calculus/home/module/1)
+
+
+---
+
+## 📚 相关概念
+
+[[concepts/Transformer 架构|Transformer 架构]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：数学

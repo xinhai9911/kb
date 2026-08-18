@@ -63,3 +63,11 @@ DeepSeek V4 是 DeepSeek 公司（中国幻方量化旗下）的最新大语言�
 ## 参考文献
 
 DeepSeek-AI. (2025). DeepSeek V4: Technical Report. *arXiv preprint*.
+
+
+---
+
+## 📖 来源参考
+
+- **LLMForEverybody**：[[sources/LLMForEverybody/索引#AGI之路|AGI之路（第00章）]] / [[sources/LLMForEverybody/索引#预训练|预训练（第01章）]]
+> 来自 [luhengshiwo/LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody) 外部知识库导入

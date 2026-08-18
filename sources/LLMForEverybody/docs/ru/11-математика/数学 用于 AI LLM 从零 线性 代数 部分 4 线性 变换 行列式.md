@@ -102,3 +102,12 @@ $det(I) = 1$
 ## Ссылки
 
 [1] [machine-learning-linear-algebra](https://www.coursera.org/learn/machine-learning-linear-algebra/home/week/4)
+
+
+---
+
+## 📚 相关概念
+
+[[concepts/Transformer 架构|Transformer 架构]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：数学

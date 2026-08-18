@@ -75,3 +75,8 @@ LLM 推理的自回归特性（逐 token 生成）导致两个瓶颈：
 ## 参考文献
 
 Zylos AI. (2026). LLM Inference Optimization: A Comprehensive Guide.
+
+## 🔗 关联
+
+- [[concepts/LLM 推理 优化|LLM 推理优化]] — 概念笔记
+- [[sources/LLMForEverybody/索引|LLMForEverybody 导航]] — 第二章「部署与推理」

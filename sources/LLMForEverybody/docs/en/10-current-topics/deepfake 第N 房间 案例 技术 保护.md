@@ -97,3 +97,12 @@ I think you cannot spend a thousand days catching a thief, but you can avoid giv
 ## Follow my GitHub and WeChat Official Account. No time to explain, come aboard!
 
 [GitHub: LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody)
+
+
+---
+
+## 📚 相关概念
+
+[[concepts/AI 安全 对齐|AI 安全 对齐]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：热点

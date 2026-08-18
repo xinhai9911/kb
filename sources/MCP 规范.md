@@ -54,3 +54,11 @@ MCP（Model Context Protocol）是 Anthropic 提出的开放协议，为 LLM 提
 - 官方 SDK：Python、TypeScript
 - 社区集成：VS Code、JetBrains、Obsidian
 - 预构建服务器：文件系统、数据库、GitHub、Slack
+
+
+---
+
+## 📖 来源参考
+
+- **LLMForEverybody**：[[sources/LLMForEverybody/索引#Agent|Agent（第07章）]]
+> 来自 [luhengshiwo/LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody) 外部知识库导入

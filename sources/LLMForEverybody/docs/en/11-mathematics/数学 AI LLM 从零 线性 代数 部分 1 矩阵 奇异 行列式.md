@@ -97,3 +97,12 @@ If you do not want to study linear algebra deeply, you do not need to know this 
 [GitHub: LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody)
 
 The repository has the original Markdown files. Everything is fully open source, and stars and forks are very welcome!
+
+
+---
+
+## 📚 相关概念
+
+[[concepts/Transformer 架构|Transformer 架构]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：数学

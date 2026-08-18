@@ -75,3 +75,11 @@ Transformer的一个很大的优点是可以很好的利用GPU的并行计算能
 [GitHub: LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody)
 
 仓库上有原始的Markdown文件，完全开源，欢迎大家Star和Fork！
+
+---
+
+## 📚 相关概念
+
+[[concepts/分布式推理|分布式推理]] | [[concepts/Transformer 架构|Transformer 架构]] | [[entities/Hugging Face|Hugging Face]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：显卡与并行

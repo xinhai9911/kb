@@ -50,3 +50,11 @@ LangChain 是构建 LLM 应用最广泛的开源框架之一，LangGraph 是其�
 ## 与 Anthropic Agent 对比
 
 LangGraph 更适合需要复杂状态管理和多步编排的场景，而 Anthropic 的 Agent 方案更简洁、更适合单模型场景。
+
+
+---
+
+## 📖 来源参考
+
+- **LLMForEverybody**：[[sources/LLMForEverybody/索引#Agent|Agent（第07章）]]
+> 来自 [luhengshiwo/LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody) 外部知识库导入

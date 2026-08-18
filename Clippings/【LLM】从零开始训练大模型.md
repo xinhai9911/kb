@@ -897,3 +897,11 @@ PPO 以其「训练过程不稳定」和「效果不稳定」著称，这里我�
 编辑于 2023-11-13 15:48・北京
 
 赞同 3165
+
+---
+
+## 🔗 关联
+
+- [[concepts/LLM 训练 流水线|LLM 训练管线]]
+- [[concepts/Transformer 架构|Transformer 架构]]
+- [[sources/LLMForEverybody/索引|LLMForEverybody 导航]]

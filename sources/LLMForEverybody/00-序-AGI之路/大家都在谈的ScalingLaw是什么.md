@@ -67,3 +67,12 @@ Scaling Law 规模定律通常会和摩尔定律相提并论, 摩尔定律在过
 
 
 
+
+
+---
+
+## 📚 相关概念
+
+[[concepts/Transformer 架构|Transformer 架构]] | [[concepts/LLM 评估 基准|LLM 评估 基准]] | [[entities/DeepSeek|DeepSeek]] | [[sources/Vaswani 2017 Attention|Vaswani 2017 Attention]] | [[sources/DeepSeek 4 技术|DeepSeek 4 技术]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：AGI之路

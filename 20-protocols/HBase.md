@@ -33,3 +33,8 @@ HBase 的 RPC 协议与 REST 接口分析。
 ## 状态
 
 active。已在 db-decoder-workflow 中通过验证。
+
+## 关联项目
+
+- [[10-projects/数据库 解码器|Database Decoder 工作流]] — HBase 解码器是该项目的已完成模块
+- [[projects/db-decoder-ironhive/解码器 轨道|解码器开发 Track]] — IronHive 解码器状态机

@@ -102,3 +102,12 @@ In 1901, the Russian mathematician Lyapunov gave a definition of the Central Lim
 [1] [probability-and-statistics](https://www.coursera.org/learn/machine-learning-probability-and-statistics/home/week/3)
 
 [2] [Central Limit Theorem](https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86)
+
+
+---
+
+## 📚 相关概念
+
+[[concepts/Transformer 架构|Transformer 架构]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：数学

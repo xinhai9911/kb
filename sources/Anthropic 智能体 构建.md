@@ -50,3 +50,11 @@ Anthropic 提供了构建 AI Agent 的官方指导，聚焦于 Claude 模型的�
 - 长上下文下的延迟和成本
 - 工具调用错误处理
 - 安全护栏与滥用防护
+
+
+---
+
+## 📖 来源参考
+
+- **LLMForEverybody**：[[sources/LLMForEverybody/索引#Agent|Agent（第07章）]]
+> 来自 [luhengshiwo/LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody) 外部知识库导入

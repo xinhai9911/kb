@@ -162,3 +162,12 @@ MAC (Multiply-Accumulate)
 ## Ссылки
 
 [GitHub: LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody)
+
+
+---
+
+## 📚 相关概念
+
+[[concepts/分布式推理|分布式推理]] | [[concepts/Transformer 架构|Transformer 架构]] | [[entities/Hugging Face|Hugging Face]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：显卡与并行

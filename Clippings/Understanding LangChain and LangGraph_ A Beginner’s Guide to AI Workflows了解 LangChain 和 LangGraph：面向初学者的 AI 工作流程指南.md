@@ -250,3 +250,12 @@ Whether you are building a chatbot, an agent, or a knowledge assistant, these to
 
 *Hope you enjoyed this article. Signup for my free newsletter* [***TuringTalks.ai***](https://www.turingtalks.ai/) *for more hands-on tutorials on AI. You can also* [***visit my website***](https://manishshivanandhan.com/)*.*  
 希望您喜欢这篇文章。如果您想获取更多关于人工智能的实际操作教程，可以注册我的免费通讯 TuringTalks.aif，也可以访问我的网站。
+
+---
+
+## 关联
+
+- [[concepts/RAG 检索 增强 生成|RAG 检索增强生成]]
+- [[concepts/智能体 编排 模式|Agent 编排模式]]
+- [[entities/LangChain|LangChain]]
+- [[sources/LLMForEverybody/索引|LLMForEverybody 导航]]

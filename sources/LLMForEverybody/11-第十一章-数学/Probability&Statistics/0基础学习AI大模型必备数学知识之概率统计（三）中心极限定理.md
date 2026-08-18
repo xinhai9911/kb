@@ -101,3 +101,11 @@ AI是理科+工科的交叉学科，牢固的数学知识有助于理解算法�
 [1] [robability-and-statistics](https://www.coursera.org/learn/machine-learning-probability-and-statistics/home/week/3)
 
 [2] [中心极限定理](https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86)
+
+---
+
+## 📚 相关概念
+
+[[concepts/Transformer 架构|Transformer 架构]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：数学

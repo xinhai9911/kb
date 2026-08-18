@@ -98,3 +98,12 @@ Diffusion Model - одна из популярных AIGC-моделей пос�
 ## Подписывайтесь на мой GitHub и WeChat Official Account. Некогда объяснять, все на борт!
 
 [GitHub: LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody)
+
+
+---
+
+## 📚 相关概念
+
+[[concepts/AI 安全 对齐|AI 安全 对齐]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：热点

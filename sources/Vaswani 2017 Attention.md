@@ -52,10 +52,18 @@ base_confidence: 0.6
 
 ## 后续影响
 
-- 几乎所有 [[entities/OpenAI 2|OpenAI]] GPT 系列模型均基于 Decoder-only Transformer
+- 几乎所有 [[entities/OpenAI|OpenAI]] GPT 系列模型均基于 Decoder-only Transformer
 - [[concepts/LLM 推理 优化|推理优化]] 领域的 FlashAttention、PagedAttention 解决其 O(n²) 瓶颈
 - 架构迭代方向包括：GQA（分组查询注意力）、MQA（多查询注意力）、RoPE（旋转位置编码）、ALiBi（线性偏置位置编码）、MoE（混合专家）
 
 ## 参考文献
 
 Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, L., & Polosukhin, I. (2017). Attention Is All You Need. *NeurIPS 2017*.
+
+
+---
+
+## 📖 来源参考
+
+- **LLMForEverybody**：[[sources/LLMForEverybody/索引#AGI之路|AGI之路（第00章）]] / [[sources/LLMForEverybody/索引#预训练|预训练（第01章）]]
+> 来自 [luhengshiwo/LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody) 外部知识库导入

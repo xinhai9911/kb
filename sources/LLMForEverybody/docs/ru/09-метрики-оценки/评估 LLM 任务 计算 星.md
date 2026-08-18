@@ -56,3 +56,12 @@ NeedleInAHaystack уже стал базовым методом оценки lon
 [GitHub: LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody)
 
 В репозитории есть исходные Markdown-файлы. Все полностью open source, буду рад вашим Star и Fork!
+
+
+---
+
+## 📚 相关概念
+
+[[concepts/LLM 评估 基准|LLM 评估 基准]] | [[concepts/智能体 评估 基准|智能体 评估 基准]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：评估指标

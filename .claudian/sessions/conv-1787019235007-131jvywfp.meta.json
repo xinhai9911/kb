@@ -1,0 +1,23 @@
+{
+  "id": "conv-1787019235007-131jvywfp",
+  "providerId": "opencode",
+  "title": "关系图谱有很多散落的帮我处理一下",
+  "createdAt": 1787019235028,
+  "lastActivityAt": 1787020882794,
+  "sessionId": "ses_fed5a6524ffe3JqvcDwtBYbugq",
+  "selectedModel": "opencode:opencode/big-pickle",
+  "providerState": {
+    "databasePath": "C:\\Users\\DELL\\AppData\\Roaming\\opencode\\opencode.db",
+    "nativeConversationContextEstablished": true
+  },
+  "usage": {
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 0,
+    "contextTokens": 122633,
+    "contextWindow": 200000,
+    "contextWindowIsAuthoritative": true,
+    "inputTokens": 0,
+    "model": "opencode/big-pickle",
+    "percentage": 61
+  }
+}

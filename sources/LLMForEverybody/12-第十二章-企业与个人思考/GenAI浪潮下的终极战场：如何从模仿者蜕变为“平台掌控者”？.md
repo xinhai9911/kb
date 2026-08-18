@@ -100,3 +100,12 @@
 ## 参考
 
 [GitHub: LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody)
+
+
+---
+
+## 📚 相关概念
+
+[[concepts/LLM 应用 生态|LLM 应用 生态]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：企业与个人思考

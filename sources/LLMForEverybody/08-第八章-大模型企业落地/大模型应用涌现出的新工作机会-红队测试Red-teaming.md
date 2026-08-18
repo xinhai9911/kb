@@ -223,3 +223,11 @@ Refined Answer: The original query is to print the previous text replacing comma
 [GitHub: LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody)
 
 仓库上有原始的Markdown文件，完全开源，欢迎大家Star和Fork！
+
+---
+
+## 📚 相关概念
+
+[[concepts/AI 安全 对齐|AI 安全 对齐]] | [[concepts/LLM 应用 生态|LLM 应用 生态]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：企业落地

@@ -57,9 +57,9 @@ Transformer 架构 [concepts/transformer-architecture]
 ### 2. "预训练 → SFT → 对齐"三阶段范式确立
 
 当前几乎所有主流模型遵循此管线。分歧在于第三阶段的选择：
-- [[entities/OpenAI 2|OpenAI]] / Anthropic 坚持 RLHF
+- [[entities/OpenAI|OpenAI]] / Anthropic 坚持 RLHF
 - Meta (LLaMA-3) 、Mistral 使用 DPO
-- [[entities/DeepSeek 2|DeepSeek]] 使用 GRPO（最简方案）
+- [[entities/DeepSeek|DeepSeek]] 使用 GRPO（最简方案）
 
 ### 3. 开源与闭源差距急剧缩小
 
@@ -70,7 +70,7 @@ DeepSeek V4 和 LLaMA-3 405B 证明开源模型在多数基准上可与 GPT-4 �
 
 ### 4. 推理优化成为核心竞争点
 
-推理成本直接影响产品可行性。FlashAttention、PagedAttention、量化、推测解码等技术组合可降低 10x+ 推理成本。[[entities/DeepSeek 2|DeepSeek]] 以 $0.14/M tokens 的定价将竞争推向白热化。
+推理成本直接影响产品可行性。FlashAttention、PagedAttention、量化、推测解码等技术组合可降低 10x+ 推理成本。[[entities/DeepSeek|DeepSeek]] 以 $0.14/M tokens 的定价将竞争推向白热化。
 
 ### 5. 中国大模型生态双轨并行
 

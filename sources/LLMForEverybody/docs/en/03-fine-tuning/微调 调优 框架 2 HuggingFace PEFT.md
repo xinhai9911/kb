@@ -123,3 +123,12 @@ print(tokenizer.batch_decode(outputs.detach().cpu().numpy(), skip_special_tokens
 [GitHub: LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody)
 
 The repository has the original Markdown files, and everything is fully open source. Stars and forks are very welcome.
+
+
+---
+
+## 📚 相关概念
+
+[[concepts/LoRA PEFT 微调|LoRA PEFT 微调]] | [[concepts/模型 压缩 蒸馏|模型 压缩 蒸馏]] | [[entities/Hugging Face|Hugging Face]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：微调

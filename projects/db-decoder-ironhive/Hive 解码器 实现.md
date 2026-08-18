@@ -44,3 +44,8 @@ updated: 2026-07-29
 > [!warning] falcon 不支持动态加载自定义协议 .so
 > falcon 的 `app-layer.protocols` 不支持动态加载自定义协议 .so 文件。
 > `RegisterHiveParsers` 函数从未被执行。需挂到 `hbase` 键名下使用。
+
+## 🔗 关联
+
+- [[projects/db-decoder-ironhive/DB 解码器 IronHive|项目概述]]
+- [[10-projects/数据库 解码器|Database Decoder 工作流]]

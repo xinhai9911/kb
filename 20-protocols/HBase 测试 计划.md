@@ -96,3 +96,11 @@ scp libhbase.so user@host:/home/lujun2/test_falcon_run_osms/falcon-database-prot
 - 报文解析示例（dropTable）：[[HBase 删除 表 包]]
 - 测试执行计划：[[HBase 测试 执行]]
 - 报告模板：[[30-snippets/HBase 测试 报告 模板]]
+
+---
+
+## 🔗 关联
+
+- [[20-protocols/HBase|HBase 协议分析]] — 主协议页
+- [[10-projects/数据库 解码器|Database Decoder 工作流]] — 所属项目
+- [[projects/db-decoder-ironhive/解码器 轨道|解码器开发 Track]]

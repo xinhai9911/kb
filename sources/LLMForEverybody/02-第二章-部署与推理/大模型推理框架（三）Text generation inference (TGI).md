@@ -101,3 +101,11 @@ vLLM引入了 PagedAttention，这是一种注意力算法，其灵感来自操�
 [GitHub: LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody)
 
 仓库上有原始的Markdown文件，完全开源，欢迎大家Star和Fork！
+
+---
+
+## 📚 相关概念
+
+[[concepts/LLM 推理 优化|LLM 推理 优化]] | [[concepts/推测解码|推测解码]] | [[concepts/分布式推理|分布式推理]] | [[concepts/模型 压缩 蒸馏|模型 压缩 蒸馏]] | [[concepts/LLM 应用 生态|LLM 应用 生态]] | [[entities/vllm|vllm]] | [[entities/tensorrt-llm|tensorrt-llm]] | [[entities/sglang|sglang]] | [[entities/Hugging Face|Hugging Face]] | [[concepts/LLM 推理 优化|LLM 推理 优化]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：部署与推理

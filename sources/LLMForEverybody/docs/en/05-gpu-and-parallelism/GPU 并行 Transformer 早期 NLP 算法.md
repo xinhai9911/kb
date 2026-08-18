@@ -77,3 +77,12 @@ One of the big advantages of Transformer is that it makes good use of GPU parall
 [GitHub: LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody)
 
 The repository has the original Markdown files, all fully open. Stars and forks are very welcome!
+
+
+---
+
+## 📚 相关概念
+
+[[concepts/分布式推理|分布式推理]] | [[concepts/Transformer 架构|Transformer 架构]] | [[entities/Hugging Face|Hugging Face]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：显卡与并行

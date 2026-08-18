@@ -114,3 +114,11 @@ OpenAI一开始也没有想到可以用decoder做语言模型,只是在探索过
 [GitHub: LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody)
 
 仓库上有原始的Markdown文件，完全开源，欢迎大家Star和Fork！
+
+---
+
+## 📚 相关概念
+
+[[concepts/Transformer 架构|Transformer 架构]] | [[concepts/LLM 评估 基准|LLM 评估 基准]] | [[entities/DeepSeek|DeepSeek]] | [[sources/Vaswani 2017 Attention|Vaswani 2017 Attention]] | [[sources/DeepSeek 4 技术|DeepSeek 4 技术]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：AGI之路

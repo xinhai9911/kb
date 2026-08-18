@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "conversationId": "conv-1787019235007-131jvywfp",
+  "records": [
+    {
+      "schemaVersion": 1,
+      "id": "msg-1787019235056-8ty3max",
+      "userTurnOrdinal": 1,
+      "state": "accepted",
+      "localMessageId": "msg-1787019235003-99v2n2w",
+      "timestamp": 1787019235003,
+      "rawDisplayText": "关系图谱有很多散落的帮我处理一下",
+      "canonicalText": "关系图谱有很多散落的帮我处理一下",
+      "images": [],
+      "contentDigest": "8142c74e060acaea541d000b7362512f5afc1546725a26176f744fcbeda8ca49",
+      "providerAssistantMessageId": "msg_012a98af8001gBKkZ3nn5XbHMj"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1787019802015-u8byve7",
+      "userTurnOrdinal": 2,
+      "state": "accepted",
+      "localMessageId": "msg-1787019802007-i320bub",
+      "timestamp": 1787019802007,
+      "rawDisplayText": "/LLMForEverybody/ 外部资料能否建立obsidian 关联",
+      "canonicalText": "/LLMForEverybody/ 外部资料能否建立obsidian 关联",
+      "images": [],
+      "contentDigest": "56a7b38b98371a6ba49b122fd47c7f71e2f438a129107bc60e4497aca1aadf23"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1787019851076-1vp3xke",
+      "userTurnOrdinal": 3,
+      "state": "accepted",
+      "localMessageId": "msg-1787019851072-3749oa9",
+      "timestamp": 1787019851072,
+      "rawDisplayText": "LLMForEverybody/ 外部资料能否建立obsidian 关联",
+      "canonicalText": "LLMForEverybody/ 外部资料能否建立obsidian 关联",
+      "images": [],
+      "contentDigest": "98116346b54ef15dd4ae90b31ef432e48f06e6a2f799f370dbacbccc77e51ff4",
+      "providerAssistantMessageId": "msg_012b514d0001i7Rg8uxYEnjjSm"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1787020282966-jxfd7qt",
+      "userTurnOrdinal": 4,
+      "state": "accepted",
+      "localMessageId": "msg-1787020282961-l46dkfc",
+      "timestamp": 1787020282961,
+      "rawDisplayText": "还有散落在外界的节点澳门",
+      "canonicalText": "还有散落在外界的节点澳门",
+      "images": [],
+      "contentDigest": "c581de9a7b4a40b735dc105bb7ac1ef47a8c0803f56096ff2cdd2d0f4e709fda",
+      "providerAssistantMessageId": "msg_012b925d7001ylFXb5iA73BS6n"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1787020882798-gq7kly9",
+      "userTurnOrdinal": 5,
+      "state": "accepted",
+      "localMessageId": "msg-1787020882794-3q8npvp",
+      "timestamp": 1787020882794,
+      "rawDisplayText": "提交",
+      "canonicalText": "提交",
+      "images": [],
+      "contentDigest": "5dc86c74fbf304de0a09c341f4beeec53630756409f8d52be60b94adba9b2a98"
+    }
+  ]
+}

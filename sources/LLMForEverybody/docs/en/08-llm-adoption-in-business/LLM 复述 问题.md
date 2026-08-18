@@ -79,3 +79,12 @@ Before GPT-3, people may have found it hard to imagine that an AI model could ge
 [GitHub: LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody)
 
 The repository has the original Markdown files. Everything is fully open source, and stars and forks are very welcome!
+
+
+---
+
+## 📚 相关概念
+
+[[concepts/AI 安全 对齐|AI 安全 对齐]] | [[concepts/LLM 应用 生态|LLM 应用 生态]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：企业落地

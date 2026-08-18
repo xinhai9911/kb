@@ -49,4 +49,4 @@ MCP 是协议层标准化，Function Calling 是模型层能力。MCP 可封装�
 ## 参考来源
 
 - [[sources/MCP 规范|MCP 规范]]
-- [[entities/Anthropic 2|Anthropic]]
+- [[entities/Anthropic|Anthropic]]

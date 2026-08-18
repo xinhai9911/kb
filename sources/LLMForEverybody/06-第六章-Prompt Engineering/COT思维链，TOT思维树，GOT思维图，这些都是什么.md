@@ -100,3 +100,11 @@ GoT 的核心思想和主要优势在于能够将 LLM 生成的信息建模为�
 ## 欢迎关注我的GitHub和微信公众号：
 
 [GitHub: LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody)
+
+---
+
+## 📚 相关概念
+
+[[concepts/提示词 工程 模式|提示词 工程 模式]] | [[concepts/AI 安全 对齐|AI 安全 对齐]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：Prompt Engineering

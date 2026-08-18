@@ -205,3 +205,11 @@ advantage_i = (reward_i - mean(group_rewards)) / std(group_rewards)
 - InstructGPT 论文: https://arxiv.org/abs/2203.02155
 - DPO 论文: https://arxiv.org/abs/2305.18290
 - GRPO: DeepSeek 技术报告
+
+
+---
+
+## 📖 来源参考
+
+- **LLMForEverybody**：[[sources/LLMForEverybody/索引#预训练|预训练（第01章）]]
+> 来自 [luhengshiwo/LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody) 外部知识库导入

@@ -41,3 +41,12 @@ LoRA (Low-Rank Adapter) [1](#refer-anchor-1) — один из самых поп
 [GitHub: LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody)
 
 В репозитории есть исходные Markdown-файлы, все полностью open source. Буду рад Star и Fork!
+
+
+---
+
+## 📚 相关概念
+
+[[concepts/LoRA PEFT 微调|LoRA PEFT 微调]] | [[concepts/模型 压缩 蒸馏|模型 压缩 蒸馏]] | [[entities/Hugging Face|Hugging Face]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：微调

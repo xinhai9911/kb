@@ -158,3 +158,11 @@ libhbase.so Version: [VERSION]
 3. Execute tests
 4. Generate report
 5. Send results to team-lead
+
+---
+
+## 🔗 关联
+
+- [[20-protocols/HBase|HBase 协议分析]] — 主协议页
+- [[10-projects/数据库 解码器|Database Decoder 工作流]] — 所属项目
+- [[projects/db-decoder-ironhive/解码器 轨道|解码器开发 Track]]

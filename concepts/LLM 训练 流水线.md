@@ -76,7 +76,7 @@ sources: []
 - **PyTorch + DeepSpeed**: 最广泛的开源方案
 - **Megatron-LM**: NVIDIA 官方方案，高性能但灵活性低
 - **JAX**: Google 和部分开源社区使用（如 LLaMA 训练也有 JAX 版本）
-- **自研框架**: [[entities/OpenAI 2|OpenAI]]（自研）、[[entities/DeepSeek 2|DeepSeek]]（HAI-LLM）、Google（Pathways）
+- **自研框架**: [[entities/OpenAI|OpenAI]]（自研）、[[entities/DeepSeek|DeepSeek]]（HAI-LLM）、Google（Pathways）
 
 ## 数据质量要点
 

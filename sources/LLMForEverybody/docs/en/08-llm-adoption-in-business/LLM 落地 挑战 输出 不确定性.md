@@ -96,3 +96,12 @@ Large model uncertainty is determined by model properties, not implementation bu
 [1] [GitHub: LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody)
 
 [2] [deeplearning.ai](https://www.deeplearning.ai/)
+
+
+---
+
+## 📚 相关概念
+
+[[concepts/AI 安全 对齐|AI 安全 对齐]] | [[concepts/LLM 应用 生态|LLM 应用 生态]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：企业落地

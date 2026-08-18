@@ -51,3 +51,8 @@ SET → execute(SHOW DATABASES) → getSchema → fetchN(50) → fetchN(50) → 
 | 传输 | TSocket（裸流） | TFramedTransport（4B 帧头） |
 | 协议 | ThriftHive（7 方法） | TCLIService（19 方法） |
 | JDBC URL | jdbc:hive:// | jdbc:hive2:// |
+
+## 🔗 关联
+
+- [[projects/db-decoder-ironhive/DB 解码器 IronHive|项目概述]]
+- [[10-projects/数据库 解码器|Database Decoder 工作流]]

@@ -221,3 +221,11 @@ TCP 负载前部：
 - step 目录下已有的自动提取结果
 
 当前环境中未找到可直接执行的 `tshark`，因此没有使用 Wireshark/tshark 的协议树自动解码，而是基于包内可见明文字段和块结构完成解析。
+
+---
+
+## 🔗 关联
+
+- [[20-protocols/HBase|HBase 协议分析]] — 主协议页
+- [[10-projects/数据库 解码器|Database Decoder 工作流]] — 所属项目
+- [[projects/db-decoder-ironhive/解码器 轨道|解码器开发 Track]]

@@ -53,3 +53,12 @@ Counting Stars is different: the number of "stars" in each sentence differs, and
 [GitHub: LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody)
 
 The repository has the original Markdown files. Everything is fully open source, and stars and forks are very welcome!
+
+
+---
+
+## 📚 相关概念
+
+[[concepts/LLM 评估 基准|LLM 评估 基准]] | [[concepts/智能体 评估 基准|智能体 评估 基准]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：评估指标

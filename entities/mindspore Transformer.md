@@ -220,3 +220,10 @@ docker pull swr.cn-north-4.myhuaweicloud.com/ddn-8a41821f-e6ac-4e9a-956e-4e29f58
 **最后更新**：2026-08-17
 **维护者**：Claudian
 **状态**：活跃维护中
+
+---
+
+## 📖 来源参考
+
+- **LLMForEverybody**：[[sources/LLMForEverybody/索引#预训练|预训练（第01章）]]
+> 来自 [luhengshiwo/LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody) 外部知识库导入

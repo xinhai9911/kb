@@ -121,3 +121,12 @@
 ## GitHub и WeChat автора
 
 [GitHub: LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody)
+
+
+---
+
+## 📚 相关概念
+
+[[concepts/模型 压缩 蒸馏|模型 压缩 蒸馏]] | [[concepts/分词器 LLM|分词器 LLM]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：量化

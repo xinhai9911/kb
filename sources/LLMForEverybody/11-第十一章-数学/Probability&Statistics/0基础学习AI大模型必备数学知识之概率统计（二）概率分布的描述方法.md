@@ -218,3 +218,11 @@ QQ图通过比较样本数据的分位数与一个理论分布（通常是正态
 ## 参考
 
 [1] [robability-and-statistics](https://www.coursera.org/learn/machine-learning-probability-and-statistics/home/week/2)
+
+---
+
+## 📚 相关概念
+
+[[concepts/Transformer 架构|Transformer 架构]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：数学

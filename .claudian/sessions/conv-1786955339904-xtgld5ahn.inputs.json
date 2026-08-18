@@ -144,6 +144,44 @@
       "images": [],
       "contentDigest": "ee7cdb307b6d0e00d0d0af2992415f653227a2af614456a8e75821790e45437b",
       "providerAssistantMessageId": "msg_00f2e63790011tawwBC0nhr7ow"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1786963315310-y87v241",
+      "userTurnOrdinal": 12,
+      "state": "accepted",
+      "localMessageId": "msg-1786963315305-8qqa5h6",
+      "timestamp": 1786963315305,
+      "rawDisplayText": "补充推理相关的知识点，补充到我的知识库当中",
+      "canonicalText": "补充推理相关的知识点，补充到我的知识库当中",
+      "images": [],
+      "contentDigest": "88f83a82545e5ca064eb0d67cc556f96de5df9ecfea3ed5078cf36efa966e2a5",
+      "providerAssistantMessageId": "msg_00f567bf9001COGceK5AflxTZU"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1786963752428-x5ak9b2",
+      "userTurnOrdinal": 13,
+      "state": "accepted",
+      "localMessageId": "msg-1786963752423-d547zaa",
+      "timestamp": 1786963752423,
+      "rawDisplayText": "提交",
+      "canonicalText": "提交",
+      "images": [],
+      "contentDigest": "5dc86c74fbf304de0a09c341f4beeec53630756409f8d52be60b94adba9b2a98",
+      "providerAssistantMessageId": "msg_00f5742d9001H9jrbUCxY2mLCO"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1787019205113-cx8xh3s",
+      "userTurnOrdinal": 1,
+      "state": "staged",
+      "localMessageId": "msg-1787019205096-8xcnfj9",
+      "timestamp": 1787019205096,
+      "rawDisplayText": "关系图谱有很多散落的帮我处理一下。",
+      "canonicalText": "关系图谱有很多散落的帮我处理一下。",
+      "images": [],
+      "contentDigest": "a353674e5f476bcd4b7816db4cc73cc8e6d80b8531b4b82084a6b56ee3dd9ce4"
     }
   ]
 }

@@ -235,3 +235,12 @@ QQ plot проверяет distribution data через comparison sample quanti
 ## Ссылки
 
 [1] [robability-and-statistics](https://www.coursera.org/learn/machine-learning-probability-and-statistics/home/week/2)
+
+
+---
+
+## 📚 相关概念
+
+[[concepts/Transformer 架构|Transformer 架构]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：数学

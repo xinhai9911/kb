@@ -34,3 +34,11 @@ Google 开源的 Agent 开发套件（Python / JS），提供从单 Agent 到多
 - → [[智能体 编排 模式]] — Workflow Agent 的编排模式
 - → [[智能体 内存 规划]] — Sessions / Memory
 - → [[MCP 协议]] — 工具接入标准
+
+
+---
+
+## 📖 来源参考
+
+- **LLMForEverybody**：[[sources/LLMForEverybody/索引#Agent|Agent（第07章）]]
+> 来自 [luhengshiwo/LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody) 外部知识库导入

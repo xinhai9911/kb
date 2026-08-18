@@ -65,3 +65,9 @@ base_confidence: 0.6
 ## 参考文献
 
 IT之家. (2026). 2026年中国大模型产业深度分析报告.
+
+## 🔗 关联
+
+- [[concepts/LLM 应用 生态|大模型应用生态]]
+- [[synthesis/AI LLM 概览|AI 大模型全景综述]]
+- [[sources/LLMForEverybody/索引|LLMForEverybody 导航]]

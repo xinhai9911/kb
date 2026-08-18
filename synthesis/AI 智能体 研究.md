@@ -47,10 +47,10 @@ AI Agent 是 LLM 从对话工具向自主行动系统演进的关键范式。本
 
 ## 实体与工具
 
-- [[entities/Anthropic 2|Anthropic]]
-- [[entities/OpenAI 2|OpenAI]]
-- [[entities/LangChain 2|LangChain]]
-- [[entities/CrewAI 2|CrewAI]]
+- [[entities/Anthropic|Anthropic]]
+- [[entities/OpenAI|OpenAI]]
+- [[entities/LangChain|LangChain]]
+- [[entities/CrewAI|CrewAI]]
 
 ## 未解决的问题
 

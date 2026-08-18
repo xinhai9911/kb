@@ -229,3 +229,12 @@ Normal distribution has an important property, the 68-95-99.7 rule: in a normal 
 [GitHub: LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody)
 
 The repository contains the original Markdown files. Everything is fully open source, and Stars and Forks are very welcome.
+
+
+---
+
+## 📚 相关概念
+
+[[concepts/Transformer 架构|Transformer 架构]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：数学

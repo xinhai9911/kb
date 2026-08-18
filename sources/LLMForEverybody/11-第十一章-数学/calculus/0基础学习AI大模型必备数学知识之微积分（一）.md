@@ -45,3 +45,11 @@ AI是理科+工科的交叉学科，牢固的数学知识有助于理解算法�
 <div id="refer-anchor-1"></div>
 
 [1] [machine-learning-calculus](https://www.coursera.org/learn/machine-learning-calculus/home/module/1)
+
+---
+
+## 📚 相关概念
+
+[[concepts/Transformer 架构|Transformer 架构]]
+
+> 📌 来源：[[sources/LLMForEverybody/索引|LLMForEverybody 导航]] · 章节：数学

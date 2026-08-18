@@ -85,3 +85,9 @@
 [OpenAI率先打样，今年AI圈的主角是智能体](https://36kr.com/p/3128052415404292)
 
 [AI Agents Are Here. What Now?](https://huggingface.co/blog/ethics-soc-7)
+
+---
+
+## 🔗 关联
+
+- [[sources/LLMForEverybody/索引|LLMForEverybody 导航总览]]
