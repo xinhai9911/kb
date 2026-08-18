@@ -29,6 +29,12 @@ __pycache__/
 # Template lives in .env.example.
 .env
 
+# Claudian runtime state
+.claudian/opencode/
+
+# Editor temp (WriteX etc.)
+.writex/
+
 # Large binaries (consider Git LFS if needed)
 *.zip
 *.tar
