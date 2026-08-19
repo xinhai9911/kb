@@ -932,10 +932,10 @@ Request 完成（遇到 EOS 或达到 max_tokens）
 
 ## 📚 相关笔记
 
-- [[entities/vllm|vLLM 实体笔记]] — 概览与快速参考
+- [[sources/推理引擎/vllm|vLLM 实体笔记]] — 概览与快速参考
 - [[sources/LLMForEverybody/02-第二章-部署与推理/大模型推理框架（二）vLLM|大模型推理框架（二）vLLM]] — LLMForEverybody 系列文章
-- [[entities/sglang|SGLang]] — 对比：RadixAttention 推理引擎
-- [[entities/tensorrt-llm|TensorRT-LLM]] — 对比：NVIDIA 官方推理引擎
-- [[entities/llama.cpp|llama.cpp]] — 对比：CPU-first 推理引擎
-- [[concepts/LLM 推理 优化|LLM 推理 优化]] — 推理优化技术总论
-- [[concepts/推理 引擎 选择|推理引擎选型]] — 推理引擎选型对比
+- [[sources/推理引擎/sglang|SGLang]] — 对比：RadixAttention 推理引擎
+- [[sources/推理引擎/tensorrt-llm|TensorRT-LLM]] — 对比：NVIDIA 官方推理引擎
+- [[sources/推理引擎/llama.cpp|llama.cpp]] — 对比：CPU-first 推理引擎
+- [[sources/推理引擎/LLM 推理 优化|LLM 推理 优化]] — 推理优化技术总论
+- [[sources/推理引擎/推理 引擎 选择|推理引擎选型]] — 推理引擎选型对比

@@ -13,7 +13,7 @@ summary: >-
 
 # vLLM 源码导读（本地 Q:/AI/vllm/vllm）
 
-> **用途**：把 [[entities/vllm|vLLM 推理引擎]] 的概念映射到真实代码路径，方便 `grep`/跳转回查。
+> **用途**：把 [[sources/推理引擎/vllm|vLLM 推理引擎]] 的概念映射到真实代码路径，方便 `grep`/跳转回查。
 > 仓库根即 `Q:/AI/vllm/vllm`，Python 包位于 `vllm/vllm/`（下文路径均相对仓库根，如 `vllm/v1/engine/llm_engine.py`）。
 
 ## 版本说明：V1 是默认主线
@@ -183,10 +183,10 @@ ls vllm/v1/spec_decode/
 
 ## 延伸
 
-- → [[entities/vllm|vLLM 推理引擎]] — 概念总览与 V1 架构
-- → [[concepts/PagedAttention|PagedAttention]] — KV 分页的核心算法与实现
-- → [[concepts/LLM 推理 优化]] — 推理优化总论
-- → [[concepts/分布式推理]] — TP/PP/EP 并行
+- → [[sources/推理引擎/vllm|vLLM 推理引擎]] — 概念总览与 V1 架构
+- → [[sources/推理引擎/PagedAttention|PagedAttention]] — KV 分页的核心算法与实现
+- → [[sources/推理引擎/LLM 推理 优化]] — 推理优化总论
+- → [[sources/推理引擎/分布式推理]] — TP/PP/EP 并行
 
 ---
 

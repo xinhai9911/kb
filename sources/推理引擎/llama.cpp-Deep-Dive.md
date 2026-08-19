@@ -15,7 +15,7 @@ summary: >-
 # llama.cpp 深度解析
 
 > **一句话**：llama.cpp = C/C++ 写的"单进程多后端" LLM 推理框架，以 **GGML 计算图 + GGUF 量化**把大模型塞进 CPU/低端 GPU/边缘设备；vLLM 面向生产吞吐，它面向"什么机器都能跑"。
-> 本文基于 llama.cpp 公开架构与源码模块整理，是 [[entities/llama.cpp|llama.cpp 实体页]] 的深度展开。
+> 本文基于 llama.cpp 公开架构与源码模块整理，是 [[sources/推理引擎/llama.cpp|llama.cpp 实体页]] 的深度展开。
 
 ## 1. 定位与技术栈
 
@@ -377,9 +377,9 @@ llama-server -m Meta-Llama-3-8B-Q4_K_M.gguf \
 
 ## 📚 相关笔记
 
-- [[entities/llama.cpp|llama.cpp 实体页]] — 概览与快速参考
-- [[sources/vLLM-Deep-Dive|vLLM 深度解析]]、[[entities/vllm|vLLM]] — 对比：GPU 生产吞吐
-- [[sources/SGLang-Deep-Dive|SGLang 深度解析]]、[[entities/sglang|SGLang]] — 对比：Radix 前缀复用
+- [[sources/推理引擎/llama.cpp|llama.cpp 实体页]] — 概览与快速参考
+- [[sources/推理引擎/vLLM-Deep-Dive|vLLM 深度解析]]、[[sources/推理引擎/vllm|vLLM]] — 对比：GPU 生产吞吐
+- [[sources/推理引擎/SGLang-Deep-Dive|SGLang 深度解析]]、[[sources/推理引擎/sglang|SGLang]] — 对比：Radix 前缀复用
 - [[sources/LLMForEverybody/02-第二章-部署与推理/大模型推理框架（七）llama.cpp|大模型推理框架（七）llama.cpp]] — 外文转载
 - [[concepts/模型 压缩 蒸馏]] — 量化/压缩总论
-- [[concepts/LLM 推理 优化]] — 推理优化总论
+- [[sources/推理引擎/LLM 推理 优化]] — 推理优化总论

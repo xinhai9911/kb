@@ -38,8 +38,9 @@ lifecycle: reviewed
 详见 [00-index/tag-glossary.md](00-index/标签 术语表.md)。
 
 ## 最近更新
-- 2026-08-19: 推理引擎三件套补全（一）新增 [[sources/SGLang-Deep-Dive|SGLang 深度解析]]（RadixAttention/调度/内存/GPU/接口）、[[sources/llama.cpp-Deep-Dive|llama.cpp 深度解析]]（GGUF/量化/mmap/多后端/接口）、[[sources/vLLM 对外接口与运行参考|vLLM 对外接口与运行参考]]（端点/部署/显存/指标）；补全实体页回链并登记 llama.cpp 实体入索引
-- 2026-08-19: 推理引擎三件套补全（二）新增 [[sources/SGLang 源码导读|SGLang 源码导读]]（模块地图 / MLA 融合 kernel / Rust 组件 / 分布式 launch）、[[sources/推理引擎 性能对照与基准|推理引擎 性能对照与基准]]（公开量级 + 自测方法论）；vLLM 接口参考补多模态与 LoRA，llama.cpp 深度解析补采样参数表 / 多模态 / RPC 多机
+- 2026-08-19: 推理引擎知识整理 —— 将 vLLM / SGLang / llama.cpp 相关推理框架知识统一归拢到 [[sources/推理引擎/|推理引擎]]：vLLM/SGLang/llama.cpp 深度解析与源码导读、推理引擎系列（原则/精通/选择/调优/监控）、大模型-引擎对照、PagedAttention/推测解码/分布式推理、引擎实体页(entities→sources/推理引擎)。全库 wikilink 路径随迁更新
+- 2026-08-19: 推理引擎三件套补全（一）新增 [[sources/推理引擎/SGLang-Deep-Dive|SGLang 深度解析]]（RadixAttention/调度/内存/GPU/接口）、[[sources/推理引擎/llama.cpp-Deep-Dive|llama.cpp 深度解析]]（GGUF/量化/mmap/多后端/接口）、[[sources/推理引擎/vLLM 对外接口与运行参考|vLLM 对外接口与运行参考]]（端点/部署/显存/指标）；补全实体页回链并登记 llama.cpp 实体入索引
+- 2026-08-19: 推理引擎三件套补全（二）新增 [[sources/推理引擎/SGLang 源码导读|SGLang 源码导读]]（模块地图 / MLA 融合 kernel / Rust 组件 / 分布式 launch）、[[sources/推理引擎/推理引擎 性能对照与基准|推理引擎 性能对照与基准]]（公开量级 + 自测方法论）；vLLM 接口参考补多模态与 LoRA，llama.cpp 深度解析补采样参数表 / 多模态 / RPC 多机
 - 2026-08-17: 导入外部知识库 [[sources/LLMForEverybody/索引|LLMForEverybody]]（中文大模型知识体系，12 章 420+ 篇；已扁平并入 sources/ 并作好 Obsidian 双链：导航页汇总 12 章 + 英/俄译本索引 + 草稿，回链库内 Transformer/分词器/推理引擎/微调·LoRA/量化/RAG·Agent·MCP/评估/安全 等 32 篇既有笔记）
 
 <!-- 手动维护：每次重要新增/更新追加一行，格式: - YYYY-MM-DD: [标题](path) -->

@@ -14,7 +14,7 @@ summary: >-
 
 # SGLang 源码导读（模块地图与关键路径）
 
-> **用途**：配合 [[sources/SGLang-Deep-Dive|SGLang 深度解析]]，把概念映射到真实代码路径，方便 `grep`/跳转回查。
+> **用途**：配合 [[sources/推理引擎/SGLang-Deep-Dive|SGLang 深度解析]]，把概念映射到真实代码路径，方便 `grep`/跳转回查。
 > ⚠️ 当前环境**无本地 `Q:/AI/sglang` 仓库**，本文基于 SGLang 公开架构设计与文档整理；**路径/类名/旗标随版本演进，clone 后以 `python/sglang/srt/` 实际结构为准**。
 
 ## 1. 仓库顶层布局
@@ -36,7 +36,7 @@ sglang/
 
 | 模块路径 | 关键类/文件 | 作用 |
 |----------|-------------|------|
-| `managers/scheduler.py` | `Scheduler` | 每轮做统一 forward 决策、维护所有请求状态机、产出 `ScheduleBatch`（[[sources/SGLang-Deep-Dive#3|调度详解]]） |
+| `managers/scheduler.py` | `Scheduler` | 每轮做统一 forward 决策、维护所有请求状态机、产出 `ScheduleBatch`（[[sources/推理引擎/SGLang-Deep-Dive#3|调度详解]]） |
 | `managers/tokenizer_manager.py` | `TokenizerManager` | 多请求异步批量 tokenize、缓存 `input_token_ids` |
 | `managers/detokenizer_manager.py` | `DetokenizerManager` | 每轮批-增量 detokenize、驱动流式输出 |
 | `managers/io_struct.py` | `GenerationReq / EmbeddingReq` 等 | HTTP 请求体 → 内部请求对象 |
@@ -101,7 +101,7 @@ MLA:        KV cache ≈ [c_KV dim（如 512/576 量级） + k_R] per token（�
 
 ### 4.3 为什么 DeepSeek V3/R1 官方推荐 SGLang
 
-SGLang 团队与 DeepSeek 协同：MLA 融合、FP8 全链路（权重+KV）、CUDA Graph、`torch.compile`（`--enable-torch-compile`）、分离式 P/D 的 KV 传输（MLA 可用 0.5×/低分辨率传输）都做了专门优化——即 [[concepts/大模型 推理引擎 对照|模型↔引擎对照]] 里说的"官方强绑定"。
+SGLang 团队与 DeepSeek 协同：MLA 融合、FP8 全链路（权重+KV）、CUDA Graph、`torch.compile`（`--enable-torch-compile`）、分离式 P/D 的 KV 传输（MLA 可用 0.5×/低分辨率传输）都做了专门优化——即 [[sources/推理引擎/大模型 推理引擎 对照|模型↔引擎对照]] 里说的"官方强绑定"。
 
 ## 5. Rust 组件（2025+）
 
@@ -209,8 +209,8 @@ grep -rn "class CUDAGraphRunner" model_executor/cuda_graph_runner.py
 
 ## 📚 相关笔记
 
-- [[sources/SGLang-Deep-Dive|SGLang 深度解析]] — 架构/调度/内存/GPU/接口 详解（本导读的配套）
-- [[entities/sglang|SGLang 实体页]] — 概览
-- [[sources/vLLM 源码 导读|vLLM 源码导读]] — 同类「源码地图」笔记（vLLM 有本地仓库 `Q:/AI/vllm/vllm`）
-- [[concepts/大模型 推理引擎 对照]] — DeepSeek↔SGLang 官方绑定
-- [[concepts/PagedAttention|PagedAttention]] — 分页 KV 思想对比 MLA 潜在向量
+- [[sources/推理引擎/SGLang-Deep-Dive|SGLang 深度解析]] — 架构/调度/内存/GPU/接口 详解（本导读的配套）
+- [[sources/推理引擎/sglang|SGLang 实体页]] — 概览
+- [[sources/推理引擎/vLLM 源码 导读|vLLM 源码导读]] — 同类「源码地图」笔记（vLLM 有本地仓库 `Q:/AI/vllm/vllm`）
+- [[sources/推理引擎/大模型 推理引擎 对照]] — DeepSeek↔SGLang 官方绑定
+- [[sources/推理引擎/PagedAttention|PagedAttention]] — 分页 KV 思想对比 MLA 潜在向量

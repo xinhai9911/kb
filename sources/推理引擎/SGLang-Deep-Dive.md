@@ -15,7 +15,7 @@ summary: >-
 # SGLang 深度解析
 
 > **一句话**：SGLang = 「结构化生成语言（DSL）+ RadixAttention 基数树前缀复用 + 分裂式 Prefill/Decode」，把 LLM 推理当"程序调度"来做，追求编程友好与极致效率。
-> 本文基于 SGLang 公开架构设计与源码模块（`python/sglang/srt/`）整理，面向 [[entities/sglang|SGLang 实体页]] 的深度展开。
+> 本文基于 SGLang 公开架构设计与源码模块（`python/sglang/srt/`）整理，面向 [[sources/推理引擎/sglang|SGLang 实体页]] 的深度展开。
 
 ## 1. 定位与总体架构
 
@@ -418,9 +418,9 @@ python -m sglang.launch_server \
 
 ## 📚 相关笔记
 
-- [[entities/sglang|SGLang 实体页]] — 概览与快速参考
-- [[entities/vllm|vLLM]]、[[sources/vLLM-Deep-Dive|vLLM 深度解析]] — 对比引擎
+- [[sources/推理引擎/sglang|SGLang 实体页]] — 概览与快速参考
+- [[sources/推理引擎/vllm|vLLM]]、[[sources/推理引擎/vLLM-Deep-Dive|vLLM 深度解析]] — 对比引擎
 - [[sources/LLMForEverybody/02-第二章-部署与推理/大模型推理框架（六）SGLang|大模型推理框架（六）SGLang]] — 外文转载
-- [[concepts/PagedAttention|PagedAttention]] — 分页 KV 思想（对比 RadixAttention）
-- [[concepts/分布式推理]] — TP/PP/EP/DP 并行
-- [[concepts/LLM 推理 优化]] — 推理优化总论（前缀缓存/批处理/量化）
+- [[sources/推理引擎/PagedAttention|PagedAttention]] — 分页 KV 思想（对比 RadixAttention）
+- [[sources/推理引擎/分布式推理]] — TP/PP/EP/DP 并行
+- [[sources/推理引擎/LLM 推理 优化]] — 推理优化总论（前缀缓存/批处理/量化）

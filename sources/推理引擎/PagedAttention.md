@@ -93,7 +93,7 @@ PagedAttention 是「块表 + 分页 kernel」的抽象，具体的注意力计�
 ## 为什么它对吞吐至关重要
 
 - **更高并发**：相同显存下能放下更多请求的 KV Cache → 并发序列数（`max_num_seqs`）显著提升。
-- **连续批处理的基础**：配合 [[concepts/LLM 推理 优化#连续批处理 Continuous Batching|连续批处理]]，新请求到来时只需分配新块，已完成请求释放块即可被他人复用。
+- **连续批处理的基础**：配合 [[sources/推理引擎/LLM 推理 优化#连续批处理 Continuous Batching|连续批处理]]，新请求到来时只需分配新块，已完成请求释放块即可被他人复用。
 - **前缀缓存落地的载体**：共享前缀的 KV 以「块」为粒度缓存，命中即跳过 prefill 计算。
 
 ## 源码导读（本地 `Q:/AI/vllm/vllm`）
@@ -108,14 +108,14 @@ PagedAttention 是「块表 + 分页 kernel」的抽象，具体的注意力计�
 | 注意力后端抽象与选择 | `vllm/v1/attention/backend.py`、`selector.py`、`backends/` |
 | 整体引擎中的调用点 | `vllm/v1/worker/gpu_model_runner.py`（`_build_attention_metadata`、`_prepare_inputs`） |
 
-详见 [[sources/vLLM 源码 导读|vLLM 源码导读]] 与实体页 [[entities/vllm|vLLM 推理引擎]]。
+详见 [[sources/推理引擎/vLLM 源码 导读|vLLM 源码导读]] 与实体页 [[sources/推理引擎/vllm|vLLM 推理引擎]]。
 
 ## 延伸
 
-- → [[entities/vllm|vLLM 推理引擎]] — PagedAttention 的承载引擎与 V1 架构
-- → [[concepts/LLM 推理 优化]] — 推理优化总论（KV Cache、批处理、量化）
-- → [[concepts/分布式推理]] — 多 GPU 下 KV Cache 的并行与传输
-- → [[concepts/推测解码]] — 草稿 token 与块表的协同
+- → [[sources/推理引擎/vllm|vLLM 推理引擎]] — PagedAttention 的承载引擎与 V1 架构
+- → [[sources/推理引擎/LLM 推理 优化]] — 推理优化总论（KV Cache、批处理、量化）
+- → [[sources/推理引擎/分布式推理]] — 多 GPU 下 KV Cache 的并行与传输
+- → [[sources/推理引擎/推测解码]] — 草稿 token 与块表的协同
 
 ---
 

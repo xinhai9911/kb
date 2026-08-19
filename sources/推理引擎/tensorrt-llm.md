@@ -174,7 +174,7 @@ docker run --gpus all \
 
 ## 延伸
 
-- → [[entities/vllm|vLLM]] — 对比：通用推理引擎
+- → [[sources/推理引擎/vllm|vLLM]] — 对比：通用推理引擎
 - → [[推理 引擎 选择]] — 推理引擎选型对比
 - → [[LLM 推理 优化]] — 推理优化技术总论
 - → [[50-reference/sources/chips/gpu-ai-accelerator|GPU 与 AI 加速芯片架构]] — NVIDIA GPU 硬件背景

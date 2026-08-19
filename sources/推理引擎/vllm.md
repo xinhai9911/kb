@@ -28,7 +28,7 @@ summary: >-
 
 ## 核心架构
 
-> 当前版本以 **V1 架构**为默认主线（约 vLLM ≥ 0.8 起逐步成为默认，新版移除/弱化 V0）。V1 把调度、KV 管理、注意力全部重写到 `vllm/vllm/v1/`，请求流转更扁平、开销更低。下图为逻辑组件视图，真实进程/代码路径见 [[sources/vLLM 源码 导读|vLLM 源码导读]] 与 [[concepts/PagedAttention|PagedAttention]]。
+> 当前版本以 **V1 架构**为默认主线（约 vLLM ≥ 0.8 起逐步成为默认，新版移除/弱化 V0）。V1 把调度、KV 管理、注意力全部重写到 `vllm/vllm/v1/`，请求流转更扁平、开销更低。下图为逻辑组件视图，真实进程/代码路径见 [[sources/推理引擎/vLLM 源码 导读|vLLM 源码导读]] 与 [[sources/推理引擎/PagedAttention|PagedAttention]]。
 
 ```
 ┌──────────────────────────────────────────┐
@@ -273,11 +273,11 @@ docker run --gpus all \
 
 ## 延伸
 
-- → [[sources/vLLM 对外接口与运行参考|vLLM 对外接口与运行参考]] — OpenAI 端点/部署/显存运行细节
+- → [[sources/推理引擎/vLLM 对外接口与运行参考|vLLM 对外接口与运行参考]] — OpenAI 端点/部署/显存运行细节
 - → [[推理 引擎 选择]] — 推理引擎选型对比
 - → [[LLM 推理 优化]] — 推理优化技术总论
-- → [[entities/tensorrt-llm|TensorRT-LLM]] — NVIDIA 官方推理引擎
-- → [[entities/sglang|SGLang]] — 高性能推理引擎（RadixAttention）
+- → [[sources/推理引擎/tensorrt-llm|TensorRT-LLM]] — NVIDIA 官方推理引擎
+- → [[sources/推理引擎/sglang|SGLang]] — 高性能推理引擎（RadixAttention）
 - → [[concepts/speculative-decoding|推测解码]] — 推测解码加速技术
 
 ---
@@ -295,8 +295,8 @@ docker run --gpus all \
 
 ## 📖 来源参考
 
-- **深度解析**：[[sources/vLLM-Deep-Dive|vLLM 深度解析]] — 基于源码的架构与技术详解
-- **接口与运行**：[[sources/vLLM 对外接口与运行参考|vLLM 对外接口与运行参考]] — 端点/部署/显存/指标
+- **深度解析**：[[sources/推理引擎/vLLM-Deep-Dive|vLLM 深度解析]] — 基于源码的架构与技术详解
+- **接口与运行**：[[sources/推理引擎/vLLM 对外接口与运行参考|vLLM 对外接口与运行参考]] — 端点/部署/显存/指标
 - **性能分析**：[[Clippings/vLLM 性能分析 - vLLM - vLLM 文档|vLLM 性能分析]] — `--profiler-config` profiling
 - **LLMForEverybody**：[[sources/LLMForEverybody/02-第二章-部署与推理/大模型推理框架（二）vLLM|大模型推理框架（二）vLLM]] — 专题介绍文章
 - **导航**：[[sources/LLMForEverybody/索引#部署与推理|部署与推理（第02章）]]

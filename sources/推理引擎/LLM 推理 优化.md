@@ -17,9 +17,9 @@ related:
   - "[[推理 引擎 原则]]"
   - "[[推测解码]]"
   - "[[分布式推理]]"
-  - "[[entities/vllm|vLLM]]"
-  - "[[entities/tensorrt-llm|TensorRT-LLM]]"
-  - "[[entities/sglang|SGLang]]"
+  - "[[sources/推理引擎/vllm|vLLM]]"
+  - "[[sources/推理引擎/tensorrt-llm|TensorRT-LLM]]"
+  - "[[sources/推理引擎/sglang|SGLang]]"
 ---
 
 <!-- kb-import-backlink:LLMForEverybody -->

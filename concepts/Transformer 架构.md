@@ -103,7 +103,7 @@ Transformer (2017)
 - **GQA (Grouped Query Attention)**: 减少 KV Head 数量，降低 KV Cache（LLaMA-2 70B+）
 - **MQA (Multi-Query Attention)**: 所有查询共享同一组 K/V，进一步减少缓存
 - **MoE (Mixture of Experts)**: 稀疏激活，扩展参数规模但保持推理成本（[[sources/DeepSeek 4 技术|DeepSeek V4]]、Mixtral）
-- **FlashAttention**: IO-Aware 的精确注意力计算（[[sources/LLM 推理 优化|推理优化]]）
+- **FlashAttention**: IO-Aware 的精确注意力计算（[[sources/推理引擎/LLM 推理优化 综述|推理优化]]）
 - **RoPE/ALiBi**: 更优的位置编码方案
 - **MTP (Multi-Token Prediction)**: 同时预测多个未来 token
 

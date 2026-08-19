@@ -49,7 +49,7 @@ tags:
 
 ## 关联知识库笔记
 
-[[concepts/Transformer 架构|Transformer 架构]] · [[concepts/分词器 LLM|分词器]] · [[concepts/PagedAttention|PagedAttention]] · [[concepts/RAG 检索 增强 生成|RAG 检索增强生成]] · [[concepts/LLM 训练 流水线|LLM 训练流水线]] · [[concepts/LLM 推理 优化|LLM 推理优化]] · [[sources/Vaswani 2017 Attention|Attention Is All You Need]] · [[sources/LLMForEverybody/索引|LLMForEverybody]] · [[sources/中文 LLM 全景|中文 LLM 全景]] · [[entities/vllm|vLLM]] · [[entities/tensorrt-llm|TensorRT-LLM]]
+[[concepts/Transformer 架构|Transformer 架构]] · [[concepts/分词器 LLM|分词器]] · [[sources/推理引擎/PagedAttention|PagedAttention]] · [[concepts/RAG 检索 增强 生成|RAG 检索增强生成]] · [[concepts/LLM 训练 流水线|LLM 训练流水线]] · [[sources/推理引擎/LLM 推理 优化|LLM 推理优化]] · [[sources/Vaswani 2017 Attention|Attention Is All You Need]] · [[sources/LLMForEverybody/索引|LLMForEverybody]] · [[sources/中文 LLM 全景|中文 LLM 全景]] · [[sources/推理引擎/vllm|vLLM]] · [[sources/推理引擎/tensorrt-llm|TensorRT-LLM]]
 
 ## 备注
 

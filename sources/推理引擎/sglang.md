@@ -190,7 +190,7 @@ python -m sglang.launch_server \
 | **GPU** | 深度绑定 FlashInfer + 自研 sgl-kernel；DeepSeek MLA 有专用融合 kernel；CUDA Graph 按 batch 档位捕获 + 填坑复用；TP/EP/DP/分离式 P/D 全支持 |
 | **接口** | OpenAI 兼容（`/v1/chat/completions`、`/v1/completions`）+ 原生 `/generate`、`/classify`、`/encode`、`/embedding`、`/tokenize`、`/health`、`/metrics`；DSL `sgl.function` 离线/在线两用；结构化输出（XGrammar/正则/JSON Schema）常见兜底接口 |
 
-> 深度展开见 [[sources/SGLang-Deep-Dive|SGLang 深度解析]]。
+> 深度展开见 [[sources/推理引擎/SGLang-Deep-Dive|SGLang 深度解析]]。
 
 ## 与 vLLM 对比
 
@@ -206,9 +206,9 @@ python -m sglang.launch_server \
 
 ## 延伸
 
-- → [[sources/SGLang-Deep-Dive|SGLang 深度解析]] — 架构/调度/内存/GPU/接口 全展开
-- → [[entities/vllm|vLLM]] — 对比：最流行推理引擎
-- → [[entities/llama.cpp|llama.cpp]] — 对比：CPU/边缘推理
+- → [[sources/推理引擎/SGLang-Deep-Dive|SGLang 深度解析]] — 架构/调度/内存/GPU/接口 全展开
+- → [[sources/推理引擎/vllm|vLLM]] — 对比：最流行推理引擎
+- → [[sources/推理引擎/llama.cpp|llama.cpp]] — 对比：CPU/边缘推理
 - → [[推理 引擎 选择]] — 推理引擎选型对比
 - → [[LLM 推理 优化]] — 推理优化技术总论
 
@@ -227,7 +227,7 @@ python -m sglang.launch_server \
 
 ## 📖 来源参考
 
-- **深度解析**：[[sources/SGLang-Deep-Dive|SGLang 深度解析]] — 基于架构与源码逻辑的详解
+- **深度解析**：[[sources/推理引擎/SGLang-Deep-Dive|SGLang 深度解析]] — 基于架构与源码逻辑的详解
 - **LLMForEverybody**：[[sources/LLMForEverybody/02-第二章-部署与推理/大模型推理框架（六）SGLang|大模型推理框架（六）SGLang]] — 专题介绍文章
 - **导航**：[[sources/LLMForEverybody/索引#部署与推理|部署与推理（第02章）]]
 > 来自 [luhengshiwo/LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody) 外部知识库导入

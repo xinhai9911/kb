@@ -14,7 +14,7 @@ summary: >-
 
 # vLLM 对外接口与运行参考
 
-> **一句话**：本笔记是 [[sources/vLLM-Deep-Dive|vLLM 深度解析]] 的对外接口与运行侧补充——架构/调度/PagedAttention 见那篇，这篇专注「怎么连、怎么配、怎么采显存指标」。
+> **一句话**：本笔记是 [[sources/推理引擎/vLLM-Deep-Dive|vLLM 深度解析]] 的对外接口与运行侧补充——架构/调度/PagedAttention 见那篇，这篇专注「怎么连、怎么配、怎么采显存指标」。
 > 代码路径对应本地仓库 `Q:/AI/vllm/vllm`（当前为带 Rust 前端的较新版本）。
 
 ## 1. 三类对外形态
@@ -167,7 +167,7 @@ curl http://localhost:8000/v1/chat/completions \
 
 ## 4. 运行期内存与 GPU 细节（补充 Deep-Dive）
 
-> 调度算法、PagedAttention、Prefix Caching、抢占机制见 [[sources/vLLM-Deep-Dive|深度解析]]。这里补「启动时怎么分显存」「KV Cache 容量怎么算」「CUDA Graph 怎么回事」。
+> 调度算法、PagedAttention、Prefix Caching、抢占机制见 [[sources/推理引擎/vLLM-Deep-Dive|深度解析]]。这里补「启动时怎么分显存」「KV Cache 容量怎么算」「CUDA Graph 怎么回事」。
 
 ### 4.1 启动时的显存预算流程
 
@@ -226,10 +226,10 @@ EngineCore.__init__ 触发 profile 流程：
 
 ## 📚 相关笔记
 
-- [[sources/vLLM-Deep-Dive|vLLM 深度解析]] — 架构/调度/PagedAttention/前缀缓存内核（本文的调度侧底稿）
-- [[sources/vLLM 源码 导读|vLLM 源码导读]] — 本地仓库模块地图
-- [[concepts/PagedAttention|PagedAttention]] — 分页 KV 与块表
-- [[entities/vllm|vLLM 实体页]] — 概览
-- [[concepts/推理 引擎 监控]] — 监控/指标深度
-- [[concepts/推理 引擎 调优]] — 调优手段
+- [[sources/推理引擎/vLLM-Deep-Dive|vLLM 深度解析]] — 架构/调度/PagedAttention/前缀缓存内核（本文的调度侧底稿）
+- [[sources/推理引擎/vLLM 源码 导读|vLLM 源码导读]] — 本地仓库模块地图
+- [[sources/推理引擎/PagedAttention|PagedAttention]] — 分页 KV 与块表
+- [[sources/推理引擎/vllm|vLLM 实体页]] — 概览
+- [[sources/推理引擎/推理 引擎 监控]] — 监控/指标深度
+- [[sources/推理引擎/推理 引擎 调优]] — 调优手段
 - [[Clippings/vLLM 性能分析 - vLLM - vLLM 文档|vLLM 性能分析（profiling）]] — `--profiler-config` 用法

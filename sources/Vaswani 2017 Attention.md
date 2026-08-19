@@ -53,7 +53,7 @@ base_confidence: 0.6
 ## 后续影响
 
 - 几乎所有 [[entities/OpenAI|OpenAI]] GPT 系列模型均基于 Decoder-only Transformer
-- [[concepts/LLM 推理 优化|推理优化]] 领域的 FlashAttention、PagedAttention 解决其 O(n²) 瓶颈
+- [[sources/推理引擎/LLM 推理 优化|推理优化]] 领域的 FlashAttention、PagedAttention 解决其 O(n²) 瓶颈
 - 架构迭代方向包括：GQA（分组查询注意力）、MQA（多查询注意力）、RoPE（旋转位置编码）、ALiBi（线性偏置位置编码）、MoE（混合专家）
 
 ## 参考文献

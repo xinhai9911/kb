@@ -151,13 +151,13 @@ for cf in clipping_files:
     if append_section(fpath, section):
         changes.append(f"Clippings/{os.path.basename(cf)[:20]}... +link")
 
-# 3d. sources/LLM 推理 优化 → link to concept
-src_inf = os.path.join(VAULT, "sources", "LLM 推理 优化.md")
+# 3d. sources/推理引擎/LLM 推理优化 综述 → link to concept
+src_inf = os.path.join(VAULT, "sources", "推理引擎", "LLM 推理优化 综述.md")
 c = read_file(src_inf)
 if c and "关联" not in c:
-    c = c.rstrip() + "\n\n## 🔗 关联\n\n- [[concepts/LLM 推理 优化|LLM 推理优化]] — 概念笔记\n- [[sources/LLMForEverybody/索引|LLMForEverybody 导航]] — 第二章「部署与推理」\n"
+    c = c.rstrip() + "\n\n## 🔗 关联\n\n- [[sources/推理引擎/LLM 推理 优化|LLM 推理优化]] — 概念笔记\n- [[sources/LLMForEverybody/索引|LLMForEverybody 导航]] — 第二章「部署与推理」\n"
     write_file(src_inf, c)
-    changes.append("sources/LLM 推理 优化.md +link")
+    changes.append("sources/推理引擎/LLM 推理优化 综述.md +link")
 
 # 3e. sources/LLMForEverybody READMEs → link to index
 for readme in ["README 英.md", "README 俄.md"]:

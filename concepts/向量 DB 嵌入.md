@@ -148,4 +148,4 @@ embeddings = model.encode(["什么是向量数据库？", "How does RAG work?"])
 - RAG：[[concepts/RAG 检索 增强 生成|RAG 检索增强生成]]
 - 混合检索：[[concepts/混合 检索 bm 25 语义 融合|混合检索]]
 - Agent：[[concepts/AI 智能体 概览|AI Agent 概述]]
-- LLM 推理：[[concepts/LLM 推理 优化|LLM 推理优化]]
+- LLM 推理：[[sources/推理引擎/LLM 推理 优化|LLM 推理优化]]

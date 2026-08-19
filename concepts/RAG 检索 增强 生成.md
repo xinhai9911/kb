@@ -158,6 +158,6 @@ result = qa_chain.invoke({"query": "什么是 RAG？"})
 - 向量 DB：[[concepts/向量 DB 嵌入|向量数据库与 Embedding]]
 - 混合检索：[[concepts/混合 检索 bm 25 语义 融合|混合检索]]
 - Agent：[[concepts/AI 智能体 概览|AI Agent 概述]]
-- LLM 推理：[[concepts/LLM 推理 优化|LLM 推理优化]]
+- LLM 推理：[[sources/推理引擎/LLM 推理 优化|LLM 推理优化]]
 
 
