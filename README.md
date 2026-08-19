@@ -38,6 +38,8 @@ lifecycle: reviewed
 详见 [00-index/tag-glossary.md](00-index/标签 术语表.md)。
 
 ## 最近更新
+- 2026-08-19: 归拢知乎《vLLM 源码解读》剪藏 → 新增 [[Clippings/vLLM 系列（知乎）索引|vLLM（知乎）系列索引]]（1~7 篇：PagedAttention/架构/安装/组件初始化/调度/推理/LLaVA）：去重并规范文件名、统一补 frontmatter + 前后篇双链；登记入 [[索引|索引]]
+- 2026-08-19: 归拢腾讯云《LLM 系列》剪藏 → 新增 [[Clippings/LLM 系列 索引|LLM 系列索引]]（第 2~20 篇共 19 篇）：补齐缺失的「二十：解读 DeepSeek-V4」篇；为 19 篇统一补 frontmatter（source/作者/发表日）+ 前后篇双链与系列导航；回链 Transformer/RAG/分词器/推理引擎等图谱笔记并登记入 [[索引|索引]]
 - 2026-08-19: 推理引擎知识整理 —— 将 vLLM / SGLang / llama.cpp 相关推理框架知识统一归拢到 [[sources/推理引擎/|推理引擎]]：vLLM/SGLang/llama.cpp 深度解析与源码导读、推理引擎系列（原则/精通/选择/调优/监控）、大模型-引擎对照、PagedAttention/推测解码/分布式推理、引擎实体页(entities→sources/推理引擎)。全库 wikilink 路径随迁更新
 - 2026-08-19: 推理引擎三件套补全（一）新增 [[sources/推理引擎/SGLang-Deep-Dive|SGLang 深度解析]]（RadixAttention/调度/内存/GPU/接口）、[[sources/推理引擎/llama.cpp-Deep-Dive|llama.cpp 深度解析]]（GGUF/量化/mmap/多后端/接口）、[[sources/推理引擎/vLLM 对外接口与运行参考|vLLM 对外接口与运行参考]]（端点/部署/显存/指标）；补全实体页回链并登记 llama.cpp 实体入索引
 - 2026-08-19: 推理引擎三件套补全（二）新增 [[sources/推理引擎/SGLang 源码导读|SGLang 源码导读]]（模块地图 / MLA 融合 kernel / Rust 组件 / 分布式 launch）、[[sources/推理引擎/推理引擎 性能对照与基准|推理引擎 性能对照与基准]]（公开量级 + 自测方法论）；vLLM 接口参考补多模态与 LoRA，llama.cpp 深度解析补采样参数表 / 多模态 / RPC 多机

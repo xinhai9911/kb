@@ -3,7 +3,7 @@
   "providerId": "opencode",
   "title": "现在还有哪些修改没有提交",
   "createdAt": 1787049285041,
-  "lastActivityAt": 1787049384670,
+  "lastActivityAt": 1787049618773,
   "sessionId": "ses_feb8fdf30ffe3edKimtdGFgaDc",
   "selectedModel": "opencode:opencode/big-pickle",
   "providerState": {
@@ -13,11 +13,11 @@
   "usage": {
     "cacheCreationInputTokens": 0,
     "cacheReadInputTokens": 0,
-    "contextTokens": 15185,
+    "contextTokens": 23520,
     "contextWindow": 200000,
     "contextWindowIsAuthoritative": true,
     "inputTokens": 0,
     "model": "opencode/big-pickle",
-    "percentage": 8
+    "percentage": 12
   }
 }

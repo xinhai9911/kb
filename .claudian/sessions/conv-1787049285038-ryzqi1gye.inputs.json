@@ -25,7 +25,21 @@
       "rawDisplayText": "帮我提交修改",
       "canonicalText": "帮我提交修改",
       "images": [],
-      "contentDigest": "f31e0c0a3f2b721328e0630a3f6aa24d74e426f70b71d70f0db55e56a642c70e"
+      "contentDigest": "f31e0c0a3f2b721328e0630a3f6aa24d74e426f70b71d70f0db55e56a642c70e",
+      "providerAssistantMessageId": "msg_01474702e001fo4W88AiXn8l4e"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1787049592380-jo1jvvx",
+      "userTurnOrdinal": 3,
+      "state": "accepted",
+      "localMessageId": "msg-1787049592375-z51yhu1",
+      "timestamp": 1787049592375,
+      "rawDisplayText": "提交",
+      "canonicalText": "提交",
+      "images": [],
+      "contentDigest": "5dc86c74fbf304de0a09c341f4beeec53630756409f8d52be60b94adba9b2a98",
+      "providerAssistantMessageId": "msg_014751f38001zIX2rDLgBZpnxj"
     }
   ]
 }

@@ -19,25 +19,25 @@ tags:
 
 | 篇目 | 主题 | 原始发表 | 腾讯云原文 | 本库笔记 |
 | --- | --- | --- | --- | --- |
-| 二 | 基础概念篇 | 2025-06-10 | [原文](https://cloud.tencent.com/developer/article/2530467) | [[LLM 系列（二）：基础概念篇-腾讯云开发者社区-腾讯云 |
-| 三 | 核心技术之架构模式 | 2025-06-16 | [原文](https://cloud.tencent.com/developer/article/2532151) | [[LLM 系列（三）：核心技术之架构模式-腾讯云开发者社区-腾讯云 |
-| 四 | 神奇的魔法数 27 | 2025-06-20 | [原文](https://cloud.tencent.com/developer/article/2533264) | [[LLM 系列(四)：神奇的魔法数 27-腾讯云开发者社区-腾讯云 |
-| 五 | 模型训练篇 | 2025-07-01 | [原文](https://cloud.tencent.com/developer/article/2536981) | [[LLM 系列（五）：模型训练篇-腾讯云开发者社区-腾讯云 |
-| 六 | 模型推理篇 | 2025-07-07 | [原文](https://cloud.tencent.com/developer/article/2551256) | [[LLM 系列（六）：模型推理篇-腾讯云开发者社区-腾讯云 |
-| 七 | 数学概念篇 | 2025-07-13 | [原文](https://cloud.tencent.com/developer/article/2540456) | [[LLM 系列（七）：数学概念篇-腾讯云开发者社区-腾讯云 |
-| 八 | RAG 篇 | 2025-07-20 | [原文](https://cloud.tencent.com/developer/article/2544765) | [[LLM 系列（八）：RAG 篇-腾讯云开发者社区-腾讯云 |
-| 九 | RAG 番外篇-从文档到向量 | 2025-08-03 | [原文](https://cloud.tencent.com/developer/article/2552398) | [[LLM 系列（九）：RAG 番外篇-从文档到向量-腾讯云开发者社区-腾讯云 |
-| 十 | RAG 番外篇-向量检索 | 2025-08-26 | [原文](https://cloud.tencent.com/developer/article/2563637) | [[LLM 系列（十）：RAG 番外篇-向量检索-腾讯云开发者社区-腾讯云 |
-| 十一 | 从 DeepSeek UE8M0 来回顾精度革命 | 2025-08-28 | [原文](https://cloud.tencent.com/developer/article/2563638) | [[LLM 系列（十一）：从 DeepSeek UE8M0 来回顾精度革命-腾讯云开发者社区-腾讯云 |
-| 十二 | 解读 Function Calling | 2025-09-09 | [原文](https://cloud.tencent.com/developer/article/2583842) | [[LLM 系列（十二）：解读 Function Calling-腾讯云开发者社区-腾讯云 |
-| 十三 | 解读 Context Engineering | 2025-09-20 | [原文](https://cloud.tencent.com/developer/article/2583843) | [[LLM 系列（十三）：解读 Context Engineering-腾讯云开发者社区-腾讯云 |
-| 十四 | 解读 Deep Research | 2025-10-10 | [原文](https://cloud.tencent.com/developer/article/2583844) | [[LLM 系列（十四）：解读 Deep Research-腾讯云开发者社区-腾讯云 |
-| 十五 | Positional Encoding | 2025-11-11 | [原文](https://cloud.tencent.com/developer/article/2592796) | [[LLM 系列（十五）：Positional Encoding-腾讯云开发者社区-腾讯云 |
-| 十六 | 输出采样 | 2025-11-14 | [原文](https://cloud.tencent.com/developer/article/2592793) | [[LLM 系列（十六）：输出采样-腾讯云开发者社区-腾讯云 |
-| 十七 | 残差连接 Residual Connection | 2025-12-04 | [原文](https://cloud.tencent.com/developer/article/2607782) | [[LLM 系列（十七）：残差连接 Residual Connection-腾讯云开发者社区-腾讯云 |
-| 十八 | 注意力机制 Attention | 2025-12-19 | [原文](https://cloud.tencent.com/developer/article/2609606) | [[LLM 系列（十八）：注意力机制 Attention-腾讯云开发者社区-腾讯云 |
-| 十九 | 前馈神经网络 FFN | 2026-01-30 | [原文](https://cloud.tencent.com/developer/article/2627429) | [[LLM 系列（十九）：前馈神经网络 FFN-腾讯云开发者社区-腾讯云 |
-| 二十 | 解读 DeepSeek-V4 | 2026-04-26 | [原文](https://cloud.tencent.com/developer/article/2661157) | [[LLM 系列（二十）：解读 DeepSeek-V4-腾讯云开发者社区-腾讯云 |
+| 二 | 基础概念篇 | 2025-06-10 | [原文](https://cloud.tencent.com/developer/article/2530467) | [[LLM 系列（二）：基础概念篇-腾讯云开发者社区-腾讯云|笔记]] |
+| 三 | 核心技术之架构模式 | 2025-06-16 | [原文](https://cloud.tencent.com/developer/article/2532151) | [[LLM 系列（三）：核心技术之架构模式-腾讯云开发者社区-腾讯云|笔记]] |
+| 四 | 神奇的魔法数 27 | 2025-06-20 | [原文](https://cloud.tencent.com/developer/article/2533264) | [[LLM 系列(四)：神奇的魔法数 27-腾讯云开发者社区-腾讯云|笔记]] |
+| 五 | 模型训练篇 | 2025-07-01 | [原文](https://cloud.tencent.com/developer/article/2536981) | [[LLM 系列（五）：模型训练篇-腾讯云开发者社区-腾讯云|笔记]] |
+| 六 | 模型推理篇 | 2025-07-07 | [原文](https://cloud.tencent.com/developer/article/2551256) | [[LLM 系列（六）：模型推理篇-腾讯云开发者社区-腾讯云|笔记]] |
+| 七 | 数学概念篇 | 2025-07-13 | [原文](https://cloud.tencent.com/developer/article/2540456) | [[LLM 系列（七）：数学概念篇-腾讯云开发者社区-腾讯云|笔记]] |
+| 八 | RAG 篇 | 2025-07-20 | [原文](https://cloud.tencent.com/developer/article/2544765) | [[LLM 系列（八）：RAG 篇-腾讯云开发者社区-腾讯云|笔记]] |
+| 九 | RAG 番外篇-从文档到向量 | 2025-08-03 | [原文](https://cloud.tencent.com/developer/article/2552398) | [[LLM 系列（九）：RAG 番外篇-从文档到向量-腾讯云开发者社区-腾讯云|笔记]] |
+| 十 | RAG 番外篇-向量检索 | 2025-08-26 | [原文](https://cloud.tencent.com/developer/article/2563637) | [[LLM 系列（十）：RAG 番外篇-向量检索-腾讯云开发者社区-腾讯云|笔记]] |
+| 十一 | 从 DeepSeek UE8M0 来回顾精度革命 | 2025-08-28 | [原文](https://cloud.tencent.com/developer/article/2563638) | [[LLM 系列（十一）：从 DeepSeek UE8M0 来回顾精度革命-腾讯云开发者社区-腾讯云|笔记]] |
+| 十二 | 解读 Function Calling | 2025-09-09 | [原文](https://cloud.tencent.com/developer/article/2583842) | [[LLM 系列（十二）：解读 Function Calling-腾讯云开发者社区-腾讯云|笔记]] |
+| 十三 | 解读 Context Engineering | 2025-09-20 | [原文](https://cloud.tencent.com/developer/article/2583843) | [[LLM 系列（十三）：解读 Context Engineering-腾讯云开发者社区-腾讯云|笔记]] |
+| 十四 | 解读 Deep Research | 2025-10-10 | [原文](https://cloud.tencent.com/developer/article/2583844) | [[LLM 系列（十四）：解读 Deep Research-腾讯云开发者社区-腾讯云|笔记]] |
+| 十五 | Positional Encoding | 2025-11-11 | [原文](https://cloud.tencent.com/developer/article/2592796) | [[LLM 系列（十五）：Positional Encoding-腾讯云开发者社区-腾讯云|笔记]] |
+| 十六 | 输出采样 | 2025-11-14 | [原文](https://cloud.tencent.com/developer/article/2592793) | [[LLM 系列（十六）：输出采样-腾讯云开发者社区-腾讯云|笔记]] |
+| 十七 | 残差连接 Residual Connection | 2025-12-04 | [原文](https://cloud.tencent.com/developer/article/2607782) | [[LLM 系列（十七）：残差连接 Residual Connection-腾讯云开发者社区-腾讯云|笔记]] |
+| 十八 | 注意力机制 Attention | 2025-12-19 | [原文](https://cloud.tencent.com/developer/article/2609606) | [[LLM 系列（十八）：注意力机制 Attention-腾讯云开发者社区-腾讯云|笔记]] |
+| 十九 | 前馈神经网络 FFN | 2026-01-30 | [原文](https://cloud.tencent.com/developer/article/2627429) | [[LLM 系列（十九）：前馈神经网络 FFN-腾讯云开发者社区-腾讯云|笔记]] |
+| 二十 | 解读 DeepSeek-V4 | 2026-04-26 | [原文](https://cloud.tencent.com/developer/article/2661157) | [[LLM 系列（二十）：解读 DeepSeek-V4-腾讯云开发者社区-腾讯云|笔记]] |
 
 ## 系列脉络
 
