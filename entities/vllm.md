@@ -273,6 +273,7 @@ docker run --gpus all \
 
 ## 延伸
 
+- → [[sources/vLLM 对外接口与运行参考|vLLM 对外接口与运行参考]] — OpenAI 端点/部署/显存运行细节
 - → [[推理 引擎 选择]] — 推理引擎选型对比
 - → [[LLM 推理 优化]] — 推理优化技术总论
 - → [[entities/tensorrt-llm|TensorRT-LLM]] — NVIDIA 官方推理引擎
@@ -295,6 +296,8 @@ docker run --gpus all \
 ## 📖 来源参考
 
 - **深度解析**：[[sources/vLLM-Deep-Dive|vLLM 深度解析]] — 基于源码的架构与技术详解
+- **接口与运行**：[[sources/vLLM 对外接口与运行参考|vLLM 对外接口与运行参考]] — 端点/部署/显存/指标
+- **性能分析**：[[Clippings/vLLM 性能分析 - vLLM - vLLM 文档|vLLM 性能分析]] — `--profiler-config` profiling
 - **LLMForEverybody**：[[sources/LLMForEverybody/02-第二章-部署与推理/大模型推理框架（二）vLLM|大模型推理框架（二）vLLM]] — 专题介绍文章
 - **导航**：[[sources/LLMForEverybody/索引#部署与推理|部署与推理（第02章）]]
 > 来自 [luhengshiwo/LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody) 外部知识库导入

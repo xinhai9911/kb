@@ -54,13 +54,21 @@ llama.cpp 定义的模型格式，取代了早期的 GGML：
 └─────────────────────────────────────────┘
 ```
 
-### 3. 内存映射（mmap）
+### 3. 内存映射（mmap）+ 页式 KV Cache
 
-模型文件直接映射到虚拟内存，按需加载，支持超大模型在有限内存上运行。
+- **mmap**：模型文件直接映射到虚拟内存，按需加载，支持超大模型在有限内存上运行；`--no-mmap`/`--mlock` 可改为整体载入防换出。
+- **KV Cache**：按 `--ctx-size` 为全量并发请求分配；现代版本用**页式 KV Cache + defrag**（`llama_kv_cache` 分页、删段、碎片整理），配合 `--parallel` 槽位共享。
+- **内存公式**：权重（量化后）+ KV cache + 计算缓冲 ≈ 4B(Q4)~35GB(70B Q4)；用 `--batch-size`/`--ubatch-size` 控制激活峰值。
 
-### 4. 服务模式
+### 4. GPU 后端与内部调度
 
-内置 HTTP Server，提供兼容 OpenAI 的 API 接口，可直接对接现有应用。
+- **多后端**：CUDA / Vulkan / Metal / SYCL / CANN / RPC 统一走 `ggml_backend`；`-ngl` 控制层卸载量，`--split-mode layer|row(tensor)` + `--tensor-split` 做多卡切分，支持 MoE expert offload。
+- **调度**：prefill（整体/分 micro-batch）与 decode（逐 token）由 `llama_decode(batch)` 驱动；服务端用 `--parallel` 槽位 + `--cont-batching`（默认开）把多请求拼成一个 batch 每轮前向、等待队列排队，近似连续批处理。
+
+### 5. 服务与结构化输出
+
+- 内置 **llama-server**：OpenAI 兼容（`/v1/chat/completions` 等）+ 原生 `/completion`、`/infill`、`/embedding`、`/tokenize`、`/health`、`/metrics`、`/slots`。
+- **GBNF 语法**约束结构化输出（`grammars/` 含 json.gbnf），支持原地限约束解码。
 
 ## 与 vLLM / Ollama 对比
 
@@ -82,10 +90,11 @@ llama.cpp 定义的模型格式，取代了早期的 GGML：
 
 ## 延伸
 
+- → [[sources/llama.cpp-Deep-Dive|llama.cpp 深度解析]] — GGUF/量化/mmap/GPU 后端/调度/接口 全展开
 - → [[entities/vllm|vLLM]] — GPU 生产部署首选
 - → [[entities/sglang|SGLang]] — RadixAttention 推理引擎
 - → [[concepts/推理 引擎 选择]] — 推理引擎选型对比
-- → [[LLM 推理 优化]] — 推理优化技术总论
+- → [[concepts/LLM 推理 优化]] — 推理优化技术总论
 
 ---
 
@@ -102,6 +111,7 @@ llama.cpp 定义的模型格式，取代了早期的 GGML：
 
 ## 📖 来源参考
 
+- **深度解析**：[[sources/llama.cpp-Deep-Dive|llama.cpp 深度解析]] — GGUF/量化/内存/GPU/调度/接口 架构详解
 - **LLMForEverybody**：[[sources/LLMForEverybody/02-第二章-部署与推理/大模型推理框架（七）llama.cpp|大模型推理框架（七）llama.cpp]] — 专题介绍文章
 - **导航**：[[sources/LLMForEverybody/索引#部署与推理|部署与推理（第02章）]]
 > 来自 [luhengshiwo/LLMForEverybody](https://github.com/luhengshiwo/LLMForEverybody) 外部知识库导入
