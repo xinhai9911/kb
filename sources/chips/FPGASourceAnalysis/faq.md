@@ -105,4 +105,26 @@
 2. 检查 LBS 基址是否与 mem_out 槽位表匹配（`lbs-register-map.md` 全表）。
 3. tcam_mem_map（0x08_9000）全部寄存器恒 0 是预期行为（TCAM 死代码）。
 
+## 10. 以太网解析器（rtl/eth/）新发现
+
+| 问题 | 事实 |
+|---|---|
+| `eth_ul_pkt_parsing_v2` 是否在用？ | **全工程 grep 无例化**；top.sv 8 口全用 v1，v2 仅出现在 vlog 编译清单，属重构候选，勿当生效路径 |
+| 综述 §4.7 协议端口号 | **错位**：综述写「Telnet+24/FTP+33/IMAP+42」，源码实际为 23=FTP-Ctl / 21=FTP-Data / 143=SIP / 110=POP3 / 80=HTTP / 3306=MySQL |
+| `pkt_parsing_sch` 是否有仲裁逻辑？ | **无**：vld/sop/eop 全体 OR + 固定优先级；正确性依赖「上游同一时刻单包」前提——并发两包入 sch 会 OR 出脏数据 |
+| `pkt_parsing_mem_map` 含统计计数吗？ | **不含** CRC/MIN/JUMBO/FC/BYPASS_EN——这些在 `Ingress_chnl`（eth_rx_pkts_*）与 `top_mem_map`，查统计要去那里 |
+| `eth_reset` lnkdwn_cnt 清零方式 | `clear_lnkdwn_cnt` 在 top 接 `'d0`，**无软件清零通道**（待核实） |
+| check_en 14-bit 偏移语义 | `[13:5]` = 256-bit 行号，`[4:0]` = 行内字节偏移；`position_check` 按此格式消费 |
+
+## 11. DDR 调度器（rtl/ddr_ctrl/）新发现
+
+| 问题 | 事实 |
+|---|---|
+| `hash_inv` 的作用 | **不是校验**，是 25-bit 位反转（`hash_inv[i]=din[25-i]`）用于打散行地址防 DDR bank 冲突；综述「hash_inv 校验」表述不准确 |
+| `0x5a` 自检是否周期性？ | **一次性 POST**（Power-On Self Test）：INIT_WRITE→INIT_READ→IDLE；`self_check_cnt[7]` 置 1 后常驻，自检期 DDR 读回不外送（门控） |
+| 仲裁策略是 round-robin？ | **写绝对优先**（8 态 FSM，READ 期间新写随时抢占）；`app_addr[2:0]`（mask_sel/debug）实际恒 0 未用；`app_rd_data_end`/`t_ddr_empty` 未使用 |
+| 黑名单 DDR 读能否正常返回？ | **不能**：`rd_res_demux.pkt_in[1]` 依赖 DDR 通道 j=1（`ddr_ctrl_1`），但 `ddr_ctrl_1`/`ddr4_1_dns` 已注释、`d_rd_res[i*2+1]` 强制 0 → blacklist DDR 哈希读请求永无响应（影响面待核实） |
+| `ddr_ctrl` 内 FIFO 复位域 | `sc_fifo_idx` 跑 ui_clk / 复位 ui_rst，但配对 FIFO 的 `rst` 接 `clr`（sys_rst）——**跨时钟域复位风险** |
+| `error_status` 信号 | 无驱动（赋值在注释里），`error_flag` 输出恒 0 |
+
 > 返回：[skill.md](skill.md)

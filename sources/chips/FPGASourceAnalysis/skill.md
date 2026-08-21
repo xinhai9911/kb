@@ -127,4 +127,18 @@ top_kb_page:   50-reference/sources/chips/ips_test_2025_fpga（顶层一页式�
 | 29 用例逐条语义：端口配置 / 转发模式 / 判定谓词 / 现状 | [09-sim-testbench/testcase-semantics.md](09-sim-testbench/testcase-semantics.md) |
 | tb_dma env/driver/pcap / tb_model ddr/dma/eth/pcie 行为模型 | [09-sim-testbench/tb-dma-models.md](09-sim-testbench/tb-dma-models.md) |
 
+### 10 - eth-parse/ 以太网解析器
+
+| 功能/接口 | 文件路径 |
+|---|---|
+| eth_ul_pkt_parsing v1/v2：接口与 ch[124:0] 布局 / VLAN-QINQ-MPLS 头检测 / 8~10 级字段提取流水 / mod_field 与 etype / check_en 协议位置检测 / v1↔v2 差异 | [10-eth-parse/eth-parsing_part1.md](10-eth-parse/eth-parsing_part1.md) |
+| 5 元组哈希 hash_32b_gen 输入时序 / pkt_parsing_sch 4→1 / pkt_parsing_mem_map 0x08_5000 寄存器 / eth_reset 5MHz 复位 / data_led | [10-eth-parse/eth-parsing_part2.md](10-eth-parse/eth-parsing_part2.md) |
+
+### 11 - ddr-ctrl/ DDR4 调度器
+
+| 功能/接口 | 文件路径 |
+|---|---|
+| ddr_ctrl：接口全表 / app_addr[27:0] 字段 / hash_inv 位反转 / 写优先 FSM / 0x5a POST 自检 / CDC / 死信号 | [11-ddr-ctrl/ddr-ctrl_part1.md](11-ddr-ctrl/ddr-ctrl_part1.md) |
+| rd_res_demux：addr[0] 与通道位次组合解码 / 2 级寄存器流水 / 调试跨钟链路 | [11-ddr-ctrl/ddr-ctrl_part2.md](11-ddr-ctrl/ddr-ctrl_part2.md) |
+
 > 本页即 Skill 入口 | [faq.md](faq.md)
