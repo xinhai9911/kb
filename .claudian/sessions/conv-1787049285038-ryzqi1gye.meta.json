@@ -15,9 +15,9 @@
     "cacheReadInputTokens": 0,
     "contextTokens": 23520,
     "contextWindow": 200000,
-    "contextWindowIsAuthoritative": true,
+    "contextWindowIsAuthoritative": false,
     "inputTokens": 0,
-    "model": "opencode/big-pickle",
+    "model": "opencode:opencode/big-pickle",
     "percentage": 12
   }
 }
