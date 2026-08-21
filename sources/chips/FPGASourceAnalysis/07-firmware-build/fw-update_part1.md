@@ -115,4 +115,5 @@ host 逐字访问；QSPI 按字节。`File_*_cyc_ram`（=cnt[0]）选 0/1 通道
 
 读回：`Qspi_rdwd` 在 cnt>16、clk 低沿按奇偶拼字节，`Qspi_rdwren` 整字节写 RAM。SCK 走 STARTUPE3 USRCCLKO；`Qspi_dri_state=c_state`。
 
+> 继续：[fw-update_part2.md](fw-update_part2.md) | [`skill.md`](../skill.md) | [`faq.md`](../faq.md)
 > 返回：[`skill.md`](../skill.md) | [`faq.md`](../faq.md)

@@ -61,4 +61,5 @@ design_bd_wrapper（每通道，Xilinx BD）
 
 `top_mem_map` 出：`r_bypass_en/r_table_clear/r_st_timeout/r_user_rst/eth_core_rst/core_rx_enable/dma_chnl_num[3:0]/port_cfg/port_cfg_rd/eth_pkt_ctrl/link_status_switch/r_eth_port_map/pcie_channel_id_en`（`pcie_channel_id_in` 接对卡 `pcie_channel_id[1-i]`）；入：`w_card_status/xadc_temp/hash_gen_{sip,dip,result,port,d}/ddr_rd_db[3:0]/ddr_cfg_cnt[6:0]/position_check_cnt/dma_full_bypass_{en,cnt}/local_sid`。
 
+> 继续：[top-dataflow_part3.md](top-dataflow_part3.md) | [`skill.md`](../skill.md) | [`faq.md`](../faq.md)
 > 返回：[`skill.md`](../skill.md) | [`faq.md`](../faq.md)。

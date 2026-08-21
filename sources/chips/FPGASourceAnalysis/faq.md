@@ -32,7 +32,7 @@
 | 问题 | 事实 |
 |---|---|
 | TCP/UDP 协议号 **在本工程两处相反** | `blacklist_filter.sv`: TCP=1, UDP=6, ICMP=17；session 表（`Typdef_pkg.sv`/上游数据面）: TCP=6, UDP=17——系统内两套并存，跨界复用必须核对 |
-| `session-table.md` §2 `dout2 ch` 的 FLAG==0x18 | 虚拟线模式下 macid 区全 0，模式区写 8'h18——注意 FLAG 与 Route_mux `ruser[164:157]` 解码值（0x18 同义） |
+| `session-table.md` §6 `dout2 ch` 的 FLAG==0x18 | 虚拟线模式下 macid 区全 0，模式区写 8'h18——注意 FLAG 与 Route_mux `ruser[164:157]` 解码值（0x18 同义） |
 
 ## 4. 寄存器地址陷阱
 

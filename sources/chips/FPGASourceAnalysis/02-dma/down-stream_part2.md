@@ -43,4 +43,5 @@
 
 即 80 位读请求字 `{长度,地址}` + 9b tid 在 AXIS 单令牌与 native req/ack 之间直接映射，可任意插入/替换总线段的封装。
 
+> 继续：[down-stream_part3.md](down-stream_part3.md) | [`skill.md`](../skill.md) | [`faq.md`](../faq.md)
 > 返回：[`skill.md`](../skill.md) | [`faq.md`](../faq.md)

@@ -105,4 +105,5 @@ app_wdf_end = app_wdf_wren;   // 4:1 分频 + BL8 时两信号同拍
 
 模块整体**单时钟（clk=ui_clk）**，内部无跨域。CDC 全在顶层 FIFO：写 `dc_fifo_c_ctrl`(ddr_cfg_fifo, sys→ui)、读请求 `dc_fifo_across`(cfg_req_fifo, sys→ui)、读响应 `dc_fifo_across`(cfg_res_fifo, ui→sys)。ddr_ctrl 只做"单域内把写/读命令灌进 MIG UI"。
 
+> 继续：[ddr-ctrl_part2.md](ddr-ctrl_part2.md) | [`skill.md`](../skill.md) | [`faq.md`](../faq.md)
 > 返回：[`skill.md`](../skill.md) | [`faq.md`](../faq.md)

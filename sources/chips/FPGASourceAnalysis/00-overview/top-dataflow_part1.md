@@ -89,4 +89,5 @@
 
 复位层次：`sys_rst`（clk_rst_ctrl 内 4bit shift，最大扇出 999）作数据面异步复位；`clk_100m_unlock` 作配置域复位；每口 `eth_rst`（gtwiz）/`eth_mac_rst`（MAC）/`user_rx_reset`/`eth_tx_rst`；DDR 侧 `ui_rst`（MIG）；PCIe 侧 `pcie_axi_rst`。`qsfp_rst_n_f={2{clk_100m_lock}}`、`qsfp_lpmode_f=eth_core_rst[1:0]`、`opt_tx_disable=eth_core_rst[7:4]`。
 
+> 继续：[top-dataflow_part2.md](top-dataflow_part2.md) | [`skill.md`](../skill.md) | [`faq.md`](../faq.md)
 > 返回：[`skill.md`](../skill.md) | [`faq.md`](../faq.md)。

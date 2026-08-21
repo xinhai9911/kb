@@ -1,6 +1,6 @@
 # 转发流水线补深：slp_decode / Forward_shunt / Forward_lbs / Dma_Ses_mux / ch_trf / Axis2Avls / 封装底座
 
-> 补综述 §4.2 未覆盖的 forward/ 模块；ch 布局见 [[03-dataplane/ch-protocol|ch 协议章]]。源路径 rtl/forward/。
+> 补综述 §4.2 未覆盖的 forward/ 模块；ch 布局见 [[sources/chips/FPGASourceAnalysis/03-dataplane/ch-protocol|ch 协议章]]。源路径 rtl/forward/。
 
 ## 1. slp_decode — 协议偏移译码（非 SRAM 链路表）
 

@@ -1,7 +1,7 @@
 # 会话表查询引擎：session_t_sch（查表 FSM 与输出路由）
 
 > 源路径：`rtl/table/session_t_sch.sv`
-> 定位：数据面 256-bit 总线管线中段，top 挂 `mem_out[i][6]`；本模块内 `st_sch_mem_map` BASE_ADDR=`24'h8_6000`（clk_100m 域）。上游 eth_sta，下游 blacklist_proc。top 上 `bypass_en=r_bypass_en[i][5]|r_table_clear[i][0]`（非固定旁路）。st_sch_mem_map 全寄存器 / RSS 配置 / 老化 / 线速限速见本文 §5。
+> 定位：数据面 256-bit 总线管线中段，top 挂 `mem_out[i][6]`；本模块内 `st_sch_mem_map` BASE_ADDR=`24'h8_6000`（clk_100m 域）。上游 eth_sta，下游 blacklist_proc。top 上 `bypass_en=r_bypass_en[i][5]|r_table_clear[i][0]`（非固定旁路）。st_sch_mem_map 全寄存器 / RSS 配置 / 老化 / FT_DB 读回见 [lbs-register-map](../05-qos-memmap/lbs-register-map.md)。
 
 ## 1. 接口一览
 
@@ -14,7 +14,7 @@
 | d_rd_req | BUS#(28,0)::B | out | 五元组哈希→DDR 读；data=hash[27:3]<<3 |
 | d_rd_res | DDR#(512,28)::RES | in | DDR 512-bit 会话条目 + 28b addr |
 | ddr_wr_sch_in | BUS#(512,28)::C | out | SYN/FIN 时间戳刷新写 |
-| sl_wr_req/sl_rd_res | BUS#(16,21)::D / BUS#(1,24)::D | out/in | 线速限速字节计数回路（见 part2 §9） |
+| sl_wr_req/sl_rd_res | BUS#(16,21)::D / BUS#(1,24)::D | out/in | 线速限速字节计数回路（寄存器见 [lbs-register-map](../05-qos-memmap/lbs-register-map.md)） |
 | macid_addr/vld | 17b/1b | out/in | 邻接表查询：{vld,MACID[15:0]} |
 | st_timeout/gbl_timeout/gbl_us_out | 32b/48b/20b | in | 超时配置与全局 48-bit 时间基点 |
 

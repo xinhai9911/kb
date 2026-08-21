@@ -52,4 +52,5 @@ desc_ack = s_ack & desc_req;
 - **`desc_used`**：`s_req&s_ack&s_tid[0]` 自增（即**报文读请求**计数；注释名"已取走的描述符计数"——一笔报文对应消耗一条描述符，语义待核实）。
 - 错误标志：取到零长度（`!data[15:4]`）或零地址（`!data[47:16]`）置 `desc_err`。
 
+> 继续：[down-stream_part2.md](down-stream_part2.md) | [`skill.md`](../skill.md) | [`faq.md`](../faq.md)
 > 返回：[`skill.md`](../skill.md) | [`faq.md`](../faq.md)

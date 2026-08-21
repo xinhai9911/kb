@@ -84,4 +84,5 @@ top 实际位宽：MAC 侧 `AXI(256,1)::S`、10G `AXI(64,1)::S`、UL DMA `AXI(25
 - 提供 `master`/`slave` 双 modport，标准的 5 通道 AXI4-Lite 时序。
 - top 实例：`axi_bcam[2]` / `axi_tcam[2]`（每通道各 1），aclk 绑 `clk_100m_in`、aresetn 绑 `clk_100m_lock`；下游接 `axi_cam_slave`（BCAM）与 `blacklist_proc.axi_tcam`（TCAM 侧），网表侧是 `design_bd_wrapper` 的 `reg_axi_1/2`。
 
+> 继续：[defines-params_part2.md](defines-params_part2.md) | [`skill.md`](../skill.md) | [`faq.md`](../faq.md)
 > 返回：[`skill.md`](../skill.md) | [`faq.md`](../faq.md)。

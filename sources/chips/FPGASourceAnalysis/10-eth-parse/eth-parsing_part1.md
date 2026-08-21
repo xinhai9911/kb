@@ -117,4 +117,4 @@ HTTP start=`l3_len - l3_h_len*4 - l4_h_len*4 - 729 + h_field[5]`（IPv4；IPv6 �
 
 两版 `hash_direct/hash_available/pkt_len_cnt/i_pkt_db_info`、`seop_check`（4×8b SOP/EOP 平衡）、子模块（`pkt_parsing_mem_map` BASE 0x8_5000+ETH_ID*0x100、2×`hash_32b_gen`、2×`dsp_macro_cnt`、2×`pkt_tracing_detection`）一致。
 
-> 继续：[part 2：哈希 / 调度 / 寄存器 / 复位 / LED](eth-parsing_part2.md)
+> 继续：[part 2：哈希 / 调度 / 寄存器 / 复位 / LED](eth-parsing_part2.md) | [`skill.md`](../skill.md) | [`faq.md`](../faq.md)

@@ -65,4 +65,5 @@ tdata_sr[31:0] <= {s1_axis_tdata, 8'd0, tmp[4:0], pkt_length_fifo_odata[10:0],
 
 即 336 位写请求字统一为 `{数据,地址,长度}`，tkeep 低 10 位固定 0x3ff（地址+长度恒有效）。valid/tready 直通。
 
+> 继续：[up-stream_part2.md](up-stream_part2.md) | [`skill.md`](../skill.md) | [`faq.md`](../faq.md)
 > 返回：[`skill.md`](../skill.md) | [`faq.md`](../faq.md)
