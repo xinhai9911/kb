@@ -16,7 +16,7 @@
 | 一：分析 | ✅ | 读取全 152 RTL + sim + constraint + build 文件，建立基线综述差异矩阵（coverage-audit.md） |
 | 二：规划 | ✅ | 10 模块目录（00-09），按 rtl/ 子目录天然边界聚合，超 8KB 预拆分 _partN |
 | 三：逻辑分片 | ✅ | 9 并行子代理按模块边界各读各自源文件，不重复解析公共头 |
-| 四：生成 | ✅ | 9 组并行生成 + 3 组补齐 + 1 个自写（constraints）；共 43 个 Markdown |
+| 四：生成 | ✅ | 9 组并行生成 + 3 组补齐 + 1 个自写（constraints）；共 48 个 Markdown（含后续补齐的 10-eth-parse 与 11-ddr-ctrl） |
 | 五：审查 | ✅ | 检查超限文件：tlv-config-path（17KB→3份 ≤7KB）、filters-portgroup-replay（21KB→4份 ≤8.2KB） |
 | 六：优化 | ✅ | 跨文件公共内容（命名陷阱、死代码清单）提取至 skill.md 全局约定与 faq.md |
 | 七：硬化 | ✅ | skill.md 索引与磁盘文件清单对齐；内部链接 _partN 相互连通；faq.md 排错流程完备 |
@@ -56,7 +56,7 @@
 
 - 优化前总字节（41 模块文件）：~249 KB
 - 公共内容提取至 skill.md + faq.md（命名陷阱、死代码清单、排错流程）
-- 优化后总字节（43 文件含 skill/faq）：265.7 KB
+- 优化后总字节（48 文件含 skill/faq）：301.7 KB
 - 未净减少（内容为新增深度分析，无重复精简项）
 
 ## 最终统计
@@ -64,7 +64,7 @@
 | 指标 | 值 |
 |---|---|
 | 目录数 | 11（00-overview 至 09-sim-testbench + 根） |
-| Markdown 文件数 | 43 |
+| Markdown 文件数 | 48 |
 | 总大小 | 265.7 KB（272,086 bytes） |
 | 最大文件 | skill.md（9,276 bytes） |
 | 超 8KB 文件（豁免/可接受） | coverage-audit.md（审计元文档，9.5KB，豁免）；lbs-register-map.md（8.4KB）；build-system.md（8.4KB）；filters-portgroup-replay_part1.md（8.2KB） |

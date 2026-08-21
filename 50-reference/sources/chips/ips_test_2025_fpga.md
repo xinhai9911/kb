@@ -256,7 +256,7 @@ ips_test_2025_add_mpls_6que/
 - **命名陷阱**：文件名 `mtu_comb.sv` 但模块名为 `mut_comb`；`host_intf.v` 模块名为 `host_inft`；目录名 `i_e_gress`；`ckes` 是 checksum 的拼写变体；`pkt_tracing_hit.sv` 文件头注释与实际模块名 `pkt_tracing_detection` 不符。
 
 ## 相关链接
-- **深度模块分析（本综述补深）**：[[sources/chips/FPGASourceAnalysis/skill|FPGASourceAnalysis Skill 索引]]（43 个模块文件，覆盖全部 RTL 子目录 + 仿真 + 约束）
+- **深度模块分析（本综述补深）**：[[sources/chips/FPGASourceAnalysis/skill|FPGASourceAnalysis Skill 索引]]（45 个模块文件，覆盖全部 RTL 子目录 + 仿真 + 约束）
 - 资料蒸馏对照：[[50-reference/sources/chips/NIC DPDK|网卡与 DPDK]]
 - 架构对照：[[50-reference/sources/chips/SmartNIC DPU|SmartNIC 与 DPU]]
 - 同类国产 FPGA：[[50-reference/sources/chips/Centec CTC 7132|盛科 CTC7132 交换芯片]]

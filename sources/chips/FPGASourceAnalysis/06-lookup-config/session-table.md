@@ -1,7 +1,7 @@
 # 会话表查询引擎：session_t_sch（查表 FSM 与输出路由）
 
 > 源路径：`rtl/table/session_t_sch.sv`
-> 定位：数据面 256-bit 总线管线中段，top 挂 `mem_out[i][6]`；本模块内 `st_sch_mem_map` BASE_ADDR=`24'h8_6000`（clk_100m 域）。上游 eth_sta，下游 blacklist_proc。top 上 `bypass_en=r_bypass_en[i][5]|r_table_clear[i][0]`（非固定旁路）。**st_sch_mem_map 全寄存器 / RSS 配置 / 老化 / 线速限速见 [session-table_part2.md](session-table_part2.md)。**
+> 定位：数据面 256-bit 总线管线中段，top 挂 `mem_out[i][6]`；本模块内 `st_sch_mem_map` BASE_ADDR=`24'h8_6000`（clk_100m 域）。上游 eth_sta，下游 blacklist_proc。top 上 `bypass_en=r_bypass_en[i][5]|r_table_clear[i][0]`（非固定旁路）。st_sch_mem_map 全寄存器 / RSS 配置 / 老化 / 线速限速见本文 §5。
 
 ## 1. 接口一览
 
