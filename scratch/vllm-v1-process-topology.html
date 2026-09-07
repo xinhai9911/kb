@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>vLLM V1 进程拓扑 — 主进程 / EngineCore / Worker 关系图</title>
+<style>
+  :root {
+    --bg: #0f1420; --panel: #1a2233; --panel2: #16202f; --line: #2c3a52;
+    --text: #dce4f0; --dim: #8fa0b8;
+    --main: #3d8bfd;    /* 主进程 */
+    --core: #e8590c;    /* EngineCore */
+    --worker: #2fbf71;  /* Worker */
+    --zmq: #f0a030;     /* ZMQ 通信链 */
+    --spawn: #e0509a;   /* 创建链 (spawn) */
+    --warn: #ff8787;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif;
+    padding: 32px 16px 64px;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; }
+  h1 { font-size: 25px; margin-bottom: 6px; }
+  .sub { color: var(--dim); font-size: 14px; margin-bottom: 26px; }
+  h2 { font-size: 18px; margin: 42px 0 14px; padding-left: 10px; border-left: 4px solid var(--zmq); }
+  code {
+    font-family: Consolas, monospace; font-size: 12.5px;
+    background: rgba(255,255,255,.06); border: 1px solid var(--line);
+    padding: 1px 6px; border-radius: 4px; color: #c8d6e8;
+  }
+  .note { color: var(--dim); font-size: 12.5px; }
+
+  /* ================= 图例：两条链 ================= */
+  .legend {
+    display: flex; gap: 14px; margin-bottom: 18px; flex-wrap: wrap;
+  }
+  .legend .chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; padding: 6px 14px; border-radius: 8px;
+    background: var(--panel2); border: 1px solid var(--line);
+  }
+  .chip .sw-solid { width: 26px; height: 0; border-top: 3px solid var(--spawn); border-radius: 2px; }
+  .chip .sw-dash  { width: 26px; height: 0; border-top: 3px dashed var(--zmq); border-radius: 2px; }
+  .chip.c-spawn { color: #f5a9ce; }
+  .chip.c-zmq   { color: #f7c983; }
+  .chip.c-nolink{ color: var(--dim); }
+
+  /* ================= 纵向拓扑主图 ================= */
+  .topo {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 14px; padding: 24px 22px 20px;
+  }
+  .pbox { border-radius: 12px; border: 2px solid; padding: 14px 18px; position: relative; }
+  .pbox .tag {
+    position: absolute; top: -13px; left: 14px; font-size: 12px; font-weight: 700;
+    padding: 2px 12px; border-radius: 10px; letter-spacing: 1px;
+  }
+  .pbox .os { position: absolute; top: 10px; right: 14px; font-size: 11px; color: var(--dim);
+    font-family: Consolas, monospace; }
+
+  /* 主进程 */
+  .pbox.main { border-color: var(--main); background: rgba(61,139,253,.07); }
+  .pbox.main .tag { background: var(--main); color: #fff; }
+  .pbox.main h3 { color: var(--main); font-size: 16px; margin-bottom: 8px; }
+  /* EngineCore */
+  .pbox.core { border-color: var(--core); background: rgba(232,89,12,.07); }
+  .pbox.core .tag { background: var(--core); color: #fff; }
+  .pbox.core h3 { color: var(--core); font-size: 16px; margin-bottom: 8px; }
+  /* Worker */
+  .pbox.worker { border-color: var(--worker); background: rgba(47,191,113,.07); }
+  .pbox.worker .tag { background: var(--worker); color: #06281a; }
+
+  .pbox .duty { font-size: 13px; line-height: 1.75; }
+  .pbox .duty b { color: #e8d44d; font-weight: 600; }
+  .comp-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .comp {
+    font-size: 12px; font-family: Consolas, monospace; padding: 3px 10px;
+    border-radius: 6px; background: rgba(255,255,255,.05); border: 1px solid var(--line);
+    color: #c8d6e8;
+  }
+  .comp.hot { border-color: var(--spawn); color: #f5a9ce; background: rgba(224,80,154,.08); }
+  .gil {
+    margin-top: 10px; display: inline-block; font-size: 11.5px; padding: 3px 10px;
+    border-radius: 6px; background: rgba(255,135,135,.1); border: 1px dashed var(--warn); color: var(--warn);
+  }
+
+  /* ---- 连接器：spawn 链 + ZMQ 链 双线 ---- */
+  .connector {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0 30px;
+    padding: 10px 40px; position: relative;
+  }
+  .conn-cell { text-align: center; padding: 6px 10px; border-radius: 10px; }
+  .conn-cell .big { font-size: 17px; display: block; line-height: 1.2; }
+  .conn-cell .lab { font-size: 12.5px; display: block; margin-top: 2px; line-height: 1.55; }
+  .conn-spawn { border: 2.5px solid var(--spawn); background: rgba(224,80,154,.06); color: #f5a9ce; }
+  .conn-zmq   { border: 2.5px dashed var(--zmq); background: rgba(240,160,48,.06); color: #f7c983; }
+  .conn-note {
+    grid-column: 1 / -1; text-align: center; font-size: 11.5px; color: var(--dim);
+    margin-top: 4px; font-family: Consolas, monospace;
+  }
+
+  /* Worker 行 */
+  .workerrow { display: grid; grid-template-columns: 1.3fr 1fr .8fr; gap: 10px; }
+  .pbox.worker h4 { color: var(--worker); font-size: 14px; margin-bottom: 5px; }
+  .pbox.worker .duty { font-size: 12px; line-height: 1.65; }
+  .pbox.worker.ghost { opacity: .55; border-style: dashed; }
+  .own {
+    margin-top: 10px; text-align: center; font-size: 12px; color: var(--spawn);
+  }
+
+  /* 关系速查表 */
+  table.rel { width: 100%; border-collapse: collapse; margin-top: 6px; }
+  .rel th, .rel td {
+    border: 1px solid var(--line); padding: 8px 12px; font-size: 13px; text-align: left;
+  }
+  .rel th { background: var(--panel2); color: #e8d44d; font-weight: 600; }
+  .rel td.yes { color: #8ce8b4; }
+  .rel td.no  { color: var(--warn); }
+  .rel .colmain { color: #9ec5fe; } .rel .colcore { color: #ffab70; } .rel .colworker { color: #8ce8b4; }
+
+  /* 一句话总结 */
+  .oneline {
+    margin-top: 14px; padding: 14px 18px; border-radius: 12px;
+    background: rgba(240,160,48,.07); border: 1.5px solid rgba(240,160,48,.4);
+    font-size: 14px; line-height: 1.9;
+  }
+  .oneline b.c1 { color: #9ec5fe; } .oneline b.c2 { color: #ffab70; } .oneline b.c3 { color: #8ce8b4; }
+
+  /* ASCII 对照 */
+  .ascii {
+    background: #0c111a; border: 1px solid var(--line); border-radius: 8px;
+    padding: 12px 14px; margin-top: 10px;
+    font-family: Consolas, monospace; font-size: 12.5px; line-height: 1.7;
+    white-space: pre; overflow-x: auto; color: #aebdd4;
+  }
+
+  /* 其余小节复用 */
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .plaincard {
+    background: var(--panel2); border: 1px solid var(--line); border-radius: 12px;
+    padding: 15px 17px;
+  }
+  .plaincard h3 { font-size: 14.5px; margin-bottom: 8px; }
+  .plaincard p { font-size: 13px; line-height: 1.8; }
+  .plaincard p + p { margin-top: 6px; }
+  .freeze {
+    padding: 14px 16px; border-radius: 12px;
+    background: rgba(255,135,135,.07); border: 1.5px solid rgba(255,135,135,.35);
+  }
+  .freeze h3 { color: var(--warn); font-size: 14.5px; margin-bottom: 8px; }
+  .freeze p, .check li { font-size: 13px; line-height: 1.8; }
+  .freeze ul { margin: 8px 0 0 18px; }
+  .freeze li { font-size: 12.5px; line-height: 1.8; }
+  .check { background: var(--panel2); border: 1px solid var(--line); border-radius: 12px; padding: 15px 17px; }
+  .check h3 { font-size: 14.5px; margin-bottom: 10px; }
+  .check li { font-size: 12.5px; line-height: 1.9; margin-left: 18px; }
+  .mapcard { background: var(--panel2); border: 1px solid var(--line); border-radius: 12px; padding: 13px 16px; }
+  .mapcard .no {
+    display: inline-flex; width: 24px; height: 24px; border-radius: 50%;
+    align-items: center; justify-content: center; font-weight: 700; font-size: 12px;
+    background: rgba(240,160,48,.14); color: #f7c983; border: 1.5px solid var(--zmq);
+    margin-right: 7px; vertical-align: middle;
+  }
+  .mapcard h3 { font-size: 14px; display: inline; vertical-align: middle; }
+  .mapcard p { font-size: 12.5px; line-height: 1.7; margin-top: 7px; }
+  .c-main { color: #9ec5fe; } .c-core { color: #ffab70; } .c-worker { color: #8ce8b4; }
+  .c-zmq { color: #f7c983; } .c-spawn { color: #f5a9ce; }
+
+  @media (max-width: 860px) {
+    .cols, .workerrow { grid-template-columns: 1fr; }
+    .connector { grid-template-columns: 1fr; gap: 8px; padding: 10px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>vLLM V1 进程拓扑 — 谁创建谁、谁跟谁说话</h1>
+  <div class="sub">「引擎核心启动」阶段固化下来的三个进程 · 两条链一次看清</div>
+
+  <!-- ============ 图例 ============ -->
+  <div class="legend">
+    <span class="chip c-spawn"><span class="sw-solid"></span>创建链（spawn：谁拉起谁，一次性动作）</span>
+    <span class="chip c-zmq"><span class="sw-dash"></span>通信链（ZMQ：日常对话，每步都在走）</span>
+    <span class="chip c-nolink">✕ 无直接关系</span>
+  </div>
+
+  <!-- ============ 主图：纵向层级 ============ -->
+  <h2>① 拓扑主图（从上往下看：先创建谁，谁再创建谁）</h2>
+  <div class="topo">
+
+    <!-- 第一层：主进程 -->
+    <div class="pbox main">
+      <span class="tag">第 1 层 · 主进程</span><span class="os">进程 A</span>
+      <h3>🏢 主进程 — API 前厅</h3>
+      <div class="duty"><b>只管接单和交付</b>：接 HTTP 请求 → 打包成 <code>EngineCoreRequest</code> 发下去；收结果 → 还原成流式响应。</div>
+      <div class="comp-chips">
+        <span class="comp">AsyncLLM</span><span class="comp">OpenAI Server</span>
+        <span class="comp">InputProcessor</span><span class="comp">OutputProcessor</span>
+      </div>
+      <div class="gil">独立 GIL ① —— 这里卡住只影响新请求接入，不影响推理</div>
+    </div>
+
+    <!-- 连接器 1 -->
+    <div class="connector">
+      <div class="conn-cell conn-spawn">
+        <span class="big">▼&nbsp;创建链</span>
+        <span class="lab">主进程 <b>spawn 拉起</b> EngineCore<br><span class="note">launch_core_engines()（一次性）</span></span>
+      </div>
+      <div class="conn-cell conn-zmq">
+        <span class="big">⇅&nbsp;通信链</span>
+        <span class="lab">ZMQ IPC · msgpack<br><code>EngineCoreRequest</code> ↓ ／ <code>EngineCoreOutputs</code> ↑</span>
+      </div>
+    </div>
+
+    <!-- 第二层：EngineCore -->
+    <div class="pbox core">
+      <span class="tag">第 2 层 · 调度大脑</span><span class="os">进程 B（由 A 拉起）</span>
+      <h3>🧠 EngineCore 进程 — 调度大脑</h3>
+      <div class="duty"><b>独占四件事</b>（run_busy_loop 常驻满载）：请求排队 → 批调度决策 → KV-cache 块分配 → 组装批次发给 Worker。</div>
+      <div class="comp-chips">
+        <span class="comp">Scheduler</span><span class="comp">KVCacheManager</span>
+        <span class="comp hot">MultiprocExecutor ← 它负责拉起第 3 层</span>
+      </div>
+      <div class="gil">独立 GIL ② —— 调度循环不被 API 抢时间；调度崩了不拖 Worker</div>
+    </div>
+
+    <!-- 连接器 2 -->
+    <div class="connector">
+      <div class="conn-cell conn-spawn">
+        <span class="big">▼&nbsp;创建链</span>
+        <span class="lab">EngineCore 内的 <b>MultiprocExecutor</b> spawn 拉起<br><span class="note">按 world_size 决定拉几个（一次性）</span></span>
+      </div>
+      <div class="conn-cell conn-zmq">
+        <span class="big">⇅&nbsp;通信链</span>
+        <span class="lab">ZMQ · 广播 <code>SchedulerOutput</code> ↓ ／ Future 按序聚合 ↑</span>
+      </div>
+    </div>
+
+    <!-- 第三层：Worker 行 -->
+    <div class="workerrow">
+      <div class="pbox worker">
+        <span class="tag">第 3 层 · 执行车间</span>
+        <h4>⚙ Worker 0（driver, rank 0）</h4>
+        <div class="duty">ModelRunner 真正跑前向：attention 元数据 → 模型 → 采样。<br><b>汇总兄弟们的输出</b>回传 EngineCore。</div>
+      </div>
+      <div class="pbox worker ghost">
+        <span class="tag" style="opacity:.7">第 3 层</span>
+        <h4>⚙ Worker 1…N-1</h4>
+        <div class="duty">各自吃一个设备（GPU/CPU 核），只跟 EngineCore 说话。</div>
+      </div>
+      <div class="pbox worker ghost">
+        <span class="tag" style="opacity:.7">第 3 层</span>
+        <h4>× world_size</h4>
+        <div class="duty">CPU 上 = 1 个；多 GPU = 每 GPU 一个。<br>rank 编号在此定型。</div>
+      </div>
+    </div>
+    <div class="own">🔺 三个 Worker 都是第 2 层 MultiprocExecutor 的「孩子」，彼此平级</div>
+  </div>
+
+  <!-- ============ 关系速查表 ============ -->
+  <h2>② 三者关系速查表（谁认识谁）</h2>
+  <table class="rel">
+    <tr><th>关系</th><th>创建（spawn）</th><th>通信（ZMQ）</th><th>一句话</th></tr>
+    <tr>
+      <td><span class="colmain">主进程</span> → <span class="colcore">EngineCore</span></td>
+      <td class="yes">✅ 主进程拉起它</td>
+      <td class="yes">✅ 每步都在传请求/收输出</td>
+      <td>前厅把单子递给大脑</td>
+    </tr>
+    <tr>
+      <td><span class="colcore">EngineCore</span> → <span class="colworker">Worker</span></td>
+      <td class="yes">✅ 它内部的 Executor 拉起</td>
+      <td class="yes">✅ 广播调度结果、收执行结果</td>
+      <td>大脑把活分给车间</td>
+    </tr>
+    <tr>
+      <td><span class="colmain">主进程</span> ↔ <span class="colworker">Worker</span></td>
+      <td class="no">✕ 不创建</td>
+      <td class="no">✕ 不通信</td>
+      <td><b>互相根本不知道对方存在</b>——一切经 EngineCore 转发</td>
+    </tr>
+    <tr>
+      <td><span class="colworker">Worker</span> ↔ <span class="colworker">Worker</span></td>
+      <td class="no">—</td>
+      <td class="yes">✅ 集合通信（gloo/NCCL，TP 时用）</td>
+      <td>张量并行时切片交换（CPU 单机一般用不到）</td>
+    </tr>
+  </table>
+
+  <div class="oneline">
+    💡 <b>一句话记住</b>：<b class="c1">主进程</b>生<b class="c2">EngineCore</b>，<b class="c2">EngineCore</b>生<b class="c3">Worker</b>；
+    前两者像<b>前台和厨房经理</b>（谈订单），后两者像<b>厨房经理和厨师</b>（派工）；
+    <b class="c1">主进程</b>和<b class="c3">Worker</b>之间<b style="color:var(--warn)">没有电话线</b>——订单与菜都由经理中转。
+  </div>
+
+  <div class="ascii">对比图（ASCII 版，跟上面同构）:
+
+  [主进程]  进程A   API/收发              GIL①
+      │ ① spawn 拉起        ⇅ ZMQ: 请求↓ 输出↑
+  [EngineCore] 进程B  调度/排队/KV块管理     GIL②
+      │ ② MultiprocExecutor 拉起  ⇅ ZMQ: 广播批次↓ 结果↑
+  [Worker × world_size] 进程C…  ModelRunner 跑前向   GIL③
+                          ▲ 主进程与 Worker 无任何直接连线</div>
+
+  <!-- ============ 日志 4 条映射 ============ -->
+  <h2>③ 你贴的 4 条日志 → 图上对应</h2>
+  <div class="cols">
+    <div class="mapcard">
+      <span class="no">1</span><h3>拉起 EngineCore</h3>
+      <p>创建链第一条粉线：主进程 spawn EngineCore，四件事（排队/调度/KV/广播）由它独占。</p>
+    </div>
+    <div class="mapcard">
+      <span class="no">2</span><h3>ZMQ + GIL 隔离</h3>
+      <p>两条黄色虚线 + 三个 GIL 徽章：三个进程各自独立 GIL，调度循环不再被 API 抢话筒。</p>
+    </div>
+    <div class="mapcard">
+      <span class="no">3</span><h3>world_size / rank / DP</h3>
+      <p>第 3 层 Worker 行的规模：总共几个执行进程、编号如何。CPU=1 个也走 gloo 签到（同一条代码路径）。</p>
+    </div>
+    <div class="mapcard">
+      <span class="no">4</span><h3>Config: 大段日志</h3>
+      <p>EngineCore <b>实际收到</b>的 VllmConfig 副本 —— 参数生效与否看它，不看命令行。</p>
+    </div>
+  </div>
+
+  <div class="ascii" style="color:#bfeaf2">📌 勘误：原文「multiproc_executor 拉起 EngineCore」方向反了。
+   实际：主进程拉起 EngineCore；MultiprocExecutor 是 EngineCore 内的执行器，负责拉起 Worker。
+   创建链是两层：主进程 → EngineCore → Worker。</div>
+
+  <!-- ============ GIL 与冻结点 ============ -->
+  <h2>④ 为什么要拆进程 & 为什么之后不能改</h2>
+  <div class="cols">
+    <div class="plaincard">
+      <h3>🧵 GIL：一个进程只有一把「话筒」</h3>
+      <p>Python 同一进程内同一时刻只有一个线程执行字节码。若调度循环和 API 收发同居一进程（v0），三方抢同一把 GIL，调度被卡顿。拆成三个进程后各拿各的话筒，调度可常驻满载。</p>
+      <p class="note">附赠：进程隔离 —— 调度崩溃不拖 Worker；EngineCoreSentinel 可做容错监控。</p>
+    </div>
+    <div class="freeze">
+      <h3>🧊 冻结点：为什么之后无法改并行规模</h3>
+      <p>这一步完成后以下东西已按 world_size/rank <b>物化</b>：</p>
+      <ul>
+        <li>ZMQ socket 已绑定、进程间管道已建立</li>
+        <li>gloo/NCCL 通信组已初始化（rank 已分配）</li>
+        <li>Worker 进程已按规模拉起（OS 级资源）</li>
+        <li>后续 KV 池、编译缓存（CUDA Graph 档位）都按此拓扑分配</li>
+      </ul>
+      <p>改 <code>tensor_parallel_size</code> / DP 数 = 换拓扑 = <b>只能重启</b>。CPU 绑核也在这前后发生。</p>
+    </div>
+  </div>
+
+  <h2>⑤ 日志排障核对清单</h2>
+  <div class="check">
+    <ul>
+      <li><b>Config: 大段</b> → 核对真正生效的 <code>enforce_eager</code> / <code>tensor_parallel_size</code> / <code>max_model_len</code>；与命令行对不上 = 参数没传进去</li>
+      <li><b>world_size / rank</b> → 并行规模是否符合预期（CPU 应为 1）</li>
+      <li><b>READY 回执</b> → <code>max_model_len</code> / <code>num_gpu_blocks</code> 是 auto-fit 后的值，可能与配置不同</li>
+      <li><b>想同进程调试</b> → <code>VLLM_ENABLE_V1_MULTIPROCESSING=0</code> 回退 v0 风格同进程</li>
+      <li><b>报错定位</b> → 主进程报错在 API 层；EngineCore 报错在调度/内存；Worker 报错在模型执行/内核</li>
+    </ul>
+  </div>
+
+  <p class="note" style="margin-top:24px">知识库对照：sources/推理引擎/vLLMSourceAnalysis/02-engine-core/engine-overview.md（三引擎关系/消息契约）·
+  08-distributed/worker-executor.md（Executor 选型）· 15-v1-worker/worker-overview.md（Worker 类层次）</p>
+
+</div>
+</body>
+</html>

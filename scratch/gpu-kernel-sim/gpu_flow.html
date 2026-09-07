@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GPU Kernel 全流程 — 8 步图解</title>
+<style>
+  :root {
+    --bg: #0f1420;
+    --panel: #1a2233;
+    --panel2: #16202f;
+    --line: #2c3a52;
+    --text: #dce4f0;
+    --dim: #8fa0b8;
+    --cpu: #3d8bfd;      /* CPU 侧 */
+    --bus: #f0a030;      /* PCIe 总线 */
+    --gpu: #2fbf71;      /* GPU 侧 */
+    --cmd: #e8590c;      /* 命令/launch */
+    --data: #12b0c9;     /* 数据搬运 */
+    --ok: #2fbf71;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif;
+    padding: 32px 16px 64px;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; }
+
+  h1 { font-size: 26px; margin-bottom: 6px; }
+  .sub { color: var(--dim); font-size: 14px; margin-bottom: 28px; }
+
+  /* ===== 顶部：物理布局总览 ===== */
+  .overview {
+    display: grid; grid-template-columns: 1fr 120px 1fr; gap: 0;
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 14px; padding: 20px; margin-bottom: 34px;
+  }
+  .machine { padding: 14px 18px; border-radius: 10px; }
+  .machine.cpu-side { background: rgba(61,139,253,.08); border: 1px solid rgba(61,139,253,.35); }
+  .machine.gpu-side { background: rgba(47,191,113,.08); border: 1px solid rgba(47,191,113,.35); }
+  .machine h3 { font-size: 15px; margin-bottom: 10px; }
+  .machine.cpu-side h3 { color: var(--cpu); }
+  .machine.gpu-side h3 { color: var(--gpu); }
+  .memrow {
+    display: flex; align-items: center; gap: 8px;
+    font-family: Consolas, monospace; font-size: 12.5px;
+    padding: 5px 8px; border-radius: 6px; margin-bottom: 6px;
+  }
+  .memrow .addr { color: var(--dim); min-width: 62px; }
+  .memrow .chip {
+    flex: 1; padding: 4px 10px; border-radius: 5px;
+    background: rgba(255,255,255,.05); border: 1px solid var(--line);
+  }
+  .memrow.src  .chip { border-color: var(--data); color: #bfeaf2; }
+  .memrow.dst  .chip { border-color: var(--ok); color: #b9f0d3; }
+  .memrow.code .chip { border-color: var(--cmd); color: #ffd8bd; }
+
+  .buscol { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+  .pcie {
+    font-size: 12px; color: var(--bus); text-align: center; line-height: 1.5;
+    border: 1px dashed var(--bus); border-radius: 8px; padding: 8px 6px; width: 96px;
+  }
+  .arrow { font-size: 20px; color: var(--bus); }
+
+  /* ===== 主时间线 ===== */
+  .steps { display: flex; flex-direction: column; gap: 0; position: relative; }
+  .steps::before {
+    content: ""; position: absolute; left: 27px; top: 24px; bottom: 24px;
+    width: 2px; background: linear-gradient(var(--line), var(--line));
+  }
+  .step {
+    display: grid; grid-template-columns: 56px 150px 1fr; gap: 14px;
+    padding: 10px 0; position: relative;
+  }
+  .num {
+    width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 16px; z-index: 1;
+    align-self: flex-start; margin-left: 8px;
+    background: var(--panel); border: 2px solid var(--dim); color: var(--dim);
+  }
+  .step.done .num { border-color: var(--ok); color: var(--ok); }
+  .step.cmd  .num { border-color: var(--cmd); color: #ffd8bd; background: rgba(232,89,12,.12); }
+  .step.data .num { border-color: var(--data); color: #bfeaf2; background: rgba(18,176,201,.12); }
+
+  .title h2 { font-size: 16px; margin-bottom: 3px; }
+  .title .en { font-family: Consolas, monospace; font-size: 12px; color: var(--dim); }
+  .title .tag {
+    display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 10px;
+    margin-left: 6px; vertical-align: 2px;
+  }
+  .tag.cpu { background: rgba(61,139,253,.15); color: #9ec5fe; }
+  .tag.hw  { background: rgba(47,191,113,.15); color: #8ce8b4; }
+  .tag.both{ background: rgba(240,160,48,.15); color: #f7c983; }
+
+  .card {
+    background: var(--panel2); border: 1px solid var(--line);
+    border-radius: 12px; padding: 14px 16px;
+  }
+  .card p { font-size: 13.5px; line-height: 1.75; color: var(--text); }
+  .card p + p { margin-top: 6px; }
+  .card .note { color: var(--dim); font-size: 12.5px; }
+  .hl-cpu { color: #9ec5fe; }
+  .hl-gpu { color: #8ce8b4; }
+  .hl-cmd { color: #ffab70; }
+  .hl-data{ color: #67d9ea; }
+  .hl-warn{ color: #ff8787; }
+
+  code {
+    font-family: Consolas, monospace; font-size: 12.5px;
+    background: rgba(255,255,255,.06); border: 1px solid var(--line);
+    padding: 1px 6px; border-radius: 4px; color: #c8d6e8;
+  }
+  .mono { font-family: Consolas, monospace; font-size: 12.5px; }
+
+  /* 卡片内的小时序/示意块 */
+  .diagram {
+    background: #0c111a; border: 1px solid var(--line); border-radius: 8px;
+    padding: 10px 12px; margin-top: 10px;
+    font-family: Consolas, monospace; font-size: 12.5px; line-height: 1.65;
+    white-space: pre; overflow-x: auto; color: #aebdd4;
+  }
+  .diagram b { color: #e8d44d; font-weight: normal; }
+  .diagram i { color: #ffab70; font-style: normal; }
+  .diagram em { color: #67d9ea; font-style: normal; }
+  .diagram u { color: #8ce8b4; text-decoration: none; }
+
+  /* 坑提示 */
+  .pitfall {
+    margin-top: 10px; padding: 8px 12px; border-radius: 8px; font-size: 12.5px;
+    background: rgba(255,120,120,.07); border: 1px solid rgba(255,120,120,.3);
+    color: #ffc0c0;
+  }
+  .pitfall::before { content: "⚠ "; }
+
+  /* 步骤间的连接箭头标注 */
+  .linklabel {
+    margin: -2px 0 8px 70px; font-size: 12px; color: var(--dim);
+  }
+  .linklabel b { color: var(--bus); font-weight: normal; }
+
+  @media (max-width: 900px) {
+    .overview { grid-template-columns: 1fr; }
+    .buscol { flex-direction: row; padding: 8px 0; }
+    .step { grid-template-columns: 56px 1fr; }
+    .step .card { grid-column: 2; }
+    .title { grid-column: 2; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>GPU Kernel 全流程 — 8 步图解</h1>
+  <div class="sub">对应模拟器 gpu_sim.py 的输出 · 两个世界 → 一条 PCIe → 三种命令</div>
+
+  <!-- ============ 物理总览 ============ -->
+  <div class="overview">
+    <div class="machine cpu-side">
+      <h3>💻 CPU 世界（Host 主机）</h3>
+      <div class="memrow"><span class="addr">内存条</span><span class="chip">a_data = [1, 2, 3, 4, 5, 6, 7, 8]</span></div>
+      <div class="memrow"><span class="addr">内存条</span><span class="chip">b_data = [10, 20, ... , 80]</span></div>
+      <div class="memrow"><span class="addr">内存条</span><span class="chip">pushbuffer 命令缓冲区</span></div>
+      <div class="memrow" style="opacity:.75"><span class="addr">—</span><span class="chip">⚠ GPU 够不着这里的任何东西</span></div>
+    </div>
+    <div class="buscol">
+      <div class="arrow">⇢</div>
+      <div class="pcie">PCIe 总线<br>~25 GB/s<br><span style="color:var(--dim)">跨界的唯一通道</span></div>
+      <div class="arrow">⇢</div>
+    </div>
+    <div class="machine gpu-side">
+      <h3>🔲 GPU 世界（Device 设备）</h3>
+      <div class="memrow"><span class="addr">0x1000</span><span class="chip">SASS 代码（第5步上传）</span></div>
+      <div class="memrow src"><span class="addr">0x20000</span><span class="chip">向量 A —— H2D 搬入</span></div>
+      <div class="memrow src"><span class="addr">0x30000</span><span class="chip">向量 B —— H2D 搬入</span></div>
+      <div class="memrow dst"><span class="addr">0x40000</span><span class="chip">向量 C —— 等 kernel 写</span></div>
+      <div class="memrow" style="opacity:.75"><span class="addr">—</span><span class="chip">⚠ 没搬进来的数据读不到</span></div>
+    </div>
+  </div>
+
+  <!-- ============ 时间线 ============ -->
+  <div class="steps">
+
+    <!-- 步骤 1 -->
+    <div class="step done">
+      <div class="num">1</div>
+      <div class="title">
+        <h2>编码 <span class="tag cpu">CPU</span></h2>
+        <div class="en">写 CUDA C 源码</div>
+      </div>
+      <div class="card">
+        <p>人类写下 <code>vector_add.cu</code>：<code>C[i] = A[i] + B[i]</code>，每个 GPU 线程负责一个元素。<span class="hl-cpu">此刻它只是文本文件</span>，GPU 完全不认识它。</p>
+        <div class="diagram">__global__ void vector_add(const float* A, const float* B,
+                           float* C, int N) {
+    int i = blockIdx.x * blockDim.x + threadIdx.x;   <i>// 我是几号线程？</i>
+    if (i < N) { C[i] = A[i] + B[i]; }               <i>// 越界的线程摸鱼</i>
+}</div>
+      </div>
+    </div>
+
+    <!-- 步骤 2 -->
+    <div class="step cmd">
+      <div class="num">2</div>
+      <div class="title">
+        <h2>编译 → PTX <span class="tag cpu">CPU</span></h2>
+        <div class="en">nvcc · 虚拟 ISA</div>
+      </div>
+      <div class="card">
+        <p><code>nvcc</code> 把 C 代码翻译成 <span class="hl-cmd">PTX</span>——文本汇编、<b>不绑定具体芯片</b>。它是留给驱动 JIT 的"备胎"：新显卡没有现成机器码时，驱动现场把它编成 SASS（这就是老 PyTorch 在新卡上首跑巨慢的原因）。</p>
+        <div class="diagram">ld.global.f32  %f1, [%rd5];    <em>// 从显存读 A[i]</em>
+add.f32        %f3, %f1, %f2;    <u>// 算加法</u>
+st.global.f32  [%rd7], %f3;      <em>// 写回 C[i]</em></div>
+      </div>
+    </div>
+
+    <!-- 步骤 3 -->
+    <div class="step cmd">
+      <div class="num">3</div>
+      <div class="title">
+        <h2>汇编 → SASS <span class="tag cpu">CPU</span></h2>
+        <div class="en">ptxas · 真实机器码</div>
+      </div>
+      <div class="card">
+        <p><code>ptxas</code> 把 PTX 压成 <span class="hl-cmd">SASS</span>：无限虚拟寄存器 %r2~%r7 <b>压进有限的物理寄存器</b>（本例每线程 4 个），指令编码成二进制字。SASS <b>只认一种架构</b>（sm_80/sm_89/…），换卡就要换 SASS。</p>
+        <div class="diagram">/*0040*/  LDG.E  R4, [R2]      <em>// 读 A[i]</em>
+/*0050*/  LDG.E  R5, [R3]      <em>// 读 B[i]（调度在两条读之间插了别的活）</em>
+/*0060*/  FADD   R4, R4, R5    <u>// 加</u>
+/*0070*/  STG.E  [R6], R4      <em>// 写 C[i]</em>
+/*0080*/  EXIT</div>
+      </div>
+    </div>
+
+    <!-- 步骤 4 -->
+    <div class="step done">
+      <div class="num">4</div>
+      <div class="title">
+        <h2>打包 cubin <span class="tag cpu">CPU</span></h2>
+        <div class="en">ELF 格式二进制</div>
+      </div>
+      <div class="card">
+        <p>SASS + 元数据（每线程寄存器数、共享内存用量）打包成 <span class="hl-cmd">cubin</span>——本质是 <b>ELF 文件</b>，和 Linux 可执行文件同宗。文件开头固定是 <code>7f 45 4c 46</code>（<code>\x7fELF</code>），驱动加载第一步就验这四个字节。</p>
+        <div class="diagram"><u>7f 45 4c 46</u> | ELF头 | .text(SASS指令) | .info(4寄存器,128线程) | 段头表 |
+   <i>↑ magic</i>  ↑ 64B    ↑ 40字节代码      ↑ 元数据              ↑ 目录</div>
+        <p class="note">模拟器实测：399 字节，md5 指纹 <span class="mono">4267fb20b4be</span>（真实工具链拿 cubin 做编译缓存键）。</p>
+      </div>
+    </div>
+
+    <div class="linklabel">↓ 接下来进入运行期：前 4 步只发生一次，后面每次进程启动都要走 5~8</div>
+
+    <!-- 步骤 5 -->
+    <div class="step cmd">
+      <div class="num">5</div>
+      <div class="title">
+        <h2>驱动加载 <span class="tag cpu">CPU</span></h2>
+        <div class="en">cuModuleLoad</div>
+      </div>
+      <div class="card">
+        <p>进程首次用到这个 kernel 时，<span class="hl-cmd">驱动</span>读 cubin：验 magic → 按段头表找到 <code>.text</code> → <span class="hl-data">把 SASS 上传到显存</span>（模拟器放在 <code>0x1000</code>）→ 按当前 GPU 架构挑机器码（没有就 JIT PTX）→ 登记<b>函数句柄</b>，同时读出元数据（用多少寄存器/共享内存——决定了每个 SM 能塞几个 block）。</p>
+        <div class="diagram">磁盘 cubin ──解析──► 显存 0x1000: [LDG.E][LDG.E][FADD][STG.E][EXIT]
+                                     └─ 从此 kernel 的"肉身"就住在显存里</div>
+      </div>
+    </div>
+
+    <!-- 步骤 6 -->
+    <div class="step data">
+      <div class="num">6</div>
+      <div class="title">
+        <h2>H2D 搬数据 <span class="tag both">跨界</span></h2>
+        <div class="en">cudaMemcpy Host→Device</div>
+      </div>
+      <div class="card">
+        <p>输入向量住在<span class="hl-cpu">CPU 内存条</span>里，GPU 够不着。<span class="hl-data">DMA 拷贝引擎</span>（不是 SM！）把字节穿过 PCIe 写进显存：<code>A@0x20000</code>、<code>B@0x30000</code>。这纯粹是搬运，不算数。</p>
+        <div class="diagram">CPU 内存条                PCIe (~25GB/s)              显存
+[1,2,3,4,5,6,7,8]  ═════════════════════►  0x20000  (A)
+[10,20,...,80]     ═════════════════════►  0x30000  (B)     <u>数据就位，等着</u></div>
+        <p class="note">vLLM 启动慢的主因：几十 GB 权重就是这样一次性搬进显存的。</p>
+      </div>
+    </div>
+
+    <!-- 步骤 7 -->
+    <div class="step cmd">
+      <div class="num">7</div>
+      <div class="title">
+        <h2>Launch 发令 <span class="tag both">跨界命令</span></h2>
+        <div class="en">kernel&lt;&lt;&lt;grid, block&gt;&gt;&gt;(…)</div>
+      </div>
+      <div class="card">
+        <p><span class="hl-warn">最易误解：launch 传的不是数据，是地址</span>。参数打包成 param buffer（模拟器输出里可见 <code>A=0x20000, B=0x30000, C=0x40000, N=8</code> 的字节排布），组装成命令写进 <span class="hl-cpu">pushbuffer</span>，再<b>碰门铃</b>通知 GPU。CPU 侧 5~10µs 固定开销全部花在这条路径上。</p>
+        <div class="diagram">param buffer（28字节，无一字节是数据本身）:
+<b>0000020000000000</b> <em>A 的地址</em>   <b>0000030000000000</b> <em>B 的地址</em>
+<b>0000040000000000</b> <em>C 的地址</em>   <b>08000000</b>         <em>N=8</em>
+   │ 写入 pushbuffer → 碰门铃
+   ▼
+<u>GPU 命令处理器</u>: 取命令 → <em>GigaThread</em> 把 1 个 block 派给某 SM
+   → block 拆成 warp(32线程) → warp 锁步执行 SASS
+   → 执行到 LDG.E 时才第一次真正去读 0x20000 —— 读到的正是第6步放好的数</div>
+      </div>
+    </div>
+
+    <!-- 步骤 8 -->
+    <div class="step done">
+      <div class="num">8</div>
+      <div class="title">
+        <h2>D2H 收结果 <span class="tag both">跨界</span></h2>
+        <div class="en">cudaMemcpy Device→Host</div>
+      </div>
+      <div class="card">
+        <p>GPU 把 <code>C[i]=A[i]+B[i]</code> 写进显存 <code>0x40000</code>，但 CPU 看不见自己的答案——再由 <span class="hl-data">DMA 引擎</span>把结果穿过 PCIe 搬回内存条，与 CPU 计算对照校验：<span style="color:var(--ok)">[11,22,…,88] ✅ 通过</span>。</p>
+        <div class="diagram">显存 0x40000: [11,22,33,44,55,66,77,88]
+     ══════════════ PCIe ══════════════►  CPU 内存条 → 校验 ✅</div>
+      </div>
+      <div class="pitfall" style="grid-column:3">顺序坑：若先 launch 后 H2D，kernel 读到的是显存残留 → 一声不吭算出垃圾，不报错不崩溃。这就是"数据必须先于命令就位"的原因。</div>
+    </div>
+  </div>
+
+  <!-- ============ 底部回顾 ============ -->
+  <div class="overview" style="margin-top:34px">
+    <div style="grid-column:1 / -1">
+      <h3 style="font-size:15px;margin-bottom:10px">🧩 一图收束：三种命令、两个执行者</h3>
+      <p style="font-size:13.5px;line-height:1.8;color:var(--text)">
+        步骤 <span class="hl-data">6(H2D)</span>、7(launch)、8(D2H) 本质上都是<span class="hl-cmd">写进同一个 pushbuffer 的命令</span>，
+        只是执行者不同：<span class="hl-data">搬数据的命令由 DMA 拷贝引擎执行</span>，
+        <span class="hl-cmd">launch 由 GigaThread→SM 执行</span>。CUDA Graph 做的事 =
+        把这串命令流原样录制，重放时 GPU 命令处理器自己消化——CPU 全程旁路，
+        这正是 <code>enforce_eager=True</code> 关掉的优化。
+      </p>
+      <div class="diagram" style="margin-top:10px">pushbuffer 命令流：
+[H2D 拷贝A] [H2D 拷贝B] [launch vector_add] [D2H 拷贝C]
+     ▲ DMA引擎执行        ▲ SM执行            ▲ DMA引擎执行</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

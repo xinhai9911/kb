@@ -49,6 +49,7 @@ markdown_file_count: 99
 | 子配置（cache/parallel/scheduler/device/load 等） | [01-config/sub-configs_part1.md](01-config/sub-configs_part1.md) |
 | ParallelConfig 并行配置 | [01-config/sub-configs_part2.md](01-config/sub-configs_part2.md) |
 | 三大引擎关系与进程间契约 | [02-engine-core/engine-overview.md](02-engine-core/engine-overview.md) |
+| 进程拓扑与启动冻结点（主进程/EngineCore/Worker） | [02-engine-core/process-topology.md](02-engine-core/process-topology.md) |
 | 输入/输出处理（InputProcessor/OutputProcessor） | [02-engine-core/processors.md](02-engine-core/processors.md) |
 | DP 协调与负载 | [02-engine-core/coordination.md](02-engine-core/coordination.md) |
 | 调度器（Scheduler/调度流程） | [03-scheduler-kvcache/scheduler.md](03-scheduler-kvcache/scheduler.md) |
