@@ -3,13 +3,13 @@ title: 工程示例总览导航
 category: projects
 tags: [project, examples, navigation, index, active]
 created: 2026-07-30
-updated: 2026-07-30
+updated: 2026-10-16
 summary: >-
     projects/ 下所有示例工程与项目的导航总览：nginx-module-examples（C 模块）、
     openssl-crypto-examples（加密/C+GmSSL）、resilience-examples（限流熔断 C）、
     observability-examples（OTel 可观测栈）、cicd-pipeline-examples
     （GitHub Actions+Helm 金丝雀）、k8s-kind-examples（kind 集群沙盒）、
-    db-decoder-ironhive（Hive 协议解码）。
+    db-decoder-ironhive（Hive 协议解码）、kvm-image-check（公有云镜像自检脚本）。
     每个工程标注语言/依赖/一键启动方式，并回链对应知识文档。
 base_confidence: 0.9
 lifecycle: reviewed
@@ -77,6 +77,7 @@ SORT file.name ASC
 - [cicd-pipeline-examples](cicd-pipeline-examples/README.md) ｜ CI/CD 流水线 ｜ YAML + Python ｜ kubectl/helm（可选） ｜ pytest / `helm upgrade` ｜ CI_CD 流水线实战 / CI_CD与测试策略
 - [k8s-kind-examples](k8s-kind-examples/README.md) ｜ K8s 集群沙盒 ｜ Docker + kind + kubectl ｜ docker/kind/kubectl/helm ｜ `bash scripts/01-kind-create.sh` ｜ Kubernetes 工作负载与调度 / Kubernetes 网络模型 / Ingress-Nginx 详解实战
 - [db-decoder-ironhive](db-decoder-ironhive/DB 解码器 IronHive.md) ｜ Hive 协议解码器 ｜ — ｜ — ｜ — ｜ 项目概述
+- [kvm-image-check](kvm-image-check/README.md) ｜ 公有云镜像自检 ｜ Bash ｜ 无（系统自带工具） ｜ `bash check-image.sh` ｜ KVM 公有云 镜像 适配 / 公有云镜像 制作 与 导入 实战
 
 </details>
 
@@ -105,6 +106,10 @@ SORT file.name ASC
 - **db-decoder-ironhive**：IronHive Hive 协议解码器项目（概述/协议分析/Track/实现）
   - 文档：[[projects/db-decoder-ironhive/DB 解码器 IronHive|项目概述]]
 
+### 云 / 虚拟化（镜像适配）
+- **kvm-image-check**：公有云镜像发布前自检脚本（fstab 与 nofail、grub UUID、ESP fallback、initramfs 三驱动、内核能力、cloud-init、机器身份残留、磁盘布局与扩容能力）
+  - 文档：[[concepts/KVM 公有云 镜像 适配]]、[[entities/公有云镜像 制作 与 导入 实战]]
+
 ## 关键词索引（静态查找表，Obsidian 可用）
 
 > 按「想找什么」快速定位工程 / 文档。相当于页内搜索的离线版。
@@ -125,6 +130,7 @@ SORT file.name ASC
 | Docker / Compose / OTel 栈 | observability-examples | [[concepts/可观测性工程]] |
 | Kubernetes / Helm / 部署 | cicd-pipeline-examples › deploy/ | [[entities/CI_CD 流水线实战]] |
 | Hive / 协议解码 / 真实项目 | [db-decoder-ironhive](db-decoder-ironhive/DB 解码器 IronHive.md) | 项目概述 |
+| KVM / 公有云 / 镜像 / 云盘 / 自检 | [kvm-image-check](kvm-image-check/README.md) | [[concepts/KVM 公有云 镜像 适配]]、[[entities/公有云镜像 制作 与 导入 实战]] |
 | 加密原理总览 | — | [[concepts/加密算法总览与分类]]、[[synthesis/加密算法技术全景综述]] |
 | 软件工程全景 | — | [[concepts/软件设计原则与代码质量]]、[[synthesis/软件工程与架构技术全景综述]] |
 
