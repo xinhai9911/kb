@@ -205,7 +205,7 @@ lsblk -o NAME,SIZE,FSTYPE,PARTTYPENAME,PARTTYPE
 # ③ 分辨 stub 与真配置
 head -5 /boot/efi/EFI/redhat/grub.cfg; grep -c menuentry /boot/grub2/grub.cfg
 
-# ④ 复现"云上起不来"并修复（理解 > 记忆）
+# ④ 复现"云上起不来"并修复（理解 > 记忆）—— 完整实验步骤见 §8
 mv /boot/efi/EFI/BOOT/BOOTX64.EFI{,.bak}     # NVRAM 空 + 无 fallback = 引导失败
 # 从救援盘/UEFI shell 进系统后复制回来
 
@@ -214,7 +214,80 @@ cat /proc/cmdline
 lsinitrd /boot/initramfs-$(uname -r).img | head
 ```
 
-## 8. 自测（能答上即可跳过本页）
+## 8. 破坏实验：证明"引导项不跟随"（L1 实验单）
+
+**目标**：把两个常被混为一谈的机制**分离证明** —— 固件 NVRAM 里的引导项（本地有、云上无）
+与 ESP 里的兜底路径（云上唯一依靠）。
+
+**安全前置**：用可丢弃的 VM；先打快照；不要在产线机上做。
+
+### 步骤 0 · 基线取证
+
+```bash
+ls /sys/firmware/efi >/dev/null 2>&1 && echo "UEFI ✅" || echo "Legacy ❌ 本实验不适用"
+efibootmgr -v                                  # 记下 BootCurrent（例：0003）
+ls -l /boot/efi/EFI/BOOT/ /boot/efi/EFI/redhat/
+# 备份：cp -a /boot/efi/EFI/BOOT/. /root/l1-backup/
+```
+
+### 步骤 1 · 只删兜底文件（不删 NVRAM）→ 预期**照常启动**
+
+```bash
+rm -f /boot/efi/EFI/BOOT/BOOTX64.EFI && sync && reboot
+```
+
+结果：正常启动。因为固件优先走 NVRAM 里登记的 `Boot####`（指向 `\EFI\redhat\shimx64.efi`），
+**根本没用兜底路径** —— 这就是"本地能起"的真相。
+
+### 步骤 2 · 再删 NVRAM 引导项 → 预期**起不来**（= 云上现场）
+
+```bash
+efibootmgr -b 0003 -B          # 用步骤 0 记下的编号
+efibootmgr -v                  # 确认 BootOrder 已无此项
+sync && reboot
+```
+
+结果：掉进 UEFI Shell / `No bootable option or device was found` / 无限重启。
+**这就是云上全新实例的处境**：NVRAM 为空，只剩兜底路径，而它已被你删掉。
+
+### 步骤 3 · 救援（三选一）
+
+| 路线 | 做法 |
+|---|---|
+| **A. UEFI Shell 手工引导** | 重启按 `ESC` 进固件菜单 → UEFI Shell → `map` 找 `FS0:` → `FS0:\EFI\redhat\shimx64.efi` 直接进系统 |
+| **B. 宿主机离线修盘（推荐）** | `modprobe nbd max_part=16 && qemu-nbd -c /dev/nbd0 disk.qcow2` → `mount /dev/nbd0p1 /mnt` → `cp -a /mnt/EFI/redhat/shimx64.efi /mnt/EFI/BOOT/BOOTX64.EFI` → 卸载 |
+| **C. 救援 ISO** | 挂 Linux 救援盘，`chroot` 进系统修 |
+
+### 步骤 4 · 恢复并验证
+
+```bash
+cp -a /boot/efi/EFI/redhat/shimx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
+efibootmgr -c -d /dev/vda -p 1 -L "Red Hat Enterprise Linux" -l '\EFI\redhat\shimx64.efi'
+efibootmgr -v && ls -l /boot/efi/EFI/BOOT/BOOTX64.EFI
+reboot        # 应正常进入系统
+```
+
+### 实验记录表
+
+| 步骤 | 操作 | 预期 | 实际 | 结论 |
+|---|---|---|---|---|
+| 1 | 只删 `BOOTX64.EFI` | 仍能启动 | | 固件用 NVRAM，不依赖 fallback |
+| 2 | 再删 NVRAM 项 | 启动失败 | | 云上现场 = NVRAM 空 |
+| 3 | Shell / 离线修盘 | 能救回 | | 救援路径可用 |
+| 4 | 恢复两者 | 正常启动 | | 两套机制都必要 |
+
+### 进阶变体（选做）
+
+| 变体 | 做法 | 收获 |
+|---|---|---|
+| 用 `-bios OVMF.fd` 单文件起 VM | 不持久化 VARS | **每次重启都等于"云上 NVRAM 空"**，删文件即失败，无需步骤 2 |
+| 把 fallback 指向 `grubx64.efi` 而非 shim | `cp grubx64.efi BOOTX64.EFI` | 理解 shim 在 Secure Boot 链中的作用 |
+| Arm 镜像 | 检查 `\EFI\BOOT\BOOTAA64.EFI` | 路径随架构变（自检脚本按架构判断的原因） |
+| 做双引导再走一遍 | 加 EF02 + `grub2-install --target=i386-pc` | fallback 与 NVRAM 都失效时 Legacy 侧仍可能起来（UEFI-Preferred 由来） |
+
+**一句话结论**（做完请自己写一遍）：＿＿＿＿＿＿＿＿＿＿＿＿
+
+## 9. 自测（能答上即可跳过本页）
 
 1. Legacy 与 UEFI 的引导代码分别放在哪？为什么只有 UEFI 需要 ESP？
 2. RHEL8 的 `/boot/efi/EFI/redhat/grub.cfg` 为什么不含 menuentry？
@@ -222,7 +295,7 @@ lsinitrd /boot/initramfs-$(uname -r).img | head
 4. 内核是"先有根文件系统还是先有驱动"？这个悖论由谁解决？
 5. `You are in emergency mode` 属于启动链的哪一环？
 
-## 来源
+## 10. 来源
 
 - GNU GRUB 手册 https://www.gnu.org/software/grub/manual/grub/
 - UEFI 规范（EFI System Partition、Boot Manager，UEFI Forum）https://uefi.org/specifications
