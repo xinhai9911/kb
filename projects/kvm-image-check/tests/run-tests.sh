@@ -41,6 +41,42 @@ assert_exit() {   # 实际码 期望码 说明
   fi
 }
 
+# 生成合成 initramfs（gzip 压缩的 cpio newc）。$1 = 输出文件，其余参数 = 内含文件路径
+make_initramfs() {
+  local out="$1"; shift
+  local py
+  py="$(command -v python3 2>/dev/null || command -v python)"
+  "$py" - "$out" "$@" <<'PYEOF'
+import sys, gzip, os
+out, names = sys.argv[1], sys.argv[2:]
+def rec(name, data=b''):
+    namesize = len(name) + 1
+    hdr = (b'070701'
+           + b'%08X' % 0          # ino
+           + b'%08X' % 0o100644   # mode
+           + b'%08X' % 0          # uid
+           + b'%08X' % 0          # gid
+           + b'%08X' % 1          # nlink
+           + b'%08X' % 0          # mtime
+           + b'%08X' % len(data)  # filesize
+           + b'%08X' % 0 + b'%08X' % 0 + b'%08X' % 0 + b'%08X' % 0
+           + b'%08X' % namesize   # namesize
+           + b'%08X' % 0)         # check
+    body = hdr + name.encode() + b'\0'
+    body += b'\0' * ((4 - len(body) % 4) % 4)
+    body += data
+    body += b'\0' * ((4 - len(body) % 4) % 4)
+    return body
+main = b''.join(rec(n, b'module-bytes') for n in names) + rec('TRAILER!!!')
+blob = gzip.compress(main)
+if os.environ.get('EARLY') == '1':
+    # 模拟 dracut：未压缩 early_cpio（微码段） + 压缩主段
+    early = rec('early/microcode.bin', b'\x00' * 16) + rec('TRAILER!!!')
+    blob = early + blob
+open(out, 'wb').write(blob)
+PYEOF
+}
+
 TMPROOT="$(mktemp -d)"
 trap 'rm -rf "$TMPROOT"' EXIT
 
@@ -84,6 +120,10 @@ printf 'HWADDR=52:54:00:aa:bb:cc\nBOOTPROTO=dhcp\n' > "$ROOT_BAD/etc/sysconfig/n
 printf 'mac-address=52:54:00:aa:bb:cc\n'  > "$ROOT_BAD/etc/NetworkManager/system-connections/eth0.nmconnection"
 printf 'inst\n'                           > "$ROOT_BAD/var/lib/cloud/instances/i-123/instance-id"
 
+# BAD initramfs：只有 virtio_blk，缺 virtio_scsi 与 nvme
+make_initramfs "$ROOT_BAD/boot/initramfs-4.18.0-test.img" \
+  "usr/lib/modules/4.18.0-test/kernel/drivers/block/virtio_blk.ko.xz"
+
 OUT_BAD="$TMPROOT/bad.out"
 bash "$SCRIPT" --root "$ROOT_BAD" > "$OUT_BAD" 2>&1
 assert_exit "$?" 1 "BAD fixture 退出码为 1"
@@ -110,6 +150,7 @@ assert_grep  "$OUT_BAD" "写死了 MAC 地址"          "检出 NM keyfile 写�
 assert_grep  "$OUT_BAD" "70-persistent-net.rules"  "检出旧式网卡命名规则"
 assert_grep  "$OUT_BAD" "ifcfg 中存在 HWADDR"      "检出 ifcfg HWADDR"
 assert_grep  "$OUT_BAD" "未安装 cloud-utils-growpart" "检出缺 growpart"
+assert_grep  "$OUT_BAD" "缺驱动： virtio_scsi nvme"    "检出 initramfs 缺驱动（合成 gzip+cpio 归档）"
 
 ################################################################
 printf '\n## 2. GOOD fixture（真阴性：应全 PASS，WARN=0）\n'
@@ -149,6 +190,20 @@ chmod +x "$ROOT_OK/usr/bin/growpart" 2>/dev/null || true
 printf '' > "$ROOT_OK/usr/lib/systemd/system/qemu-guest-agent.service"
 printf '' > "$ROOT_OK/usr/lib/systemd/system/aliyun.service"
 
+# GOOD initramfs：三种挂载形态驱动齐全
+make_initramfs "$ROOT_OK/boot/initramfs-4.18.0-good.img" \
+  "usr/lib/modules/4.18.0-good/kernel/drivers/block/virtio_blk.ko.xz" \
+  "usr/lib/modules/4.18.0-good/kernel/drivers/scsi/virtio_scsi.ko.xz" \
+  "usr/lib/modules/4.18.0-good/kernel/drivers/nvme/host/nvme.ko.xz"
+
+# 真实 dracut 布局：未压缩 early_cpio（微码段）+ 压缩主段 拼接
+export EARLY=1
+make_initramfs "$ROOT_OK/boot/initramfs-4.18.0-good-early.img" \
+  "usr/lib/modules/4.18.0-good/kernel/drivers/block/virtio_blk.ko.xz" \
+  "usr/lib/modules/4.18.0-good/kernel/drivers/scsi/virtio_scsi.ko.xz" \
+  "usr/lib/modules/4.18.0-good/kernel/drivers/nvme/host/nvme.ko.xz"
+unset EARLY
+
 OUT_OK="$TMPROOT/good.out"
 bash "$SCRIPT" --root "$ROOT_OK" > "$OUT_OK" 2>&1
 assert_exit "$?" 0 "GOOD fixture 退出码为 0"
@@ -175,6 +230,8 @@ assert_grep     "$OUT_OK" "/etc/machine-id 已清空"            "正确判定 m
 assert_grep     "$OUT_OK" "SSH 主机密钥已清理"                "正确判定 SSH 主机密钥"
 assert_grep     "$OUT_OK" "NM keyfile 无写死 MAC"             "正确判定 MAC 绑定"
 assert_grep     "$OUT_OK" "growpart 已安装"                   "正确判定 growpart"
+assert_grep     "$OUT_OK" "含 virtio_blk / virtio_scsi / nvme" "正确判定 initramfs 驱动齐全（后端 python）"
+assert_grep     "$OUT_OK" "initramfs-4.18.0-good-early.img 含 virtio_blk" "正确解析 early_cpio+压缩主段拼接布局（dracut 真实格式）"
 assert_grep     "$OUT_OK" "PASS="                             "输出汇总行"
 
 # GOOD 的 WARN 应为 0（保证"全绿"这个断言本身可信）

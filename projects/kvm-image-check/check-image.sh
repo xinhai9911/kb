@@ -148,21 +148,109 @@ fi
 ########################################
 section "3. initramfs 驱动（三种挂载形态）"
 ########################################
-if ! command -v lsinitrd >/dev/null 2>&1; then
-  skip "无 lsinitrd 命令，跳过 initramfs 驱动检查"
+# 解析后端优先级：lsinitrd(dracut) → cpio → python(内置 cpio newc 解析)
+# 目的：让本项检查在没有 dracut 的环境（含离线镜像树）也能跑，而不是一律 SKIP
+list_initramfs() {   # $1 = initramfs 文件；输出内含文件路径清单
+  local img="$1"
+  if [ "$LIST_BACKEND" = "lsinitrd" ]; then
+    lsinitrd "$img" 2>/dev/null
+  elif [ "$LIST_BACKEND" = "cpio" ]; then
+    { gzip -dc "$img" 2>/dev/null || xz -dc "$img" 2>/dev/null || cat "$img"; } | cpio -t 2>/dev/null
+  else
+    "$LIST_PY" - "$img" <<'PYEOF'
+import sys, gzip, lzma
+path = sys.argv[1]
+try:
+    data = open(path, 'rb').read()
+except OSError:
+    sys.exit(1)
+
+def rec_len(namesize, filesize):
+    body = 110 + namesize
+    body += (4 - body % 4) % 4
+    body += filesize
+    body += (4 - body % 4) % 4
+    return body
+
+def entries(data):
+    """逐段解析 cpio：段首可能是 gzip/xz 流（dracut 的 early_cpio+压缩主段拼接格式）"""
+    names = []
+    while data:
+        if data[:2] == b'\x1f\x8b':
+            try:
+                data = gzip.decompress(data)
+            except Exception:
+                return names
+        elif data[:6] == b'\xfd7zXZ\x00':
+            try:
+                data = lzma.decompress(data)
+            except Exception:
+                return names
+        off, size, trailer_end = 0, len(data), None
+        while off + 110 <= size:
+            if data[off:off+6] not in (b'070701', b'070702'):
+                nxt = data.find(b'070701', off + 1)
+                if nxt < 0:
+                    break
+                off = nxt
+                continue
+            hdr = data[off:off+110]
+            try:
+                filesize = int(hdr[54:62], 16)
+                namesize = int(hdr[94:102], 16)
+            except ValueError:
+                break
+            if namesize <= 0 or namesize > 4096:
+                break
+            name = data[off+110:off+110+namesize-1].decode('utf-8', 'replace')
+            body = rec_len(namesize, filesize)
+            if name == 'TRAILER!!!':
+                trailer_end = off + body
+                break
+            names.append(name)
+            off += body
+        if trailer_end is None or trailer_end >= size:
+            return names
+        data = data[trailer_end:]
+    return names
+
+sys.stdout.write('\n'.join(entries(data)))
+PYEOF
+  fi
+}
+
+LIST_BACKEND=""
+if command -v lsinitrd >/dev/null 2>&1; then
+  LIST_BACKEND="lsinitrd"
+elif command -v cpio >/dev/null 2>&1; then
+  LIST_BACKEND="cpio"
+elif LIST_PY="$(command -v python3 2>/dev/null || command -v python 2>/dev/null)" && [ -n "$LIST_PY" ]; then
+  LIST_BACKEND="python"
+fi
+
+if [ -z "$LIST_BACKEND" ]; then
+  skip "无 lsinitrd / cpio / python，跳过 initramfs 驱动检查"
 else
+  found_img=0
   for img in "$ROOT"/boot/initramfs-*.img; do
-    [ -e "$img" ] || { skip "未找到 initramfs 镜像"; break; }
+    [ -e "$img" ] || continue
+    found_img=1
+    listing="$(list_initramfs "$img")"
+    if [ -z "$listing" ]; then
+      warn "$(basename "$img") 无法解析（不支持的压缩格式？），驱动需人工确认"
+      continue
+    fi
     missing=""
     for drv in virtio_blk virtio_scsi nvme; do
-      lsinitrd "$img" 2>/dev/null | grep -q "$drv" || missing="$missing $drv"
+      printf '%s' "$listing" | grep -q "$drv" || missing="$missing $drv"
     done
     if [ -z "$missing" ]; then
-      ok "$(basename "$img") 含 virtio_blk / virtio_scsi / nvme"
+      ok "$(basename "$img") 含 virtio_blk / virtio_scsi / nvme（后端 $LIST_BACKEND）"
     else
       bad "$(basename "$img") 缺驱动：$missing"
     fi
   done
+  [ "$found_img" = 0 ] && skip "未找到 $ROOT/boot/initramfs-*.img"
 fi
 if [ -r "$ROOT/etc/dracut.conf.d/virtio.conf" ] && grep -q 'virtio_blk' "$ROOT/etc/dracut.conf.d/virtio.conf"; then
   ok "dracut 持久化配置存在（/etc/dracut.conf.d/virtio.conf）"
