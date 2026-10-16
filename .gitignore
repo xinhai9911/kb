@@ -41,3 +41,6 @@ __pycache__/
 *.gz
 *.pdf
 !docs/**/*.pdf
+
+# Derived artifacts from wiki-export skill
+wiki-export/
