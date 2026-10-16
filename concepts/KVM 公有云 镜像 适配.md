@@ -19,8 +19,11 @@ lifecycle: reviewed
 
 # KVM 公有云 镜像 适配
 
-> 前置：[[concepts/CPU 虚拟化与IO穿透]]（KVM/VT-x 基础）、[[concepts/存储栈与io_uring]]（块设备栈）。
+> 前置：[[concepts/CPU 虚拟化与IO穿透]]（KVM/VT-x 基础）、[[concepts/存储栈与io_uring]]（块设备栈）、
+> [[concepts/Linux 启动链 与 引导]]（引导链全景）、[[concepts/initramfs 与 dracut]]（驱动与挂根）、
+> [[concepts/磁盘分区 文件系统 与 挂载管理]]（分区/挂载约束）、[[concepts/QEMU 设备模型 与 virtio 协议]]（设备从哪来）。
 > 实操手册（排障 / 清理清单 / 导入操作）见 [[entities/公有云镜像 制作 与 导入 实战]]；镜像自检脚本见 `projects/kvm-image-check/`。
+> 学习顺序见 [[synthesis/公有云镜像适配 学习路径]]。
 > 适用场景：appliance DOM 生产镜像（RHEL8 系，UEFI GPT + ESP + XFS /boot + LVM）上公有云；
 > 结论对任何"物理机镜像迁云"场景通用。
 
@@ -397,7 +400,16 @@ cloud-init clean --logs --reboot   # 测试用：清状态并重跑
 
 ## 相关
 
+- [[synthesis/公有云镜像适配 学习路径]] — 分层学习地图与阅读引导（先看这个）
 - [[concepts/CPU 虚拟化与IO穿透]] — KVM / VT-x / IOMMU 基础
 - [[concepts/存储栈与io_uring]] — Linux 块设备栈
+- [[concepts/PCIe 子系统]] — 设备枚举与配置空间
+- [[concepts/Linux 启动链 与 引导]] — 固件 → GRUB → kernel → initramfs → systemd
+- [[concepts/initramfs 与 dracut]] — 驱动为什么必须打进 initramfs
+- [[concepts/磁盘分区 文件系统 与 挂载管理]] — 分区/挂载约束的成因
+- [[concepts/QEMU 设备模型 与 virtio 协议]] — 三种挂载形态的设备侧原理
+- [[concepts/cloud-init 与 云元数据服务]] — 实例一次性初始化
+- [[concepts/云平台 镜像 与 云盘 产品语义]] — 规格代际与镜像生命周期
 - [[entities/公有云镜像 制作 与 导入 实战]] — 排障手册 / 清理清单 / 导入操作
+- [[entities/镜像格式 与 离线处理工具链]] — qemu-img / qemu-nbd / libguestfs
 - `projects/kvm-image-check/` — 镜像自检脚本
